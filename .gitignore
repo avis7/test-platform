@@ -1,5 +1,12 @@
 *.class
-.idea
+*.iml
+.classpath
+.idea/
+.project
+.settings
+*.versionsBackup
+release.properties
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
