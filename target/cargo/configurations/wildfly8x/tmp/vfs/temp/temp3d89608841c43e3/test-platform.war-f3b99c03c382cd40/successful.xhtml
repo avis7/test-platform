@@ -8,12 +8,12 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <title>Unsuccessful regestration</title>
+    <title>Successful regestration</title>
 </h:head>
 
 <h:body>
-    <h:outputText value="Ошибка регистрации"/><br/><br/>
-    <h:outputText value="#{registrationBean.response}"/><br/><br/>
+    <h:outputText value="Регистрация успешна!"/><br/><br/>
+    <p>Привет, #{registrationBean.firstName}</p>
     <h:form>
         <h:commandButton action="registration_form" value="Назад"/>
     </h:form>

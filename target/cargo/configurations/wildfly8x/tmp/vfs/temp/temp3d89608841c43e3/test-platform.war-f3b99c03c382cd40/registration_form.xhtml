@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+</h:head>
+
+<h:head>
+    <title>Registrarion Demo</title>
+</h:head>
+
+
+<h:body>
+    <h:form>
+        <h:outputText value="Регистрация"/><br/><br/>
+        <h:outputText value="Фамилия : "/>
+        <h:inputText value="#{registrationBean.lastName}" size="20"/><br/><br/>
+        <h:outputText value="Имя : "/>
+        <h:inputText value="#{registrationBean.firstName}" size="20"/><br/><br/>
+        <h:outputText value="Email : "/>
+        <h:inputText value="#{registrationBean.email}" size="20"/><br/><br/>
+        <h:outputText value="Пароль : "/>
+        <h:inputText value="#{registrationBean.password}" size="20"/><br/><br/>
+        <h:outputText value="Дата рождения : "/>
+        <h:inputText value="#{registrationBean.birthday}" size="20">
+            <f:convertDateTime pattern="MM/dd/yyyy" />
+                </h:inputText><br/><br/>
+
+        <h:outputText value="Телефон : "/>
+        <h:inputText value="#{registrationBean.phone}" size="20"/><br/><br/>
+
+        <h:commandButton action="#{registrationBean.userAdd}" value="Зарегестрироваться"/>
+    </h:form>
+</h:body>
+</html>

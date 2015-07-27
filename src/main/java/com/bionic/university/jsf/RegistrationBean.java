@@ -18,10 +18,14 @@ public class RegistrationBean {
     private Date birthday;
     private String phone;
     private String email;
+    private String response;
 
     @Inject
     RegistrationService registrationService;
 
+    public String getResponse() {
+        return response;
+    }
 
     public String getLastName() {
         return lastName;
@@ -73,7 +77,10 @@ public class RegistrationBean {
     }
 
     public String userAdd(){
-      return registrationService.add(firstName, lastName, email, password, birthday, phone);
+        response = registrationService.add(firstName, lastName, email, password, birthday, phone);
+        if(response.equals("success"))
+            return "successful.xhtml?faces-redirect=true";
+      return "unsuccessful.xhtml?faces-redirect=true";
         }
     }
 
