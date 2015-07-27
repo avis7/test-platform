@@ -1,0 +1,379 @@
+[10:45:47.405][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
+[10:45:47.686][info][ller.ZipURLInstaller] Installing container in [D:\Didorenko\Новая папка\test-platform1\target\cargo\installs\wildfly-8.2.0.Final]
+[10:45:53.859][info][talledLocalContainer] Parsed JBoss version = [8.x]
+[10:45:53.859][info][talledLocalContainer] WildFly 8.x starting...
+[10:45:53.863][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
+[10:45:54.038][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
+[10:45:54.818][info][stalledLocalDeployer] Deploying [D:\Didorenko\Новая папка\test-platform1\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Новая папка\test-platform1\target\cargo\configurations\wildfly8x/deployments]...
+[10:46:00.551][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
+[10:46:00.998][info][talledLocalContainer] 10:46:00,994 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
+[10:46:01.414][info][talledLocalContainer] 10:46:01,413 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
+[10:46:01.501][info][talledLocalContainer] 10:46:01,501 INFO  [org.jboss.as] (MSC service thread 1-5) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
+[10:46:03.954][info][talledLocalContainer] 10:46:03,953 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+[10:46:03.980][info][talledLocalContainer] 10:46:03,980 INFO  [org.xnio] (MSC service thread 1-7) XNIO version 3.3.0.Final
+[10:46:03.994][info][talledLocalContainer] 10:46:03,994 INFO  [org.xnio.nio] (MSC service thread 1-7) XNIO NIO Implementation Version 3.3.0.Final
+[10:46:04.041][info][talledLocalContainer] 10:46:04,040 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
+[10:46:04.048][info][talledLocalContainer] 10:46:04,047 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
+[10:46:04.065][info][talledLocalContainer] 10:46:04,064 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
+[10:46:04.069][info][talledLocalContainer] 10:46:04,068 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+[10:46:04.077][info][talledLocalContainer] 10:46:04,077 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
+[10:46:04.105][info][talledLocalContainer] 10:46:04,105 INFO  [org.jboss.as.security] (MSC service thread 1-1) JBAS013170: Current PicketBox version=4.0.21.Final
+[10:46:04.106][info][talledLocalContainer] 10:46:04,105 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
+[10:46:04.164][info][talledLocalContainer] 10:46:04,164 INFO  [org.jboss.as.naming] (MSC service thread 1-6) JBAS011802: Starting Naming Service
+[10:46:04.176][info][talledLocalContainer] 10:46:04,175 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017502: Undertow 1.1.0.Final starting
+[10:46:04.186][info][talledLocalContainer] 10:46:04,185 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
+[10:46:04.200][info][talledLocalContainer] 10:46:04,200 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-6) JBAS015400: Bound mail session [java:jboss/mail/Default]
+[10:46:04.207][info][talledLocalContainer] 10:46:04,206 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-2) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
+[10:46:04.246][info][talledLocalContainer] 10:46:04,244 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+[10:46:04.320][info][talledLocalContainer] 10:46:04,319 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[10:46:04.340][info][talledLocalContainer] 10:46:04,339 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
+[10:46:04.389][info][talledLocalContainer] 10:46:04,377 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+[10:46:04.394][info][talledLocalContainer] 10:46:04,393 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = h2
+[10:46:04.444][info][talledLocalContainer] 10:46:04,443 INFO  [org.jboss.remoting] (MSC service thread 1-7) JBoss Remoting version 4.0.6.Final
+[10:46:04.478][info][talledLocalContainer] 10:46:04,478 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Новая папка\test-platform1\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
+[10:46:04.708][info][talledLocalContainer] 10:46:04,707 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017525: Started server default-server.
+[10:46:04.724][info][talledLocalContainer] 10:46:04,724 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017531: Host default-host starting
+[10:46:04.943][info][talledLocalContainer] 10:46:04,942 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-2) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Новая папка\test-platform1\target\cargo\configurations\wildfly8x\deployments
+[10:46:04.944][info][talledLocalContainer] 10:46:04,943 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
+[10:46:04.944][info][talledLocalContainer] 10:46:04,944 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
+[10:46:04.981][info][talledLocalContainer] 10:46:04,980 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
+[10:46:05.297][info][talledLocalContainer] 10:46:05,296 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010400: Bound data source [java:/jdbc/Quiz]
+[10:46:05.297][info][talledLocalContainer] 10:46:05,296 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+[10:46:06.260][info][talledLocalContainer] 10:46:06,259 INFO  [org.jboss.ws.common.management] (MSC service thread 1-5) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
+[10:46:06.717][info][talledLocalContainer] 10:46:06,716 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017534: Registered web context: /cargocpc
+[10:46:06.827][info][talledLocalContainer] WildFly 8.x started on port [8080]
+[10:46:09.380][info][talledLocalContainer] 10:46:09,379 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011401: Read persistence.xml for com.bionic.quiz
+[10:46:10.407][info][talledLocalContainer] 10:46:10,406 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
+[10:46:10.424][info][talledLocalContainer] 10:46:10,423 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 52) HHH000204: Processing PersistenceUnitInfo [
+[10:46:10.424][info][talledLocalContainer] 	name: com.bionic.quiz
+[10:46:10.424][info][talledLocalContainer] 	...]
+[10:46:10.570][info][talledLocalContainer] 10:46:10,569 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 52) HHH000412: Hibernate Core {4.3.7.Final}
+[10:46:10.573][info][talledLocalContainer] 10:46:10,573 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000206: hibernate.properties not found
+[10:46:10.575][info][talledLocalContainer] 10:46:10,575 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000021: Bytecode provider name : javassist
+[10:46:10.740][info][talledLocalContainer] 10:46:10,740 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016002: Processing weld deployment test-platform.war
+[10:46:10.818][info][talledLocalContainer] 10:46:10,818 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-7) HV000001: Hibernate Validator 5.1.3.Final
+[10:46:11.291][info][talledLocalContainer] 10:46:11,290 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[10:46:11.293][info][talledLocalContainer] 10:46:11,292 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
+[10:46:11.294][info][talledLocalContainer] 10:46:11,293 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016005: Starting Services for CDI deployment: test-platform.war
+[10:46:11.343][info][talledLocalContainer] 10:46:11,342 INFO  [org.jboss.weld.Version] (MSC service thread 1-3) WELD-000900: 2.2.6 (Final)
+[10:46:11.359][info][talledLocalContainer] 10:46:11,359 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
+[10:46:11.360][info][talledLocalContainer] 10:46:11,359 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
+[10:46:11.363][info][talledLocalContainer] 10:46:11,362 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016008: Starting weld service for deployment test-platform.war
+[10:46:11.565][info][talledLocalContainer] 10:46:11,564 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
+[10:46:11.673][info][talledLocalContainer] 10:46:11,673 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 52) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+[10:46:13.148][info][talledLocalContainer] 10:46:13,147 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 52) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[10:46:13.378][info][talledLocalContainer] 10:46:13,378 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 52) HHH000397: Using ASTQueryTranslatorFactory
+[10:46:13.940][info][talledLocalContainer] 10:46:13,939 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 52) HHH000228: Running hbm2ddl schema update
+[10:46:13.940][info][talledLocalContainer] 10:46:13,940 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 52) HHH000102: Fetching database metadata
+[10:46:13.945][info][talledLocalContainer] 10:46:13,945 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 52) HHH000396: Updating schema
+[10:46:14.381][info][talledLocalContainer] 10:46:14,381 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.answer
+[10:46:14.382][info][talledLocalContainer] 10:46:14,381 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [answer_text, id, question_id, is_correct]
+[10:46:14.382][info][talledLocalContainer] 10:46:14,382 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: [fk8frr4bcabmmeyyu60qt7iiblo, fk_eix9du6u2r4wxwu415wq8yb99]
+[10:46:14.383][info][talledLocalContainer] 10:46:14,382 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [fk8frr4bcabmmeyyu60qt7iiblo, primary]
+[10:46:14.758][info][talledLocalContainer] 10:46:14,756 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.question
+[10:46:14.758][info][talledLocalContainer] 10:46:14,757 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [question, is_open, is_multichoise, id, mark, picture, test_id]
+[10:46:14.759][info][talledLocalContainer] 10:46:14,758 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: [fk8hejcpbbiq1qje11346akp3uj, fk_rox73wc9m1nkopm1nmgr70713]
+[10:46:14.760][info][talledLocalContainer] 10:46:14,759 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [fk8hejcpbbiq1qje11346akp3uj, primary]
+[10:46:15.172][info][talledLocalContainer] 10:46:15,171 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.result
+[10:46:15.172][info][talledLocalContainer] 10:46:15,172 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [feedback, user_id, pass_time, begin_time, is_checked, id, submited, mark, test_id]
+[10:46:15.173][info][talledLocalContainer] 10:46:15,172 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: [fkf0exyrj98ra4t2uxxmxjw58ca, fkl4u1cauggqv3mn8pjgdeome20, test, user]
+[10:46:15.174][info][talledLocalContainer] 10:46:15,173 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [user_id, primary, test_id]
+[10:46:15.532][info][talledLocalContainer] 10:46:15,531 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.role
+[10:46:15.533][info][talledLocalContainer] 10:46:15,532 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [name, id]
+[10:46:15.534][info][talledLocalContainer] 10:46:15,533 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: []
+[10:46:15.535][info][talledLocalContainer] 10:46:15,534 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [name, uk_8sewwnpamngi6b1dwaa88askk, primary]
+[10:46:15.879][info][talledLocalContainer] 10:46:15,878 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.test
+[10:46:15.880][info][talledLocalContainer] 10:46:15,879 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [duration, id, deadline, test_name]
+[10:46:15.881][info][talledLocalContainer] 10:46:15,880 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: []
+[10:46:15.882][info][talledLocalContainer] 10:46:15,881 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [uk_jivlhkdn1001bqe67mabncr25, test_name, primary]
+[10:46:16.248][info][talledLocalContainer] 10:46:16,247 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.user
+[10:46:16.249][info][talledLocalContainer] 10:46:16,248 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [birthday, password, phone, role_id, last_name, id, first_name, email]
+[10:46:16.250][info][talledLocalContainer] 10:46:16,249 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: [role_id, fkdl9dqp078pc03g6kdnxmnlqpc]
+[10:46:16.251][info][talledLocalContainer] 10:46:16,250 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [phone, uk_589idila9li6a4arw1t8ht1gx, fkdl9dqp078pc03g6kdnxmnlqpc, uk_ob8kqyqqgmefl0aco34akdtpe, email, primary]
+[10:46:16.599][info][talledLocalContainer] 10:46:16,598 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000261: Table found: sql484378.user_answer
+[10:46:16.600][info][talledLocalContainer] 10:46:16,599 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000037: Columns: [own_answer, result_id, id, answer_id, mark]
+[10:46:16.601][info][talledLocalContainer] 10:46:16,600 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000108: Foreign keys: [fkp5ctdmm6eti3ax75y8ybnuwu0]
+[10:46:16.602][info][talledLocalContainer] 10:46:16,601 INFO  [org.hibernate.tool.hbm2ddl.TableMetadata] (ServerService Thread Pool -- 52) HHH000126: Indexes: [fkp5ctdmm6eti3ax75y8ybnuwu0, uk_d79iu5m0xfk8swlfif83r4n2v, primary]
+[10:46:16.607][info][talledLocalContainer] 10:46:16,606 INFO  [org.hibernate.tool.hbm2ddl.SchemaUpdate] (ServerService Thread Pool -- 52) HHH000232: Schema update complete
+[10:46:17.790][info][talledLocalContainer] 10:46:17,789 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-5) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
+[10:46:22.881][info][talledLocalContainer] 10:46:22,880 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017534: Registered web context: /test-platform
+[10:46:22.961][info][talledLocalContainer] 10:46:22,960 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
+[10:46:22.962][info][talledLocalContainer] 10:46:22,961 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
+[10:46:23.274][info][talledLocalContainer] 10:46:23,273 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+[10:46:23.274][info][talledLocalContainer] 10:46:23,274 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+[10:46:23.275][info][talledLocalContainer] 10:46:23,274 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 22689ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)
+[10:46:27.067][info][talledLocalContainer] 10:46:27,066 INFO  [stdout] (default task-51) sss
+[10:46:27.077][info][talledLocalContainer] 10:46:27,076 INFO  [stdout] (default task-51) Starting transaction
+[10:46:27.616][info][talledLocalContainer] 10:46:27,615 INFO  [stdout] (default task-51) Committing transaction
+[10:46:27.617][info][talledLocalContainer] 10:46:27,617 INFO  [stdout] (default task-51) Starting transaction
+[10:46:27.815][info][talledLocalContainer] 10:46:27,813 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-51) SQL Error: 1062, SQLState: 23000
+[10:46:27.815][info][talledLocalContainer] 10:46:27,815 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-51) Duplicate entry 'aa@' for key 'email'
+[10:46:27.921][info][talledLocalContainer] 10:46:27,890 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (default task-51) #{registration.doReg}: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement: javax.faces.FacesException: #{registration.doReg}: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.921][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.921][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.921][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.922][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.922][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.922][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.922][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.922][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.922][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.923][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.924][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[10:46:27.924][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[10:46:27.924][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[10:46:27.924][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.924][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.924][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.924][info][talledLocalContainer] 	... 33 more
+[10:46:27.924][info][talledLocalContainer] Caused by: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.925][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1763) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.925][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.925][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.925][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1187) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.925][info][talledLocalContainer] 	at org.jboss.as.jpa.container.AbstractEntityManager.persist(AbstractEntityManager.java:581) [wildfly-jpa-8.2.0.Final.jar:8.2.0.Final]
+[10:46:27.925][info][talledLocalContainer] 	at com.bionic.university.dao.AbstractDAO.save(AbstractDAO.java:61) [classes:]
+[10:46:27.925][info][talledLocalContainer] 	at com.bionic.university.dao.UserDAO$Proxy$_$$_WeldSubclass.save(Unknown Source) [classes:]
+[10:46:27.925][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.925][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.925][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.925][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.925][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.interceptorChainCompleted(SimpleInterceptionChain.java:51) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.925][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.finish(AbstractInterceptionChain.java:148) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.925][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNextInterceptor(AbstractInterceptionChain.java:104) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.925][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:149) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.925][info][talledLocalContainer] 	at com.bionic.university.interceptor.TxInterceptor.manageTransaction(TxInterceptor.java:22) [classes:]
+[10:46:27.926][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.926][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.926][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.926][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.926][info][talledLocalContainer] 	at org.jboss.weld.interceptor.reader.SimpleInterceptorInvocation$SimpleMethodInvocation.invoke(SimpleInterceptorInvocation.java:74) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.926][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNext(AbstractInterceptionChain.java:124) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.926][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNextInterceptor(AbstractInterceptionChain.java:102) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.926][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:43) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.926][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:36) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.927][info][talledLocalContainer] 	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:51) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.927][info][talledLocalContainer] 	at com.bionic.university.dao.UserDAO$Proxy$_$$_WeldSubclass.save(Unknown Source) [classes:]
+[10:46:27.927][info][talledLocalContainer] 	at com.bionic.university.jsf.Registration.doReg(Registration.java:85) [classes:]
+[10:46:27.927][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.927][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.927][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.927][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.927][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:292) [javax.el-3.0.1-b05.jar:]
+[10:46:27.927][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[10:46:27.927][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.927][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.927][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.927][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.928][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.928][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.928][info][talledLocalContainer] 	... 34 more
+[10:46:27.928][info][talledLocalContainer] Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:72) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:96) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.928][info][talledLocalContainer] 	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:58) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.929][info][talledLocalContainer] 	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3558) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:98) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:490) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:195) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:179) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:214) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:324) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:288) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:194) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:125) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.jpa.event.internal.core.JpaPersistEventListener.saveWithGeneratedId(JpaPersistEventListener.java:84) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:206) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:149) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:75) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.930][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:811) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.931][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:784) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.931][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:789) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.931][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1181) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.931][info][talledLocalContainer] 	... 70 more
+[10:46:27.931][info][talledLocalContainer] Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'aa@' for key 'email'
+[10:46:27.931][info][talledLocalContainer] 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.931][info][talledLocalContainer] 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.931][info][talledLocalContainer] 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) [rt.jar:1.8.0_45]
+[10:46:27.931][info][talledLocalContainer] 	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) [rt.jar:1.8.0_45]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.Util.getInstance(Util.java:360) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:971) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.931][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2141) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2077) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2062) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.932][info][talledLocalContainer] 	at org.jboss.jca.adapters.jdbc.WrappedPreparedStatement.executeUpdate(WrappedPreparedStatement.java:493)
+[10:46:27.932][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.932][info][talledLocalContainer] 	... 91 more
+[10:46:27.932][info][talledLocalContainer] 
+[10:46:27.957][info][talledLocalContainer] 10:46:27,936 ERROR [io.undertow.request] (default task-51) UT005023: Exception handling request to /test-platform/registration_form.xhtml: javax.servlet.ServletException: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.957][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:659) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.957][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.958][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[10:46:27.959][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[10:46:27.959][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[10:46:27.959][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[10:46:27.959][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.960][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.960][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.960][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.960][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.960][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.960][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.960][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.960][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.960][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.960][info][talledLocalContainer] 	... 26 more
+[10:46:27.961][info][talledLocalContainer] Caused by: javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.961][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1763) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.961][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1677) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.961][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1683) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.961][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1187) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.961][info][talledLocalContainer] 	at org.jboss.as.jpa.container.AbstractEntityManager.persist(AbstractEntityManager.java:581) [wildfly-jpa-8.2.0.Final.jar:8.2.0.Final]
+[10:46:27.962][info][talledLocalContainer] 	at com.bionic.university.dao.AbstractDAO.save(AbstractDAO.java:61) [classes:]
+[10:46:27.962][info][talledLocalContainer] 	at com.bionic.university.dao.UserDAO$Proxy$_$$_WeldSubclass.save(Unknown Source) [classes:]
+[10:46:27.962][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.962][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.962][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.962][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.962][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.interceptorChainCompleted(SimpleInterceptionChain.java:51) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.962][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.finish(AbstractInterceptionChain.java:148) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.963][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNextInterceptor(AbstractInterceptionChain.java:104) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.963][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:149) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.963][info][talledLocalContainer] 	at com.bionic.university.interceptor.TxInterceptor.manageTransaction(TxInterceptor.java:22) [classes:]
+[10:46:27.963][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.963][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.963][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.963][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.964][info][talledLocalContainer] 	at org.jboss.weld.interceptor.reader.SimpleInterceptorInvocation$SimpleMethodInvocation.invoke(SimpleInterceptorInvocation.java:74) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.965][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNext(AbstractInterceptionChain.java:124) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.965][info][talledLocalContainer] 	at org.jboss.weld.interceptor.chain.AbstractInterceptionChain.invokeNextInterceptor(AbstractInterceptionChain.java:102) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.965][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:43) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.965][info][talledLocalContainer] 	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:36) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.965][info][talledLocalContainer] 	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:51) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.966][info][talledLocalContainer] 	at com.bionic.university.dao.UserDAO$Proxy$_$$_WeldSubclass.save(Unknown Source) [classes:]
+[10:46:27.966][info][talledLocalContainer] 	at com.bionic.university.jsf.Registration.doReg(Registration.java:85) [classes:]
+[10:46:27.966][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.966][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.966][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[10:46:27.966][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[10:46:27.966][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:292) [javax.el-3.0.1-b05.jar:]
+[10:46:27.966][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[10:46:27.966][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.967][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.967][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.967][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[10:46:27.967][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[10:46:27.967][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[10:46:27.967][info][talledLocalContainer] 	... 34 more
+[10:46:27.967][info][talledLocalContainer] Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+[10:46:27.967][info][talledLocalContainer] 	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:72) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:126) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:112) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:211) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.id.IdentityGenerator$GetGeneratedKeysDelegate.executeAndExtract(IdentityGenerator.java:96) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.id.insert.AbstractReturningDelegate.performInsert(AbstractReturningDelegate.java:58) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.968][info][talledLocalContainer] 	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3032) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.persister.entity.AbstractEntityPersister.insert(AbstractEntityPersister.java:3558) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:98) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:490) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:195) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:179) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:214) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.969][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:324) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.970][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:288) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.970][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:194) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.970][info][talledLocalContainer] 	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:125) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.970][info][talledLocalContainer] 	at org.hibernate.jpa.event.internal.core.JpaPersistEventListener.saveWithGeneratedId(JpaPersistEventListener.java:84) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.970][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:206) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:149) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:75) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:811) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:784) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:789) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	at org.hibernate.jpa.spi.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:1181) [hibernate-entitymanager-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.971][info][talledLocalContainer] 	... 70 more
+[10:46:27.971][info][talledLocalContainer] Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'aa@' for key 'email'
+[10:46:27.972][info][talledLocalContainer] 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [rt.jar:1.8.0_45]
+[10:46:27.972][info][talledLocalContainer] 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[10:46:27.972][info][talledLocalContainer] 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) [rt.jar:1.8.0_45]
+[10:46:27.972][info][talledLocalContainer] 	at java.lang.reflect.Constructor.newInstance(Constructor.java:422) [rt.jar:1.8.0_45]
+[10:46:27.972][info][talledLocalContainer] 	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.972][info][talledLocalContainer] 	at com.mysql.jdbc.Util.getInstance(Util.java:360) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.972][info][talledLocalContainer] 	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:971) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2141) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2077) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.973][info][talledLocalContainer] 	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:2062) [mysql-connector-java-5-1-34.jar:5.1.34]
+[10:46:27.974][info][talledLocalContainer] 	at org.jboss.jca.adapters.jdbc.WrappedPreparedStatement.executeUpdate(WrappedPreparedStatement.java:493)
+[10:46:27.974][info][talledLocalContainer] 	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:208) [hibernate-core-4.3.7.Final.jar:4.3.7.Final]
+[10:46:27.974][info][talledLocalContainer] 	... 91 more
+[10:46:27.974][info][talledLocalContainer] 
+[10:46:27.986][info][talledLocalContainer] 10:46:27,985 ERROR [org.jboss.as.txn] (default task-51) JBAS010152: APPLICATION ERROR: transaction still active in request with status 1
+[10:47:26.129][info][talledLocalContainer] 10:47:26,128 INFO  [stdout] (default task-52) sss
+[10:47:26.130][info][talledLocalContainer] 10:47:26,129 INFO  [stdout] (default task-52) Starting transaction
+[10:47:26.342][info][talledLocalContainer] 10:47:26,341 INFO  [stdout] (default task-52) Committing transaction
+[10:47:26.344][info][talledLocalContainer] 10:47:26,343 INFO  [stdout] (default task-52) Starting transaction
+[10:47:26.642][info][talledLocalContainer] 10:47:26,641 INFO  [stdout] (default task-52) Committing transaction
+[10:47:26.643][info][talledLocalContainer] 10:47:26,642 INFO  [stdout] (default task-52) Starting transaction
+[10:47:29.698][info][talledLocalContainer] 10:47:29,697 INFO  [stdout] (default task-52) Committing transaction
+[10:47:29.704][info][talledLocalContainer] 10:47:29,701 INFO  [stdout] (default task-52) [User{id=1, firstName='alex', lastName='bal', email='@ba3l', password='bal04', birthday=1970-01-01 00:00:00.0, phone='0974715858', role=Role{id=1, name='admin'}, results=[Result{id=1, isChecked=true, submited=true, mark=7, beginTime=1970-01-01, passTime=1970-01-01, feedback='null'}, Result{id=8, isChecked=false, submited=false, mark=0, beginTime=null, passTime=null, feedback='null'}, Result{id=9, isChecked=false, submited=false, mark=0, beginTime=null, passTime=null, feedback='null'}]}, User{id=2, firstName='alex', lastName='bal', email='@bal', password='bal04', birthday=1970-01-01 00:00:00.0, phone='0978715858', role=Role{id=2, name='mentor'}, results=[Result{id=2, isChecked=true, submited=true, mark=7, beginTime=1970-01-01, passTime=1970-01-01, feedback='null'}]}, User{id=3, firstName='alex', lastName='bal', email='@bal8', password='bal04', birthday=1970-01-01 00:00:00.0, phone='0978715859', role=Role{id=3, name='student'}, results=[Result{id=3, isChecked=true, submited=true, mark=7, beginTime=1970-01-01, passTime=1970-01-01, feedback='null'}]}, User{id=4, firstName='alex', lastName='bal', email='@bal9', password='bal04', birthday=1970-01-01 00:00:00.0, phone='0978715860', role=Role{id=1, name='admin'}, results=[Result{id=4, isChecked=true, submited=true, mark=7, beginTime=1970-01-01, passTime=1970-01-01, feedback='null'}, Result{id=10, isChecked=false, submited=false, mark=0, beginTime=null, passTime=null, feedback='null'}]}, User{id=7, firstName='alex1', lastName='ba1l', email='@bal91', password='bal014', birthday=1970-01-01 00:00:00.0, phone='09787115860', role=Role{id=1, name='admin'}, results=[]}, User{id=11, firstName='aa', lastName='aa', email='aa@', password='bb', birthday=2015-07-27 00:00:00.0, phone='1213', role=Role{id=1, name='admin'}, results=[]}]
