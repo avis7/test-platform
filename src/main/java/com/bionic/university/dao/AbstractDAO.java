@@ -3,6 +3,8 @@ package com.bionic.university.dao;
 import com.bionic.university.interceptor.TxInterceptorBinding;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
@@ -12,7 +14,7 @@ import java.util.List;
 @TxInterceptorBinding
 public abstract class AbstractDAO<T> {
 //
-////    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("quiz");
+  //  private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.bionic.quiz");
     @PersistenceContext
     private EntityManager em;
 

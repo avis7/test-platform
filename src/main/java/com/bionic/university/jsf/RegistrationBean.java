@@ -3,30 +3,27 @@ package com.bionic.university.jsf;
 import com.bionic.university.dao.RoleDAO;
 import com.bionic.university.dao.UserDAO;
 import com.bionic.university.entity.User;
+import com.bionic.university.services.RegistrationService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.Date;
 
-/**
- * Created by c2612 on 23.07.2015.
- */
 @SessionScoped
 @ManagedBean
 public class RegistrationBean {
 
 
     private String lastName;
-    private String name;
-    private String birthday;
+    private String firstName;
+    private String password;
+    private Date birthday;
     private String phone;
     private String email;
 
     @Inject
-    UserDAO udao;
-    @Inject
-    RoleDAO roleDAO;
+    RegistrationService registrationService;
 
 
     public String getLastName() {
@@ -38,20 +35,27 @@ public class RegistrationBean {
         this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-
-        this.name = name;
+    public String getPassword() {
+        return password;
     }
 
-    public String getBirthday() {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -71,28 +75,9 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public void doReg(){
-        System.out.println("sss");
-        User user =  new User("aa",
-                "aa",
-                "aa@",
-                "bb",
-                new Date(),
-                "1213"
-        );
-
-        user.setRole(roleDAO.find(1));
-        udao.save(user);
-        System.out.println(udao.findAll());
-
+    public void userAdd(){
+registrationService.add(firstName, lastName, email, password, birthday, phone);
     }
 
-//    public UserDAO getUserDAO() {
-//        return userDAO;
-//    }
-//
-//    public void setUserDAO(UserDAO userDAO) {
-//        this.userDAO = userDAO;
-//    }
 
 }

@@ -143,17 +143,17 @@
                 
                 <datasource jndi-name="java:/jdbc/Quiz" pool-name="java:/jdbc/Quiz">
                     <connection-url>
-                        jdbc:mysql://sql4.freemysqlhosting.net:3306/sql484378
+                        jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068
                     </connection-url>
                     <driver>
                         com.mysql.jdbc.Driver
                     </driver>
                     <security>
                         <user-name>
-                            sql484378
+                            sql285068
                         </user-name>
                         <password>
-                            gU4!yJ9*
+                            zA2%bW8*
                         </password>
                     </security>
                 </datasource><drivers>

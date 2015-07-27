@@ -5,5 +5,22 @@
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
               version="2.0">
 
+    <navigation-rule>
+        <description>register new user</description>
+        <from-view-id>/../webapp/registration_form.xhtml</from-view-id>
+        <navigation-case>
+        <from-action>#{registrationBean.userAdd}</from-action>
+        <from-outcome>successful</from-outcome>
+        <to-view-id>/../webapp/Successful.xhtml</to-view-id>
+    </navigation-case>
+
+        <navigation-case>
+            <from-action>#{registrationBean.userAdd}</from-action>
+            <from-outcome>unsuccessful</from-outcome>
+            <to-view-id>/../webapp/Unsuccessful.xhtml</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
+
 
 </faces-config>
