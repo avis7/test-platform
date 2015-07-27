@@ -1,8 +1,5 @@
 package com.bionic.university.jsf;
 
-import com.bionic.university.dao.RoleDAO;
-import com.bionic.university.dao.UserDAO;
-import com.bionic.university.entity.User;
 import com.bionic.university.services.RegistrationService;
 
 import javax.faces.bean.ManagedBean;
@@ -75,9 +72,8 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public void userAdd(){
-registrationService.add(firstName, lastName, email, password, birthday, phone);
+    public String userAdd(){
+      return registrationService.add(firstName, lastName, email, password, birthday, phone);
+        }
     }
 
-
-}

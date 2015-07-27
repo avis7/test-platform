@@ -11,7 +11,9 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
+
     </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>registration_form.xhtml</welcome-file>
     </welcome-file-list>

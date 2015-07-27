@@ -1,61 +1,64 @@
-2015-07-27 15:32:06,181 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
-2015-07-27 15:32:06,202 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
-2015-07-27 15:32:06,211 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
-2015-07-27 15:32:06,212 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
-2015-07-27 15:32:06,232 INFO  [org.jboss.as.security] (MSC service thread 1-3) JBAS013170: Current PicketBox version=4.0.21.Final
-2015-07-27 15:32:06,279 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
-2015-07-27 15:32:06,288 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
-2015-07-27 15:32:06,297 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
-2015-07-27 15:32:06,307 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017502: Undertow 1.1.0.Final starting
-2015-07-27 15:32:06,326 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
-2015-07-27 15:32:06,389 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-3) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
-2015-07-27 15:32:06,483 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-2015-07-27 15:32:06,491 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
-2015-07-27 15:32:06,544 INFO  [org.jboss.as.naming] (MSC service thread 1-3) JBAS011802: Starting Naming Service
-2015-07-27 15:32:06,545 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
-2015-07-27 15:32:06,545 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) JBAS015400: Bound mail session [java:jboss/mail/Default]
-2015-07-27 15:32:06,546 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = h2
-2015-07-27 15:32:06,648 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
-2015-07-27 15:32:06,916 INFO  [org.jboss.remoting] (MSC service thread 1-4) JBoss Remoting version 4.0.6.Final
-2015-07-27 15:32:07,130 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017525: Started server default-server.
-2015-07-27 15:32:07,140 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017531: Host default-host starting
-2015-07-27 15:32:07,211 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-5) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
-2015-07-27 15:32:07,213 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
-2015-07-27 15:32:07,213 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
-2015-07-27 15:32:07,285 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
-2015-07-27 15:32:07,497 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
-2015-07-27 15:32:07,498 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) JBAS010400: Bound data source [java:/jdbc/Quiz]
-2015-07-27 15:32:08,493 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
-2015-07-27 15:32:08,965 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017534: Registered web context: /cargocpc
-2015-07-27 15:32:13,019 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011401: Read persistence.xml for com.bionic.quiz
-2015-07-27 15:32:13,722 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
-2015-07-27 15:32:13,734 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 50) HHH000204: Processing PersistenceUnitInfo [
+2015-07-27 17:58:00,582 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+2015-07-27 17:58:00,600 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
+2015-07-27 17:58:00,603 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
+2015-07-27 17:58:00,622 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
+2015-07-27 17:58:00,636 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+2015-07-27 17:58:00,638 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
+2015-07-27 17:58:00,647 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
+2015-07-27 17:58:00,666 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
+2015-07-27 17:58:00,669 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017502: Undertow 1.1.0.Final starting
+2015-07-27 17:58:00,701 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-3) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
+2015-07-27 17:58:00,727 INFO  [org.jboss.as.security] (MSC service thread 1-3) JBAS013170: Current PicketBox version=4.0.21.Final
+2015-07-27 17:58:00,830 INFO  [org.jboss.as.naming] (MSC service thread 1-8) JBAS011802: Starting Naming Service
+2015-07-27 17:58:00,837 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) JBAS015400: Bound mail session [java:jboss/mail/Default]
+2015-07-27 17:58:00,864 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+2015-07-27 17:58:00,903 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
+2015-07-27 17:58:00,961 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+2015-07-27 17:58:01,133 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 4.0.6.Final
+2015-07-27 17:58:01,161 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = h2
+2015-07-27 17:58:01,340 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
+2015-07-27 17:58:01,432 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017525: Started server default-server.
+2015-07-27 17:58:01,467 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017531: Host default-host starting
+2015-07-27 17:58:01,553 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
+2015-07-27 17:58:01,714 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
+2015-07-27 17:58:01,717 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
+2015-07-27 17:58:01,719 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
+2015-07-27 17:58:01,748 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:/jdbc/Quiz]
+2015-07-27 17:58:01,750 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+2015-07-27 17:58:02,828 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
+2015-07-27 17:58:03,230 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017534: Registered web context: /cargocpc
+2015-07-27 17:58:05,973 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011401: Read persistence.xml for com.bionic.quiz
+2015-07-27 17:58:06,642 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 53) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
+2015-07-27 17:58:06,656 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 53) HHH000204: Processing PersistenceUnitInfo [
 	name: com.bionic.quiz
 	...]
-2015-07-27 15:32:13,822 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 50) HHH000412: Hibernate Core {4.3.7.Final}
-2015-07-27 15:32:13,825 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 50) HHH000206: hibernate.properties not found
-2015-07-27 15:32:13,827 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 50) HHH000021: Bytecode provider name : javassist
-2015-07-27 15:32:13,952 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment test-platform.war
-2015-07-27 15:32:14,018 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-8) HV000001: Hibernate Validator 5.1.3.Final
-2015-07-27 15:32:14,431 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-2015-07-27 15:32:14,433 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
-2015-07-27 15:32:14,434 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016005: Starting Services for CDI deployment: test-platform.war
-2015-07-27 15:32:14,475 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900: 2.2.6 (Final)
-2015-07-27 15:32:14,489 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
-2015-07-27 15:32:14,490 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-2) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
-2015-07-27 15:32:14,492 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016008: Starting weld service for deployment test-platform.war
-2015-07-27 15:32:14,673 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
-2015-07-27 15:32:15,072 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 50) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-2015-07-27 15:32:16,141 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 50) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-2015-07-27 15:32:16,363 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 50) HHH000397: Using ASTQueryTranslatorFactory
-2015-07-27 15:32:18,035 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-3) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
-2015-07-27 15:32:22,913 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017534: Registered web context: /test-platform
-2015-07-27 15:32:22,995 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
-2015-07-27 15:32:22,996 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
-2015-07-27 15:32:23,161 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
-2015-07-27 15:32:23,162 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
-2015-07-27 15:32:23,163 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 20463ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)
-2015-07-27 15:32:57,233 INFO  [stdout] (default task-16) Starting transaction
-2015-07-27 15:32:57,799 INFO  [stdout] (default task-16) Committing transaction
-2015-07-27 15:32:57,801 INFO  [stdout] (default task-16) Starting transaction
-2015-07-27 15:32:58,045 INFO  [stdout] (default task-16) Committing transaction
+2015-07-27 17:58:06,746 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 53) HHH000412: Hibernate Core {4.3.7.Final}
+2015-07-27 17:58:06,752 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 53) HHH000206: hibernate.properties not found
+2015-07-27 17:58:06,756 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 53) HHH000021: Bytecode provider name : javassist
+2015-07-27 17:58:06,993 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016002: Processing weld deployment test-platform.war
+2015-07-27 17:58:07,077 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-2) HV000001: Hibernate Validator 5.1.3.Final
+2015-07-27 17:58:07,503 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+2015-07-27 17:58:07,504 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
+2015-07-27 17:58:07,505 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016005: Starting Services for CDI deployment: test-platform.war
+2015-07-27 17:58:07,601 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900: 2.2.6 (Final)
+2015-07-27 17:58:07,626 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
+2015-07-27 17:58:07,626 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
+2015-07-27 17:58:07,631 INFO  [org.jboss.weld.deployer] (MSC service thread 1-2) JBAS016008: Starting weld service for deployment test-platform.war
+2015-07-27 17:58:07,837 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 53) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
+2015-07-27 17:58:07,936 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 53) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+2015-07-27 17:58:09,307 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 53) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2015-07-27 17:58:09,525 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 53) HHH000397: Using ASTQueryTranslatorFactory
+2015-07-27 17:58:11,288 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-8) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
+2015-07-27 17:58:16,211 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017534: Registered web context: /test-platform
+2015-07-27 17:58:16,294 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
+2015-07-27 17:58:16,295 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
+2015-07-27 17:58:16,618 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+2015-07-27 17:58:16,618 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+2015-07-27 17:58:16,619 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 19746ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)
+2015-07-27 17:58:37,063 INFO  [stdout] (default task-18) Starting transaction
+2015-07-27 17:58:37,529 INFO  [stdout] (default task-18) Committing transaction
+2015-07-27 17:58:37,531 INFO  [stdout] (default task-18) Starting transaction
+2015-07-27 17:58:37,636 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-18) SQL Error: 1062, SQLState: 23000
+2015-07-27 17:58:37,638 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-18) Duplicate entry '123123' for key 'email'
+2015-07-27 17:58:37,709 INFO  [stdout] (default task-18) e = javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+2015-07-27 17:58:37,759 ERROR [org.jboss.as.txn] (default task-18) JBAS010152: APPLICATION ERROR: transaction still active in request with status 1

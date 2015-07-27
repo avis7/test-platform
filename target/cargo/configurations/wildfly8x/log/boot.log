@@ -1,7 +1,7 @@
-2015-07-27 15:32:03,103 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
-2015-07-27 15:32:03,526 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
-2015-07-27 15:32:03,612 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
-2015-07-27 15:32:03,619 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
+2015-07-27 17:57:57,297 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
+2015-07-27 17:57:57,862 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
+2015-07-27 17:57:57,955 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
+2015-07-27 17:57:57,963 DEBUG [org.jboss.as.config] (MSC service thread 1-6) Configured system properties:
 	[Standalone] = 
 	awt.toolkit = sun.awt.windows.WToolkit
 	file.encoding = Cp1251
@@ -88,7 +88,7 @@
 	user.script = 
 	user.timezone = Europe/Helsinki
 	user.variant = 
-2015-07-27 15:32:03,621 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -Xmx1024m -XX:MaxPermSize=512m -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 -Xnoagent -Djava.compiler=NONE -Xms128m -XX:PermSize=48m -D[Standalone] -Djboss.server.home.dir=D:\Didorenko\Project\test-platform/target/cargo/installs/wildfly-8.2.0.Final/wildfly-8.2.0.Final -Djboss.home.dir=D:\Didorenko\Project\test-platform/target/cargo/installs/wildfly-8.2.0.Final/wildfly-8.2.0.Final -Dorg.jboss.boot.log.file=D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/log/boot.log -Dlogging.configuration=file:/D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/configuration/logging.properties -Djboss.home.dir=D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final -Djboss.server.base.dir=D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x -Djboss.bind.address=0.0.0.0 
-2015-07-27 15:32:06,099 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
-2015-07-27 15:32:06,127 INFO  [org.xnio] (MSC service thread 1-4) XNIO version 3.3.0.Final
-2015-07-27 15:32:06,142 INFO  [org.xnio.nio] (MSC service thread 1-4) XNIO NIO Implementation Version 3.3.0.Final
+2015-07-27 17:57:57,965 DEBUG [org.jboss.as.config] (MSC service thread 1-6) VM Arguments: -Xmx1024m -XX:MaxPermSize=512m -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000 -Xnoagent -Djava.compiler=NONE -Xms128m -XX:PermSize=48m -D[Standalone] -Djboss.server.home.dir=D:\Didorenko\Project\test-platform/target/cargo/installs/wildfly-8.2.0.Final/wildfly-8.2.0.Final -Djboss.home.dir=D:\Didorenko\Project\test-platform/target/cargo/installs/wildfly-8.2.0.Final/wildfly-8.2.0.Final -Dorg.jboss.boot.log.file=D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/log/boot.log -Dlogging.configuration=file:/D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/configuration/logging.properties -Djboss.home.dir=D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final -Djboss.server.base.dir=D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x -Djboss.bind.address=0.0.0.0 
+2015-07-27 17:58:00,476 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+2015-07-27 17:58:00,506 INFO  [org.xnio] (MSC service thread 1-1) XNIO version 3.3.0.Final
+2015-07-27 17:58:00,519 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.3.0.Final

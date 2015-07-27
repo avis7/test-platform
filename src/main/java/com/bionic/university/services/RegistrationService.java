@@ -16,18 +16,16 @@ public class RegistrationService {
     @Inject
     RoleDAO roleDAO;
 
-    public String add(String firstName, String lastName, String email, String password, Date birthday,String phone){
+    public String add(String firstName, String lastName, String email, String password, Date birthday, String phone){
         try {
-            Date date = new Date(12243);
             User user = new User(firstName, lastName, email, password, birthday, phone);
             user.setRole(roleDAO.find(1));
             userDAO.save(user);
-            return "successful";
+            return "successful.xhtml";
         } catch (Exception e){
             System.out.println("e = " + e);
+            return "unsuccessful.xhtml";
         }
 
-
-        return "unsuccessful";
     }
 }
