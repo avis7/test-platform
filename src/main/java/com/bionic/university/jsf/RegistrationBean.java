@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @SessionScoped
 @ManagedBean
-public class Registration {
+public class RegistrationBean {
 
 
     private String lastName;
