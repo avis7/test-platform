@@ -9,7 +9,7 @@ import com.bionic.university.dao.UserDAO;
  */
 public class Test {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        RoleDAO roleDAO = new RoleDAO();
+        String s = "grifan_91@mail.ru";
+        s.matches("[\\w*+@+\\w*.+\\w]");
     }
 }

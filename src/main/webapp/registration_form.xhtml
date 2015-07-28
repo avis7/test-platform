@@ -19,20 +19,26 @@
     <h:form>
         <h:outputText value="Регистрация"/><br/><br/>
         <h:outputText value="Фамилия : "/>
-        <h:inputText value="#{registrationBean.lastName}" size="20"/><br/><br/>
+        <h:inputText value="#{registrationBean.lastName}" size="20"
+                     required="true" requiredMessage="Last name field must not be empty"/><br/><br/>
         <h:outputText value="Имя : "/>
-        <h:inputText value="#{registrationBean.firstName}" size="20"/><br/><br/>
+        <h:inputText value="#{registrationBean.firstName}" size="20"
+                     required="true" requiredMessage="Name field must not be empty"/><br/><br/>
         <h:outputText value="Email : "/>
-        <h:inputText value="#{registrationBean.email}" size="20"/><br/><br/>
+        <h:inputText value="#{registrationBean.email}" size="20"
+                     required="true" requiredMessage="Email field must not be empty"/><br/><br/>
         <h:outputText value="Пароль : "/>
-        <h:inputText value="#{registrationBean.password}" size="20"/><br/><br/>
+        <h:inputText value="#{registrationBean.password}" size="20"
+                     required="true" requiredMessage="Password field must not be empty"/><br/><br/>
         <h:outputText value="Дата рождения : "/>
-        <h:inputText value="#{registrationBean.birthday}" size="20">
+        <h:inputText value="#{registrationBean.birthday}" size="20"
+                     required="true" requiredMessage="Date of birth field must not be empty">
             <f:convertDateTime pattern="MM/dd/yyyy" />
                 </h:inputText><br/><br/>
 
         <h:outputText value="Телефон : "/>
-        <h:inputText value="#{registrationBean.phone}" size="20"/><br/><br/>
+        <h:inputText value="#{registrationBean.phone}" size="20"
+                     required="true" requiredMessage="Phone field must not be empty"/><br/><br/>
 
         <h:commandButton action="#{registrationBean.userAdd}" value="Зарегестрироваться"/>
     </h:form>
