@@ -1,13 +1,12 @@
 package com.bionic.university.jsf;
 
-import com.bionic.university.dao.RoleDAO;
-import com.bionic.university.dao.UserDAO;
-import com.bionic.university.entity.User;
-import com.bionic.university.services.RegistrationService;
+import com.bionic.university.entity.Test;
+import com.bionic.university.services.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.Date;
 
 @SessionScoped
@@ -21,9 +20,10 @@ public class RegistrationBean {
     private Date birthday;
     private String phone;
     private String email;
+    private Collection<Test> tests;
 
     @Inject
-    RegistrationService registrationService;
+    UserService userService;
 
 
     public String getLastName() {
@@ -75,8 +75,16 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public void userAdd(){
-registrationService.add(firstName, lastName, email, password, birthday, phone);
+    public Collection<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(Collection<Test> tests) {
+        this.tests = tests;
+    }
+
+    public void userAdd() {
+        userService.addUser(firstName, lastName, email, password, birthday, phone, tests);
     }
 
 

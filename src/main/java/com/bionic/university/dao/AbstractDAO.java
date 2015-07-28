@@ -73,7 +73,7 @@ public abstract class AbstractDAO<T> {
         return em.merge(entity);
     }
 
-    public T find(int entityID) {
+    public T find(long entityID) {
         return em.find(entityClass, entityID);
     }
 //
