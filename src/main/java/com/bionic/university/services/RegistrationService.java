@@ -7,6 +7,8 @@ import com.bionic.university.entity.User;
 import org.hibernate.exception.ConstraintViolationException;
 
 import javax.inject.Inject;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.util.Date;
 
 
@@ -19,16 +21,23 @@ public class RegistrationService {
 
     public String add(String firstName, String lastName, String email, String password, Date birthday, String phone){
         try {
-            User user = new User(firstName, lastName, email, password, birthday, phone);
-            user.setRole(roleDAO.find(1));
-            userDAO.save(user);
-            return "success";
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+            if(firstName.matches("^[\\w]{4,15}$") && lastName.matches("^[\\w]{4,15}$") &&
+                    password.matches("^[\\w]{4,15}$") && phone.matches("^[\\d]{4,15}$")) {
+                User user = new User(firstName, lastName, email, password, birthday, phone);
+                user.setRole(roleDAO.find(1));
+                userDAO.save(user);
+                return "success";
+            }
+            return "Invalid input";
         }catch (ConstraintViolationException e){
-            return e.getConstraintName();
+            return "Duplicate of KEY fields";
+        }catch (AddressException ex) {
+            return "Invalid email input";
         }
         catch (Exception e){
-            return e.getMessage();
+            return "Whole ex"+e.getMessage();
         }
-
     }
 }

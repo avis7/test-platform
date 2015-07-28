@@ -1,106 +1,74 @@
-[11:55:58.785][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
-[11:55:59.072][info][ller.ZipURLInstaller] Installing container in [D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final]
-[11:56:13.212][info][talledLocalContainer] Parsed JBoss version = [8.x]
-[11:56:13.212][info][talledLocalContainer] WildFly 8.x starting...
-[11:56:13.216][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
-[11:56:13.714][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
-[11:56:14.429][info][stalledLocalDeployer] Deploying [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/deployments]...
-[11:56:20.121][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
-[11:56:20.552][info][talledLocalContainer] 11:56:20,549 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
-[11:56:20.956][info][talledLocalContainer] 11:56:20,955 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
-[11:56:21.041][info][talledLocalContainer] 11:56:21,041 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
-[11:56:23.759][info][talledLocalContainer] 11:56:23,759 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
-[11:56:23.785][info][talledLocalContainer] 11:56:23,784 INFO  [org.xnio] (MSC service thread 1-1) XNIO version 3.3.0.Final
-[11:56:23.798][info][talledLocalContainer] 11:56:23,797 INFO  [org.xnio.nio] (MSC service thread 1-1) XNIO NIO Implementation Version 3.3.0.Final
-[11:56:23.846][info][talledLocalContainer] 11:56:23,845 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
-[11:56:23.862][info][talledLocalContainer] 11:56:23,861 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
-[11:56:23.867][info][talledLocalContainer] 11:56:23,866 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
-[11:56:23.869][info][talledLocalContainer] 11:56:23,869 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
-[11:56:23.899][info][talledLocalContainer] 11:56:23,898 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
-[11:56:23.901][info][talledLocalContainer] 11:56:23,900 INFO  [org.jboss.as.security] (MSC service thread 1-3) JBAS013170: Current PicketBox version=4.0.21.Final
-[11:56:23.904][info][talledLocalContainer] 11:56:23,903 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017502: Undertow 1.1.0.Final starting
-[11:56:23.924][info][talledLocalContainer] 11:56:23,923 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
-[11:56:23.937][info][talledLocalContainer] 11:56:23,936 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
-[11:56:23.968][info][talledLocalContainer] 11:56:23,966 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
-[11:56:23.970][info][talledLocalContainer] 11:56:23,969 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-3) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
-[11:56:24.050][info][talledLocalContainer] 11:56:24,048 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-[11:56:24.064][info][talledLocalContainer] 11:56:24,063 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
-[11:56:24.125][info][talledLocalContainer] 11:56:24,124 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
-[11:56:24.134][info][talledLocalContainer] 11:56:24,133 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = h2
-[11:56:24.137][info][talledLocalContainer] 11:56:24,137 INFO  [org.jboss.as.naming] (MSC service thread 1-2) JBAS011802: Starting Naming Service
-[11:56:24.154][info][talledLocalContainer] 11:56:24,153 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-7) JBAS015400: Bound mail session [java:jboss/mail/Default]
-[11:56:24.299][info][talledLocalContainer] 11:56:24,298 INFO  [org.jboss.remoting] (MSC service thread 1-1) JBoss Remoting version 4.0.6.Final
-[11:56:24.476][info][talledLocalContainer] 11:56:24,474 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
-[11:56:24.581][info][talledLocalContainer] 11:56:24,581 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017525: Started server default-server.
-[11:56:24.594][info][talledLocalContainer] 11:56:24,593 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017531: Host default-host starting
-[11:56:24.686][info][talledLocalContainer] 11:56:24,685 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
-[11:56:24.853][info][talledLocalContainer] 11:56:24,851 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-6) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
-[11:56:24.859][info][talledLocalContainer] 11:56:24,858 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
-[11:56:24.859][info][talledLocalContainer] 11:56:24,859 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
-[11:56:24.935][info][talledLocalContainer] 11:56:24,934 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010400: Bound data source [java:/jdbc/Quiz]
-[11:56:24.936][info][talledLocalContainer] 11:56:24,935 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
-[11:56:25.829][info][talledLocalContainer] 11:56:25,828 INFO  [org.jboss.ws.common.management] (MSC service thread 1-2) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
-[11:56:26.369][info][talledLocalContainer] 11:56:26,368 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017534: Registered web context: /cargocpc
-[11:56:26.446][info][talledLocalContainer] WildFly 8.x started on port [8080]
-[11:56:29.471][info][talledLocalContainer] 11:56:29,471 INFO  [org.jboss.as.jpa] (MSC service thread 1-6) JBAS011401: Read persistence.xml for com.bionic.quiz
-[11:56:30.109][info][talledLocalContainer] 11:56:30,108 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
-[11:56:30.119][info][talledLocalContainer] 11:56:30,119 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 52) HHH000204: Processing PersistenceUnitInfo [
-[11:56:30.119][info][talledLocalContainer] 	name: com.bionic.quiz
-[11:56:30.119][info][talledLocalContainer] 	...]
-[11:56:30.205][info][talledLocalContainer] 11:56:30,205 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 52) HHH000412: Hibernate Core {4.3.7.Final}
-[11:56:30.208][info][talledLocalContainer] 11:56:30,207 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000206: hibernate.properties not found
-[11:56:30.210][info][talledLocalContainer] 11:56:30,209 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000021: Bytecode provider name : javassist
-[11:56:30.326][info][talledLocalContainer] 11:56:30,326 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016002: Processing weld deployment test-platform.war
-[11:56:30.390][info][talledLocalContainer] 11:56:30,390 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-8) HV000001: Hibernate Validator 5.1.3.Final
-[11:56:30.796][info][talledLocalContainer] 11:56:30,795 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-[11:56:30.798][info][talledLocalContainer] 11:56:30,797 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
-[11:56:30.799][info][talledLocalContainer] 11:56:30,798 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016005: Starting Services for CDI deployment: test-platform.war
-[11:56:30.841][info][talledLocalContainer] 11:56:30,840 INFO  [org.jboss.weld.Version] (MSC service thread 1-3) WELD-000900: 2.2.6 (Final)
-[11:56:30.855][info][talledLocalContainer] 11:56:30,855 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
-[11:56:30.857][info][talledLocalContainer] 11:56:30,856 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
-[11:56:30.858][info][talledLocalContainer] 11:56:30,855 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016008: Starting weld service for deployment test-platform.war
-[11:56:31.034][info][talledLocalContainer] 11:56:31,033 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
-[11:56:31.432][info][talledLocalContainer] 11:56:31,431 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 52) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-[11:56:32.505][info][talledLocalContainer] 11:56:32,504 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 52) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-[11:56:32.720][info][talledLocalContainer] 11:56:32,720 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 52) HHH000397: Using ASTQueryTranslatorFactory
-[11:56:34.379][info][talledLocalContainer] 11:56:34,378 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-3) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
-[11:56:39.240][info][talledLocalContainer] 11:56:39,239 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017534: Registered web context: /test-platform
-[11:56:39.321][info][talledLocalContainer] 11:56:39,320 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
-[11:56:39.321][info][talledLocalContainer] 11:56:39,321 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
-[11:56:39.606][info][talledLocalContainer] 11:56:39,604 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
-[11:56:39.607][info][talledLocalContainer] 11:56:39,606 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
-[11:56:39.608][info][talledLocalContainer] 11:56:39,607 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 19454ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)
-[11:56:54.049][info][talledLocalContainer] 11:56:54,048 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (default task-19) WARNING: FacesMessage(s) have been enqueued, but may not have been displayed.
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt10[severity=(ERROR 2), summary=(Last name field must not be empty), detail=(Last name field must not be empty)]
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt13[severity=(ERROR 2), summary=(Name field must not be empty), detail=(Name field must not be empty)]
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt16[severity=(ERROR 2), summary=(Email field must not be empty), detail=(Email field must not be empty)]
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt19[severity=(ERROR 2), summary=(Password field must not be empty), detail=(Password field must not be empty)]
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt22[severity=(ERROR 2), summary=(Date of birth field must not be empty), detail=(Date of birth field must not be empty)]
-[11:56:54.050][info][talledLocalContainer] sourceId=j_idt6:j_idt25[severity=(ERROR 2), summary=(Phone field must not be empty), detail=(Phone field must not be empty)]
-[11:56:55.126][info][talledLocalContainer] 11:56:55,125 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (default task-20) WARNING: FacesMessage(s) have been enqueued, but may not have been displayed.
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt10[severity=(ERROR 2), summary=(Last name field must not be empty), detail=(Last name field must not be empty)]
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt13[severity=(ERROR 2), summary=(Name field must not be empty), detail=(Name field must not be empty)]
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt16[severity=(ERROR 2), summary=(Email field must not be empty), detail=(Email field must not be empty)]
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt19[severity=(ERROR 2), summary=(Password field must not be empty), detail=(Password field must not be empty)]
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt22[severity=(ERROR 2), summary=(Date of birth field must not be empty), detail=(Date of birth field must not be empty)]
-[11:56:55.127][info][talledLocalContainer] sourceId=j_idt6:j_idt25[severity=(ERROR 2), summary=(Phone field must not be empty), detail=(Phone field must not be empty)]
-[11:57:08.301][info][talledLocalContainer] 11:57:08,300 INFO  [stdout] (default task-21) Starting transaction
-[11:57:08.997][info][talledLocalContainer] 11:57:08,996 INFO  [stdout] (default task-21) Committing transaction
-[11:57:08.998][info][talledLocalContainer] 11:57:08,997 INFO  [stdout] (default task-21) Starting transaction
-[11:57:09.096][info][talledLocalContainer] 11:57:09,095 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-21) SQL Error: 1062, SQLState: 23000
-[11:57:09.097][info][talledLocalContainer] 11:57:09,096 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-21) Duplicate entry '12312' for key 'phone'
-[11:57:09.186][info][talledLocalContainer] 11:57:09,185 ERROR [org.jboss.as.txn] (default task-21) JBAS010152: APPLICATION ERROR: transaction still active in request with status 1
-[11:59:38.094][info][talledLocalContainer] 11:59:38,093 INFO  [javax.enterprise.resource.webcontainer.jsf.renderkit] (default task-25) WARNING: FacesMessage(s) have been enqueued, but may not have been displayed.
-[11:59:38.094][info][talledLocalContainer] sourceId=j_idt6:j_idt10[severity=(ERROR 2), summary=(Last name field must not be empty), detail=(Last name field must not be empty)]
-[11:59:42.418][info][talledLocalContainer] 11:59:42,418 INFO  [stdout] (default task-26) Starting transaction
-[11:59:42.609][info][talledLocalContainer] 11:59:42,608 INFO  [stdout] (default task-26) Committing transaction
-[11:59:42.609][info][talledLocalContainer] 11:59:42,609 INFO  [stdout] (default task-26) Starting transaction
-[11:59:42.684][info][talledLocalContainer] 11:59:42,684 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-26) SQL Error: 1062, SQLState: 23000
-[11:59:42.685][info][talledLocalContainer] 11:59:42,684 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-26) Duplicate entry '12312' for key 'phone'
-[11:59:42.761][info][talledLocalContainer] 11:59:42,760 ERROR [org.jboss.as.txn] (default task-26) JBAS010152: APPLICATION ERROR: transaction still active in request with status 1
-[12:00:19.142][info][talledLocalContainer] 12:00:19,141 INFO  [stdout] (default task-28) Starting transaction
-[12:00:19.335][info][talledLocalContainer] 12:00:19,334 INFO  [stdout] (default task-28) Committing transaction
-[12:00:19.337][info][talledLocalContainer] 12:00:19,336 INFO  [stdout] (default task-28) Starting transaction
-[12:00:19.434][info][talledLocalContainer] 12:00:19,433 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-28) SQL Error: 1062, SQLState: 23000
-[12:00:19.434][info][talledLocalContainer] 12:00:19,434 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (default task-28) Duplicate entry '12312' for key 'phone'
-[12:00:19.503][info][talledLocalContainer] 12:00:19,502 ERROR [org.jboss.as.txn] (default task-28) JBAS010152: APPLICATION ERROR: transaction still active in request with status 1
+[16:33:14.519][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
+[16:33:14.881][info][ller.ZipURLInstaller] Installing container in [D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final]
+[16:33:28.150][info][talledLocalContainer] Parsed JBoss version = [8.x]
+[16:33:28.150][info][talledLocalContainer] WildFly 8.x starting...
+[16:33:28.153][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
+[16:33:28.183][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
+[16:33:29.143][info][stalledLocalDeployer] Deploying [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/deployments]...
+[16:33:34.845][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
+[16:33:35.379][info][talledLocalContainer] 16:33:35,375 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
+[16:33:35.804][info][talledLocalContainer] 16:33:35,804 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
+[16:33:35.894][info][talledLocalContainer] 16:33:35,893 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
+[16:33:38.285][info][talledLocalContainer] 16:33:38,285 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+[16:33:38.311][info][talledLocalContainer] 16:33:38,310 INFO  [org.xnio] (MSC service thread 1-5) XNIO version 3.3.0.Final
+[16:33:38.324][info][talledLocalContainer] 16:33:38,324 INFO  [org.xnio.nio] (MSC service thread 1-5) XNIO NIO Implementation Version 3.3.0.Final
+[16:33:38.362][info][talledLocalContainer] 16:33:38,359 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
+[16:33:38.414][info][talledLocalContainer] 16:33:38,413 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+[16:33:38.424][info][talledLocalContainer] 16:33:38,423 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
+[16:33:38.444][info][talledLocalContainer] 16:33:38,443 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+[16:33:38.459][info][talledLocalContainer] 16:33:38,458 INFO  [org.jboss.as.naming] (MSC service thread 1-3) JBAS011802: Starting Naming Service
+[16:33:38.460][info][talledLocalContainer] 16:33:38,459 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-3) JBAS015400: Bound mail session [java:jboss/mail/Default]
+[16:33:38.501][info][talledLocalContainer] 16:33:38,500 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
+[16:33:38.506][info][talledLocalContainer] 16:33:38,505 INFO  [org.jboss.as.security] (MSC service thread 1-7) JBAS013170: Current PicketBox version=4.0.21.Final
+[16:33:38.539][info][talledLocalContainer] 16:33:38,538 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[16:33:38.544][info][talledLocalContainer] 16:33:38,543 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
+[16:33:38.546][info][talledLocalContainer] 16:33:38,545 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-8) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
+[16:33:38.551][info][talledLocalContainer] 16:33:38,550 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
+[16:33:38.551][info][talledLocalContainer] 16:33:38,550 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017502: Undertow 1.1.0.Final starting
+[16:33:38.560][info][talledLocalContainer] 16:33:38,559 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-1) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
+[16:33:38.569][info][talledLocalContainer] 16:33:38,568 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
+[16:33:38.640][info][talledLocalContainer] 16:33:38,639 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+[16:33:38.646][info][talledLocalContainer] 16:33:38,645 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = h2
+[16:33:38.797][info][talledLocalContainer] 16:33:38,796 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
+[16:33:38.812][info][talledLocalContainer] 16:33:38,811 INFO  [org.jboss.remoting] (MSC service thread 1-5) JBoss Remoting version 4.0.6.Final
+[16:33:39.117][info][talledLocalContainer] 16:33:39,116 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017525: Started server default-server.
+[16:33:39.125][info][talledLocalContainer] 16:33:39,124 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017531: Host default-host starting
+[16:33:39.206][info][talledLocalContainer] 16:33:39,206 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
+[16:33:39.314][info][talledLocalContainer] 16:33:39,313 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-1) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
+[16:33:39.333][info][talledLocalContainer] 16:33:39,332 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-8) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
+[16:33:39.334][info][talledLocalContainer] 16:33:39,333 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
+[16:33:39.446][info][talledLocalContainer] 16:33:39,446 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-1) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+[16:33:39.447][info][talledLocalContainer] 16:33:39,446 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010400: Bound data source [java:/jdbc/Quiz]
+[16:33:40.441][info][talledLocalContainer] 16:33:40,440 INFO  [org.jboss.ws.common.management] (MSC service thread 1-6) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
+[16:33:40.921][info][talledLocalContainer] 16:33:40,920 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017534: Registered web context: /cargocpc
+[16:33:41.031][info][talledLocalContainer] WildFly 8.x started on port [8080]
+[16:33:44.566][info][talledLocalContainer] 16:33:44,565 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-8) JBAS015960: Class Path entry activation.jar in /D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/content/test-platform.war/WEB-INF/lib/mail-1.4.jar  does not point to a valid jar for a Class-Path reference.
+[16:33:44.859][info][talledLocalContainer] 16:33:44,858 INFO  [org.jboss.as.jpa] (MSC service thread 1-5) JBAS011401: Read persistence.xml for com.bionic.quiz
+[16:33:45.727][info][talledLocalContainer] 16:33:45,727 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
+[16:33:45.738][info][talledLocalContainer] 16:33:45,738 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 52) HHH000204: Processing PersistenceUnitInfo [
+[16:33:45.738][info][talledLocalContainer] 	name: com.bionic.quiz
+[16:33:45.738][info][talledLocalContainer] 	...]
+[16:33:45.826][info][talledLocalContainer] 16:33:45,825 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 52) HHH000412: Hibernate Core {4.3.7.Final}
+[16:33:45.828][info][talledLocalContainer] 16:33:45,828 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000206: hibernate.properties not found
+[16:33:45.830][info][talledLocalContainer] 16:33:45,830 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 52) HHH000021: Bytecode provider name : javassist
+[16:33:45.977][info][talledLocalContainer] 16:33:45,976 INFO  [org.jboss.weld.deployer] (MSC service thread 1-6) JBAS016002: Processing weld deployment test-platform.war
+[16:33:46.043][info][talledLocalContainer] 16:33:46,042 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-6) HV000001: Hibernate Validator 5.1.3.Final
+[16:33:46.847][info][talledLocalContainer] 16:33:46,846 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[16:33:46.848][info][talledLocalContainer] 16:33:46,848 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
+[16:33:46.850][info][talledLocalContainer] 16:33:46,849 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016005: Starting Services for CDI deployment: test-platform.war
+[16:33:47.187][info][talledLocalContainer] 16:33:47,186 INFO  [org.jboss.weld.Version] (MSC service thread 1-7) WELD-000900: 2.2.6 (Final)
+[16:33:47.204][info][talledLocalContainer] 16:33:47,202 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
+[16:33:47.204][info][talledLocalContainer] 16:33:47,203 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
+[16:33:47.204][info][talledLocalContainer] 16:33:47,204 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016008: Starting weld service for deployment test-platform.war
+[16:33:47.382][info][talledLocalContainer] 16:33:47,381 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 52) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
+[16:33:47.483][info][talledLocalContainer] 16:33:47,482 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 52) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+[16:33:48.640][info][talledLocalContainer] 16:33:48,640 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 52) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[16:33:48.860][info][talledLocalContainer] 16:33:48,859 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 52) HHH000397: Using ASTQueryTranslatorFactory
+[16:33:50.531][info][talledLocalContainer] 16:33:50,531 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-2) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
+[16:33:57.948][info][talledLocalContainer] 16:33:57,947 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-2) Running on PrimeFaces 5.2
+[16:33:57.950][info][talledLocalContainer] 16:33:57,950 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017534: Registered web context: /test-platform
+[16:33:58.044][info][talledLocalContainer] 16:33:58,043 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
+[16:33:58.044][info][talledLocalContainer] 16:33:58,044 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
+[16:33:58.350][info][talledLocalContainer] 16:33:58,348 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+[16:33:58.352][info][talledLocalContainer] 16:33:58,350 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+[16:33:58.353][info][talledLocalContainer] 16:33:58,352 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 23461ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)

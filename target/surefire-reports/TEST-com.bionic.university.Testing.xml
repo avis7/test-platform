@@ -11,7 +11,7 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="idea.launcher.port" value="7535"/>
+    <property name="idea.launcher.port" value="7534"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_45\jre"/>
-    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.1.4 --offline clean install"/>
+    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=14.1.4 clean install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="ru"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
