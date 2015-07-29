@@ -1,10 +1,11 @@
 package com.bionic.university.jsf;
 
-import com.bionic.university.services.RegistrationService;
-
+import com.bionic.university.entity.Test;
+import com.bionic.university.services.UserService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.util.Collection;
 import java.util.Date;
 
 @SessionScoped
@@ -19,9 +20,10 @@ public class RegistrationBean {
     private String phone;
     private String email;
     private String response;
+    private Collection<Test> tests;
 
     @Inject
-    RegistrationService registrationService;
+    UserService userService;
 
     public String getResponse() {
         return response;
@@ -76,11 +78,21 @@ public class RegistrationBean {
         this.email = email;
     }
 
-    public String userAdd(){
-        response = registrationService.add(firstName, lastName, email, password, birthday, phone);
-        if(response.equals("success"))
+
+    public String userAdd() {
+        response = userService.add(firstName, lastName, email, password, birthday, phone);
+        if (response.equals("success"))
             return "successful.xhtml?faces-redirect=true";
-      return "unsuccessful.xhtml?faces-redirect=true";
-        }
+        return "unsuccessful.xhtml?faces-redirect=true";
     }
 
+    public Collection<Test> getTests() {
+        return tests;
+    }
+
+    public void setTests(Collection<Test> tests) {
+        this.tests = tests;
+    }
+
+
+}

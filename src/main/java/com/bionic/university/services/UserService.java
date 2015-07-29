@@ -12,7 +12,7 @@ import javax.mail.internet.InternetAddress;
 import java.util.Date;
 
 
-public class RegistrationService {
+public class UserService {
 
     @Inject
     UserDAO userDAO;
