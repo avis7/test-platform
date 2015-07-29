@@ -12,13 +12,21 @@ import java.util.List;
  */
 public class AdminPanelBean {
 
-/*    @Inject
+    @Inject
     TestService testService;
 
+    private String oldName;
     private String newTestName;
     private Date duration;
     private Date deadline;
-    private List<Test> tests;
+
+    public String getOldName() {
+        return oldName;
+    }
+
+    public void setOldName(String oldName) {
+        this.oldName = oldName;
+    }
 
     public String getNewTestName() {
         return newTestName;
@@ -45,7 +53,7 @@ public class AdminPanelBean {
     }
 
     public String editTest(String testName){
-        testService.editTest(1, newTestName, duration, deadline);
+        testService.editTest(oldName, newTestName, duration, deadline);
         return "0";
     }
 
@@ -55,16 +63,9 @@ public class AdminPanelBean {
     }
 
     public String deleteTest(){
-        testService.deleteTest(id);
+        testService.deleteTest(oldName);
         return "0";
     }
 
-    public List<Test> getTests() {
-        return tests;
-    }
 
-
-    public void setTests(List<Test> tests) {
-        this.tests = tests;
-    }*/
 }

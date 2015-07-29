@@ -1,78 +1,384 @@
-[15:59:09.512][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
-[15:59:09.891][info][ller.ZipURLInstaller] Installing container in [D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final]
-[15:59:25.843][info][talledLocalContainer] Parsed JBoss version = [8.x]
-[15:59:25.843][info][talledLocalContainer] WildFly 8.x starting...
-[15:59:25.852][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
-[15:59:26.061][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
-[15:59:27.056][info][stalledLocalDeployer] Deploying [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/deployments]...
-[15:59:32.737][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
-[15:59:33.182][info][talledLocalContainer] 15:59:33,178 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
-[15:59:33.595][info][talledLocalContainer] 15:59:33,594 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
-[15:59:33.683][info][talledLocalContainer] 15:59:33,683 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
-[15:59:36.736][info][talledLocalContainer] 15:59:36,736 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
-[15:59:36.781][info][talledLocalContainer] 15:59:36,780 INFO  [org.xnio] (MSC service thread 1-2) XNIO version 3.3.0.Final
-[15:59:36.799][info][talledLocalContainer] 15:59:36,799 INFO  [org.xnio.nio] (MSC service thread 1-2) XNIO NIO Implementation Version 3.3.0.Final
-[15:59:36.862][info][talledLocalContainer] 15:59:36,860 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
-[15:59:36.871][info][talledLocalContainer] 15:59:36,870 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
-[15:59:36.913][info][talledLocalContainer] 15:59:36,911 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
-[15:59:36.943][info][talledLocalContainer] 15:59:36,942 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
-[15:59:36.964][info][talledLocalContainer] 15:59:36,962 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
-[15:59:37.013][info][talledLocalContainer] 15:59:37,012 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
-[15:59:37.054][info][talledLocalContainer] 15:59:37,053 INFO  [org.jboss.as.security] (MSC service thread 1-4) JBAS013170: Current PicketBox version=4.0.21.Final
-[15:59:37.163][info][talledLocalContainer] 15:59:37,161 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-[15:59:37.277][info][talledLocalContainer] 15:59:37,275 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
-[15:59:37.388][info][talledLocalContainer] 15:59:37,366 INFO  [org.jboss.as.naming] (MSC service thread 1-8) JBAS011802: Starting Naming Service
-[15:59:37.390][info][talledLocalContainer] 15:59:37,379 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) JBAS015400: Bound mail session [java:jboss/mail/Default]
-[15:59:37.509][info][talledLocalContainer] 15:59:37,508 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
-[15:59:37.518][info][talledLocalContainer] 15:59:37,517 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-5) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
-[15:59:37.606][info][talledLocalContainer] 15:59:37,598 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017502: Undertow 1.1.0.Final starting
-[15:59:37.638][info][talledLocalContainer] 15:59:37,636 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
-[15:59:37.645][info][talledLocalContainer] 15:59:37,645 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
-[15:59:37.647][info][talledLocalContainer] 15:59:37,647 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = h2
-[15:59:37.700][info][talledLocalContainer] 15:59:37,699 INFO  [org.jboss.remoting] (MSC service thread 1-2) JBoss Remoting version 4.0.6.Final
-[15:59:37.879][info][talledLocalContainer] 15:59:37,878 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
-[15:59:38.019][info][talledLocalContainer] 15:59:37,905 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017525: Started server default-server.
-[15:59:38.058][info][talledLocalContainer] 15:59:38,056 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-5) JBAS017531: Host default-host starting
-[15:59:38.126][info][talledLocalContainer] 15:59:38,125 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
-[15:59:38.359][info][talledLocalContainer] 15:59:38,358 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-7) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
-[15:59:38.365][info][talledLocalContainer] 15:59:38,364 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
-[15:59:38.365][info][talledLocalContainer] 15:59:38,364 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
-[15:59:38.431][info][talledLocalContainer] 15:59:38,430 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) JBAS010400: Bound data source [java:/jdbc/Quiz]
-[15:59:38.432][info][talledLocalContainer] 15:59:38,432 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-2) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
-[15:59:39.409][info][talledLocalContainer] 15:59:39,408 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
-[15:59:39.833][info][talledLocalContainer] 15:59:39,833 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017534: Registered web context: /cargocpc
-[15:59:39.959][info][talledLocalContainer] WildFly 8.x started on port [8080]
-[15:59:43.649][info][talledLocalContainer] 15:59:43,648 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015960: Class Path entry activation.jar in /D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/content/test-platform.war/WEB-INF/lib/mail-1.4.jar  does not point to a valid jar for a Class-Path reference.
-[15:59:43.944][info][talledLocalContainer] 15:59:43,943 INFO  [org.jboss.as.jpa] (MSC service thread 1-4) JBAS011401: Read persistence.xml for com.bionic.quiz
-[15:59:44.844][info][talledLocalContainer] 15:59:44,843 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 51) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
-[15:59:44.854][info][talledLocalContainer] 15:59:44,854 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 51) HHH000204: Processing PersistenceUnitInfo [
-[15:59:44.854][info][talledLocalContainer] 	name: com.bionic.quiz
-[15:59:44.854][info][talledLocalContainer] 	...]
-[15:59:44.945][info][talledLocalContainer] 15:59:44,945 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 51) HHH000412: Hibernate Core {4.3.7.Final}
-[15:59:44.948][info][talledLocalContainer] 15:59:44,948 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 51) HHH000206: hibernate.properties not found
-[15:59:44.950][info][talledLocalContainer] 15:59:44,949 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 51) HHH000021: Bytecode provider name : javassist
-[15:59:45.107][info][talledLocalContainer] 15:59:45,107 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016002: Processing weld deployment test-platform.war
-[15:59:45.173][info][talledLocalContainer] 15:59:45,172 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-5) HV000001: Hibernate Validator 5.1.3.Final
-[15:59:46.027][info][talledLocalContainer] 15:59:46,027 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
-[15:59:46.030][info][talledLocalContainer] 15:59:46,030 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-8) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
-[15:59:46.031][info][talledLocalContainer] 15:59:46,031 INFO  [org.jboss.weld.deployer] (MSC service thread 1-8) JBAS016005: Starting Services for CDI deployment: test-platform.war
-[15:59:46.077][info][talledLocalContainer] 15:59:46,076 INFO  [org.jboss.weld.Version] (MSC service thread 1-8) WELD-000900: 2.2.6 (Final)
-[15:59:46.093][info][talledLocalContainer] 15:59:46,092 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-7) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
-[15:59:46.094][info][talledLocalContainer] 15:59:46,092 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
-[15:59:46.094][info][talledLocalContainer] 15:59:46,094 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016008: Starting weld service for deployment test-platform.war
-[15:59:46.594][info][talledLocalContainer] 15:59:46,593 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 51) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
-[15:59:46.697][info][talledLocalContainer] 15:59:46,697 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 51) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-[15:59:47.874][info][talledLocalContainer] 15:59:47,873 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 51) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-[15:59:48.110][info][talledLocalContainer] 15:59:48,109 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 51) HHH000397: Using ASTQueryTranslatorFactory
-[15:59:49.981][info][talledLocalContainer] 15:59:49,981 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-4) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
-[15:59:57.499][info][talledLocalContainer] 15:59:57,498 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-4) Running on PrimeFaces 5.2
-[15:59:57.500][info][talledLocalContainer] 15:59:57,500 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017534: Registered web context: /test-platform
-[15:59:57.580][info][talledLocalContainer] 15:59:57,579 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
-[15:59:57.581][info][talledLocalContainer] 15:59:57,580 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
-[15:59:57.735][info][talledLocalContainer] 15:59:57,734 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
-[15:59:57.736][info][talledLocalContainer] 15:59:57,735 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
-[15:59:57.738][info][talledLocalContainer] 15:59:57,736 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 24964ms - Started 356 of 416 services (102 services are lazy, passive or on-demand)
-[16:00:17.245][info][talledLocalContainer] 16:00:17,244 INFO  [stdout] (default task-33) Starting transaction
-[16:00:18.106][info][talledLocalContainer] 16:00:18,106 INFO  [stdout] (default task-33) Committing transaction
-[16:00:18.107][info][talledLocalContainer] 16:00:18,107 INFO  [stdout] (default task-33) Starting transaction
-[16:00:18.409][info][talledLocalContainer] 16:00:18,408 INFO  [stdout] (default task-33) Committing transaction
+[18:23:41.931][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
+[18:23:42.312][info][ller.ZipURLInstaller] Installing container in [D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final]
+[18:23:50.931][info][talledLocalContainer] Parsed JBoss version = [8.x]
+[18:23:50.931][info][talledLocalContainer] WildFly 8.x starting...
+[18:23:50.940][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
+[18:23:52.908][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
+[18:23:53.876][info][stalledLocalDeployer] Deploying [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/deployments]...
+[18:23:59.730][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
+[18:24:00.266][info][talledLocalContainer] 18:24:00,261 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
+[18:24:00.719][info][talledLocalContainer] 18:24:00,719 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
+[18:24:00.818][info][talledLocalContainer] 18:24:00,818 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
+[18:24:03.876][info][talledLocalContainer] 18:24:03,876 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+[18:24:03.907][info][talledLocalContainer] 18:24:03,907 INFO  [org.xnio] (MSC service thread 1-8) XNIO version 3.3.0.Final
+[18:24:03.922][info][talledLocalContainer] 18:24:03,922 INFO  [org.xnio.nio] (MSC service thread 1-8) XNIO NIO Implementation Version 3.3.0.Final
+[18:24:03.978][info][talledLocalContainer] 18:24:03,975 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
+[18:24:03.998][info][talledLocalContainer] 18:24:03,997 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
+[18:24:04.000][info][talledLocalContainer] 18:24:03,999 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
+[18:24:04.005][info][talledLocalContainer] 18:24:04,004 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
+[18:24:04.007][info][talledLocalContainer] 18:24:04,006 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+[18:24:04.030][info][talledLocalContainer] 18:24:04,028 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
+[18:24:04.048][info][talledLocalContainer] 18:24:04,047 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017502: Undertow 1.1.0.Final starting
+[18:24:04.049][info][talledLocalContainer] 18:24:04,046 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
+[18:24:04.058][info][talledLocalContainer] 18:24:04,058 INFO  [org.jboss.as.security] (MSC service thread 1-3) JBAS013170: Current PicketBox version=4.0.21.Final
+[18:24:04.160][info][talledLocalContainer] 18:24:04,158 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[18:24:04.193][info][talledLocalContainer] 18:24:04,191 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) JBAS015400: Bound mail session [java:jboss/mail/Default]
+[18:24:04.201][info][talledLocalContainer] 18:24:04,199 INFO  [org.jboss.as.naming] (MSC service thread 1-7) JBAS011802: Starting Naming Service
+[18:24:04.205][info][talledLocalContainer] 18:24:04,205 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-7) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
+[18:24:04.257][info][talledLocalContainer] 18:24:04,256 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
+[18:24:04.267][info][talledLocalContainer] 18:24:04,266 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+[18:24:04.270][info][talledLocalContainer] 18:24:04,269 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) JBAS010417: Started Driver service with driver-name = h2
+[18:24:04.280][info][talledLocalContainer] 18:24:04,279 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+[18:24:04.544][info][talledLocalContainer] 18:24:04,543 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
+[18:24:04.770][info][talledLocalContainer] 18:24:04,769 INFO  [org.jboss.remoting] (MSC service thread 1-8) JBoss Remoting version 4.0.6.Final
+[18:24:04.904][info][talledLocalContainer] 18:24:04,903 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017525: Started server default-server.
+[18:24:04.929][info][talledLocalContainer] 18:24:04,928 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-7) JBAS017531: Host default-host starting
+[18:24:05.009][info][talledLocalContainer] 18:24:05,008 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-3) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
+[18:24:05.097][info][talledLocalContainer] 18:24:05,095 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-7) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
+[18:24:05.104][info][talledLocalContainer] 18:24:05,103 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
+[18:24:05.112][info][talledLocalContainer] 18:24:05,109 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-2) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
+[18:24:05.196][info][talledLocalContainer] 18:24:05,195 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-8) JBAS010400: Bound data source [java:/jdbc/Quiz]
+[18:24:05.197][info][talledLocalContainer] 18:24:05,195 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-4) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+[18:24:06.127][info][talledLocalContainer] 18:24:06,126 INFO  [org.jboss.ws.common.management] (MSC service thread 1-3) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
+[18:24:06.519][info][talledLocalContainer] 18:24:06,518 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017534: Registered web context: /cargocpc
+[18:24:06.665][info][talledLocalContainer] WildFly 8.x started on port [8080]
+[18:24:12.763][info][talledLocalContainer] 18:24:12,762 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-6) JBAS015960: Class Path entry activation.jar in /D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/content/test-platform.war/WEB-INF/lib/mail-1.4.jar  does not point to a valid jar for a Class-Path reference.
+[18:24:13.072][info][talledLocalContainer] 18:24:13,072 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) JBAS011401: Read persistence.xml for com.bionic.quiz
+[18:24:14.070][info][talledLocalContainer] 18:24:14,069 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
+[18:24:14.081][info][talledLocalContainer] 18:24:14,081 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 50) HHH000204: Processing PersistenceUnitInfo [
+[18:24:14.081][info][talledLocalContainer] 	name: com.bionic.quiz
+[18:24:14.081][info][talledLocalContainer] 	...]
+[18:24:14.193][info][talledLocalContainer] 18:24:14,193 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 50) HHH000412: Hibernate Core {4.3.7.Final}
+[18:24:14.196][info][talledLocalContainer] 18:24:14,196 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 50) HHH000206: hibernate.properties not found
+[18:24:14.198][info][talledLocalContainer] 18:24:14,198 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 50) HHH000021: Bytecode provider name : javassist
+[18:24:14.382][info][talledLocalContainer] 18:24:14,382 INFO  [org.jboss.weld.deployer] (MSC service thread 1-1) JBAS016002: Processing weld deployment test-platform.war
+[18:24:14.459][info][talledLocalContainer] 18:24:14,459 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-1) HV000001: Hibernate Validator 5.1.3.Final
+[18:24:15.374][info][talledLocalContainer] 18:24:15,373 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[18:24:15.384][info][talledLocalContainer] 18:24:15,383 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-3) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
+[18:24:15.385][info][talledLocalContainer] 18:24:15,385 INFO  [org.jboss.weld.deployer] (MSC service thread 1-3) JBAS016005: Starting Services for CDI deployment: test-platform.war
+[18:24:15.433][info][talledLocalContainer] 18:24:15,432 INFO  [org.jboss.weld.Version] (MSC service thread 1-3) WELD-000900: 2.2.6 (Final)
+[18:24:15.452][info][talledLocalContainer] 18:24:15,449 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
+[18:24:15.453][info][talledLocalContainer] 18:24:15,452 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
+[18:24:15.454][info][talledLocalContainer] 18:24:15,453 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) JBAS016008: Starting weld service for deployment test-platform.war
+[18:24:15.993][info][talledLocalContainer] 18:24:15,992 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 50) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
+[18:24:16.139][info][talledLocalContainer] 18:24:16,139 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 50) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+[18:24:17.413][info][talledLocalContainer] 18:24:17,412 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 50) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[18:24:17.657][info][talledLocalContainer] 18:24:17,657 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 50) HHH000397: Using ASTQueryTranslatorFactory
+[18:24:19.624][info][talledLocalContainer] 18:24:19,624 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-8) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
+[18:24:30.533][info][talledLocalContainer] 18:24:30,533 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-8) Running on PrimeFaces 5.2
+[18:24:30.535][info][talledLocalContainer] 18:24:30,535 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017534: Registered web context: /test-platform
+[18:24:30.614][info][talledLocalContainer] 18:24:30,613 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
+[18:24:30.614][info][talledLocalContainer] 18:24:30,614 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
+[18:24:30.924][info][talledLocalContainer] 18:24:30,924 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+[18:24:30.925][info][talledLocalContainer] 18:24:30,924 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+[18:24:30.925][info][talledLocalContainer] 18:24:30,925 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 31156ms - Started 361 of 421 services (102 services are lazy, passive or on-demand)
+[18:24:43.268][info][talledLocalContainer] 18:24:43,267 INFO  [stdout] (default task-15) Starting transaction
+[18:24:46.334][info][talledLocalContainer] 18:24:46,333 INFO  [stdout] (default task-15) Committing transaction
+[18:24:48.345][info][talledLocalContainer] 18:24:48,335 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (default task-16) #{userTableBean.editAction(user)}: java.lang.NullPointerException: javax.faces.FacesException: #{userTableBean.editAction(user)}: java.lang.NullPointerException
+[18:24:48.345][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.345][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.345][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.345][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.346][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.346][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.346][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.346][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.346][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.347][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[18:24:48.347][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[18:24:48.347][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[18:24:48.347][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: java.lang.NullPointerException
+[18:24:48.347][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.347][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.347][info][talledLocalContainer] 	... 33 more
+[18:24:48.347][info][talledLocalContainer] Caused by: java.lang.NullPointerException
+[18:24:48.347][info][talledLocalContainer] 	at com.bionic.university.jsf.UserTableBean.editAction(UserTableBean.java:49) [classes:]
+[18:24:48.348][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[18:24:48.348][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[18:24:48.348][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[18:24:48.348][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[18:24:48.348][info][talledLocalContainer] 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.348][info][talledLocalContainer] 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.348][info][talledLocalContainer] 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.348][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286) [javax.el-3.0.1-b05.jar:]
+[18:24:48.348][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[18:24:48.348][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.348][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.348][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.348][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.348][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.348][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.348][info][talledLocalContainer] 	... 34 more
+[18:24:48.348][info][talledLocalContainer] 
+[18:24:48.359][info][talledLocalContainer] 18:24:48,350 ERROR [io.undertow.request] (default task-16) UT005023: Exception handling request to /test-platform/UserTestTable.xhtml: javax.servlet.ServletException: java.lang.NullPointerException
+[18:24:48.359][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:659) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.359][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:24:48.360][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[18:24:48.360][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[18:24:48.360][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[18:24:48.361][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: java.lang.NullPointerException
+[18:24:48.361][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.361][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.361][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.361][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.361][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.361][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.361][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.361][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.361][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.361][info][talledLocalContainer] 	... 26 more
+[18:24:48.361][info][talledLocalContainer] Caused by: java.lang.NullPointerException
+[18:24:48.361][info][talledLocalContainer] 	at com.bionic.university.jsf.UserTableBean.editAction(UserTableBean.java:49) [classes:]
+[18:24:48.361][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[18:24:48.362][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[18:24:48.362][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[18:24:48.362][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[18:24:48.362][info][talledLocalContainer] 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.362][info][talledLocalContainer] 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.362][info][talledLocalContainer] 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:24:48.362][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286) [javax.el-3.0.1-b05.jar:]
+[18:24:48.362][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[18:24:48.362][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.362][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.362][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.362][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:24:48.362][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:24:48.362][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:24:48.362][info][talledLocalContainer] 	... 34 more
+[18:24:48.362][info][talledLocalContainer] 
+[18:25:05.936][info][en2.ContainerRunMojo] Resolved container artifact org.codehaus.cargo:cargo-core-container-wildfly:jar:1.4.11 for container wildfly8x
+[18:25:06.246][info][talledLocalContainer] Parsed JBoss version = [8.x]
+[18:25:06.246][info][talledLocalContainer] WildFly 8.x starting...
+[18:25:06.251][info][neLocalConfiguration] Configuring JBoss using the [standalone-engine] server configuration
+[18:25:07.031][warn][neLocalConfiguration] JBoss 7 requires datasource JNDI names to start with java:/, hence changing the given JNDI name to: java:/jdbc/Quiz
+[18:25:08.019][info][stalledLocalDeployer] Deploying [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/tmp/cargo/test-platform.war] to [D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x/deployments]...
+[18:25:13.687][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
+[18:25:14.119][info][talledLocalContainer] 18:25:14,116 INFO  [org.jboss.modules] (main) JBoss Modules version 1.3.3.Final
+[18:25:14.526][info][talledLocalContainer] 18:25:14,525 INFO  [org.jboss.msc] (main) JBoss MSC version 1.2.2.Final
+[18:25:14.613][info][talledLocalContainer] 18:25:14,612 INFO  [org.jboss.as] (MSC service thread 1-6) JBAS015899: WildFly 8.2.0.Final "Tweek" starting
+[18:25:17.022][info][talledLocalContainer] 18:25:17,022 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+[18:25:17.048][info][talledLocalContainer] 18:25:17,047 INFO  [org.xnio] (MSC service thread 1-8) XNIO version 3.3.0.Final
+[18:25:17.063][info][talledLocalContainer] 18:25:17,062 INFO  [org.xnio.nio] (MSC service thread 1-8) XNIO NIO Implementation Version 3.3.0.Final
+[18:25:17.104][info][talledLocalContainer] 18:25:17,103 INFO  [org.wildfly.extension.io] (ServerService Thread Pool -- 31) WFLYIO001: Worker 'default' has auto-configured to 8 core threads with 64 task threads based on your 4 available processors
+[18:25:17.132][info][talledLocalContainer] 18:25:17,131 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 38) JBAS012615: Activated the following JSF Implementations: [main]
+[18:25:17.160][info][talledLocalContainer] 18:25:17,159 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 32) JBAS010280: Activating Infinispan subsystem.
+[18:25:17.179][info][talledLocalContainer] 18:25:17,178 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 40) JBAS011800: Activating Naming Subsystem
+[18:25:17.201][info][talledLocalContainer] 18:25:17,200 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-1) JBAS010408: Starting JCA Subsystem (IronJacamar 1.1.9.Final)
+[18:25:17.212][info][talledLocalContainer] 18:25:17,211 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 48) JBAS015537: Activating WebServices Extension
+[18:25:17.218][info][talledLocalContainer] 18:25:17,217 WARN  [org.jboss.as.txn] (ServerService Thread Pool -- 46) JBAS010153: Node identifier property is set to the default value. Please make sure it is unique.
+[18:25:17.226][info][talledLocalContainer] 18:25:17,225 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 45) JBAS013171: Activating Security Subsystem
+[18:25:17.246][info][talledLocalContainer] 18:25:17,245 INFO  [org.jboss.as.security] (MSC service thread 1-3) JBAS013170: Current PicketBox version=4.0.21.Final
+[18:25:17.266][info][talledLocalContainer] 18:25:17,265 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[18:25:17.273][info][talledLocalContainer] 18:25:17,272 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) JBAS010417: Started Driver service with driver-name = com.mysql.jdbc.Driver
+[18:25:17.298][info][talledLocalContainer] 18:25:17,297 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-1) JBAS017502: Undertow 1.1.0.Final starting
+[18:25:17.303][info][talledLocalContainer] 18:25:17,302 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017502: Undertow 1.1.0.Final starting
+[18:25:17.326][info][talledLocalContainer] 18:25:17,324 INFO  [org.jboss.as.naming] (MSC service thread 1-7) JBAS011802: Starting Naming Service
+[18:25:17.356][info][talledLocalContainer] 18:25:17,355 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-4) JBAS015400: Bound mail session [java:jboss/mail/Default]
+[18:25:17.382][info][talledLocalContainer] 18:25:17,381 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 27) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+[18:25:17.383][info][talledLocalContainer] 18:25:17,383 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-4) JBAS010417: Started Driver service with driver-name = h2
+[18:25:17.712][info][talledLocalContainer] 18:25:17,711 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 47) JBAS017527: Creating file handler for path D:\Didorenko\Project\test-platform\target\cargo\installs\wildfly-8.2.0.Final\wildfly-8.2.0.Final/welcome-content
+[18:25:17.735][info][talledLocalContainer] 18:25:17,734 INFO  [org.jboss.remoting] (MSC service thread 1-8) JBoss Remoting version 4.0.6.Final
+[18:25:17.867][info][talledLocalContainer] 18:25:17,866 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017525: Started server default-server.
+[18:25:17.876][info][talledLocalContainer] 18:25:17,875 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-4) JBAS017531: Host default-host starting
+[18:25:17.997][info][talledLocalContainer] 18:25:17,996 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-3) JBAS015012: Started FileSystemDeploymentService for directory D:\Didorenko\Project\test-platform\target\cargo\configurations\wildfly8x\deployments
+[18:25:18.003][info][talledLocalContainer] 18:25:18,002 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-4) JBAS015876: Starting deployment of "cargocpc.war" (runtime-name: "cargocpc.war")
+[18:25:18.005][info][talledLocalContainer] 18:25:18,004 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015876: Starting deployment of "test-platform.war" (runtime-name: "test-platform.war")
+[18:25:18.026][info][talledLocalContainer] 18:25:18,025 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-2) JBAS017519: Undertow HTTP listener default listening on /0.0.0.0:8080
+[18:25:18.307][info][talledLocalContainer] 18:25:18,306 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-3) JBAS010400: Bound data source [java:/jdbc/Quiz]
+[18:25:18.310][info][talledLocalContainer] 18:25:18,309 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-5) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+[18:25:19.290][info][talledLocalContainer] 18:25:19,290 INFO  [org.jboss.ws.common.management] (MSC service thread 1-2) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.3.2.Final
+[18:25:19.713][info][talledLocalContainer] 18:25:19,712 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-8) JBAS017534: Registered web context: /cargocpc
+[18:25:19.796][info][talledLocalContainer] WildFly 8.x started on port [8080]
+[18:25:23.178][info][talledLocalContainer] 18:25:23,178 WARN  [org.jboss.as.server.deployment] (MSC service thread 1-7) JBAS015960: Class Path entry activation.jar in /D:/Didorenko/Project/test-platform/target/cargo/configurations/wildfly8x/content/test-platform.war/WEB-INF/lib/mail-1.4.jar  does not point to a valid jar for a Class-Path reference.
+[18:25:23.489][info][talledLocalContainer] 18:25:23,489 INFO  [org.jboss.as.jpa] (MSC service thread 1-3) JBAS011401: Read persistence.xml for com.bionic.quiz
+[18:25:24.384][info][talledLocalContainer] 18:25:24,383 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 53) JBAS011409: Starting Persistence Unit (phase 1 of 2) Service 'test-platform.war#com.bionic.quiz'
+[18:25:24.394][info][talledLocalContainer] 18:25:24,394 INFO  [org.hibernate.jpa.internal.util.LogHelper] (ServerService Thread Pool -- 53) HHH000204: Processing PersistenceUnitInfo [
+[18:25:24.394][info][talledLocalContainer] 	name: com.bionic.quiz
+[18:25:24.394][info][talledLocalContainer] 	...]
+[18:25:24.483][info][talledLocalContainer] 18:25:24,483 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 53) HHH000412: Hibernate Core {4.3.7.Final}
+[18:25:24.486][info][talledLocalContainer] 18:25:24,486 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 53) HHH000206: hibernate.properties not found
+[18:25:24.488][info][talledLocalContainer] 18:25:24,487 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 53) HHH000021: Bytecode provider name : javassist
+[18:25:24.648][info][talledLocalContainer] 18:25:24,648 INFO  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016002: Processing weld deployment test-platform.war
+[18:25:24.725][info][talledLocalContainer] 18:25:24,724 INFO  [org.hibernate.validator.internal.util.Version] (MSC service thread 1-7) HV000001: Hibernate Validator 5.1.3.Final
+[18:25:25.561][info][talledLocalContainer] 18:25:25,561 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.jdbc.Driver (version 5.1)
+[18:25:25.563][info][talledLocalContainer] 18:25:25,563 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010404: Deploying non-JDBC-compliant driver class com.mysql.fabric.jdbc.FabricMySQLDriver (version 5.1)
+[18:25:25.564][info][talledLocalContainer] 18:25:25,564 INFO  [org.jboss.weld.deployer] (MSC service thread 1-5) JBAS016005: Starting Services for CDI deployment: test-platform.war
+[18:25:25.943][info][talledLocalContainer] 18:25:25,942 INFO  [org.jboss.weld.Version] (MSC service thread 1-5) WELD-000900: 2.2.6 (Final)
+[18:25:25.960][info][talledLocalContainer] 18:25:25,959 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-5) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.fabric.jdbc.FabricMySQLDriver_5_1
+[18:25:25.961][info][talledLocalContainer] 18:25:25,959 INFO  [org.jboss.as.connector.deployers.jdbc] (MSC service thread 1-6) JBAS010417: Started Driver service with driver-name = test-platform.war_com.mysql.jdbc.Driver_5_1
+[18:25:25.961][info][talledLocalContainer] 18:25:25,961 INFO  [org.jboss.weld.deployer] (MSC service thread 1-4) JBAS016008: Starting weld service for deployment test-platform.war
+[18:25:26.148][info][talledLocalContainer] 18:25:26,147 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 53) JBAS011409: Starting Persistence Unit (phase 2 of 2) Service 'test-platform.war#com.bionic.quiz'
+[18:25:26.247][info][talledLocalContainer] 18:25:26,247 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 53) HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
+[18:25:27.313][info][talledLocalContainer] 18:25:27,312 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 53) HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+[18:25:27.548][info][talledLocalContainer] 18:25:27,547 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 53) HHH000397: Using ASTQueryTranslatorFactory
+[18:25:29.353][info][talledLocalContainer] 18:25:29,352 INFO  [javax.enterprise.resource.webcontainer.jsf.config] (MSC service thread 1-6) Initializing Mojarra 2.2.8-jbossorg-1 20140822-1131 for context '/test-platform'
+[18:25:36.737][info][talledLocalContainer] 18:25:36,736 INFO  [org.primefaces.webapp.PostConstructApplicationEventListener] (MSC service thread 1-6) Running on PrimeFaces 5.2
+[18:25:36.738][info][talledLocalContainer] 18:25:36,738 INFO  [org.wildfly.extension.undertow] (MSC service thread 1-6) JBAS017534: Registered web context: /test-platform
+[18:25:36.818][info][talledLocalContainer] 18:25:36,817 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "test-platform.war" (runtime-name : "test-platform.war")
+[18:25:36.819][info][talledLocalContainer] 18:25:36,818 INFO  [org.jboss.as.server] (ServerService Thread Pool -- 28) JBAS018559: Deployed "cargocpc.war" (runtime-name : "cargocpc.war")
+[18:25:38.601][info][talledLocalContainer] 18:25:38,600 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+[18:25:38.601][info][talledLocalContainer] 18:25:38,601 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015951: Admin console listening on http://127.0.0.1:9990
+[18:25:38.602][info][talledLocalContainer] 18:25:38,601 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015874: WildFly 8.2.0.Final "Tweek" started in 24881ms - Started 361 of 421 services (102 services are lazy, passive or on-demand)
+[18:25:52.360][info][talledLocalContainer] 18:25:52,359 INFO  [stdout] (default task-17) Starting transaction
+[18:25:55.455][info][talledLocalContainer] 18:25:55,455 INFO  [stdout] (default task-17) Committing transaction
+[18:26:30.621][info][talledLocalContainer] Listening for transport dt_socket at address: 8000
+[18:26:30.629][info][talledLocalContainer] 18:26:30,613 WARNING [javax.enterprise.resource.webcontainer.jsf.lifecycle] (default task-18) #{userTableBean.editAction(user)}: java.lang.NullPointerException: javax.faces.FacesException: #{userTableBean.editAction(user)}: java.lang.NullPointerException
+[18:26:30.629][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:118) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.630][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.630][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.630][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.630][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.630][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.630][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.630][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.630][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.630][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.631][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.632][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[18:26:30.632][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[18:26:30.632][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[18:26:30.632][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: java.lang.NullPointerException
+[18:26:30.632][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.632][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.632][info][talledLocalContainer] 	... 33 more
+[18:26:30.632][info][talledLocalContainer] Caused by: java.lang.NullPointerException
+[18:26:30.633][info][talledLocalContainer] 	at com.bionic.university.jsf.UserTableBean.editAction(UserTableBean.java:49) [classes:]
+[18:26:30.633][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[18:26:30.633][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[18:26:30.633][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[18:26:30.633][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[18:26:30.633][info][talledLocalContainer] 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.633][info][talledLocalContainer] 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.633][info][talledLocalContainer] 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.633][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286) [javax.el-3.0.1-b05.jar:]
+[18:26:30.633][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[18:26:30.633][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.633][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.634][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.634][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.634][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.634][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.634][info][talledLocalContainer] 	... 34 more
+[18:26:30.634][info][talledLocalContainer] 
+[18:26:30.649][info][talledLocalContainer] 18:26:30,637 ERROR [io.undertow.request] (default task-18) UT005023: Exception handling request to /test-platform/UserTestTable.xhtml: javax.servlet.ServletException: java.lang.NullPointerException
+[18:26:30.649][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:659) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletHandler.handleRequest(ServletHandler.java:85) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletSecurityRoleHandler.handleRequest(ServletSecurityRoleHandler.java:61) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletDispatchingHandler.handleRequest(ServletDispatchingHandler.java:36) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.SecurityContextAssociationHandler.handleRequest(SecurityContextAssociationHandler.java:78)
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.SSLInformationAssociationHandler.handleRequest(SSLInformationAssociationHandler.java:131) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletAuthenticationCallHandler.handleRequest(ServletAuthenticationCallHandler.java:56) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.security.handlers.AbstractConfidentialityHandler.handleRequest(AbstractConfidentialityHandler.java:45) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.649][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.ServletConfidentialityConstraintHandler.handleRequest(ServletConfidentialityConstraintHandler.java:63) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.security.handlers.AuthenticationMechanismsHandler.handleRequest(AuthenticationMechanismsHandler.java:58) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.servlet.handlers.security.CachedAuthenticatedSessionHandler.handleRequest(CachedAuthenticatedSessionHandler.java:70) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.security.handlers.SecurityInitialHandler.handleRequest(SecurityInitialHandler.java:76) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at org.wildfly.extension.undertow.security.jacc.JACCContextIdHandler.handleRequest(JACCContextIdHandler.java:61)
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.server.handlers.PredicateHandler.handleRequest(PredicateHandler.java:43) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.handleFirstRequest(ServletInitialHandler.java:261) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.dispatchRequest(ServletInitialHandler.java:247) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler.access$000(ServletInitialHandler.java:76) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.servlet.handlers.ServletInitialHandler$1.handleRequest(ServletInitialHandler.java:166) [undertow-servlet-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.650][info][talledLocalContainer] 	at io.undertow.server.Connectors.executeRootHandler(Connectors.java:197) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.651][info][talledLocalContainer] 	at io.undertow.server.HttpServerExchange$1.run(HttpServerExchange.java:759) [undertow-core-1.1.0.Final.jar:1.1.0.Final]
+[18:26:30.651][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [rt.jar:1.8.0_45]
+[18:26:30.651][info][talledLocalContainer] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [rt.jar:1.8.0_45]
+[18:26:30.651][info][talledLocalContainer] 	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_45]
+[18:26:30.651][info][talledLocalContainer] Caused by: javax.faces.el.EvaluationException: java.lang.NullPointerException
+[18:26:30.651][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:101) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.651][info][talledLocalContainer] 	at com.sun.faces.application.ActionListenerImpl.processAction(ActionListenerImpl.java:102) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.651][info][talledLocalContainer] 	at javax.faces.component.UICommand.broadcast(UICommand.java:315) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.651][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.broadcastEvents(UIViewRoot.java:790) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.651][info][talledLocalContainer] 	at javax.faces.component.UIViewRoot.processApplication(UIViewRoot.java:1282) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.651][info][talledLocalContainer] 	at com.sun.faces.lifecycle.InvokeApplicationPhase.execute(InvokeApplicationPhase.java:81) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.651][info][talledLocalContainer] 	at com.sun.faces.lifecycle.Phase.doPhase(Phase.java:101) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.651][info][talledLocalContainer] 	at com.sun.faces.lifecycle.LifecycleImpl.execute(LifecycleImpl.java:198) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.651][info][talledLocalContainer] 	at javax.faces.webapp.FacesServlet.service(FacesServlet.java:646) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.651][info][talledLocalContainer] 	... 26 more
+[18:26:30.651][info][talledLocalContainer] Caused by: java.lang.NullPointerException
+[18:26:30.651][info][talledLocalContainer] 	at com.bionic.university.jsf.UserTableBean.editAction(UserTableBean.java:49) [classes:]
+[18:26:30.652][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_45]
+[18:26:30.652][info][talledLocalContainer] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_45]
+[18:26:30.652][info][talledLocalContainer] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_45]
+[18:26:30.652][info][talledLocalContainer] 	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_45]
+[18:26:30.652][info][talledLocalContainer] 	at javax.el.ELUtil.invokeMethod(ELUtil.java:308) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.652][info][talledLocalContainer] 	at javax.el.BeanELResolver.invoke(BeanELResolver.java:537) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.652][info][talledLocalContainer] 	at javax.el.CompositeELResolver.invoke(CompositeELResolver.java:256) [jboss-el-api_3.0_spec-1.0.3.Final.jar:1.0.3.Final]
+[18:26:30.652][info][talledLocalContainer] 	at com.sun.el.parser.AstValue.invoke(AstValue.java:286) [javax.el-3.0.1-b05.jar:]
+[18:26:30.652][info][talledLocalContainer] 	at com.sun.el.MethodExpressionImpl.invoke(MethodExpressionImpl.java:304) [javax.el-3.0.1-b05.jar:]
+[18:26:30.652][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.652][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.652][info][talledLocalContainer] 	at org.jboss.weld.util.el.ForwardingMethodExpression.invoke(ForwardingMethodExpression.java:40) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.652][info][talledLocalContainer] 	at org.jboss.weld.el.WeldMethodExpression.invoke(WeldMethodExpression.java:50) [weld-core-impl-2.2.6.Final.jar:2014-10-03 10:05]
+[18:26:30.652][info][talledLocalContainer] 	at com.sun.faces.facelets.el.TagMethodExpression.invoke(TagMethodExpression.java:105) [jsf-impl-2.2.8-jbossorg-1.jar:]
+[18:26:30.652][info][talledLocalContainer] 	at javax.faces.component.MethodBindingMethodExpressionAdapter.invoke(MethodBindingMethodExpressionAdapter.java:87) [jboss-jsf-api_2.2_spec-2.2.8.jar:2.2.8]
+[18:26:30.652][info][talledLocalContainer] 	... 34 more
+[18:26:30.652][info][talledLocalContainer] 

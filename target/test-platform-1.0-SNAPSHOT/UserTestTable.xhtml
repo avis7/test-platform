@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Table</title>
+</h:head>
+<h:body>
+    <h2>DataTable Example</h2>
+    <h:form id="formDT">
+
+        <h:commandButton action="#{userTableBean.userView}" value="Вивести всі записи">
+            <p:ajax process="formDT" update="dataTable" />
+        </h:commandButton>
+
+        <p:dataTable id="dataTable" value="#{userTableBean.users}" var="user">
+            <p:column headerText="Id">
+                <h:outputText value="#{user.id}" />
+            </p:column>
+            <p:column headerText="Name">
+
+                <h:inputText value="#{user.firstName}" rendered="#{userTableBean.editable}" />
+
+                <h:outputText value="#{user.firstName}" rendered="#{not userTableBean.editable}" />
+
+
+            </p:column>
+            <p:column headerText="Name2">
+                <h:outputText value="#{user.lastName}" />
+            </p:column>
+            <p:column headerText="Data">
+                <h:outputText value="#{user.birthday}" />
+            </p:column>
+            <p:column headerText="Email">
+                <h:outputText value="#{user.email}" />
+            </p:column>
+            <p:column headerText="Phone">
+                <h:outputText value="#{user.phone}" />
+            </p:column>
+            <p:column headerText="Role">
+                <h:outputText value="#{user.role.name}" />
+            </p:column>
+            <p:column headerText="Test">
+                <h:outputText value="#{user.tests}" />
+            </p:column>
+        </p:dataTable>
+        <h:commandLink value="Edit" action="#{userTableBean.editAction(user)}"
+                       rendered="#{not userTableBean.editable}" />
+        <h:commandButton value="Save Changes" action="#{userTableBean.saveAction}" />
+    </h:form>
+</h:body>
+</html>
+
+

@@ -32,18 +32,22 @@ public class TestService {
         return null;
     }
 
-    public boolean editTest(long id, String newTestName, Date Duration, Date Deadline) {
+    public boolean editTest (String oldName, String testName, Date duration, Date deadline) {
         try {
-            testDAO.update(testDAO.find(id));
+            Test test = testDAO.findTestByName(oldName);
+            test.setTestName(testName);
+            test.setDeadline(deadline);
+            test.setDuration(duration);
+            testDAO.update(test);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
-    public boolean deleteTest(long id) {
+    public boolean deleteTest(String name) {
         try {
-            testDAO.delete(testDAO.find(id));
+            testDAO.delete(testDAO.findTestByName(name));
             return true;
         } catch (Exception e) {
             return false;
