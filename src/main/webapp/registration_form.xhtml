@@ -49,21 +49,21 @@
         <p:message for="email"/>
         <br/><br/>
         <h:outputText value="Пароль : "/>
-        <p:password  id="password1" size="20" required="true" match="password2"
+        <p:password  id="password" size="20" required="true" match="password2"
                       requiredMessage="Password field must not be empty"
                        validatorMessage="Invalid password format"
                       value="#{registrationBean.password}">
             <f:validateRegex pattern="((?=.*\w).{6,15})" />
         </p:password>
-        <p:message for="password1"/>
+        <p:message for="password"/>
         <br/><br/>
-        <p:password  id="password2" size="20" required="true"
+        <p:password  id="passwordConfirmation" size="20" required="true"
                      requiredMessage="Password field must not be empty"
                      validatorMessage="Invalid password format"
                      value="#{registrationBean.password}">
             <f:validateRegex pattern="((?=.*\w).{6,15})" />
         </p:password>
-        <p:message for="password2"/>
+        <p:message for="passwordConfirmation"/>
         <br/><br/>
         <h:outputText value="Дата рождения : "/>
         <p:inputText id="birthday"  size="20" required="true"

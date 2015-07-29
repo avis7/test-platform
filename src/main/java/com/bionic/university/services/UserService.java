@@ -19,7 +19,8 @@ public class UserService {
     @Inject
     RoleDAO roleDAO;
 
-    public String add(String firstName, String lastName, String email, String password, Date birthday, String phone){
+    public String add(String firstName, String lastName, String email, String password,
+                      Date birthday, String phone){
         try {
             InternetAddress emailAddr = new InternetAddress(email);
             emailAddr.validate();

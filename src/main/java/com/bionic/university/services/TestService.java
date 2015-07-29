@@ -41,9 +41,9 @@ public class TestService {
         }
     }
 
-    public boolean deleteTest(Test test) {
+    public boolean deleteTest(long id) {
         try {
-            testDAO.delete(test);
+            testDAO.delete(testDAO.find(id));
             return true;
         } catch (Exception e) {
             return false;
