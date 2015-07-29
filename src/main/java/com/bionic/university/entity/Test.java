@@ -17,7 +17,6 @@ public class Test {
     private Date duration;
     @Column(name = "deadline", nullable = false)
     private Date deadline;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
     @OneToMany(mappedBy = "test")
