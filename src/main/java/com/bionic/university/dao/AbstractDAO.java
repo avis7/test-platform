@@ -15,8 +15,9 @@ import java.util.List;
 public abstract class AbstractDAO<T> {
 //
   //  private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.bionic.quiz");
+
     @PersistenceContext
-    private EntityManager em;
+    protected EntityManager em;
 
     private Class<T> entityClass;
 //
@@ -73,9 +74,10 @@ public abstract class AbstractDAO<T> {
         return em.merge(entity);
     }
 
-    public T find(int entityID) {
+    public T find(long entityID) {
         return em.find(entityClass, entityID);
     }
+
 //
 //    public T findReferenceOnly(int entityID) {
 //        return em.getReference(entityClass, entityID);
