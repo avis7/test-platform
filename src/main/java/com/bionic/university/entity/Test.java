@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.Collection;
 
-
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getQueryTestByUserId", query = "select * from test t where t.id = :arg", resultClass = Test.class)})
 @Entity
 @Table(name = "test")
 public class Test {

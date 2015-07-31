@@ -3,12 +3,9 @@ package com.bionic.university.dao;
 import com.bionic.university.interceptor.TxInterceptorBinding;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.transaction.Transactional;
-import java.util.HashMap;
 import java.util.List;
 
 @TxInterceptorBinding
@@ -89,6 +86,16 @@ public abstract class AbstractDAO<T> {
         cq.select(cq.from(entityClass));
         return em.createQuery(cq).getResultList();
     }
+
+    @Deprecated
+    //Insert condition (Exampe table.id = 0, table.id > 1 and tabble.id < 10 .....)
+    public List<T> findByTableWhere(String condition) {
+        String JPQL = "from "+ entityClass.getSimpleName() + " table where " + condition;
+        Query query = em.createQuery(JPQL);
+        return query.getResultList();
+    }
+
+
 //
 //    @SuppressWarnings("unchecked")
 //    protected T findOneResult(String namedQuery, Map<String, Object> parameters) {

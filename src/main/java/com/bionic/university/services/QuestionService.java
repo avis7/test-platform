@@ -4,9 +4,8 @@ import com.bionic.university.dao.QuestionDAO;
 import com.bionic.university.entity.Question;
 import com.bionic.university.entity.Test;
 
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Created by c266 on 28.07.2015.
@@ -54,4 +53,15 @@ public class QuestionService {
     public void setQuestionDAO(QuestionDAO questionDAO) {
         this.questionDAO = questionDAO;
     }
+
+    public List<Question> getQuestionsByTestId(long testId){
+        try {
+            return questionDAO.findQuestionByTestId((int)testId);
+        }catch (Exception e){return null;}
+    }
+
+    public List<Question> getQuestionsByTest(Test test){
+        return getQuestionsByTestId(test.getId());
+    }
+
 }
