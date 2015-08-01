@@ -31,10 +31,11 @@ public class Test {
     public Test() {
     }
 
-    public Test(String testName, Date duration, Date deadline) {
+    public Test(String testName, Date duration, Date deadline, String categoryName) {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
+        this.categoryName = categoryName;
     }
 
     public String getCategoryName() {
