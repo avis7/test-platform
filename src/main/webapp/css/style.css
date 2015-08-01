@@ -20,6 +20,20 @@ h3{
     margin: 0px;
     padding: 11px 0px 0px 0px;
 }
+h4{
+    font-family: PFB;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+}
+h5{
+    font-family: PFB;
+    font-size: 19px;
+    color: #40C3DA;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    margin-top:15px;
+}
 p{
     font-family: PFB;
     font-size: 13px;
@@ -137,8 +151,69 @@ ul.back li {
 }
 .avtorization{
     margin: 0px auto;
+    margin-top: 28px;
+    margin-bottom:25px;
+}
+.ui-inputfield, .ui-inputtext{
+    border: 1px solid #c6c6c5;
+    border-radius: 3px;
+    height:25px;
+    font-family: PFB;
+    margin-top:0px;
+    margin-bottom: 10px;
+    padding-right:3px;
+    padding-left:3px;
+}
+.ui-message-error {
+    margin: 0px auto;
+    margin-top: 10px;
+    border: 1px solid #eed3d7;
+    background-color: #f2dede;
+    color: #b94a48;
+    font-family: PFB;
+    font-size: 13px;
+    width: 250px;
+}
+.ui-button{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: #40C3DA;
+    border: solid 1px #40C3DA;
+    padding: 3px 12px 3px 12px;
+    text-decoration: none;
+    background-color: white;
+}
+.ui-button{
+     border-radius: 3px;
+     font-family: PFB;
+     font-size: 14px;
+     color: #40C3DA;
+     border: solid 1px #40C3DA;
+     padding: 2px 8px 2px 8px;
+     text-decoration: none;
+     background-color: white;
+ }
+.ui-button:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: white;
+    border: solid 1px #40C3DA;
+    padding: 2px 8px 2px 8px;
+    text-decoration: none;
+    background-color: #40C3DA;
+    transition: 0.5s;
 }
 /* /content */
+
+/* content-UserProfile */
+.zagolovok{
+    margin-top:7px;
+    font-family: PFB;
+    font-size: 20px;
+}
+/* /content-UserProfile */
 
 /* footer */
 .footer{
