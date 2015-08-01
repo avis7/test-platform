@@ -15,10 +15,13 @@ public class TestService {
     @Inject
      private TestDAO testDAO;
 
-    public void addTest(String testName, Date duration, Date deadline) {
-        Test test = new Test(testName, duration, deadline);
-        testDAO.save(test);
-
+    public boolean addTest(String testName, Date duration, Date deadline, String categoryName) {
+        try {
+            Test test = new Test(testName, duration, deadline,categoryName);
+            testDAO.save(test);
+            return true;
+        }catch (Exception e){
+        return false;        }
     }
 
     public TestDAO getTestDAO() {
