@@ -349,7 +349,7 @@
                             <module-option name="rolesQuery" value="SELECT r.name
                                 FROM user u
                                 INNER JOIN role r
-                                ON u.role_id = r.name
+                                ON u.role_id = r.id
                                 WHERE u.email = ?" />
                         </login-module>
                     </authentication>
