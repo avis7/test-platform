@@ -148,7 +148,6 @@
                 <datasource jndi-name="jdbc/Quiz" pool-name="Quiz" enabled="true">
                     <connection-url>jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068</connection-url>
                     <driver-class>com.mysql.jdbc.Driver</driver-class>
-                    <driver>mysql</driver>
                     <security>
                         <user-name>sql285068</user-name>
                         <password>zA2%bW8*</password>
