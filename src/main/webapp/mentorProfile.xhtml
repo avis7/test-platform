@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE html
+          PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <title>Mentor Profile</title>
+</head>
+<body class="verstka" >
+<ui:composition template="template.xhtml">
+    <ui:define name="container">
+        <div class="content">
+            <div class="container">
+                <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
+                <div class="col-xs-6 text-right back">
+                    <a href="index.xhtml" class="back">Назад</a>
+                </div>
+            </div>
+        </div><!-- РЕЄСТРАЦІЯ -->
+    </ui:define>
+
+   <ui:define name="body" >
+
+        <h:form id="mentorForm">
+
+            <div align="center">
+            <h:outputText value="user.FirstName + user.LastName"/><br/><br/>
+            <h:outputText value="Link - Список студентів"/><br/><br/>
+            <h:outputText value="Тести"/><br/><br/>
+
+
+                <p:growl id="msgs" showDetail="true"/>
+
+                <p:dataTable id="cars1" var="car" value="#{dtEditView.cars1}" editable="true" style="margin-bottom:20px">
+                    <f:facet name="header">
+                        Row Editing
+                    </f:facet>
+
+                    <p:ajax event="rowEdit" listener="#{dtEditView.onRowEdit}" update=":form:msgs" />
+                    <p:ajax event="rowEditCancel" listener="#{dtEditView.onRowCancel}" update=":form:msgs" />
+
+                    <p:column headerText="Id">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.id}" /></f:facet>
+                            <f:facet name="input"><p:inputText id="modelInput" value="#{car.id}" style="width:100%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Year">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.year}" /></f:facet>
+                            <f:facet name="input"><p:inputText value="#{car.year}" style="width:100%" label="Year"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Brand">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.brand}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.brand}" style="width:100%">
+                                    <f:selectItems value="#{dtEditView.brands}" var="man" itemLabel="#{man}" itemValue="#{man}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column headerText="Color">
+                        <p:cellEditor>
+                            <f:facet name="output"><h:outputText value="#{car.color}" /></f:facet>
+                            <f:facet name="input">
+                                <h:selectOneMenu value="#{car.color}" style="width:100%">
+                                    <f:selectItems value="#{dtEditView.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />
+                                </h:selectOneMenu>
+                            </f:facet>
+                        </p:cellEditor>
+                    </p:column>
+
+                    <p:column style="width:32px">
+                        <p:rowEditor />
+                    </p:column>
+                </p:dataTable>
+
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>
+
+<!--<h:selectOneMenu value="tests" ></h:selectOneMenu>-->
+<!--<p:commandButton action="#{mentorProfileBean.addTest()}"-->
+                 <!--value="Додати" styleClass="ui-priority-primary"/>-->
+<!--<p:commandButton action="#{mentorProfileBean.deleteTest()}"-->
+                 <!--value="Видалити" styleClass="ui-priority-primary"/>-->
+
+
+
