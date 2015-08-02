@@ -144,6 +144,17 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <!-- BU Quiz Custom datasource -->
+                <datasource jndi-name="jdbc/Quiz" pool-name="Quiz" enabled="true">
+                    <connection-url>jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068</connection-url>
+                    <driver-class>com.mysql.jdbc.Driver</driver-class>
+                    <driver>mysql</driver>
+                    <security>
+                        <user-name>sql285068</user-name>
+                        <password>zA2%bW8*</password>
+                    </security>
+                </datasource>
+                <!--/BU Quiz Custom datasource-->
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.Driver</xa-datasource-class>
@@ -328,6 +339,20 @@
                     <authorization>
                         <policy-module code="Delegating" flag="required"/>
                     </authorization>
+                </security-domain>
+                <!-- Bionic Quiz Custom Security Domain -->
+                <security-domain name="quiz" cache-type="default">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="jdbc/Quiz"/>
+                            <module-option name="principalsQuery" value="SELECT password FROM user WHERE email = ?" />
+                            <module-option name="rolesQuery" value="SELECT r.name
+                                FROM user u
+                                INNER JOIN role r
+                                ON u.role_id = r.name
+                                WHERE u.email = ?" />
+                        </login-module>
+                    </authentication>
                 </security-domain>
             </security-domains>
         </subsystem>

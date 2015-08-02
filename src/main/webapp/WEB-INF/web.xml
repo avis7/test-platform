@@ -23,4 +23,54 @@
         <param-value>start</param-value>
     </context-param>
 
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>BU Quiz Admin Panel</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>BU Quiz Mentor Panel</web-resource-name>
+            <url-pattern>/mentor/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>mentor</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>BU Quiz</web-resource-name>
+            <url-pattern>/s/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>student</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/authorization.xhtml</form-login-page>
+            <form-error-page>/Unsuccessful.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>mentor</role-name>
+    </security-role>
+
+    <security-role>
+        <role-name>student</role-name>
+    </security-role>
+
 </web-app>

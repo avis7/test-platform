@@ -1,0 +1,3 @@
+<jboss-web>
+    <security-domain>java:/jaas/quiz</security-domain>
+</jboss-web>
