@@ -2,7 +2,6 @@ package com.bionic.university.jsf;
 
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
-import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
 
 import javax.faces.bean.ManagedBean;
@@ -16,7 +15,7 @@ import java.util.List;
  * Created by Olexandr on 7/30/2015.
  */
 @SessionScoped
-@ManagedBean
+@ManagedBean (name = "UserProfileBean")
 public class UserProfileBean {
     private Collection<Test> tests;
     private Collection<Result> results;
@@ -31,7 +30,7 @@ public class UserProfileBean {
     }
 
 
-    public Collection<Test> getTests() {
+    public Collection<Test> getTests(String email) {
         tests = userService.getUserDAO().findUserByEmail(email).getTests();
         return tests;
     }

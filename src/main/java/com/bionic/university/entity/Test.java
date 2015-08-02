@@ -23,9 +23,9 @@ public class Test {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
     Collection<Result> results;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test",fetch = FetchType.EAGER)
     private Collection<Question> questions;
 
     public Test() {
