@@ -1,11 +1,9 @@
 package com.bionic.university.services;
 
 import com.bionic.university.dao.UserDAO;
-import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
-import java.util.List;
 
 
 public class UserService {
@@ -31,12 +29,9 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
-    public List<Test> getUserTest(User user){
-        return testService.getTestByUser(user);
-    }
-
     public User getUserByEmail(String email) {
         return userDAO.findUserByEmail(email);
     }
+
 
 }
