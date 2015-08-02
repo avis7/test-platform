@@ -35,4 +35,8 @@ public class UserService {
         return testService.getTestByUser(user);
     }
 
+    public User getUserByEmail(String email) {
+        return userDAO.findUserByEmail(email);
+    }
+
 }
