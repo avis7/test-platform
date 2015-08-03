@@ -11,26 +11,38 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "test_name", nullable = false, unique = true)
+    @Column(name = "test_name", nullable = false)
     private String testName;
     @Column(name = "duration", nullable = false)
     private Date duration;
     @Column(name = "deadline", nullable = false)
     private Date deadline;
+    @Column(name = "category_name", nullable = false)
+    private String categoryName;
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
     Collection<Result> results;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test",fetch = FetchType.EAGER)
     private Collection<Question> questions;
 
     public Test() {
     }
 
-    public Test(String testName, Date duration, Date deadline) {
+    public Test(String testName, Date duration, Date deadline, String categoryName) {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
+        this.categoryName = categoryName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public long getId() {

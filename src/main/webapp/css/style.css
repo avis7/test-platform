@@ -1,0 +1,251 @@
+@font-face {
+    font-family: PFB; /* Имя шрифта */
+    src: url(PFBeauSansPro-Regular_35350.ttf); /* Путь к файлу со шрифтом */
+}
+.verstka{
+    height: 100vh;
+}
+h1{
+    font-family: PFB;
+    font-size: 22px;
+    color: #40C3DA;
+    margin: 0px;
+    padding-right: 0px;
+    line-height: 1;
+}
+h3{
+    font-family: PFB;
+    font-size: 19px;
+    color: white;
+    margin: 0px;
+    padding: 11px 0px 0px 0px;
+}
+h4{
+    font-family: PFB;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+}
+h5{
+    font-family: PFB;
+    font-size: 19px;
+    color: #40C3DA;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    margin-top:15px;
+}
+p{
+    font-family: PFB;
+    font-size: 13px;
+}
+ul{
+    margin: 0px;
+    padding: 3px 0px 0px 3px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: #40C3DA;
+    transition: 0.2s;
+}
+.back{
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+    margin: 0px;
+    padding: 10px 0px 0px 0px;
+}
+.back a{
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+}
+.back a:hover{
+    color: white;
+    text-decoration: underline;
+}
+/* header */
+.header{
+    margin-bottom: 5px;
+    width: 100%;
+}
+li{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul.menu {
+    font-family: PFB;
+    font-size: 15px;
+    margin: 0;
+    padding-top: 30px;
+    padding-right: 5px;/* Обнуляем значение отступов */
+}
+ul.menu li {
+    display: inline; /* Отображать как строчный элемент */
+    padding-right: 5px; /* Поля вокруг текста */
+    padding-left: 5px; /* Поля вокруг текста */
+}
+.enter-but a{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 15px;
+    color: #40C3DA;
+    border: solid 1px #40C3DA;
+    padding: 3px 6px 3px 6px;
+    text-decoration: none;
+}
+.enter-but a:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+    background: #40C3DA;
+    padding: 3px 6px 3px 6px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+@media (max-width: 767px) {
+    .header{
+        margin-bottom: 10px;
+    }
+    ul.menu {
+        padding-top: 10px;
+        text-align: left;
+        padding-left: 40px;
+        font-size: 14px;
+        padding-right: 0px;
+    }
+    .enter-but a{
+        font-size: 14px;
+    }
+    .enter-but a:hover{
+        font-size: 14px;
+    }
+}
+/* /header */
+
+/* content */
+.ajax-wrap{
+    width: 100%;
+}
+.cont{
+    width: 100%;
+    height: 75vh;
+}
+.content{
+    width: 100%;
+    height: 40px;
+    background-color: #40C3DA;
+}
+ul.back li {
+    display: inline; /* Отображать как строчный элемент */
+    padding-right: 1px; /* Поля вокруг текста */
+}
+.form{
+    background-color: #F5F5F5;
+    width: 100%;
+}
+.avtorization{
+    margin: 0px auto;
+    margin-top: 28px;
+    margin-bottom:25px;
+}
+.ui-inputfield, .ui-inputtext{
+    border: 1px solid #c6c6c5;
+    border-radius: 3px;
+    height:25px;
+    font-family: PFB;
+    margin-top:0px;
+    margin-bottom: 10px;
+    padding-right:3px;
+    padding-left:3px;
+}
+.ui-message-error {
+    margin: 0px auto;
+    margin-top: 10px;
+    border: 1px solid #eed3d7;
+    background-color: #f2dede;
+    color: #b94a48;
+    font-family: PFB;
+    font-size: 13px;
+    width: 250px;
+}
+.ui-button{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: #40C3DA;
+    border: solid 1px #40C3DA;
+    padding: 3px 12px 3px 12px;
+    text-decoration: none;
+    background-color: white;
+}
+.ui-button{
+     border-radius: 3px;
+     font-family: PFB;
+     font-size: 14px;
+     color: #40C3DA;
+     border: solid 1px #40C3DA;
+     padding: 2px 8px 2px 8px;
+     text-decoration: none;
+     background-color: white;
+ }
+.ui-button:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: white;
+    border: solid 1px #40C3DA;
+    padding: 2px 8px 2px 8px;
+    text-decoration: none;
+    background-color: #40C3DA;
+    transition: 0.5s;
+}
+/* /content */
+
+/* content-UserProfile */
+.zagolovok{
+    margin-top:7px;
+    font-family: PFB;
+    font-size: 16px;
+}
+.ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    padding: 4px 10px;
+    border: 1px solid #dadad9;
+    text-align:center;
+    font-family: PFB;
+}
+.ui-datatable thead th{
+    padding: 4px 10px;
+    border: 1px solid #dadad9;
+    text-align:center;
+    font-family: PFB;
+    background-color:#f5f5f5;
+}
+th {
+    font-weight: none;
+}
+/* /content-UserProfile */
+
+/* footer */
+.footer{
+    width: 100%;
+    background-color: #F5F5F5;
+}
+.links{
+    padding-top: 5px;
+}
+.img-refers{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+@media (max-width: 767px) {
+    .links{
+        padding-left: 5px;
+    }
+}
+/* /footer */

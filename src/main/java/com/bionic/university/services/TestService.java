@@ -11,48 +11,23 @@ import java.util.Date;
  */
 public class TestService {
     @Inject
-    TestDAO testDAO;
+     private TestDAO testDAO;
 
-    public boolean addTest(String testName, Date duration, Date deadline) {
+    public boolean addTest(String testName, Date duration, Date deadline, String categoryName) {
         try {
-            Test test = new Test(testName, duration, deadline);
+            Test test = new Test(testName, duration, deadline,categoryName);
             testDAO.save(test);
             return true;
-        } catch (Exception e) {
-            return false;
-        }
+        }catch (Exception e){
+        return false;        }
     }
 
-    public Test findTestByName(String testName) {
-        try {
-            Test test = testDAO.findTestByName(testName);
-            return test;
-        } catch (Exception e) {
-        }
-        return null;
+    public TestDAO getTestDAO() {
+        return testDAO;
     }
 
-    public boolean editTest (String oldName, String testName, Date duration, Date deadline) {
-        try {
-            Test test = testDAO.findTestByName(oldName);
-            test.setTestName(testName);
-            test.setDeadline(deadline);
-            test.setDuration(duration);
-            testDAO.update(test);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    public void setTestDAO(TestDAO testDAO) {
+        this.testDAO = testDAO;
     }
-
-    public boolean deleteTest(String name) {
-        try {
-            testDAO.delete(testDAO.findTestByName(name));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
 
 }

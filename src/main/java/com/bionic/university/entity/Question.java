@@ -3,7 +3,8 @@ package com.bionic.university.entity;
 import javax.persistence.*;
 import java.util.Collection;
 
-
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getQueryQuestionByTestId", query = "select * from question q where  q.test_id = :arg", resultClass = Question.class)})
 @Entity
 @Table(name = "question")
 public class    Question {

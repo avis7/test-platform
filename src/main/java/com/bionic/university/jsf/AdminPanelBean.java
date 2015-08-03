@@ -52,20 +52,22 @@ public class AdminPanelBean {
         this.deadline = deadline;
     }
 
-    public String editTest(String testName){
+/*    public String editTest(String testName){
         testService.editTest(oldName, newTestName, duration, deadline);
         return "0";
-    }
+    }*/
 
-    public String addTest(){
+/*    public String addTest(){
         testService.addTest(newTestName, duration, deadline);
         return "0";
-    }
+    }*/
 
+/*
     public String deleteTest(){
         testService.deleteTest(oldName);
         return "0";
     }
+*/
 
 
 }

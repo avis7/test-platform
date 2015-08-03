@@ -7,82 +7,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
-</h:head>
-
-<h:head>
-    <title>Registrarion Demo</title>
-</h:head>
+<head>
+    <title>Registration Form</title>
+</head>
 
 
-<h:body>
-    <h:form id="form">
-        <h:outputText value="Регистрация"/><br/><br/>
-        <h:outputText value="Фамилия : "/>
-        <p:inputText id="surname" size="20" required="true"
-                     requiredMessage="Surname field must not be empty"
-                     validatorMessage="Invalid surname format"
-                     value="#{registrationBean.lastName}">
-            <f:validateRegex pattern="((?=.*\w).{6,15})" />
-        </p:inputText>
-        <p:message for="surname"/>
-        <br/><br/>
-        <h:outputText value="Имя : "/>
-        <p:inputText  id="name" size="20" required="true"
-                      requiredMessage="Name field must not be empty"
-                     validatorMessage="Invalid name format"
-                      value="#{registrationBean.firstName}">
-            <f:validateRegex pattern="((?=.*\w).{6,15})" />
-        </p:inputText>
-        <p:message for="name"/>
-        <br/><br/>
-        <h:outputText value="Email : "/>
-        <p:inputText  id="email" size="20" required="true"
-                      requiredMessage="Email field must not be empty"
-                     validatorMessage="Invalid email format"
-                      value="#{registrationBean.email}">
-            <f:validateRegex
-                    pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-        </p:inputText>
-        <p:message for="email"/>
-        <br/><br/>
-        <h:outputText value="Пароль : "/>
-        <p:password  id="password" size="20" required="true" match="password2"
-                      requiredMessage="Password field must not be empty"
-                       validatorMessage="Invalid password format"
-                      value="#{registrationBean.password}">
-            <f:validateRegex pattern="((?=.*\w).{6,15})" />
-        </p:password>
-        <p:message for="password"/>
-        <br/><br/>
-        <p:password  id="passwordConfirmation" size="20" required="true"
-                     requiredMessage="Password field must not be empty"
-                     validatorMessage="Invalid password format"
-                     value="#{registrationBean.password}">
-            <f:validateRegex pattern="((?=.*\w).{6,15})" />
-        </p:password>
-        <p:message for="passwordConfirmation"/>
-        <br/><br/>
-        <h:outputText value="Дата рождения : "/>
-        <p:inputText id="birthday"  size="20" required="true"
-                     requiredMessage="Date of birth field must not be empty"
-                     value="#{registrationBean.birthday}" >
-            <f:convertDateTime pattern="yyyy-MM-dd" />
-                </p:inputText><br/><br/>
+<body class="verstka">
+<ui:composition template="template.xhtml">
+    <ui:define name="container">
+        <div class="content">
+            <div class="container">
+                <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
+                <div class="col-xs-6 text-right back">
+                    <a href="index.xhtml" class="back">Назад</a>
+                </div>
+            </div>
+        </div><!-- РЕЄСТРАЦІЯ -->
+    </ui:define>
 
-        <h:outputText value="Телефон : "/>
-        <p:inputText id="phone" size="20" required="true"
-                     requiredMessage="Phone field must not be empty"
-                     validatorMessage="Invalid phone format. Enter it in format 0xx-xx-xx-xxx"
-                     value="#{registrationBean.phone}">
-        <f:validateRegex pattern="((?=.*\d).{10,13})" />
-        </p:inputText>
-        <p:message for="phone"/>
-        <br/><br/>
-        <h:commandButton action="#{registrationBean.userAdd}"
-                         value="Зарегестрироваться" ajax="false"/>
-    </h:form>
-</h:body>
+    <ui:define name="body">
+
+        <h:form>
+            <h:outputText value="Регистрация"/><br/><br/>
+            <h:outputText value="Фамилия : "/>
+            <h:inputText value="#{registrationBean.lastName}" size="20"/><br/><br/>
+            <h:outputText value="Имя : "/>
+            <h:inputText value="#{registrationBean.firstName}" size="20"/><br/><br/>
+            <h:outputText value="Email : "/>
+            <h:inputText value="#{registrationBean.email}" size="20"/><br/><br/>
+            <h:outputText value="Пароль : "/>
+            <h:inputText value="#{registrationBean.password}" size="20"/><br/><br/>
+            <h:outputText value="Дата рождения : "/>
+            <h:inputText value="#{registrationBean.birthday}" size="20">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:inputText><br/><br/>
+            <h:outputText value="Телефон : "/>
+            <h:inputText value="#{registrationBean.phone}" size="20"/><br/><br/>
+            <h:commandButton action="#{registrationBean.userAdd}" value="Зарегестрироваться"/>
+        </h:form>
+
+    </ui:define>
+</ui:composition>
+
+</body>
 </html>
+

@@ -7,6 +7,11 @@ import java.util.Collection;
 
 
 @Entity
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getUserByEmail",
+                query = "SELECT * FROM user u WHERE u.email = :login",
+                resultClass = User.class)
+})
 @Table(name = "user")
 public class User {
     @Id
@@ -20,7 +25,7 @@ public class User {
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "birthday", nullable = false)
+    @Column(name = "birthday")
     private Date birthday;
     @Column(name = "phone", nullable = false, unique = true)
     private String phone;
@@ -37,17 +42,24 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String password, Date birthday, String phone) {
+    public User(String firstName, String lastName, String email, Date birthday, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.birthday = birthday;
         this.phone = phone;
     }
 
     public long getId() {
         return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -74,13 +86,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public Date getBirthday() {
         return birthday;
@@ -129,7 +134,6 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", birthday=" + birthday +
                 ", phone='" + phone + '\'' +
                 ", role=" + role +

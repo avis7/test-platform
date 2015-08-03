@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<head>
+    <title>Profile</title>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+</head>
+
+
+<body class="verstka">
+<ui:composition template="template.xhtml">
+
+    <ui:define name="container">
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
+                <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
+                </div>
+            </div>
+        </div><!-- РЕЄСТРАЦІЯ -->
+    </ui:define>
+
+
+    <ui:define name="body">
+        <div class="container">
+            <div class="row">
+            <div class="col-xs-12">
+                <h5>Welcome, #{authorizationBean.email}</h5>
+            </div>
+            <div class="col-xs-12">
+                <div class="zagolovok">Доступні тести:</div>
+                <p:dataList value="#{UserProfileBean.getTests('5@mail')}" var="tests">
+                #{tests.testName}
+                </p:dataList>
+            </div>
+            <div class="col-xs-12">
+                <div class="zagolovok">Результати:</div>
+                <p:dataTable id="dataTestsTable" value="#{UserProfileBean.getTests('5@mail')}" var="tests">
+                    <p:column headerText="Назва тесту">
+                        <h:outputText value="#{tests.testName}" />
+                    </p:column>
+                    <p:column headerText="Дата проходження">
+                        <h:outputText value="#{tests.testName}" />
+                    </p:column>
+                    <p:column headerText="Кількість тестових запитань">
+                        <h:outputText value="#{tests.questions.size()}" />
+                    </p:column>
+                    <p:column headerText="Кількість правильних відповідей">
+                        <h:outputText value="#{tests.questions.size()}" />
+                    </p:column>
+                    <p:column headerText="Бали">
+                        <h:outputText value="#{tests.id}" />
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</body>
+</html>
