@@ -26,11 +26,18 @@ public class UserProfileBean {
     UserService userService;
 
 
-
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
 
 
-    public String startTest(Test test){
+
+
+
+    public String getName() {
+        return userService.findUserByEmail(email).getFirstName()+" "+userService.findUserByEmail(email).getLastName();
+    }
+
+
+    public String startTest(Test test) {
         return "test?faces-redirect=true&testId=" + test.getId() + "&email=" + email;
     }
 
