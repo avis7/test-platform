@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,10 +70,11 @@ public class UserProfileBean {
         allResult = userService.findUserByEmail(email).getResults();
         results = new ArrayList<Result>();
         tests = new ArrayList<Test>();
+        Date resultdate = new Date(System.currentTimeMillis());
         for(Result result : allResult){
-            if(!result.isSubmited()){
+            if(!result.isSubmited() && result.getTest().getDeadline().after(resultdate)){
                 tests.add(result.getTest());
-            }else results.add(result);
+            }else if( result.isSubmited()) results.add(result);
         }
        allResult.clear();
     }
