@@ -346,11 +346,14 @@
                         <login-module code="Database" flag="required">
                             <module-option name="dsJndiName" value="java:/Quiz"/>
                             <module-option name="principalsQuery" value="SELECT password FROM user WHERE email = ?" />
-                            <module-option name="rolesQuery" value="SELECT r.name
-                                FROM user u
-                                INNER JOIN role r
-                                ON u.role_id = r.id
-                                WHERE u.email = ?" />
+                            <!--<module-option name="rolesQuery" value="SELECT r.name-->
+                                <!--FROM user u-->
+                                <!--INNER JOIN role r-->
+                                <!--ON u.role_id = r.id-->
+                                <!--WHERE u.email = ?" />-->
+                            <module-option name="rolesQuery" value="SELECT R.name AS 'Role', 'Roles'
+                                FROM user U, role R
+                                WHERE R.id = U.role_id AND U.email = ?" />
                         </login-module>
                     </authentication>
                 </security-domain>

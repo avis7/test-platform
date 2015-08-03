@@ -97,7 +97,7 @@
                     </container>
                     <configuration>
                         <properties>
-                            <cargo.servlet.port>8081</cargo.servlet.port>
+                            <cargo.servlet.port>8085</cargo.servlet.port>
                             <cargo.jboss.configuration>standalone-engine</cargo.jboss.configuration>
                             <cargo.servlet.users>admin:admin:AplicationRealm,admin</cargo.servlet.users>
                             <cargo.jvmargs>
