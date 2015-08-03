@@ -211,7 +211,23 @@ ul.back li {
 .zagolovok{
     margin-top:7px;
     font-family: PFB;
-    font-size: 20px;
+    font-size: 16px;
+}
+.ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    padding: 4px 10px;
+    border: 1px solid #dadad9;
+    text-align:center;
+    font-family: PFB;
+}
+.ui-datatable thead th{
+    padding: 4px 10px;
+    border: 1px solid #dadad9;
+    text-align:center;
+    font-family: PFB;
+    background-color:#f5f5f5;
+}
+th {
+    font-weight: none;
 }
 /* /content-UserProfile */
 
