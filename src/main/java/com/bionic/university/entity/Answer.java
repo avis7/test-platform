@@ -55,6 +55,10 @@ public class Answer {
         this.question = question;
     }
 
+    public String getAnswerText() {
+        return answerText;
+    }
+
     @Override
     public String toString() {
         return "Answer{" +

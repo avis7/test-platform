@@ -1,8 +1,8 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Collection;
+import java.util.Date;
 
 
 @Entity
@@ -11,38 +11,27 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "test_name", nullable = false)
+    @Column(name = "test_name", nullable = false, unique = true)
     private String testName;
     @Column(name = "duration", nullable = false)
     private Date duration;
     @Column(name = "deadline", nullable = false)
     private Date deadline;
-    @Column(name = "category_name", nullable = false)
-    private String categoryName;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
     Collection<Result> results;
-    @OneToMany(mappedBy = "test",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
     private Collection<Question> questions;
 
     public Test() {
     }
 
-    public Test(String testName, Date duration, Date deadline, String categoryName) {
+    public Test(String testName, Date duration, Date deadline) {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
-        this.categoryName = categoryName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 
     public long getId() {

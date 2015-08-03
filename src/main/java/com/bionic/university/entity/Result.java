@@ -4,17 +4,21 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
 
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "getQueryResultByTestId", query = "select * from result r where r.test_id = :arg", resultClass = Result.class)})
+
 @Entity
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "findResultByUserIdAndTestId",
+                query = "SELECT * FROM result r WHERE r.user_id = :user AND r.test_id = :test",
+                resultClass = Result.class)
+})
 @Table(name = "result")
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "is_checked", nullable = false)
+    @Column(name = "is_checked")
     private boolean isChecked;
-    @Column(name = "submited", nullable = false)
+    @Column(name = "submited")
     private boolean submited;
     @Column(name = "mark")
     private int mark;
