@@ -1,7 +1,6 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 
 @Entity

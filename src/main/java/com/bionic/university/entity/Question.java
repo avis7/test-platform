@@ -1,13 +1,17 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.List;
 
-@NamedNativeQueries({
-        @NamedNativeQuery(name = "getQueryQuestionByTestId", query = "select * from question q where  q.test_id = :arg", resultClass = Question.class)})
+
 @Entity
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getQuestionsByTestId",
+                query = "SELECT * FROM question q WHERE q.test_id = :test",
+                resultClass = Question.class)
+})
 @Table(name = "question")
-public class    Question {
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -24,8 +28,8 @@ public class    Question {
     @ManyToOne
     @JoinColumn(name = "test_id")
     private Test test;
-    @OneToMany(mappedBy = "question")
-    private Collection<Answer> answers;
+    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER)
+    private List<Answer> answers;
 
     public Question() {
     }
@@ -89,11 +93,11 @@ public class    Question {
         this.test = test;
     }
 
-    public Collection<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Collection<Answer> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 
