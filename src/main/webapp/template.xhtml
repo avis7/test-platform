@@ -39,7 +39,13 @@
                 <ul class="menu">
                     <li><a href="index.xhtml">ПРО НАС</a></li>
                     <li><a href="index.xhtml">КОНТАКТИ</a></li>
-                    <li class="enter-but"><a href="index.xhtml">УВІЙТИ</a></li>
+                    <li class="enter-but">
+                        <h:form>
+                            <h:commandLink
+                                    value="ВИЙТИ"
+                                    action="#{userBB.logout}"/>
+                        </h:form>
+                    </li>
                 </ul>
             </div><!-- меню -->
         </div>
