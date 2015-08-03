@@ -42,7 +42,7 @@
                 <div class="col-xs-12">
                     <div class="zagolovok">Доступні тести:</div>
                     <h:form>
-                        <p:dataList value="#{userProfileBean.tests}" var="test">
+                        <p:dataList value="#{userProfileBean.getTests()}" var="test">
                             <h:commandLink value="#{test.testName}" action="#{userProfileBean.startTest(test)}"/>
                         </p:dataList>
                     </h:form>
@@ -50,7 +50,7 @@
                 <div class="col-xs-12">
                     <div class="zagolovok">Результати:</div>
 
-                    <p:dataTable id="dataTestsTable" value="#{userProfileBean.results}" var="result">
+                    <p:dataTable id="dataTestsTable" value="#{userProfileBean.getResults()}" var="result">
                         <p:column headerText="Назва тесту">
                             <h:outputText value="#{result.test.testName}"/>
                         </p:column>

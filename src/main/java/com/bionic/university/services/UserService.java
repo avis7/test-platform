@@ -23,19 +23,4 @@ public class UserService {
         return userDAO.findUserByEmail(email);
     }
 
-
-
-
-
-
-
-
-    public UserDAO getUserDAO() {
-        return userDAO;
-    }
-
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
-
 }

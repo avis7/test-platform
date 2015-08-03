@@ -4,12 +4,11 @@ import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.services.UserService;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,14 +21,11 @@ public class UserProfileBean {
     private Collection<Test> tests;
     private Collection<Result> results;
 
+
     @Inject
     UserService userService;
 
-
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
-
-
-
 
 
     public String getName() {
@@ -43,7 +39,7 @@ public class UserProfileBean {
 
 
     public Collection<Test> getTests() {
-        tests = userService.findUserByEmail(email).getTests();
+        if (tests == null)loadDataFromDB();
         return tests;
     }
 
@@ -52,7 +48,7 @@ public class UserProfileBean {
     }
 
     public Collection<Result> getResults() {
-        results = userService.findUserByEmail(email).getResults();
+        if (results == null)loadDataFromDB();
         return results;
     }
 
@@ -67,4 +63,18 @@ public class UserProfileBean {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public void loadDataFromDB(){
+        Collection<Result> allResult;
+        allResult = userService.findUserByEmail(email).getResults();
+        results = new ArrayList<Result>();
+        tests = new ArrayList<Test>();
+        for(Result result : allResult){
+            if(!result.isSubmited()){
+                tests.add(result.getTest());
+            }else results.add(result);
+        }
+       allResult.clear();
+    }
+
 }
