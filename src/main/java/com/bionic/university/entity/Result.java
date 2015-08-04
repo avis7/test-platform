@@ -9,7 +9,10 @@ import java.util.Collection;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "findResultByUserIdAndTestId",
                 query = "SELECT * FROM result r WHERE r.user_id = :user AND r.test_id = :test",
-                resultClass = Result.class)
+                resultClass = Result.class),
+        @NamedNativeQuery(name = "findResultByTestId",
+        query = "SELECT * FROM result r WHERE r.test_id = :test",
+        resultClass = Result.class)
 })
 @Table(name = "result")
 public class Result {
