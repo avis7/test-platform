@@ -3,33 +3,39 @@ package com.bionic.university.jsf;
 import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 import com.bionic.university.services.TestService;
+import org.primefaces.event.RowEditEvent;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
 
-@SessionScoped
-@ManagedBean(name= "testBean", eager = true)
+@ViewScoped
+@ManagedBean
 public class TestBean {
 
     @Inject
     TestService testService;
 
+    List<TestRow> testRows;
+
     public List<TestRow> getTestRows() {
-        return testService.getTestRows();
+        return testRows;
+    }
+      @PostConstruct
+    public void fillTestTable(){
+        testService.fillTestTable();
+         testRows = testService.getTestRows();
     }
 
-    public String fillTestTable(){
-        if(testService.fillTestTable())
-            return "successful";
-        return "unsuccessful";
-    }
-
-    public void setTestRowEditable(TestRow testRow){
-        testRow.setEditable(true);
+    public String setTestRowEditable(int testRow){
+        testRows.get(testRow).setEditable(true);
+        return "";
     }
 
     public String addTest(String testName, int duration, Date deadline, String categoryName){
@@ -38,22 +44,32 @@ public class TestBean {
         return "unsuccessful";
     }
 
-    public String deleteTest(Test test){
-        if(testService.deleteTest(test))
-            return "successful";
-        return "unsuccessful";
-    }
+    /*public String deleteTest(Test test){
+        testService.deleteTest(test);
+            return "";
+    }*/
 
     public String deleteTest(TestRow testRow){
-        if(testService.deleteTest(testRow.getTest()))
-            return "successful";
-        return "unsuccessful";
+        testService.deleteTest(testRow.getTest());
+        testService.fillTestTable();
+        testRows = testService.getTestRows();
+        return "";
+    }
+    public void onRowEdit(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Car Edited",
+                ((TestRow) event.getObject()).getTest().getTestName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
     }
 
-    public String editTest(TestRow testRow, String testName, String categoryName, int duration, Date deadline){
-           if(testService.editTest(testRow, testName, categoryName, duration, deadline))
-            return "successful";
-        return "unsuccessful";
+    public void onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled",
+                ((TestRow) event.getObject()).getTest().getTestName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+    public String editTest(int index){
+        testRows.get(index).setEditable(false);
+          // testService.editTest(testRow, testName, categoryName, duration, deadline);
+           return "";
     }
 
 }

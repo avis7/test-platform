@@ -1,23 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<head>
-    <title>Table</title>
-</head>
-
-
-
-<body class="verstka">
-<ui:composition template="template.xhtml">
+<ui:composition template="template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:define name="container">
         <div class="content">
@@ -36,11 +21,18 @@
 
                 <h:form id="formDT">
 
-                    <p:commandButton action="#{testBean.fillTestTable}" value="Вивести всі записи">
-                        <p:ajax process="formDT" update="dataTable" />
-                    </p:commandButton>
 
-                    <h:dataTable id="dataTable" value="#{testBean.testRows}" var="testRow">
+                    <p:growl id="msgs" showDetail="true"/>
+                    <p:dataTable id="dataTable"
+                                 value="#{testBean.testRows}"
+                                 var="testRow"
+                                 rowIndexVar="indexVar"
+                            editable="true">
+
+                        <p:ajax event="rowEdit" listener="#{testBean.onRowEdit}" update=":formDT:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{testBean.onRowCancel}" update=":formDT:msgs" />
+
+
                         <p:column headerText="Id">
                             <h:outputText value="#{testRow.test.id}" />
                         </p:column>
@@ -59,12 +51,12 @@
                             <h:outputText value="#{testRow.test.duration}" rendered="#{not testRow.editable}" />
                         </p:column>
                         <p:column headerText="Test name">
-
-                            <h:inputText value="#{testRow.test.testName}" rendered="#{testRow.editable}" />
-
-                            <h:outputText value="#{testRow.test.testName}" rendered="#{not testRow.editable}" />
-
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.testName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
                         </p:column>
+
                         <p:column headerText="Category name">
 
                             <h:inputText value="#{testRow.test.categoryName}" rendered="#{testRow.editable}" />
@@ -72,26 +64,21 @@
                             <h:outputText value="#{testRow.test.categoryName}" rendered="#{not testRow.editable}" />
                         </p:column>
                     <p:column>
-                    <h:commandLink value="Edit" action="#{testBean.setTestRowEditable(testRow)}"
-                                   rendered="#{not testRow.editable}" />
+                    </p:column>
                         <p:column>
-                        <h:commandLink value="Delete" action="#{testBean.deleteTest(testRow)}"
-                                       rendered="#{not testRow.editable}" />
+                        <h:commandLink value="Delete"
+                                       action="#{testBean.deleteTest(testRow)}"
+                                       />
                         </p:column>
-                    </p:column>
-                    <p:column>
-                    <h:commandButton value="Save Changes" action="#{testBean.editTest(testRow,
-                    testRow.test.testName, testRow.test.categoryName, testRow.test.duration, testRow.test.deadline )}"/>
-                    </p:column>
-                    </h:dataTable>
+                        <p:column style="width:32px">
+                            <p:rowEditor />
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
 
 
     </ui:define>
 </ui:composition>
-
-</body>
-</html>
 
 
 
