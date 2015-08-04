@@ -44,6 +44,12 @@ public class TestBean {
         return "unsuccessful";
     }
 
+    public String deleteTest(TestRow testRow){
+        if(testService.deleteTest(testRow.getTest()))
+            return "successful";
+        return "unsuccessful";
+    }
+
     public String editTest(TestRow testRow, String testName, String categoryName, int duration, Date deadline){
            if(testService.editTest(testRow, testName, categoryName, duration, deadline))
             return "successful";

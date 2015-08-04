@@ -74,6 +74,10 @@
                     <p:column>
                     <h:commandLink value="Edit" action="#{testBean.setTestRowEditable(testRow)}"
                                    rendered="#{not testRow.editable}" />
+                        <p:column>
+                        <h:commandLink value="Delete" action="#{testBean.deleteTest(testRow)}"
+                                       rendered="#{not testRow.editable}" />
+                        </p:column>
                     </p:column>
                     <p:column>
                     <h:commandButton value="Save Changes" action="#{testBean.editTest(testRow,
