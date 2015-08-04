@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Archiver-Version: Plexus Archiver
-Built-By: c2612
-Created-By: Apache Maven 3.0.5
-Build-Jdk: 1.8.0_45
-Dependencies: org.codehaus.cargo.classpath.mysql-connector-java-5-1-34
-

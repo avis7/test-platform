@@ -15,7 +15,7 @@ import java.util.List;
  * Created by Olexandr on 7/30/2015.
  */
 @SessionScoped
-@ManagedBean (name = "UserProfileBean")
+@ManagedBean (name = "userProfileBean")
 public class UserProfileBean {
     private Collection<Test> tests;
     private Collection<Result> results;
@@ -47,4 +47,9 @@ public class UserProfileBean {
     public void setResults(List<Result> results) {
         this.results = results;
     }
+
+    public long getCurrentId(Test test){
+        return test.getId();
+    }
+
 }

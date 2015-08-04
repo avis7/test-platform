@@ -16,6 +16,7 @@ public class TestDAO extends AbstractDAO<Test> {
         //TODO
         return new Test();
     }
+
     public List<Test> findTestByUserId(int userId) {
         Query query = em.createNamedQuery("getQueryTestByUserId");
         query.setParameter("arg", userId);
