@@ -1,10 +1,8 @@
 package com.bionic.university.beans;
 
-import com.bionic.university.entity.User;
 import com.bionic.university.services.UserService;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
@@ -21,7 +19,6 @@ public class AuthorizationBean {
         boolean success = userService.authorization(email, password);
         return success ? "userProfile?faces-redirect=true&email=" + email : "authorization?success=" + success;
     }
-
 
     public String getEmail() {
         return email;

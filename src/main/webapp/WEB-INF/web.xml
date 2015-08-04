@@ -25,7 +25,7 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>admin</web-resource-name>
+            <web-resource-name>BU Quiz Admin Panel</web-resource-name>
             <url-pattern>/admin/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
@@ -37,7 +37,7 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>mentor</web-resource-name>
+            <web-resource-name>BU Quiz Mentor Mode</web-resource-name>
             <url-pattern>/mentor/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
@@ -49,8 +49,8 @@
 
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>s</web-resource-name>
-            <url-pattern>/s/*</url-pattern>
+            <web-resource-name>BU Quiz Student</web-resource-name>
+            <url-pattern>/student/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
         </web-resource-collection>
@@ -63,7 +63,7 @@
         <auth-method>FORM</auth-method>
         <form-login-config>
             <form-login-page>/authorization.xhtml</form-login-page>
-            <form-error-page>/Unsuccessful.xhtml</form-error-page>
+            <form-error-page>/index.xhtml</form-error-page>
         </form-login-config>
     </login-config>
 

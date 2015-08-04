@@ -15,8 +15,6 @@ public class QuestionService {
     @Inject
     private TestService testService;
 
-
-
     public QuestionDAO getQuestionDAO() {
         return questionDAO;
     }
@@ -25,26 +23,30 @@ public class QuestionService {
         this.questionDAO = questionDAO;
     }
 
-
-
-
     public List<Question> getQuestionsByTestId(String stringTestId){
         int testId = Integer.valueOf(stringTestId);
         return questionDAO.getQuestionsByTestId(testId);
     }
 
+    public boolean addQuestion(String questionText, int mark) {
+        Question question = new Question(questionText, mark, false, false);
+        questionDAO.save(question);
+        return true;
+    }
 
+    public boolean deleteQuestion(long questionId) {
+        Question question = questionDAO.find(questionId);
+        questionDAO.delete(question);
+        return true;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+    public boolean updateQuestion(long questionId, String questionText, int mark, boolean isMultiChoice, boolean isOpen) {
+        Question question = questionDAO.find(questionId);
+        question.setQuestion(questionText);
+        question.setMark(mark);
+        question.setIsOpen(isOpen);
+        question.setIsMultichoise(isMultiChoice);
+        questionDAO.update(question);
+        return true;
+    }
 }
