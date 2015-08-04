@@ -36,59 +36,59 @@
 
                 <h:form id="formDT">
 
-                    <p:commandButton action="#{userTableBean.userView}" value="Вивести всі записи">
+                    <p:commandButton action="#{userTableBean.fillUserTable}" value="Вивести всі записи">
                         <p:ajax process="formDT" update="dataTable" />
                     </p:commandButton>
 
-                    <h:dataTable id="dataTable" value="#{userTableBean.users}" var="user">
+                    <h:dataTable id="dataTable" value="#{userTableBean.userRows}" var="userRow">
                         <p:column headerText="Id">
-                            <h:outputText value="#{user.id}" />
+                            <h:outputText value="#{userRow.user.id}" />
                         </p:column>
                         <p:column headerText="Name">
 
-                            <h:inputText value="#{user.firstName}" rendered="#{userTableBean.editable}" />
+                            <h:inputText value="#{userRow.user.firstName}" rendered="#{userRow.editable}" />
 
-                            <h:outputText value="#{user.firstName}" rendered="#{not userTableBean.editable}" />
+                            <h:outputText value="#{userRow.user.firstName}" rendered="#{not userRow.editable}" />
 
 
                         </p:column>
                         <p:column headerText="surname">
 
-                            <h:inputText value="#{user.lastName}" rendered="#{userTableBean.editable}" />
+                            <h:inputText value="#{userRow.user.lastName}" rendered="#{userRow.editable}" />
 
-                            <h:outputText value="#{user.lastName}" rendered="#{not userTableBean.editable}" />
+                            <h:outputText value="#{userRow.user.lastName}" rendered="#{not userRow.editable}" />
                         </p:column>
                         <p:column headerText="Data">
 
-                            <h:inputText value="#{user.birthday}" rendered="#{userTableBean.editable}" />
+                            <h:inputText value="#{userRow.user.birthday}" rendered="#{userRow.editable}" />
 
-                            <h:outputText value="#{user.birthday}" rendered="#{not userTableBean.editable}" />
+                            <h:outputText value="#{userRow.user.birthday}" rendered="#{not userRow.editable}" />
 
                         </p:column>
                         <p:column headerText="Email">
 
-                            <h:inputText value="#{user.email}" rendered="#{userTableBean.editable}" />
+                            <h:inputText value="#{userRow.user.email}" rendered="#{userRow.editable}" />
 
-                            <h:outputText value="#{user.email}" rendered="#{not userTableBean.editable}" />
+                            <h:outputText value="#{userRow.user.email}" rendered="#{not userRow.editable}" />
                         </p:column>
                         <p:column headerText="Phone">
 
-                            <h:inputText value="#{user.phone}" rendered="#{userTableBean.editable}" />
+                            <h:inputText value="#{userRow.user.phone}" rendered="#{userRow.editable}" />
 
-                            <h:outputText value="#{user.phone}" rendered="#{not userTableBean.editable}" />
+                            <h:outputText value="#{userRow.user.phone}" rendered="#{not userRow.editable}" />
                         </p:column>
                         <p:column headerText="Role">
-                            <h:outputText value="#{user.role.name}" />
+                            <h:outputText value="#{userRow.user.role.name}" />
                         </p:column>
                         <p:column headerText="Test">
-                            <h:outputText value="#{user.tests}" />
+                            <h:outputText value="#{userRow.user.tests}" />
                         </p:column>
                     <p:column>
-                    <h:commandLink value="Edit" action="#{userTableBean.editAction(user)}"
-                                   rendered="#{not user.editable}" />
+                    <h:commandLink value="Edit" action="#{userTableBean.setUserRowEditable(userRow)}"
+                                   rendered="#{not userRow.editable}" />
                     </p:column>
                     <p:column>
-                    <h:commandButton value="Save Changes" action="#{userTableBean.saveAction}" />
+                    <h:commandButton value="Save Changes" action="#{userTableBean.saveAction(userRow)}" />
                     </p:column>
                     </h:dataTable>
                 </h:form>

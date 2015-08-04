@@ -24,7 +24,4 @@ public class UserDAO extends AbstractDAO<User> {
         query.setParameter("login", email);
         return (User) query.getSingleResult();
     }
-
-
-
 }

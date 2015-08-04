@@ -84,7 +84,8 @@ public abstract class AbstractDAO<T> {
     public List<T> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        return em.createQuery(cq).getResultList();
+        List<T> resultList = em.createQuery(cq).getResultList();
+        return resultList;
     }
 
     @Deprecated

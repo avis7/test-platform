@@ -3,6 +3,7 @@ package com.bionic.university.jsf;
 
 import com.bionic.university.dao.UserDAO;
 import com.bionic.university.entity.User;
+import com.bionic.university.model.UserRow;
 import com.bionic.university.services.UserTableService;
 
 import javax.faces.bean.ManagedBean;
@@ -18,49 +19,66 @@ import java.util.List;
 @ManagedBean (name = "userTableBean", eager = true)
 public class UserTableBean {
 
-    private long oldName;
-    boolean editable;
-    List<User> users = new ArrayList<User>();
+    // boolean editable;
+    // List<User> users = new ArrayList<User>();
+
+     List<UserRow> userRows = new ArrayList<UserRow>();
 
     @Inject
     UserTableService userTableService;
     @Inject
     UserDAO userDAO;
 
-
-    public List<User> getUsers() {
-        return users;
+    public void fillUserTable() {
+        userRows.clear();
+        List<User> userList = userDAO.findAll();
+        for (int i = 0; i < userList.size(); i++) {
+            userRows.add(i, new UserRow(userList.get(i), false));
+        }
     }
 
-    public void userView(){
-        users.clear();
-        users = userTableService.getUserFromDB();
-    }
-    public boolean isEditable(){
-        return editable;
+    public void setUserRowEditable(UserRow userRow) {
+        userRow.setIsEditable(true);
     }
 
-    public void setEditable (boolean editable){
-        this.editable=editable;
+    public void updateUserRowValue(int id) {
+
     }
 
-    public String editAction(User user) {
-        setEditable(true);
-        oldName=user.getId();
+    public List<UserRow> getUserRows() {
+        return userRows;
+    }
+
+    //    public List<User> getUsers() {
+//        return users;
+//    }
+
+
+
+//    public void userView(){
+//        users.clear();
+//        users = userTableService.getUserFromDB();
+//    }
+//
+//    public boolean isEditable() {
+//        return editable;
+//    }
+//
+//    public void setEditable(boolean editable) {
+//        this.editable = editable;
+//    }
+//
+//    public String editAction(UserRow userRow) {
+//       setEditable (true);
+//        oldId =user.getId();
+//        return null;
+//    }
+
+
+    public String saveAction(UserRow userRow) {
+        System.out.println("I AM HERE -----------------------------------------------");
+        userRow.getUser().setFirstName("lalka");
+        userRow.setIsEditable(false);
         return null;
-    }
-
-    public long getOldName() {
-        return oldName;
-    }
-
-    public String saveAction() {
-User user = userDAO.find(oldName);
-        user.setFirstName("lalka");
-        userDAO.update(user);
-        setEditable(false);
-
-        return null;
-
     }
 }
