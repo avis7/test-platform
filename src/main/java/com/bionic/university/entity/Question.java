@@ -111,7 +111,6 @@ public class Question {
                 ", isOpen=" + isOpen +
                 ", isMultichoise=" + isMultichoise +
                 ", test=" + test +
-                ", answers=" + answers +
                 '}';
     }
 }

@@ -65,7 +65,6 @@ public class Answer {
                 "id=" + id +
                 ", answerText='" + answerText + '\'' +
                 ", isCorrect=" + isCorrect +
-                ", question=" + question +
                 '}';
     }
 }

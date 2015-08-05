@@ -5,7 +5,11 @@ import com.bionic.university.entity.Question;
 import com.bionic.university.services.QuestionService;
 import com.bionic.university.services.UserAnswerService;
 import org.hibernate.Session;
+import org.primefaces.event.TabChangeEvent;
+import org.primefaces.event.TabCloseEvent;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
@@ -17,11 +21,26 @@ import java.util.Set;
 /**
  * Created by Olexandr on 7/30/2015.
  */
-@RequestScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@SessionScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class TestBean {
     private List<Question> questions;
     private Question currentQuestion;
+
+
+
+
+    private Answer answer;
+
+    public Answer getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
+    }
+
+
 
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
@@ -42,12 +61,13 @@ public class TestBean {
     }
 
     public Question getCurrentQuestion() {
+        if (currentQuestion == null){
+            currentQuestion = questions.get(0);
+        }
         return currentQuestion;
     }
 
     public List<Question> getQuestions() {
-        questions = questionService.getQuestionsByTestId(testId);
-        currentQuestion = questions.get(0);
         return questions;
     }
 
@@ -63,7 +83,10 @@ public class TestBean {
         this.testId = testId;
     }
 
-    public void addUserAnswer(Answer answer){
+    public void addUserAnswer(){
+        if (answer == null){
+            return;
+        }
         userAnswerService.addUserAnswer(answer);
     }
 
@@ -74,4 +97,11 @@ public class TestBean {
     public void addUserAnswer(List<Answer> answers){
         userAnswerService.addUserAnswer(answers);
     }
+
+    @PostConstruct
+    public void init(){
+        questions = questionService.getQuestionsByTestId(testId);
+    }
+
+
 }

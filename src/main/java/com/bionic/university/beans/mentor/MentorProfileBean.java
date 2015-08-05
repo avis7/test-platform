@@ -1,6 +1,6 @@
 package com.bionic.university.beans.mentor;
 
-import com.bionic.university.Test;
+import com.bionic.university.entity.Test;
 
 import java.util.List;
 

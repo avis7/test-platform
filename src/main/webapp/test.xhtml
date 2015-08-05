@@ -1,45 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-<head>
-    <title>Profile</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/nav.js"></script>
-</head>
+<h:head>
+    <title></title>
+</h:head>
+<h:body>
 
+    <h:form id="form">
 
-<body class="verstka">
-<ui:composition template="template.xhtml">
+        <h3>DataModel</h3>
+        <p:tabView value="#{testBean.questions}" var="question">
+            <p:ajax event="tabChange" listener="#{testBean.addUserAnswer}"/>
+            <p:tab title="#{testBean.questions.indexOf(question) + 1}">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="#{question.question}:"/>
+                    <p:selectOneRadio id="answer" value="#{testBean.answer}" layout="grid" columns="3">
+                        <p:ajax event="change" process="@this" />
+                        <f:selectItems value="#{question.answers}" var="ans"
+                                       itemLabel="#{ans.answerText}" itemValue="#{ans}"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+        <p:commandButton value="Submit">
+            <p:ajax listener="#{testBean.submit}"/>
+        </p:commandButton>
+    </h:form>
 
-    <ui:define name="container">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6"><h3>Good luck !</h3></div>
-                    <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
-                </div>
-            </div>
-        </div><!-- РЕЄСТРАЦІЯ -->
-    </ui:define>
-
-
-    <ui:define name="body">
-        <p:dataList id="questions" value="#{testBean.questions}" var="question">
-            <h:outputText value="#{question.question}"/>
-            <p:dataList id="answers" value="#{question.answers}" var="answer">
-                <h:outputText value="#{answer.answerText}"/>
-            </p:dataList>
-        </p:dataList>
-    </ui:define>
-</ui:composition>
-</body>
+</h:body>
 </html>
