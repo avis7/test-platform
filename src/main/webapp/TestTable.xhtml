@@ -7,7 +7,7 @@
     <ui:define name="container">
         <div class="content">
             <div class="container">
-                <div class="col-xs-6"><h3>Редагувати записи тестова сторінка</h3></div>
+                <div class="col-xs-6"><h3>Профіль</h3></div>
                 <div class="col-xs-6 text-right back">
                     <a href="index.xhtml" class="back">Назад</a>
                 </div>
@@ -17,11 +17,7 @@
 
 
     <ui:define name="body">
-
-
                 <h:form id="formDT">
-
-
                     <p:growl id="msgs" showDetail="true"/>
                     <p:dataTable id="dataTable"
                                  value="#{testBean.testRows}"
@@ -70,6 +66,12 @@
                                        action="#{testBean.deleteTest(testRow)}"
                                        />
                         </p:column>
+                        <p:column>
+                            <h:commandLink value="EXPORT"
+                                           action="#{testBean.exportTestResults(testRow)}"
+                                    />
+                        </p:column>
+
                         <p:column style="width:32px">
                             <p:rowEditor />
                         </p:column>

@@ -1,25 +1,20 @@
 package com.bionic.university.beans.student;
 
-import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.model.TestRow;
 import com.bionic.university.services.QuestionService;
 import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserAnswerService;
-import org.hibernate.Session;
+import org.primefaces.event.RowEditEvent;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
-import org.primefaces.event.RowEditEvent;
 
 /**
  * Created by Olexandr on 7/30/2015.
@@ -99,7 +94,6 @@ public class TestBean {
         return "unsuccessful";
     }
 
-
     public String deleteTest(TestRow testRow){
         if(testService.deleteTest(testRow))
             return "successful";
@@ -116,4 +110,11 @@ public class TestBean {
             return "successful";
         return "unsuccessful";
     }
+
+    public String exportTestResults(TestRow testRow){
+//          testId = "2";
+//        String testName = "Java";
+        return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
+    }
+
 }
