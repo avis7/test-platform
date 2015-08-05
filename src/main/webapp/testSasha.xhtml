@@ -21,7 +21,7 @@
             <p:tab title="#{testTabs.tabs.indexOf(question) + 1}">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="#{question.question}:"/>
-                    <p:selectOneRadio id="answer" value="#{testTabs.answer}" layout="grid" columns="3">
+                    <p:selectOneRadio id="answer" value="#{question.answer}" layout="grid" columns="3">
                         <p:ajax event="change" process="@form" />
                         <f:selectItems value="#{question.answers}" var="ans"
                                        itemLabel="#{ans}" itemValue="#{ans}"/>

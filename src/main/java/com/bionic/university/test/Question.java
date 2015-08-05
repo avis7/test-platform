@@ -10,7 +10,7 @@ public class Question {
 
     private String question;
     private List<String> answers;
-
+   private String answer;
     public Question(final String question, final List<String> answers) {
         this.question = question;
         this.answers = answers;
@@ -30,5 +30,13 @@ public class Question {
 
     public void setAnswers(final List<String> answers) {
         this.answers = answers;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(final String answer) {
+        this.answer = answer;
     }
 }

@@ -18,7 +18,6 @@ public class TestTabs {
 
     private List<Question> tabs;
 
-    private String answer;
 
     @PostConstruct
     public void init(){
@@ -44,13 +43,6 @@ public class TestTabs {
         System.out.println("doStuff");
     }
 
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(final String answer) {
-        this.answer = answer;
-    }
 
     public void submit(ActionEvent actionEvent) {
         System.out.println("submit");
