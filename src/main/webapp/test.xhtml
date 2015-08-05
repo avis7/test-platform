@@ -22,7 +22,7 @@
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel value="#{question.question}:"/>
                     <p:selectOneRadio id="answer" value="#{testBean.answer}" layout="grid" columns="3">
-                        <p:ajax event="change" process="@this" />
+                        <p:ajax event="change" process="@form" />
                         <f:selectItems value="#{question.answers}" var="ans"
                                        itemLabel="#{ans.answerText}" itemValue="#{ans}"/>
                     </p:selectOneRadio>
