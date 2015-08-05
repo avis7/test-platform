@@ -1,5 +1,6 @@
 package com.bionic.university.jsf;
 
+import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 import com.bionic.university.services.TestService;
@@ -21,8 +22,12 @@ public class TestBean {
 
     @Inject
     TestService testService;
+    @Inject
+    TestDAO testDAO;
 
     List<TestRow> testRows;
+
+    long id;
 
     public List<TestRow> getTestRows() {
         return testRows;
@@ -56,9 +61,10 @@ public class TestBean {
         return "";
     }
     public void onRowEdit(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Car Edited",
+        FacesMessage msg = new FacesMessage("Test Edited",
                 ((TestRow) event.getObject()).getTest().getTestName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
+        testDAO.update((((TestRow) event.getObject()).getTest()));
     }
 
     public void onRowCancel(RowEditEvent event) {

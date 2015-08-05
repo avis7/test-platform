@@ -20,11 +20,11 @@ public class Test {
     @Column(name = "category_name", nullable = false)
     private String categoryName;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tests",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     Collection<Result> results;
-    @OneToMany(mappedBy = "test",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
     private Collection<Question> questions;
 
     public Test() {

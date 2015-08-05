@@ -37,18 +37,20 @@
                             <h:outputText value="#{testRow.test.id}" />
                         </p:column>
                         <p:column headerText="Deadline">
-
-                            <h:inputText value="#{testRow.test.deadline}" rendered="#{testRow.editable}" />
-
-                            <h:outputText value="#{testRow.test.deadline}" rendered="#{not testRow.editable}" />
-
-
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{testRow.test.deadline}" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </h:outputText></f:facet>
+                                    <f:facet name="input"><p:inputText id="deadlineInput" value="#{testRow.test.deadline}" style="width:100%">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </p:inputText></f:facet>
+                                </p:cellEditor>
                         </p:column>
                         <p:column headerText="Duration">
-
-                            <h:inputText value="#{testRow.test.duration}" rendered="#{testRow.editable}" />
-
-                            <h:outputText value="#{testRow.test.duration}" rendered="#{not testRow.editable}" />
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.duration}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="durationInput" value="#{testRow.test.duration}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
                         </p:column>
                         <p:column headerText="Test name">
                             <p:cellEditor>
@@ -58,13 +60,11 @@
                         </p:column>
 
                         <p:column headerText="Category name">
-
-                            <h:inputText value="#{testRow.test.categoryName}" rendered="#{testRow.editable}" />
-
-                            <h:outputText value="#{testRow.test.categoryName}" rendered="#{not testRow.editable}" />
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.categoryName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
                         </p:column>
-                    <p:column>
-                    </p:column>
                         <p:column>
                         <h:commandLink value="Delete"
                                        action="#{testBean.deleteTest(testRow)}"
