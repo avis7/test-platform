@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title></title>
+</h:head>
+<h:body>
+
+    <h:form id="form">
+
+        <h3>DataModel</h3>
+        <p:tabView value="#{testTabs.tabs}" var="question">
+            <p:ajax event="tabChange" listener="#{testTabs.doStuff}"/>
+            <p:tab title="#{testTabs.tabs.indexOf(question) + 1}">
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel value="#{question.question}:"/>
+                    <p:selectOneRadio id="answer" value="#{testTabs.answer}" layout="grid" columns="3">
+                        <p:ajax event="change" process="@form" />
+                        <f:selectItems value="#{question.answers}" var="ans"
+                                       itemLabel="#{ans}" itemValue="#{ans}"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+        <p:commandButton value="Submit" actionListener="#{testTabs.submit}"
+                ajax="false"/>
+
+    </h:form>
+
+</h:body>
+</html>
