@@ -1,9 +1,8 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Collection;
-
+import java.util.Date;
 
 
 @Entity
@@ -51,7 +50,7 @@ public class User {
         this.phone = phone;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

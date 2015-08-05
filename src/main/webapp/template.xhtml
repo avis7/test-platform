@@ -6,9 +6,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:p="http://primefaces.org/ui">
+
 
 <h:head>
     <title>Registrarion Demo</title>
@@ -39,13 +40,23 @@
                 <ul class="menu">
                     <li><a href="index.xhtml">ПРО НАС</a></li>
                     <li><a href="index.xhtml">КОНТАКТИ</a></li>
-                    <li class="enter-but"><a href="index.xhtml">УВІЙТИ</a></li>
+                    <li class="enter-but">
+                        <h:form>
+                            <h:commandLink
+                                    value="ВИЙТИ"
+                                    action="#{userBB.logout}"/>
+                        </h:form>
+                    </li>
                 </ul>
             </div><!-- меню -->
         </div>
     </div><!-- шапка -->
 </div>
 <!-- /header -->
+
+
+
+
 
 <!-- content -->
 <div id="ajax-wrap">
@@ -68,6 +79,15 @@
     </div>
 </div>
 <!-- /content -->
+
+
+
+
+
+
+
+
+
 
 <!-- footer -->
 <div class="footer">

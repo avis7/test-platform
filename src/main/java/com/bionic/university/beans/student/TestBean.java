@@ -1,0 +1,119 @@
+package com.bionic.university.beans.student;
+
+import com.bionic.university.dao.TestDAO;
+import com.bionic.university.entity.Answer;
+import com.bionic.university.entity.Question;
+import com.bionic.university.model.TestRow;
+import com.bionic.university.services.QuestionService;
+import com.bionic.university.services.TestService;
+import com.bionic.university.services.UserAnswerService;
+import org.hibernate.Session;
+
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
+import org.primefaces.event.RowEditEvent;
+
+/**
+ * Created by Olexandr on 7/30/2015.
+ */
+@RequestScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@ManagedBean
+public class TestBean {
+    private List<Question> questions;
+    private Question currentQuestion;
+
+
+    private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
+    private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
+
+    @Inject
+    private QuestionService questionService;
+    @Inject
+    private UserAnswerService userAnswerService;
+    @Inject
+    TestService testService;
+
+    public String submit(){
+        boolean success = userAnswerService.save(email, testId);
+        return success ? "feedback?testId=" + testId + "&email=" +email : "error.xhtml";
+    }
+
+    public void setCurrentQuestion(Question question){
+        currentQuestion = question;
+    }
+
+    public Question getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public List<Question> getQuestions() {
+        questions = questionService.getQuestionsByTestId(testId);
+        currentQuestion = questions.get(0);
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public String getTestId() {
+        return testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId;
+    }
+
+    public void addUserAnswer(Answer answer){
+        userAnswerService.addUserAnswer(answer);
+    }
+
+    public void addUserAnswer(Answer answer, String ownAnswer){
+        userAnswerService.addUserAnswer(answer, ownAnswer);
+    }
+
+    public void addUserAnswer(List<Answer> answers){
+        userAnswerService.addUserAnswer(answers);
+    }
+
+    public List<TestRow> getTestRows() {
+        return testService.getTestRows();
+    }
+
+    @PostConstruct
+    public void fillTestTable(){
+        testService.fillTestTable();
+    }
+
+    public String addTest(String testName, int duration, Date deadline, String categoryName){
+        if (testService.addTest(testName, duration, deadline, categoryName))
+            return "successful";
+        return "unsuccessful";
+    }
+
+
+    public String deleteTest(TestRow testRow){
+        if(testService.deleteTest(testRow))
+            return "successful";
+        return "unsuccessful";
+    }
+    public String onRowEdit(RowEditEvent event) {
+        if(testService.onRowEdit(event))
+            return "successful";
+        return "unsuccessful";
+    }
+
+    public String onRowCancel(RowEditEvent event) {
+        if(testService.onRowCancel(event))
+            return "successful";
+        return "unsuccessful";
+    }
+}

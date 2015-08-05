@@ -4,10 +4,13 @@ import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.primefaces.event.RowEditEvent;
 
 /**
  * Created by c266 on 28.07.2015.
@@ -37,9 +40,11 @@ public class TestService {
     }
 
 
-    public boolean deleteTest(Test test){
+    public boolean deleteTest(TestRow testRow){
         try {
-            testDAO.delete(test);
+            testDAO.delete(testRow.getTest());
+            fillTestTable();
+            testRows = getTestRows();
             return true;
         }catch (Exception e){
            e.printStackTrace();
@@ -47,7 +52,7 @@ public class TestService {
         return false;
     }
 
-    public boolean editTest(TestRow testRow, String testName,String categoryName, int duration, Date deadline){
+/*    public boolean editTest(TestRow testRow, String testName,String categoryName, int duration, Date deadline){
         try{
             testRow.setEditable(false);
             testRow.getTest().setCategoryName(categoryName);
@@ -60,7 +65,7 @@ public class TestService {
             e.printStackTrace();
         }
         return false;
-    }
+    }*/
 
     public boolean fillTestTable(){
         try{
@@ -76,8 +81,29 @@ public class TestService {
         return false;
     }
 
-    public void setTestRowEditable(TestRow testRow){
-        testRow.setEditable(true);
+    public boolean onRowEdit(RowEditEvent event) {
+        try {
+            FacesMessage msg = new FacesMessage("Test Edited",
+                    ((TestRow) event.getObject()).getTest().getTestName());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            testDAO.update((((TestRow) event.getObject()).getTest()));
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean onRowCancel(RowEditEvent event) {
+        try {
+            FacesMessage msg = new FacesMessage("Edit Cancelled",
+                    ((TestRow) event.getObject()).getTest().getTestName());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public List<TestRow> getTestRows() {

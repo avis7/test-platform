@@ -11,17 +11,19 @@ import java.util.List;
 @TxInterceptorBinding
 public abstract class AbstractDAO<T> {
 //
-  //  private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.bionic.quiz");
+    //  private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.bionic.quiz");
 
     @PersistenceContext
     protected EntityManager em;
 
     private Class<T> entityClass;
-//
+
+    //
     public AbstractDAO(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
-//
+
+    //
 ////    public void beginTransaction() {
 ////        em = emf.createEntityManager();
 ////        em.getTransaction().begin();
@@ -75,7 +77,7 @@ public abstract class AbstractDAO<T> {
         return em.find(entityClass, entityID);
     }
 
-//
+    //
 //    public T findReferenceOnly(int entityID) {
 //        return em.getReference(entityClass, entityID);
 //    }
@@ -84,19 +86,16 @@ public abstract class AbstractDAO<T> {
     public List<T> findAll() {
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
-        List<T> resultList = em.createQuery(cq).getResultList();
-        return resultList;
+        return em.createQuery(cq).getResultList();
     }
 
     @Deprecated
     //Insert condition (Exampe table.id = 0, table.id > 1 and tabble.id < 10 .....)
     public List<T> findByTableWhere(String condition) {
-        String JPQL = "from "+ entityClass.getSimpleName() + " table where " + condition;
+        String JPQL = "from " + entityClass.getSimpleName() + " table where " + condition;
         Query query = em.createQuery(JPQL);
         return query.getResultList();
     }
-
-
 //
 //    @SuppressWarnings("unchecked")
 //    protected T findOneResult(String namedQuery, Map<String, Object> parameters) {

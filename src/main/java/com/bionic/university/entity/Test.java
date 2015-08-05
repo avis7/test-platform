@@ -11,7 +11,7 @@ public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "test_name", nullable = false)
+    @Column(name = "test_name", nullable = false, unique = true)
     private String testName;
     @Column(name = "duration", nullable = false)
     private int duration;

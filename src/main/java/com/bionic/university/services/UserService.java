@@ -10,8 +10,6 @@ public class UserService {
 
     @Inject
     UserDAO userDAO;
-    @Inject
-    TestService testService;
 
     public boolean authorization(String email, String password) {
         User user = userDAO.findUserByEmail(email);
@@ -21,17 +19,8 @@ public class UserService {
         return user.getPassword().equals(password);
     }
 
-    public UserDAO getUserDAO() {
-        return userDAO;
-    }
-
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
-
-    public User getUserByEmail(String email) {
+    public User findUserByEmail(String email){
         return userDAO.findUserByEmail(email);
     }
-
 
 }
