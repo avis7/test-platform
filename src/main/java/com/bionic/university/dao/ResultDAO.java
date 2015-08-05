@@ -4,6 +4,7 @@ import com.bionic.university.entity.Result;
 import com.bionic.university.interceptor.TxInterceptorBinding;
 
 import javax.persistence.Query;
+import java.util.Collection;
 
 @TxInterceptorBinding
 public class ResultDAO extends AbstractDAO<Result> {
@@ -16,5 +17,11 @@ public class ResultDAO extends AbstractDAO<Result> {
         query.setParameter("user", userId);
         query.setParameter("test", testId);
         return (Result) query.getSingleResult();
+    }
+
+    public Collection<Result> findResultByTestId(int testId) {
+        Query query = em.createNamedQuery("findResultByTestId");
+        query.setParameter("test", testId);
+        return query.getResultList();
     }
 }
