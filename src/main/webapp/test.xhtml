@@ -16,22 +16,28 @@
     <h:form id="form">
 
         <h3>DataModel</h3>
-        <p:tabView value="#{testBean.questions}" var="question">
+        <p:tabView value="#{testBean.tabs}" var="tab">
             <p:ajax event="tabChange" listener="#{testBean.addUserAnswer}"/>
-            <p:tab title="#{testBean.questions.indexOf(question) + 1}">
-                <h:panelGrid columns="2" cellpadding="5">
-                    <p:outputLabel value="#{question.question}:"/>
-                    <p:selectOneRadio id="answer" value="#{testBean.answer}" layout="grid" columns="3">
+            <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
+                <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="2" cellpadding="5">
+                    <p:outputLabel value="#{tab.question.question}:"/>
+                    <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="3">
                         <p:ajax event="change" process="@form" />
-                        <f:selectItems value="#{question.answers}" var="ans"
+                        <f:selectItems value="#{tab.question.answers}" var="ans"
+                                       itemLabel="#{ans.answerText}" itemValue="#{ans}"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+                <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="2" cellpadding="5">
+                    <p:outputLabel value="#{tab.question.question}:"/>
+                    <p:selectOneRadio id="manyAnswer" value="#{tab.answer}" layout="grid" columns="3">
+                        <p:ajax event="change" process="@form" />
+                        <f:selectItems value="#{tab.question.answers}" var="ans"
                                        itemLabel="#{ans.answerText}" itemValue="#{ans}"/>
                     </p:selectOneRadio>
                 </h:panelGrid>
             </p:tab>
         </p:tabView>
-        <p:commandButton value="Submit">
-            <p:ajax listener="#{testBean.submit}"/>
-        </p:commandButton>
+        <p:commandButton value="Submit" actionListener="#{testBean.submit}" ajax="false"/>
     </h:form>
 
 </h:body>

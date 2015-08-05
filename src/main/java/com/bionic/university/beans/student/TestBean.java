@@ -15,8 +15,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,27 +28,23 @@ import java.util.Set;
 @SessionScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class TestBean {
+    private List<Tab> tabs;
     private List<Question> questions;
     private Question currentQuestion;
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
 
-    private Answer answer;
+
 
 
     @PostConstruct
     public void init() {
         questions = questionService.getQuestionsByTestId(testId);
-    }
-
-
-    public Answer getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+        tabs = new ArrayList<Tab>();
+        for (Question question : questions){
+            tabs.add(new Tab(question));
+        }
     }
 
 
@@ -55,7 +53,7 @@ public class TestBean {
     @Inject
     private UserAnswerService userAnswerService;
 
-    public String submit() {
+    public String submit(ActionEvent actionEvent) {
         boolean success = userAnswerService.save(email, testId);
         return success ? "feedback?testId=" + testId + "&email=" + email : "error.xhtml";
     }
@@ -87,11 +85,19 @@ public class TestBean {
         this.testId = testId;
     }
 
+    public List<Tab> getTabs() {
+        return tabs;
+    }
+
+    public void setTabs(List<Tab> tabs) {
+        this.tabs = tabs;
+    }
+
     public void addUserAnswer() {
-        if (answer == null) {
+        //if (answer == null) {
             return;
-        }
-        userAnswerService.addUserAnswer(answer);
+        //}
+       // userAnswerService.addUserAnswer(answer);
     }
 
     public void addUserAnswer(Answer answer, String ownAnswer) {
@@ -100,6 +106,31 @@ public class TestBean {
 
     public void addUserAnswer(List<Answer> answers) {
         userAnswerService.addUserAnswer(answers);
+    }
+
+    public class Tab{
+        private Question question;
+        private Answer answer;
+
+        public Tab(Question question) {
+            this.question = question;
+        }
+
+        public Question getQuestion() {
+            return question;
+        }
+
+        public void setQuestion(Question question) {
+            this.question = question;
+        }
+
+        public Answer getAnswer() {
+            return answer;
+        }
+
+        public void setAnswer(Answer answer) {
+            this.answer = answer;
+        }
     }
 
 

@@ -38,7 +38,7 @@ public class UserProfileBean {
 
 
     public String startTest(Test test) {
-        return "test?faces-redirect=true&testId=" + test.getId() + "&email=" + email;
+        return "testSasha?faces-redirect=true&testId=" + test.getId() + "&email=" + email;
     }
 
 
