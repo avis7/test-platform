@@ -34,9 +34,18 @@ public class TestBean {
     TestService testService;
 
     private Date deadline;
-    private int duration;
+    private Integer duration;
     private String testName;
     private String categoryName;
+
+    public boolean isVisible() {
+        return testService.getVisible();
+    }
+
+    public String setVisible() {
+        testService.setVisible(true);
+        return "mentorProfile.xhtml?faces-redirect=true";
+    }
 
     public Date getDeadline() {
         return deadline;
@@ -46,11 +55,11 @@ public class TestBean {
         this.deadline = deadline;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 

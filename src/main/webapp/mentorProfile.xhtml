@@ -88,6 +88,9 @@
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
+                    <!--asddddddddddddddddddddddddddddddddddddddddddd-->
+                    </h:form>
+                    <h:form id="panel" rendered="#{testBean.visible}">
                     <table>
                         <tr>
                             <td>Test deadline :</td>
@@ -108,9 +111,11 @@
                             <td><p:inputText size="10" value="#{testBean.categoryName}" /></td>
                         </tr>
                     </table>
-                    <p:commandButton value="Add test" action="#{testBean.addTest}" />
                     <p:commandButton value="Save test" action="#{testBean.addTest}" />
-                </h:form>
+                    </h:form>
+            <p:commandButton value="Add test" actionListener="#{testBean.setVisible}">
+                <p:ajax update="panel"/>
+            </p:commandButton>
                 </div>
                 </div>
             </div>
