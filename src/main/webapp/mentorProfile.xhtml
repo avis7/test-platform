@@ -81,7 +81,6 @@
 
                         <p:column>
                             <h:commandLink value="Пройти тест"
-
                                     />
                         </p:column>
 
@@ -89,6 +88,27 @@
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
+                    <table>
+                        <tr>
+                            <td>Test deadline :</td>
+                            <td><p:inputText size="10" value="#{testBean.deadline}">
+                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                            </p:inputText></td>
+                        </tr>
+                        <tr>
+                            <td>Test duration :</td>
+                            <td><p:inputText size="20" value="#{testBean.duration}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Test name :</td>
+                            <td><p:inputText size="5" value="#{testBean.testName}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Test category:</td>
+                            <td><p:inputText size="10" value="#{testBean.categoryName}" /></td>
+                        </tr>
+                    </table>
+                    <p:commandButton value="Save test" action="#{testBean.addTest}" />
                 </h:form>
                 </div>
                 </div>

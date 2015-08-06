@@ -16,9 +16,6 @@ import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Olexandr on 7/30/2015.
- */
 @RequestScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class TestBean {
@@ -35,6 +32,43 @@ public class TestBean {
     private UserAnswerService userAnswerService;
     @Inject
     TestService testService;
+
+    private Date deadline;
+    private int duration;
+    private String testName;
+    private String categoryName;
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public String submit(){
         boolean success = userAnswerService.save(email, testId);
@@ -88,7 +122,7 @@ public class TestBean {
         testService.fillTestTable();
     }
 
-    public String addTest(String testName, int duration, Date deadline, String categoryName){
+    public String addTest(){
         if (testService.addTest(testName, duration, deadline, categoryName))
             return "successful";
         return "unsuccessful";

@@ -26,6 +26,8 @@ public class TestService {
         try {
             Test test = new Test(testName, duration, deadline,categoryName);
             testDAO.save(test);
+            FacesMessage msg = new FacesMessage("Test added");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
             return true;
         }catch (Exception e){
         return false;        }
