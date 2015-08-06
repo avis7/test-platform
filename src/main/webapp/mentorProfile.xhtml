@@ -88,34 +88,33 @@
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
-                    <!--asddddddddddddddddddddddddddddddddddddddddddd-->
                     </h:form>
-                    <h:form id="panel" rendered="#{testBean.visible}">
-                    <table>
-                        <tr>
-                            <td>Test deadline :</td>
-                            <td><p:inputText size="10" value="#{testBean.deadline}">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </p:inputText></td>
-                        </tr>
-                        <tr>
-                            <td>Test duration :</td>
-                            <td><p:inputText size="20" value="#{testBean.duration}" /></td>
-                        </tr>
-                        <tr>
-                            <td>Test name :</td>
-                            <td><p:inputText size="5" value="#{testBean.testName}" /></td>
-                        </tr>
-                        <tr>
-                            <td>Test category:</td>
-                            <td><p:inputText size="10" value="#{testBean.categoryName}" /></td>
-                        </tr>
-                    </table>
-                    <p:commandButton value="Save test" action="#{testBean.addTest}" />
+                    <h:form id="panel">
+                        <h:panelGroup layout="block" id="panelLayout">
+                            <table>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test deadline :</p:outputLabel></td>
+                                    <td><p:inputText size="10" value="#{testBean.deadline}" rendered="#{testBean.visible}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </p:inputText></td>
+                                </tr>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test duration :</p:outputLabel></td>
+                                    <td><p:inputText size="20" value="#{testBean.duration}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test name :</p:outputLabel></td>
+                                    <td><p:inputText size="5" value="#{testBean.testName}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                                <tr>
+                                    <td ><p:outputLabel rendered="#{testBean.visible}">Test category:</p:outputLabel></td>
+                                    <td><p:inputText size="10" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                            </table>
+                            <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" />
+                        </h:panelGroup>
+                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"/>
                     </h:form>
-            <p:commandButton value="Add test" actionListener="#{testBean.setVisible}">
-                <p:ajax update="panel"/>
-            </p:commandButton>
                 </div>
                 </div>
             </div>

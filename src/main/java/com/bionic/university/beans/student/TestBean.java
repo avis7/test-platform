@@ -42,9 +42,8 @@ public class TestBean {
         return testService.getVisible();
     }
 
-    public String setVisible() {
+    public void setVisible() {
         testService.setVisible(true);
-        return "mentorProfile.xhtml?faces-redirect=true";
     }
 
     public Date getDeadline() {
