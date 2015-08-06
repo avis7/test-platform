@@ -19,17 +19,33 @@ public class AuthorizationBean {
 
     public String authorization() {
         boolean success = userService.authorization(email, password);
+        StringBuilder resultLink = new StringBuilder();
 
         String roleName = getCurrentUser().getRole().getName();
+
+        //        if (roleName.equals("admin") && success) {
+//            return "admin";
+//        } else if (roleName.equals("mentor") && success) {
+//            return "mentor";
+//        } else if (roleName.equals("student") && success) {
+//            return "student";
+//        } else {
+//            return "index.html";
+//        }
+
         if (roleName.equals("admin") && success) {
-            return "admin/adminpage?faces-redirec=true&email" + email;
+            resultLink.append("adminProfile"); // doesn't exist yet
         } else if (roleName.equals("mentor") && success) {
-            return "mentor/mentorpage?faces-redirect=true&email" + email;
+            resultLink.append("mentorProfile");
         } else if (roleName.equals("student") && success) {
-            return "userProfile?faces-redirect=true&email=" + email;
+            resultLink.append("userProfile");
         } else {
-            return "index.html";
+            resultLink.append("index.html");
         }
+
+        resultLink.append("?faces-redirect=true&email=").append(email);
+
+        return resultLink.toString();
     }
 
     public User getCurrentUser() {

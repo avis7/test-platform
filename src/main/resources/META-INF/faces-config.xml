@@ -8,14 +8,14 @@
     <!--<navigation-rule>-->
         <!--<navigation-case>-->
             <!--<from-outcome>admin</from-outcome>-->
-            <!--<to-view-id>admin/adminpage.xhtml</to-view-id>-->
+            <!--<to-view-id>mentorProfile.xhtml</to-view-id>-->
         <!--</navigation-case>-->
     <!--</navigation-rule>-->
 
     <!--<navigation-rule>-->
         <!--<navigation-case>-->
             <!--<from-outcome>mentor</from-outcome>-->
-            <!--<to-view-id>mentor/mentorpage.xhtml</to-view-id>-->
+            <!--<to-view-id>mentorProfile.xhtml</to-view-id>-->
         <!--</navigation-case>-->
     <!--</navigation-rule>-->
 

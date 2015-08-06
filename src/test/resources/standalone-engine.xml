@@ -346,7 +346,7 @@
                         <login-module code="Database" flag="required">
                             <module-option name="dsJndiName" value="java:/Quiz"/>
                             <module-option name="principalsQuery" value="SELECT password FROM user WHERE email = ?" />
-                            <module-option name="rolesQuery" value="SELECT R.name, 'Roles'
+                            <module-option name="rolesQuery" value="SELECT R.name AS 'Roles'
                                 FROM user U, role R
                                 WHERE R.id = U.role_id AND U.email = ?" />
                         </login-module>
