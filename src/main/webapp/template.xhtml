@@ -6,10 +6,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
     <title>Registrarion Demo</title>
@@ -19,118 +17,104 @@
 
 
 <h:body class="verstka">
-<!-- header -->
-<div class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-4 logo">
-                <table>
-                    <tr>
-                        <td><img src="img/logo.png" alt="logo" width="53" height="55"/></td>
-                        <td>
-                            <ul>
-                                <li><h1>bionic</h1></li>
-                                <li><h1>UNIVERSITY~QUIZZES</h1></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-            </div><!-- лого -->
-            <div class="col-xs-12 col-sm-8 text-right">
-                <ul class="menu">
-                    <li><a href="index.xhtml">ПРО НАС</a></li>
-                    <li><a href="index.xhtml">КОНТАКТИ</a></li>
-                    <li class="enter-but">
-                        <h:form>
-                            <h:commandLink
-                                    value="ВИЙТИ"
-                                    action="#{userBB.logout}"/>
-                        </h:form>
-                    </li>
-                </ul>
-            </div><!-- меню -->
-        </div>
-    </div><!-- шапка -->
-</div>
-<!-- /header -->
-
-
-
-
-
-<!-- content -->
-<div id="ajax-wrap">
-    <div class="cont">
-        <div class="content">
-            <ui:insert name="container">
-                <div class="container">
-                    <div class="col-xs-6"><h3>Default</h3></div>
-                    <div class="col-xs-6 text-right back">
-                        <a href="index.xhtml" class="back">НАЗАД</a>
-                    </div>
+    <!-- header -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 logo">
+                    <table>
+                        <tr>
+                            <td><img src="img/logo.png" alt="logo" width="53" height="55"/></td>
+                            <td>
+                                <ul>
+                                    <li><h1>bionic</h1></li>
+                                    <li><h1>UNIVERSITY~QUIZZES</h1></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div><!-- лого -->
+                <div class="col-xs-6 col-sm-7 text-right">
+                    <ul class="menu">
+                        <li><a href="index.xhtml">ПРО НАС</a></li>
+                        <li><a href="index.xhtml">КОНТАКТИ</a></li>
+                    </ul>
                 </div>
+                <div class="col-xs-6 col-sm-1 enter-but text-center">
+                    <h:form class="enter-form">
+                        <h:commandLink
+                                value="ВИЙТИ"
+                                action="#{userBB.logout}"/>
+                    </h:form>
+                </div> <!-- меню -->
+            </div>
+        </div><!-- шапка -->
+    </div>
+    <!-- /header -->
+
+    <!-- content -->
+    <div id="ajax-wrap">
+        <div class="cont">
+            <div class="content">
+                <ui:insert name="container">
+                    <div class="container">
+                        <div class="col-xs-6"><h3>Default</h3></div>
+                        <div class="col-xs-6 text-right back">
+                            <a href="index.xhtml" class="back">НАЗАД</a>
+                        </div>
+                    </div>
+                </ui:insert>
+            </div><!-- РЕЄСТРАЦІЯ -->
+
+            <ui:insert name="body">
+                <h:outputText value="Default template"/>
             </ui:insert>
-        </div><!-- РЕЄСТРАЦІЯ -->
 
-        <ui:insert name="body">
-            <h:outputText value="Default template"/>
-        </ui:insert>
-
-    </div>
-</div>
-<!-- /content -->
-
-
-
-
-
-
-
-
-
-
-<!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 links">
-                <p>
-                    <a href="https://www.google.com.ua/"><img src="img/f.jpg" alt="facebook" width="25" height="25"
-                                                              onmouseout="this.src='img/f.jpg'" onmouseover="this.src='img/f_a.jpg'"></img></a>
-                    <a href="https://www.google.com.ua/"><img src="img/t.jpg" alt="twitter" width="25" height="25"
-                                                              onmouseout="this.src='img/t.jpg'" onmouseover="this.src='img/t_a.jpg'"></img></a>
-                    <a href="https://www.google.com.ua/"><img src="img/v.jpg" alt="vk" width="25" height="25"
-                                                              onmouseout="this.src='img/v.jpg'" onmouseover="this.src='img/v_a.jpg'"></img></a>
-                    <a href="https://www.google.com.ua/"><img src="img/g.jpg" alt="g+" width="25" height="25"
-                                                              onmouseout="this.src='img/g.jpg'" onmouseover="this.src='img/g_a.jpg'" style="margin-right: 10px"></img></a>
-                    Ініціатор:
-                    <img src="img/logo/bionic-hill.png" alt="" width="100" height="30" class="img-refers"/>
-                </p>
-            </div>
-            <div class="col-xs-12 text-center links">
-                <p>
-                    Наші партнери:
-                    <img src="img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
-                    <img src="img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
-                    <img src="img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
-                    <img src="img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
-                    <img src="img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
-                    <img src="img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
-                    <img src="img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
-                    <img src="img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
-                    <img src="img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
-                    <img src="img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
-                    <img src="img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
         </div>
     </div>
-</div>
-<!-- /footer -->
+    <!-- /content -->
+
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 links">
+                    <p>
+                        <a href="https://www.google.com.ua/"><img src="img/f.jpg" alt="facebook" width="25" height="25"
+                                                                  onmouseout="this.src='img/f.jpg'" onmouseover="this.src='img/f_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="img/t.jpg" alt="twitter" width="25" height="25"
+                                                                  onmouseout="this.src='img/t.jpg'" onmouseover="this.src='img/t_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="img/v.jpg" alt="vk" width="25" height="25"
+                                                                  onmouseout="this.src='img/v.jpg'" onmouseover="this.src='img/v_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="img/g.jpg" alt="g+" width="25" height="25"
+                                                                  onmouseout="this.src='img/g.jpg'" onmouseover="this.src='img/g_a.jpg'" style="margin-right: 10px"></img></a>
+                        Ініціатор:
+                        <img src="img/logo/bionic-hill.png" alt="" width="100" height="30" class="img-refers"/>
+                    </p>
+                </div>
+                <div class="col-xs-12 text-center links">
+                    <p>
+                        Наші партнери:
+                        <img src="img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
+                        <img src="img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
+                        <img src="img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
+                        <img src="img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
+                        <img src="img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
+                        <img src="img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
+                        <img src="img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
+                        <img src="img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
+                        <img src="img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
+                        <img src="img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
+                        <img src="img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
+            </div>
+        </div>
+    </div>
+    <!-- /footer -->
 
 </h:body>
 </html>
-

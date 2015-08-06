@@ -15,6 +15,8 @@ public class QuestionService {
     @Inject
     private TestService testService;
 
+
+
     public QuestionDAO getQuestionDAO() {
         return questionDAO;
     }
@@ -22,7 +24,7 @@ public class QuestionService {
     public void setQuestionDAO(QuestionDAO questionDAO) {
         this.questionDAO = questionDAO;
     }
-
+    
     public List<Question> getQuestionsByTestId(String stringTestId){
         int testId = Integer.valueOf(stringTestId);
         return questionDAO.getQuestionsByTestId(testId);

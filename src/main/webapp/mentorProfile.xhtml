@@ -1,0 +1,101 @@
+<ui:composition template="template.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="container">
+        <div class="content">
+            <div class="container">
+                <div class="col-xs-6"><h3>Профіль</h3></div>
+                <div class="col-xs-6 text-right back">
+                    <a href="index.xhtml" class="back">Назад</a>
+                </div>
+            </div>
+        </div><!-- РЕЄСТРАЦІЯ -->
+    </ui:define>
+
+
+    <ui:define name="body">
+        <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+
+        <h5>Welcome, Mentor</h5>
+        <div align="center">
+
+                <h:form id="formDT">
+                    <p:growl id="msgs" showDetail="true"/>
+                    <p:dataTable id="dataTable"
+                                 value="#{testBean.testRows}"
+                                 var="testRow"
+                                 rowIndexVar="indexVar"
+                            editable="true">
+
+                        <p:ajax event="rowEdit" listener="#{testBean.onRowEdit}" update=":formDT:msgs" />
+                        <p:ajax event="rowEditCancel" listener="#{testBean.onRowCancel}" update=":formDT:msgs" />
+
+
+                        <p:column headerText="Id">
+                            <h:outputText value="#{testRow.test.id}" />
+                        </p:column>
+                        <p:column headerText="Deadline">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{testRow.test.deadline}" >
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </h:outputText></f:facet>
+                                    <f:facet name="input"><p:inputText id="deadlineInput" value="#{testRow.test.deadline}" style="width:100%">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </p:inputText></f:facet>
+                                </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Duration">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.duration}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="durationInput" value="#{testRow.test.duration}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column headerText="Test name">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.testName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+                        <p:column headerText="Category name">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.categoryName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+                        <p:column>
+                        <h:commandLink value="Delete"
+                                       action="#{testBean.deleteTest(testRow)}"
+                                       />
+                        </p:column>
+                        <p:column>
+                            <h:commandLink value="EXPORT"
+                                           action="#{testBean.exportTestResults(testRow)}"
+                                    />
+                        </p:column>
+
+                        <p:column>
+                            <h:commandLink value="Пройти тест"
+
+                                    />
+                        </p:column>
+
+                        <p:column style="width:32px">
+                            <p:rowEditor />
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
+
+
