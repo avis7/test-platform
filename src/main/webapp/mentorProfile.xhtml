@@ -17,6 +17,13 @@
 
 
     <ui:define name="body">
+        <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+
+        <h5>Welcome, Mentor</h5>
+        <div align="center">
+
                 <h:form id="formDT">
                     <p:growl id="msgs" showDetail="true"/>
                     <p:dataTable id="dataTable"
@@ -72,13 +79,21 @@
                                     />
                         </p:column>
 
+                        <p:column>
+                            <h:commandLink value="Пройти тест"
+
+                                    />
+                        </p:column>
+
                         <p:column style="width:32px">
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
                 </h:form>
-
-
+                </div>
+                </div>
+            </div>
+        </div>
     </ui:define>
 </ui:composition>
 
