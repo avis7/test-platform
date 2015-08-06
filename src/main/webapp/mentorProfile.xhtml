@@ -78,12 +78,6 @@
                                            action="#{testBean.exportTestResults(testRow)}"
                                     />
                         </p:column>
-
-                        <p:column>
-                            <h:commandLink value="Пройти тест"
-                                    />
-                        </p:column>
-
                         <p:column style="width:32px">
                             <p:rowEditor />
                         </p:column>
@@ -111,7 +105,7 @@
                                     <td><p:inputText size="10" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
                                 </tr>
                             </table>
-                            <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" />
+                            <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update=":panel:panelLayout" />
                         </h:panelGroup>
                         <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"/>
                     </h:form>

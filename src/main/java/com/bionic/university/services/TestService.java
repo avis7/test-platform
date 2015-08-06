@@ -28,6 +28,7 @@ public class TestService {
         try {
             testDAO.save(new Test(testName, duration,
                     deadline, categoryName));
+            setVisible(false);
             return true;
         } catch (Exception e) {
             return false;
