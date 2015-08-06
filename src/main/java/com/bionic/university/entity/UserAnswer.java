@@ -11,7 +11,7 @@ public class UserAnswer {
     private int id;
     @Column(name = "mark")
     private int mark;
-    @Column(name = "answer_id", nullable = false, unique = true)
+    @Column(name = "answer_id", nullable = false)
     private int answerId;
     @Column(name = "own_answer")
     private String ownAnswer;

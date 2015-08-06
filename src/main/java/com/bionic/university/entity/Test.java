@@ -34,7 +34,7 @@ public class Test {
         this.deadline = deadline;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

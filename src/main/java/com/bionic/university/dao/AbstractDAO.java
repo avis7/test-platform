@@ -47,9 +47,9 @@ public abstract class AbstractDAO<T> {
 ////        closeTransaction();
 ////    }
 //
-////    public void flush() {
-////        em.flush();
-////    }
+//    public void flush() {
+//        em.flush();
+//    }
 //
 ////    public void joinTransaction() {
 ////        em = emf.createEntityManager();
@@ -70,7 +70,8 @@ public abstract class AbstractDAO<T> {
         return em.merge(entity);
     }
 
-    public T find(long entityID) {
+    public T find(int entityID) {
+        System.out.println("fesdfc");
         return em.find(entityClass, entityID);
     }
 

@@ -30,13 +30,9 @@ import java.util.Set;
 public class TestBean {
     private List<Tab> tabs;
     private List<Question> questions;
-    private Question currentQuestion;
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
-
-
-
 
     @PostConstruct
     public void init() {
@@ -54,20 +50,10 @@ public class TestBean {
     private UserAnswerService userAnswerService;
 
     public String submit(ActionEvent actionEvent) {
-        boolean success = userAnswerService.save(email, testId);
+        boolean success = userAnswerService.save(email, testId, tabs);
         return success ? "feedback?testId=" + testId + "&email=" + email : "error.xhtml";
     }
 
-    public void setCurrentQuestion(Question question) {
-        currentQuestion = question;
-    }
-
-    public Question getCurrentQuestion() {
-        if (currentQuestion == null) {
-            currentQuestion = questions.get(0);
-        }
-        return currentQuestion;
-    }
 
     public List<Question> getQuestions() {
         return questions;
@@ -95,22 +81,24 @@ public class TestBean {
 
     public void addUserAnswer() {
         //if (answer == null) {
-            return;
+            //return;
         //}
        // userAnswerService.addUserAnswer(answer);
     }
 
-    public void addUserAnswer(Answer answer, String ownAnswer) {
+    /*public void addUserAnswer(Answer answer, String ownAnswer) {
         userAnswerService.addUserAnswer(answer, ownAnswer);
     }
 
     public void addUserAnswer(List<Answer> answers) {
         userAnswerService.addUserAnswer(answers);
-    }
+    }*/
 
     public class Tab{
         private Question question;
-        private Answer answer;
+        private int answer;
+        private String ownAnswer;
+        private List<String> answers;
 
         public Tab(Question question) {
             this.question = question;
@@ -124,12 +112,29 @@ public class TestBean {
             this.question = question;
         }
 
-        public Answer getAnswer() {
+        public int getAnswer() {
             return answer;
         }
 
-        public void setAnswer(Answer answer) {
+        public void setAnswer(int answer) {
             this.answer = answer;
+        }
+
+        public String getOwnAnswer() {
+            return ownAnswer;
+        }
+
+        public void setOwnAnswer(String ownAnswer) {
+            this.answer = question.getAnswers().get(0).getId();
+            this.ownAnswer = ownAnswer;
+        }
+
+        public List<String> getAnswers() {
+            return answers;
+        }
+
+        public void setAnswers(List<String> answers) {
+            this.answers = answers;
         }
     }
 
