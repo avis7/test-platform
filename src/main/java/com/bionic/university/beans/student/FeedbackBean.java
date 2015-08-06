@@ -11,7 +11,7 @@ import javax.inject.Inject;
 /**
  * Created by Olexandr on 8/1/2015.
  */
-@RequestScoped    //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@SessionScoped    //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class FeedbackBean {
     private String feedback;

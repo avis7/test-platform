@@ -49,11 +49,10 @@ public class TestBean {
     @Inject
     private UserAnswerService userAnswerService;
 
-    public String submit(ActionEvent actionEvent) {
+    public String submit() {
         boolean success = userAnswerService.save(email, testId, tabs);
-        return success ? "feedback?testId=" + testId + "&email=" + email : "error.xhtml";
+        return success ? "feedback?faces-redirect=true&testId=" + testId + "&email=" + email : "error";
     }
-
 
     public List<Question> getQuestions() {
         return questions;
@@ -78,21 +77,6 @@ public class TestBean {
     public void setTabs(List<Tab> tabs) {
         this.tabs = tabs;
     }
-
-    public void addUserAnswer() {
-        //if (answer == null) {
-            //return;
-        //}
-       // userAnswerService.addUserAnswer(answer);
-    }
-
-    /*public void addUserAnswer(Answer answer, String ownAnswer) {
-        userAnswerService.addUserAnswer(answer, ownAnswer);
-    }
-
-    public void addUserAnswer(List<Answer> answers) {
-        userAnswerService.addUserAnswer(answers);
-    }*/
 
     public class Tab{
         private Question question;

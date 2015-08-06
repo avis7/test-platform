@@ -7,47 +7,82 @@ import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserService {
 
     @Inject
     private UserDAO userDAO;
+    @Inject
     private ResultDAO resultDAO;
 
     public boolean authorization(String email, String password) {
         User user = userDAO.findUserByEmail(email);
-        if (user == null){
+        if (user == null) {
             return false;
         }
         return user.getPassword().equals(password);
     }
 
-    public boolean submitTest(Test test, String email){
+    public boolean submitTest(Test test, String email) {
         try {
             int userId = userDAO.findUserByEmail(email).getId();
-            Result result = resultDAO.findResultByUserIdAndTestId(userId, test.getId());
-            if (result.isSubmited()){
+            int testId = test.getId();
+            Result result = resultDAO.findResultByUserIdAndTestId(userId, testId);
+            if (result.isSubmited()) {
                 return false;
             }
             result.setSubmited(true);
             resultDAO.update(result);
             return true;
-        }catch (Exception e){
-
+        } catch (Exception e) {
+            System.out.println("rfgb");
         }
         return false;
     }
 
-    public User findUserByEmail(String email){
-        return userDAO.findUserByEmail(email);
+    public User findUserByEmail(String email) {
+        try {
+            return userDAO.findUserByEmail(email);
+        } catch (Exception e) {
+
+        }
+        return null;
     }
 
+    public List<Test> getUserTests(String email) {
+        ArrayList<Test> availableTests = new ArrayList<Test>();
+        try {
+            User user = userDAO.findUserByEmail(email);
+            for (Result result : user.getResults()) {
+                if (!result.isSubmited()) {
+                    availableTests.add(result.getTest());
+                }
+            }
+            return availableTests;
+        } catch (Exception e) {
 
+        }
+        return null;
+    }
 
+    public List<Result> getUserResults(String email){
+        ArrayList<Result> results = new ArrayList<Result>();
+        try{
+            User user = userDAO.findUserByEmail(email);
+            for (Result result : user.getResults()) {
+                if (result.isSubmited()) {
+                    results.add(result);
+                }
+            }
+            return results;
+        } catch (Exception e) {
 
-
-
+        }
+        return null;
+    }
 
 
     public UserDAO getUserDAO() {

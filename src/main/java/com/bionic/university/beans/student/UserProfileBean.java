@@ -2,6 +2,7 @@ package com.bionic.university.beans.student;
 
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
+import com.bionic.university.entity.User;
 import com.bionic.university.services.UserService;
 
 import javax.annotation.PostConstruct;
@@ -19,17 +20,14 @@ import java.util.List;
 @SessionScoped //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class UserProfileBean {
-    private Collection<Test> tests;
-    private Collection<Result> results;
+    private List<Test> tests;
+    private List<Result> results;
 
     @Inject
     UserService userService;
 
 
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
-
-
-
 
 
     public String getName() {
@@ -43,8 +41,8 @@ public class UserProfileBean {
     }
 
 
-    public Collection<Test> getTests() {
-        tests = userService.findUserByEmail(email).getTests();
+    public List<Test> getTests() {
+        tests = userService.getUserTests(email);
         return tests;
     }
 
@@ -52,8 +50,8 @@ public class UserProfileBean {
         this.tests = tests;
     }
 
-    public Collection<Result> getResults() {
-        results = userService.findUserByEmail(email).getResults();
+    public List<Result> getResults() {
+        results = userService.getUserResults(email);
         return results;
     }
 

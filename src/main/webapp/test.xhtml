@@ -15,7 +15,6 @@
 
     <h:form id="form">
         <p:tabView value="#{testBean.tabs}" var="tab">
-            <p:ajax event="tabChange" listener="#{testBean.addUserAnswer}"/>
             <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
                 <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
                     <p:outputLabel value="#{tab.question.question}:"/>
@@ -38,7 +37,7 @@
                 </h:panelGrid>
             </p:tab>
         </p:tabView>
-        <p:commandButton value="Submit" actionListener="#{testBean.submit}" ajax="false"/>
+        <p:commandButton value="Submit" action="#{testBean.submit}" ajax="false"/>
     </h:form>
 
 </h:body>

@@ -9,8 +9,6 @@ public class UserAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name = "mark")
-    private int mark;
     @Column(name = "answer_id", nullable = false)
     private int answerId;
     @Column(name = "own_answer")
@@ -28,14 +26,6 @@ public class UserAnswer {
 
     public long getId() {
         return id;
-    }
-
-    public int getMark() {
-        return mark;
-    }
-
-    public void setMark(int mark) {
-        this.mark = mark;
     }
 
     public long getAnswerId() {
@@ -66,7 +56,6 @@ public class UserAnswer {
     public String toString() {
         return "UserAnswer{" +
                 "id=" + id +
-                ", mark=" + mark +
                 ", answerId=" + answerId +
                 ", ownAnswer='" + ownAnswer + '\'' +
                 ", result=" + result +
