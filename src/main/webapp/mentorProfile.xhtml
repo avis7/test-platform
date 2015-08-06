@@ -12,7 +12,7 @@
                     <a href="index.xhtml" class="back">Назад</a>
                 </div>
             </div>
-        </div><!-- РЕЄСТРАЦІЯ -->
+        </div>
     </ui:define>
 
 
@@ -108,6 +108,7 @@
                             <td><p:inputText size="10" value="#{testBean.categoryName}" /></td>
                         </tr>
                     </table>
+                    <p:commandButton value="Add test" action="#{testBean.addTest}" />
                     <p:commandButton value="Save test" action="#{testBean.addTest}" />
                 </h:form>
                 </div>
