@@ -41,7 +41,6 @@ public class AnswerService {
         Answer answer = answerDAO.find(answerId);
         answerDAO.delete(answer);
         return true;
-        //TODO refresh page
     }
 
     public AnswerDAO getAnswerDAO() {

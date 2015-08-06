@@ -1,18 +1,25 @@
 package com.bionic.university.beans.student;
 
+import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.TestRow;
 import com.bionic.university.services.QuestionService;
+import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserAnswerService;
 import org.hibernate.Session;
 
+import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import org.primefaces.event.RowEditEvent;
 
 /**
  * Created by Olexandr on 7/30/2015.
@@ -31,6 +38,8 @@ public class TestBean {
     private QuestionService questionService;
     @Inject
     private UserAnswerService userAnswerService;
+    @Inject
+    TestService testService;
 
     public String submit(){
         boolean success = userAnswerService.save(email, testId);
@@ -73,5 +82,38 @@ public class TestBean {
 
     public void addUserAnswer(List<Answer> answers){
         userAnswerService.addUserAnswer(answers);
+    }
+
+    public List<TestRow> getTestRows() {
+        return testService.getTestRows();
+    }
+
+    @PostConstruct
+    public void fillTestTable(){
+        testService.fillTestTable();
+    }
+
+    public String addTest(String testName, int duration, Date deadline, String categoryName){
+        if (testService.addTest(testName, duration, deadline, categoryName))
+            return "successful";
+        return "unsuccessful";
+    }
+
+
+    public String deleteTest(TestRow testRow){
+        if(testService.deleteTest(testRow))
+            return "successful";
+        return "unsuccessful";
+    }
+    public String onRowEdit(RowEditEvent event) {
+        if(testService.onRowEdit(event))
+            return "successful";
+        return "unsuccessful";
+    }
+
+    public String onRowCancel(RowEditEvent event) {
+        if(testService.onRowCancel(event))
+            return "successful";
+        return "unsuccessful";
     }
 }

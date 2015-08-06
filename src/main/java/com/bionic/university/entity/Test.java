@@ -1,8 +1,8 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
+import java.util.Collection;
 
 
 @Entity
@@ -14,24 +14,35 @@ public class Test {
     @Column(name = "test_name", nullable = false, unique = true)
     private String testName;
     @Column(name = "duration", nullable = false)
-    private Date duration;
+    private int duration;
     @Column(name = "deadline", nullable = false)
     private Date deadline;
+    @Column(name = "category_name", nullable = false)
+    private String categoryName;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tests",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     Collection<Result> results;
-    @OneToMany(mappedBy = "test")
+    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
     private Collection<Question> questions;
 
     public Test() {
     }
 
-    public Test(String testName, Date duration, Date deadline) {
+    public Test(String testName, int duration, Date deadline, String categoryName) {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
+        this.categoryName = categoryName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public long getId() {
@@ -46,11 +57,11 @@ public class Test {
         this.testName = testName;
     }
 
-    public Date getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Date duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
