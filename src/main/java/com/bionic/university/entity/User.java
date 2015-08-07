@@ -137,7 +137,6 @@ public class User {
                 ", birthday=" + birthday +
                 ", phone='" + phone + '\'' +
                 ", role=" + role +
-                ", results=" + results +
                 '}';
     }
 }
