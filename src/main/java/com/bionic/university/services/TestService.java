@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by c266 on 28.07.2015.
- */
 public class TestService {
 
     @Inject
@@ -29,10 +26,16 @@ public class TestService {
             testDAO.save(new Test(testName, duration,
                     deadline, categoryName));
             setVisible(false);
+            fillTestTable();
+            testRows = getTestRows();
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public List<Test> getVisibleTests(){
+        return testDAO.getVisibleTests();
     }
 
     public TestDAO getTestDAO() {
@@ -46,7 +49,10 @@ public class TestService {
 
     public boolean deleteTest(TestRow testRow) {
         try {
-            testDAO.delete(testRow.getTest());
+            if(testRow.getTest().isArchived())
+                testRow.getTest().setArchived(false);
+            else testRow.getTest().setArchived(true);
+            testDAO.update(testRow.getTest());
             fillTestTable();
             testRows = getTestRows();
             return true;
@@ -57,8 +63,7 @@ public class TestService {
     }
 
     public List<Test> getTests(){
-        List<Test> tests = testDAO.findAll();
-        return  tests;
+        return   testDAO.findAll();
     }
 
     public boolean fillTestTable() {

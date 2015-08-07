@@ -36,9 +36,6 @@
                         <p:ajax event="rowEditCancel" listener="#{testBean.onRowCancel}" update=":formDT:msgs" />
 
 
-                        <p:column headerText="Id">
-                            <h:outputText value="#{testRow.test.id}" />
-                        </p:column>
                         <p:column headerText="Deadline">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{testRow.test.deadline}" >
@@ -68,8 +65,8 @@
                                 <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column style="border:0px; background:#ffffff; width:53px;">
-                        <h:commandLink value="Delete" style="color:#E7664D;"
+                        <p:column style="border:0px; background:#ffffff; width:100px;">
+                        <h:commandLink value="(Un)Archive" style="color:#E7664D;"
                                        action="#{testBean.deleteTest(testRow)}"
                                        />
                         </p:column>
@@ -82,8 +79,6 @@
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
-                    </h:form>
-                    <h:form id="panel">
                         <h:panelGroup layout="block" id="panelLayout">
                             <table style="margin-bottom:10px; margin-top:15px; text-align:center; vertical-align:middle;">
                                 <tr>
@@ -106,7 +101,7 @@
                                     <td><p:inputText size="15" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
                                 </td>
                                     <td>
-                                        <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update=":panel:panelLayout"
+                                        <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update="@form"
                                         style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
@@ -119,7 +114,7 @@
                                 </tr>
                             </table>
                         </h:panelGroup>
-                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"
+                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":formDT:panelLayout"
                                         style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;

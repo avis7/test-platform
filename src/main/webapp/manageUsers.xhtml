@@ -47,10 +47,6 @@
                                     <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}" update=":formDT:userDT" />
 
 
-                                    <p:column headerText="Id" sortBy="#{users.id}">
-                                        <h:outputText value="#{users.id}" />
-                                    </p:column>
-
                                     <p:column headerText="Прізвище" sortBy="#{users.lastName}">
                                         <h:outputText value="#{users.lastName}" />
                                     </p:column>
@@ -76,7 +72,7 @@
                                             </f:facet>
                                             <f:facet name="input">
                                                 <h:selectOneMenu value="#{manageUsersBean.selectedTest}" style="width:100%">
-                                                    <f:selectItems value="#{manageUsersBean.tests}" var="test" itemLabel="#{test.testName}" itemValue="#{test.id}" />
+                                                    <f:selectItems value="#{manageUsersBean.visibleTests}" var="test" itemLabel="#{test.testName}" itemValue="#{test.id}" />
                                                 </h:selectOneMenu>
                                             </f:facet>
                                         </p:cellEditor>

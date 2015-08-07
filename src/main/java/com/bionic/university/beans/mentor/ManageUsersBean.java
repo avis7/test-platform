@@ -52,6 +52,10 @@ public class ManageUsersBean {
         return testService.getTests();
     }
 
+    public List<Test> getVisibleTests(){
+        return testService.getVisibleTests();
+    }
+
     public String onRowEdit(RowEditEvent event) {
             FacesMessage msg = new FacesMessage("Test Edited",
                     ((User) event.getObject()).getFirstName());
