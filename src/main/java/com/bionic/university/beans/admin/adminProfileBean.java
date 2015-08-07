@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by rondo104 on 05.08.2015.
  */
-@ManagedBean
+@ManagedBean(name ="adminProfileBean")
 @ViewScoped
 public class AdminProfileBean implements Serializable {
     private Set<String> roles = new HashSet<String>();
