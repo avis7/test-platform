@@ -56,6 +56,11 @@ public class TestService {
         return false;
     }
 
+    public List<Test> getTests(){
+        List<Test> tests = testDAO.findAll();
+        return  tests;
+    }
+
     public boolean fillTestTable() {
         try {
             testRows.clear();

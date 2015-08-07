@@ -166,11 +166,9 @@ ul.back li {
     height:25px;
     font-family: PFB;
     margin-top:0px;
-    margin-bottom: 0px;
-    margin-right:20px;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    margin-bottom: 10px;
+    padding-right:3px;
+    padding-left:3px;
 }
 .ui-message-error {
     margin: 0px auto;
@@ -186,13 +184,13 @@ ul.back li {
     border-radius: 3px;
     font-family: PFB;
     font-size: 14px;
-    color: white;
+    color: #40C3DA;
     border: solid 1px #40C3DA;
-    padding: 3px 8px 3px 8px;
+    padding: 3px 12px 3px 12px;
     text-decoration: none;
-    background-color: #40C3DA;
+    background-color: white;
 }
-.ui-button:hover{
+.ui-button{
     border-radius: 3px;
     font-family: PFB;
     font-size: 14px;
@@ -201,86 +199,25 @@ ul.back li {
     padding: 2px 8px 2px 8px;
     text-decoration: none;
     background-color: white;
+}
+.ui-button:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: white;
+    border: solid 1px #40C3DA;
+    padding: 2px 8px 2px 8px;
+    text-decoration: none;
+    background-color: #40C3DA;
     transition: 0.5s;
-}
-.ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th{
-    padding: 4px 10px;
-    overflow: hidden;
-    border: 1px solid #dadad9;
-    font-family: PFB;
-    font-size: 14px;
-    text-align:center;
-}
-.ui-datatable thead th{
-    padding: 4px 10px;
-    overflow: hidden;
-    border: 1px solid #dadad9;
-    font-family: PFB;
-    font-size: 15px;
-    text-align:center;
-    background:#F5F5F5;
-    color:black;
-}
-.ui-state-default{
-    background:none;
-}
-.ui-helper-reset{
-    font-family: PFB;
-    font-size: 14px;
-}
-.ui-accordion-header{
-    width:190px;
-    background:#F5F5F5;
-    color:black;
-}
-.ui-accordion .ui-accordion-header {
-    padding: 4px 10px;
-}
-.ui-state-active{
-    background: #40C3DA;
-    font-weight: normal;
-    color: #ffffff;
-}
-.ui-state-default .ui-icon{
-    background-image:none;
 }
 /* /content */
 
 /* content-UserProfile */
 .zagolovok{
     margin-top:7px;
-    margin-bottom:7px;
     font-family: PFB;
     font-size: 16px;
-}
-.ui-widget-content {
-    background: #ffffff;
-}
-/* /content-UserProfile */
-
-/* content-MentorProfile */
-.ui-outputlabel{
-    font-family: PFB;
-    font-size: 13px;
-    font-weight:normal;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-.ui-widget-content{
-    background: #ffffff;
-
-    color: black;
-    padding-right:2px;
-    border:#DADAD9;
-}
-.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
-    -moz-box-shadow: none;
-     -webkit-box-shadow: none;
-     box-shadow: none;
-     color: black;
-    font-family:PFB;
-    font-size: 13px;
 }
 /* /content-UserProfile */
 

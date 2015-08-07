@@ -15,12 +15,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by rondo104 on 05.08.2015.
- */
-@ManagedBean
+
+@ManagedBean(name ="adminProfileBean")
 @ViewScoped
-public class adminProfileBean implements Serializable {
+public class AdmProfileBean implements Serializable {
     private Set<String> roles = new HashSet<String>();
     private List<User> users;
     private String selectRole;

@@ -45,7 +45,7 @@ public class Test {
         this.categoryName = categoryName;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

@@ -7,7 +7,7 @@
     <ui:define name="container">
         <div class="content">
             <div class="container">
-                <div class="col-xs-6"><h3>Профіль</h3></div>
+                <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
                 <div class="col-xs-6 text-right back">
                     <a href="index.xhtml" class="back">Назад</a>
                 </div>
@@ -68,46 +68,66 @@
                                 <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column>
-                        <h:commandLink value="Delete"
+                        <p:column style="border:0px; background:#ffffff; width:53px;">
+                        <h:commandLink value="Delete" style="color:#E7664D;"
                                        action="#{testBean.deleteTest(testRow)}"
                                        />
                         </p:column>
-                        <p:column>
-                            <h:commandLink value="EXPORT"
+                        <p:column style="border:0px; background:#ffffff; width:60px;">
+                            <h:commandLink value="EXPORT" style="color:#52CC4C;"
                                            action="#{testBean.exportTestResults(testRow)}"
                                     />
                         </p:column>
-                        <p:column style="width:32px">
+                        <p:column style="width:32px; border:0px; background:#ffffff;">
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
                     </h:form>
                     <h:form id="panel">
                         <h:panelGroup layout="block" id="panelLayout">
-                            <table>
+                            <table style="margin-bottom:10px; margin-top:15px; text-align:center; vertical-align:middle;">
                                 <tr>
-                                    <td><p:outputLabel rendered="#{testBean.visible}">Test deadline :</p:outputLabel></td>
-                                    <td><p:inputText size="10" value="#{testBean.deadline}" rendered="#{testBean.visible}">
+                                    <td>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test deadline:</p:outputLabel></td>
+                                    <td><p:inputText size="15" value="#{testBean.deadline}" rendered="#{testBean.visible}">
                                         <f:convertDateTime pattern="MM/dd/yyyy"/>
                                     </p:inputText></td>
-                                </tr>
-                                <tr>
-                                    <td><p:outputLabel rendered="#{testBean.visible}">Test duration :</p:outputLabel></td>
-                                    <td><p:inputText size="20" value="#{testBean.duration}" rendered="#{testBean.visible}"/></td>
-                                </tr>
-                                <tr>
-                                    <td><p:outputLabel rendered="#{testBean.visible}">Test name :</p:outputLabel></td>
-                                    <td><p:inputText size="5" value="#{testBean.testName}" rendered="#{testBean.visible}"/></td>
-                                </tr>
-                                <tr>
-                                    <td ><p:outputLabel rendered="#{testBean.visible}">Test category:</p:outputLabel></td>
-                                    <td><p:inputText size="10" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
+                                    </td>
+                                    <td>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test duration:</p:outputLabel></td>
+                                    <td><p:inputText size="15" value="#{testBean.duration}" rendered="#{testBean.visible}"/></td>
+                                </td>
+                                <td>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test name:</p:outputLabel></td>
+                                    <td><p:inputText size="15" value="#{testBean.testName}" rendered="#{testBean.visible}"/></td>
+                                </td>
+                                <td>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test category:</p:outputLabel></td>
+                                    <td><p:inputText size="15" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
+                                </td>
+                                    <td>
+                                        <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update=":panel:panelLayout"
+                                        style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                                    </td>
                                 </tr>
                             </table>
-                            <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update=":panel:panelLayout" />
                         </h:panelGroup>
-                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"/>
+                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"
+                                        style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
                     </h:form>
                 </div>
                 </div>
