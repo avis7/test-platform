@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -17,7 +18,13 @@
         <p:tabView value="#{testBean.tabs}" var="tab">
             <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
                 <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
-                    <p:outputLabel value="#{tab.question.question}:"/>
+                    <c:if test="#{empty tab.question.picture}">
+                        <p:outputLabel value="#{tab.question.question}:"/>
+                    </c:if>
+                    <c:if test="#{not empty tab.question.picture}">
+                        <p:outputLabel value="#{tab.question.question}:"/>
+                        <p:graphicImage name="#{tab.question.picture}" />
+                    </c:if>
                     <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
                         <p:ajax update="oneAnswer" />
                         <f:selectItems value="#{tab.question.answers}" var="ans"

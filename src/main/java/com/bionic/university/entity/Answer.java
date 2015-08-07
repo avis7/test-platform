@@ -13,6 +13,8 @@ public class Answer {
     private String answerText;
     @Column(name = "is_correct", nullable = false)
     private boolean isCorrect;
+    @Column(name = "picture")
+    private String picture;
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
@@ -57,6 +59,14 @@ public class Answer {
 
     public String getAnswerText() {
         return answerText;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
