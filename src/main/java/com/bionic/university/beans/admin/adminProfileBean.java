@@ -20,7 +20,7 @@ import java.util.Set;
  */
 @ManagedBean
 @ViewScoped
-public class adminProfileBean implements Serializable {
+public class AdminProfileBean implements Serializable {
     private Set<String> roles = new HashSet<String>();
     private List<User> users;
     private String selectRole;
