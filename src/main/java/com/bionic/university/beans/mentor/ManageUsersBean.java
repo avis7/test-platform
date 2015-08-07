@@ -1,14 +1,12 @@
 package com.bionic.university.beans.mentor;
 
 import com.bionic.university.dao.ResultDAO;
-import com.bionic.university.dao.UserDAO;
+import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
-import com.bionic.university.model.TestRow;
 import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
-import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.RowEditEvent;
 
 import javax.faces.application.FacesMessage;
@@ -28,16 +26,17 @@ public class ManageUsersBean {
     TestService testService;
     @Inject
     ResultDAO resultDAO;
-
+    @Inject
+    TestDAO testDAO;
     private List<User> users;
-    private String selectedTests;
+    private int selectedTest;
 
-    public String getSelectedTests() {
-        return selectedTests;
+    public int getSelectedTest() {
+        return selectedTest;
     }
 
-    public void setSelectedTests(String selectedTests) {
-        this.selectedTests = selectedTests;
+    public void setSelectedTest(int selectedTest) {
+        this.selectedTest = selectedTest;
     }
 
     public List<User> getUsers() {
@@ -58,7 +57,7 @@ public class ManageUsersBean {
             FacesMessage msg = new FacesMessage("Test Edited",
                     ((User) event.getObject()).getFirstName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
-//            resultDAO.save(new Result((User)event.getObject(),(Test)event.getObject()));
+            resultDAO.save(new Result((User) event.getObject(), testDAO.find(selectedTest)));
 //            вот в этом вопрос
             return true;
         } catch (Exception e) {

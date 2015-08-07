@@ -68,10 +68,15 @@
                                     </p:column>
                                     <p:column headerText="Тести">
                                         <p:cellEditor>
-                                            <f:facet name="output"><h:outputText value="#{users.tests}" /></f:facet>
+                                            <f:facet name="output">
+                                                <ui:repeat var="test" value="#{users.tests}" >
+                                                <h:outputText value="#{test.testName}"/>
+                                                    <br/>
+                                            </ui:repeat>
+                                            </f:facet>
                                             <f:facet name="input">
-                                                <h:selectOneMenu value="#{manageUsersBean.selectedTests}" style="width:100%">
-                                                    <f:selectItems value="#{manageUsersBean.tests}" var="test" itemLabel="#{test}" itemValue="#{test}" />
+                                                <h:selectOneMenu value="#{manageUsersBean.selectedTest}" style="width:100%">
+                                                    <f:selectItems value="#{manageUsersBean.tests}" var="test" itemLabel="#{test.testName}" itemValue="#{test.id}" />
                                                 </h:selectOneMenu>
                                             </f:facet>
                                         </p:cellEditor>
