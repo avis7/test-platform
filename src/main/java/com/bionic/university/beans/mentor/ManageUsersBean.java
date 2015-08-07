@@ -5,6 +5,7 @@ import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
+import com.bionic.university.services.ResultService;
 import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
 import org.primefaces.event.RowEditEvent;
@@ -21,13 +22,12 @@ import java.util.List;
 public class ManageUsersBean {
 
     @Inject
-    UserService userService;
+    private UserService userService;
     @Inject
-    TestService testService;
+    private TestService testService;
     @Inject
-    ResultDAO resultDAO;
-    @Inject
-    TestDAO testDAO;
+    private ResultService resultService;
+
     private List<User> users;
     private int selectedTest;
 
@@ -52,29 +52,20 @@ public class ManageUsersBean {
         return testService.getTests();
     }
 
-    public boolean onRowEdit(RowEditEvent event) {
-        try {
+    public String onRowEdit(RowEditEvent event) {
             FacesMessage msg = new FacesMessage("Test Edited",
                     ((User) event.getObject()).getFirstName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            resultDAO.save(new Result((User) event.getObject(), testDAO.find(selectedTest)));
-//            вот в этом вопрос
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+            if(resultService.onRowEdit(event, selectedTest))
+                return "successful";
+        return "unsuccessful";
+
     }
 
-    public boolean onRowCancel(RowEditEvent event) {
-        try {
+    public String onRowCancel(RowEditEvent event) {
             FacesMessage msg = new FacesMessage("Edit Cancelled",
                     ((User) event.getObject()).getFirstName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        return "successful";
         }
     }
-}

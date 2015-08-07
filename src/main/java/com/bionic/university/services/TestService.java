@@ -77,22 +77,7 @@ public class TestService {
 
     public boolean onRowEdit(RowEditEvent event) {
         try {
-            FacesMessage msg = new FacesMessage("Test Edited",
-                    ((TestRow) event.getObject()).getTest().getTestName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             testDAO.update((((TestRow) event.getObject()).getTest()));
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean onRowCancel(RowEditEvent event) {
-        try {
-            FacesMessage msg = new FacesMessage("Edit Cancelled",
-                    ((TestRow) event.getObject()).getTest().getTestName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

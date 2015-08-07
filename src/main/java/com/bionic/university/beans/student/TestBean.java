@@ -9,6 +9,7 @@ import com.bionic.university.services.UserAnswerService;
 import org.primefaces.event.RowEditEvent;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
@@ -143,21 +144,23 @@ public class TestBean {
         return "unsuccessful";
     }
     public String onRowEdit(RowEditEvent event) {
-        if(testService.onRowEdit(event))
+        if(testService.onRowEdit(event)){
+            FacesMessage msg = new FacesMessage("Test Edited",
+                    ((TestRow) event.getObject()).getTest().getTestName());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
             return "successful";
+        }
         return "unsuccessful";
     }
 
     public String onRowCancel(RowEditEvent event) {
-        if(testService.onRowCancel(event))
+        FacesMessage msg = new FacesMessage("Edit Cancelled",
+                ((TestRow) event.getObject()).getTest().getTestName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
             return "successful";
-        return "unsuccessful";
     }
 
     public String exportTestResults(TestRow testRow){
-//          testId = "2";
-//        String testName = "Java";
         return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
     }
-
 }
