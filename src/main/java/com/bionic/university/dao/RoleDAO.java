@@ -8,4 +8,16 @@ public class RoleDAO extends AbstractDAO<Role> {
     public RoleDAO() {
         super(Role.class);
     }
+
+    public Role findRoleByRoleName(String roleName){
+        long id;
+        for(Role role : findAll()){
+               if(roleName.compareToIgnoreCase(role.getName())==0) {
+                   return role;
+               }
+        }
+        return null;
+    }
+
+
 }

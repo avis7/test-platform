@@ -13,9 +13,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Olexandr on 7/30/2015.
- */
 @SessionScoped //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class UserProfileBean {

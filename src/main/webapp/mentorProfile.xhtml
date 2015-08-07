@@ -12,7 +12,7 @@
                     <a href="index.xhtml" class="back">Назад</a>
                 </div>
             </div>
-        </div><!-- РЕЄСТРАЦІЯ -->
+        </div>
     </ui:define>
 
 
@@ -78,18 +78,37 @@
                                            action="#{testBean.exportTestResults(testRow)}"
                                     />
                         </p:column>
-
-                        <p:column>
-                            <h:commandLink value="Пройти тест"
-
-                                    />
-                        </p:column>
-
                         <p:column style="width:32px">
                             <p:rowEditor />
                         </p:column>
                     </p:dataTable>
-                </h:form>
+                    </h:form>
+                    <h:form id="panel">
+                        <h:panelGroup layout="block" id="panelLayout">
+                            <table>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test deadline :</p:outputLabel></td>
+                                    <td><p:inputText size="10" value="#{testBean.deadline}" rendered="#{testBean.visible}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </p:inputText></td>
+                                </tr>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test duration :</p:outputLabel></td>
+                                    <td><p:inputText size="20" value="#{testBean.duration}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                                <tr>
+                                    <td><p:outputLabel rendered="#{testBean.visible}">Test name :</p:outputLabel></td>
+                                    <td><p:inputText size="5" value="#{testBean.testName}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                                <tr>
+                                    <td ><p:outputLabel rendered="#{testBean.visible}">Test category:</p:outputLabel></td>
+                                    <td><p:inputText size="10" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
+                                </tr>
+                            </table>
+                            <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update=":panel:panelLayout" />
+                        </h:panelGroup>
+                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":panel:panelLayout"/>
+                    </h:form>
                 </div>
                 </div>
             </div>

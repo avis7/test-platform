@@ -1,15 +1,20 @@
 package com.bionic.university.services;
 
+import com.bionic.university.dao.RoleDAO;
 import com.bionic.university.dao.UserDAO;
+import com.bionic.university.entity.Role;
 import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
+import java.util.List;
 
 
 public class UserService {
 
     @Inject
     UserDAO userDAO;
+    @Inject
+    RoleDAO roleDAO;
 
     public boolean authorization(String email, String password) {
         User user = userDAO.findUserByEmail(email);
@@ -21,6 +26,20 @@ public class UserService {
 
     public User findUserByEmail(String email){
         return userDAO.findUserByEmail(email);
+    }
+
+    public List<User> getAllUsers(){
+        return userDAO.findAll();
+    }
+
+    public boolean editUserRole(User user, String newRoleValue) {
+        try {
+            Role role = roleDAO.findRoleByRoleName(newRoleValue);
+            user.setRole(role);
+            userDAO.update(user);
+            return true;
+        }catch (Exception e){}
+        return false;
     }
 
 }
