@@ -13,7 +13,7 @@ public class TestService {
     @Inject
      private TestDAO testDAO;
 
-    public void addTest(String testName, Date duration, Date deadline) {
+    public void addTest(String testName, int duration, Date deadline) {
         Test test = new Test(testName, duration, deadline);
         testDAO.save(test);
 

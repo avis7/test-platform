@@ -19,11 +19,17 @@ public class UserService {
     private ResultDAO resultDAO;
 
     public boolean authorization(String email, String password) {
-        User user = userDAO.findUserByEmail(email);
-        if (user == null) {
-            return false;
+        try {
+            User user = userDAO.findUserByEmail(email);
+            return user.getPassword().equals(password);
+        }catch (IllegalArgumentException e){
+            System.out.println("dfce");
+
+        }catch (Exception e0){
+            System.out.println("frd");
         }
-        return user.getPassword().equals(password);
+        return false;
+
     }
 
     public boolean submitTest(Test test, String email) {

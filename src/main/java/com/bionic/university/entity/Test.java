@@ -14,9 +14,11 @@ public class Test {
     @Column(name = "test_name", nullable = false, unique = true)
     private String testName;
     @Column(name = "duration", nullable = false)
-    private Date duration;
+    private int duration;
     @Column(name = "deadline", nullable = false)
     private Date deadline;
+    @Column(name = "category_name", nullable = false)
+    private String categoryName;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
@@ -28,7 +30,7 @@ public class Test {
     public Test() {
     }
 
-    public Test(String testName, Date duration, Date deadline) {
+    public Test(String testName, int duration, Date deadline) {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
@@ -46,11 +48,11 @@ public class Test {
         this.testName = testName;
     }
 
-    public Date getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Date duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
@@ -84,6 +86,14 @@ public class Test {
 
     public void setQuestions(Collection<Question> questions) {
         this.questions = questions;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override
