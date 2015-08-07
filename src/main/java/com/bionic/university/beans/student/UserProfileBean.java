@@ -4,6 +4,7 @@ import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.services.UserService;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;

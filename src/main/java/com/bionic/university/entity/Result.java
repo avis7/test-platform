@@ -12,7 +12,13 @@ import java.util.Collection;
                 resultClass = Result.class),
         @NamedNativeQuery(name = "findResultByTestId",
         query = "SELECT * FROM result r WHERE r.test_id = :test",
-        resultClass = Result.class)
+        resultClass = Result.class),
+
+        @NamedNativeQuery(
+        name = "findAllSubmitedResults",
+        query = "SELECT* FROM result r WHERE r.submited= TRUE ",
+        resultClass = Result.class
+)
 })
 @Table(name = "result")
 public class Result {
@@ -136,5 +142,10 @@ public class Result {
                 ", feedback='" + feedback + '\'' +
 
                 '}';
+    }
+
+    public String getYesNoChecked(){
+        if (isChecked()) return "“¿ ";
+        else return "Õ≤";
     }
 }

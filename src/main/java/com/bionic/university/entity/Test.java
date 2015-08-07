@@ -99,7 +99,7 @@ public class Test {
 
     @Override
     public String toString() {
-        return "Test{" +
+        return "est{" +
                 "id=" + id +
                 ", testName='" + testName + '\'' +
                 ", duration=" + duration +

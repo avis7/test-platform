@@ -21,7 +21,7 @@
         <div class="row">
         <div class="col-xs-12">
 
-        <h5>Welcome, Mentor</h5>
+        <h5>Welcome, (waiting for riderct for seeing name)</h5>
         <div align="center">
 
                 <h:form id="formDT">
@@ -35,11 +35,22 @@
                         <p:ajax event="rowEdit" listener="#{testBean.onRowEdit}" update=":formDT:msgs" />
                         <p:ajax event="rowEditCancel" listener="#{testBean.onRowCancel}" update=":formDT:msgs" />
 
-
-                        <p:column headerText="Id">
-                            <h:outputText value="#{testRow.test.id}" />
+                        <p:column headerText="Назва тесту:">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.testName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Deadline">
+
+                        <p:column headerText="Категорія:">
+                            <p:cellEditor>
+                                <f:facet name="output"><h:outputText value="#{testRow.test.categoryName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
+                            </p:cellEditor>
+                        </p:column>
+
+
+                        <p:column headerText="Дедлайн">
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{testRow.test.deadline}" >
                                         <f:convertDateTime pattern="MM/dd/yyyy"/>
@@ -49,41 +60,27 @@
                                     </p:inputText></f:facet>
                                 </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Duration">
+                        <p:column headerText="Час на тест(хв)">
                             <p:cellEditor>
                                 <f:facet name="output"><h:outputText value="#{testRow.test.duration}" /></f:facet>
                                 <f:facet name="input"><p:inputText id="durationInput" value="#{testRow.test.duration}" style="width:100%"/></f:facet>
                             </p:cellEditor>
                         </p:column>
-                        <p:column headerText="Test name">
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{testRow.test.testName}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
 
-                        <p:column headerText="Category name">
-                            <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{testRow.test.categoryName}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
-                            </p:cellEditor>
-                        </p:column>
+
+
                         <p:column>
-                        <h:commandLink value="Delete"
+                        <h:commandLink value="Видалити тест"
                                        action="#{testBean.deleteTest(testRow)}"
                                        />
                         </p:column>
                         <p:column>
-                            <h:commandLink value="EXPORT"
-                                           action="#{testBean.exportTestResults(testRow)}"
+                            <h:commandLink value="Перегляд результатів"
+                                           action="#{testBean.viewTestResults(testRow)}"
                                     />
                         </p:column>
 
-                        <p:column>
-                            <h:commandLink value="Пройти тест"
 
-                                    />
-                        </p:column>
 
                         <p:column style="width:32px">
                             <p:rowEditor />

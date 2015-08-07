@@ -7,9 +7,8 @@ import com.bionic.university.model.TestRow;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 import org.primefaces.event.RowEditEvent;
 
 /**
@@ -18,17 +17,18 @@ import org.primefaces.event.RowEditEvent;
 public class TestService {
 
     @Inject
-     private TestDAO testDAO;
+    private TestDAO testDAO;
 
     private List<TestRow> testRows = new ArrayList<TestRow>();
 
     public boolean addTest(String testName, int duration, Date deadline, String categoryName) {
         try {
-            Test test = new Test(testName, duration, deadline,categoryName);
+            Test test = new Test(testName, duration, deadline, categoryName);
             testDAO.save(test);
             return true;
-        }catch (Exception e){
-        return false;        }
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     public TestDAO getTestDAO() {
@@ -40,14 +40,14 @@ public class TestService {
     }
 
 
-    public boolean deleteTest(TestRow testRow){
+    public boolean deleteTest(TestRow testRow) {
         try {
             testDAO.delete(testRow.getTest());
             fillTestTable();
             testRows = getTestRows();
             return true;
-        }catch (Exception e){
-           e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
@@ -67,15 +67,15 @@ public class TestService {
         return false;
     }*/
 
-    public boolean fillTestTable(){
-        try{
-        testRows.clear();
-        List<Test> tests = testDAO.findAll();
-        for(int i=0;i<tests.size();i++){
-            testRows.add(i, new TestRow(tests.get(i), false));
-        }
-        return true;
-        }catch (Exception e){
+    public boolean fillTestTable() {
+        try {
+            testRows.clear();
+            List<Test> tests = testDAO.findAll();
+            for (int i = 0; i < tests.size(); i++) {
+                testRows.add(i, new TestRow(tests.get(i), false));
+            }
+            return true;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -88,7 +88,7 @@ public class TestService {
             FacesContext.getCurrentInstance().addMessage(null, msg);
             testDAO.update((((TestRow) event.getObject()).getTest()));
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -100,7 +100,7 @@ public class TestService {
                     ((TestRow) event.getObject()).getTest().getTestName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -113,5 +113,9 @@ public class TestService {
     public void setTestRows(List<TestRow> testRows) {
         this.testRows = testRows;
     }
+
+
+
+
 }
 

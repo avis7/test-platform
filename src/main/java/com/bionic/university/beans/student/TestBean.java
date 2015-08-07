@@ -111,9 +111,8 @@ public class TestBean {
         return "unsuccessful";
     }
 
-    public String exportTestResults(TestRow testRow){
-//          testId = "2";
-//        String testName = "Java";
+    public String viewTestResults(TestRow testRow){
+
         return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
     }
 

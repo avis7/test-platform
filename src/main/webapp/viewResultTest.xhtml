@@ -12,7 +12,7 @@
 
 
 <h:head>
-    <title>Authorization</title>
+    <title>Results</title>
 </h:head>
 
 
@@ -21,7 +21,7 @@
     <ui:define name="container">
         <div class="content">
             <div class="container">
-                <div class="col-xs-6"><h3>Результати тесту - #{exportResultTestBean.testName}</h3></div>
+                <div class="col-xs-6"><h3>Результати тесту - #{viewResultsBean.testName}</h3></div>
                 <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
             </div>
         </div><!-- РЕЄСТРАЦІЯ -->
@@ -33,34 +33,24 @@
 
 
            <div align="center">
-            <p:dataTable id="tbl" var="result" value="#{exportResultTestBean.results}"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+            <p:dataTable id="tbl" var="result" value="#{viewResultsBean.results}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
                          paginator="true" rows="15" style="margin-bottom:20px">
                 <p:column>
 
                     <f:facet name="header">
-                        <h:outputText value="Прізвище"/>
+                        <h:outputText value="Студент"/>
                     </f:facet>
-                    <h:outputText value="#{result.user.lastName}" />
+                    <h:outputText value="#{result.user.getFullName()}" />
                 </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Імя"/>
-                    </f:facet>
-                    <h:outputText value="#{result.user.firstName}" />
-                </p:column>
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Пройшов тест"/>
-                    </f:facet>
-                    <h:outputText value="#{result.submited}" />
-                </p:column>
+
+
 
                 <p:column>
                     <f:facet name="header">
                         <h:outputText value="Перевірений" />
                     </f:facet>
-                    <h:outputText value="#{result.checked }" />
+                    <h:outputText value="#{result.yesNoChecked }" />
                 </p:column>
 
                 <p:column>
@@ -69,6 +59,12 @@
                     </f:facet>
                     <h:outputText value="#{result.mark}" />
                 </p:column>
+
+                <p:column>
+                  <p:commandLink value="Перевірити" disabled="#{result.isChecked()}" />
+                </p:column>
+
+
             </p:dataTable>
 
                <!--<h:commandLink>-->
@@ -92,7 +88,7 @@
                <!--</h:commandLink>-->
 
                <p:commandButton value="Export">
-                   <p:dataExporter  type = "xls"  target = "tbl"  fileName = "Result-#{exportResultTestBean.testName}" />
+                   <p:dataExporter  type = "xls"  target = "tbl"  fileName = "Result-#{viewResultsBean.testName}" />
                </p:commandButton>
     </div>
 

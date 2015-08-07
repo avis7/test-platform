@@ -127,6 +127,10 @@ public class User {
         this.results = results;
     }
 
+    public String getFullName(){
+        return firstName+" "+lastName;
+    }
+
     @Override
     public String toString() {
         return "User{" +
