@@ -45,11 +45,6 @@
             <version>1.0.0.Final</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>3.0-alpha-1</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
@@ -103,7 +98,7 @@
                     </container>
                     <configuration>
                         <properties>
-                            <cargo.servlet.port>8085</cargo.servlet.port>
+                            <cargo.servlet.port>8080</cargo.servlet.port>
                             <cargo.jboss.configuration>standalone-engine</cargo.jboss.configuration>
                             <cargo.servlet.users>admin:admin:AplicationRealm,admin</cargo.servlet.users>
                             <cargo.jvmargs>

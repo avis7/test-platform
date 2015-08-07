@@ -61,8 +61,9 @@
 
     <login-config>
         <auth-method>FORM</auth-method>
+        <realm-name>quiz</realm-name>
         <form-login-config>
-            <form-login-page>/authorization.xhtml</form-login-page>
+            <form-login-page>/login.xhtml</form-login-page>
             <form-error-page>/index.xhtml</form-error-page>
         </form-login-config>
     </login-config>

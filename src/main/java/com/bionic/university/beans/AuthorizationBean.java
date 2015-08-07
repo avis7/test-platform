@@ -5,7 +5,10 @@ import com.bionic.university.services.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 @SessionScoped
 @ManagedBean
@@ -15,26 +18,23 @@ public class AuthorizationBean {
     private String password;
 
     @Inject
-     private UserService userService;
+    private UserService userService;
 
     public String authorization() {
+        try {
+            ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).
+                    login(getCurrentUser().getEmail(), getCurrentUser().getPassword());
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
+
         boolean success = userService.authorization(email, password);
         StringBuilder resultLink = new StringBuilder();
 
         String roleName = getCurrentUser().getRole().getName();
 
-        //        if (roleName.equals("admin") && success) {
-//            return "admin";
-//        } else if (roleName.equals("mentor") && success) {
-//            return "mentor";
-//        } else if (roleName.equals("student") && success) {
-//            return "student";
-//        } else {
-//            return "index.html";
-//        }
-
         if (roleName.equals("admin") && success) {
-            resultLink.append("adminProfile"); // doesn't exist yet
+            resultLink.append("adminProfile");
         } else if (roleName.equals("mentor") && success) {
             resultLink.append("mentorProfile");
         } else if (roleName.equals("student") && success) {
@@ -49,9 +49,6 @@ public class AuthorizationBean {
     }
 
     public User getCurrentUser() {
-//        ExternalContext context = FacesContext.getCurrentInstance()
-//                .getExternalContext();
-//        String email = context.getUserPrincipal().getName();
         return userService.findUserByEmail(email);
     }
 

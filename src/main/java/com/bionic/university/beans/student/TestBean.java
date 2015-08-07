@@ -11,15 +11,13 @@ import org.primefaces.event.RowEditEvent;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Olexandr on 7/30/2015.
- */
-@RequestScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@ViewScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class TestBean {
     private List<Question> questions;
@@ -35,6 +33,51 @@ public class TestBean {
     private UserAnswerService userAnswerService;
     @Inject
     TestService testService;
+
+    private Date deadline;
+    private Integer duration;
+    private String testName;
+    private String categoryName;
+
+    public boolean isVisible() {
+        return testService.getVisible();
+    }
+
+    public void setVisible() {
+        testService.setVisible(true);
+    }
+
+    public Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public String submit(){
         boolean success = userAnswerService.save(email, testId);
@@ -88,7 +131,7 @@ public class TestBean {
         testService.fillTestTable();
     }
 
-    public String addTest(String testName, int duration, Date deadline, String categoryName){
+    public String addTest(){
         if (testService.addTest(testName, duration, deadline, categoryName))
             return "successful";
         return "unsuccessful";
@@ -112,8 +155,6 @@ public class TestBean {
     }
 
     public String exportTestResults(TestRow testRow){
-//          testId = "2";
-//        String testName = "Java";
         return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
     }
 
