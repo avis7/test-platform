@@ -7,6 +7,7 @@ import com.bionic.university.entity.Result;
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Collection;
 
 /**
  * Created by c266 on 28.07.2015.
@@ -30,6 +31,10 @@ public class ResultService {
 
         }
         return false;
+    }
+
+    public Collection<Result> getResultByTestId(int testId) {
+        return resultDAO.findResultByTestId(testId);
     }
 }
 

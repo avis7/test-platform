@@ -92,6 +92,9 @@
                 <suffix value=".yyyy-MM-dd"/>
                 <append value="true"/>
             </periodic-rotating-file-handler>
+            <logger category="org.jboss.security">
+                <level name="TRACE" />
+            </logger>
             <logger category="com.arjuna">
                 <level name="WARN"/>
             </logger>
@@ -144,6 +147,17 @@
                         <password>sa</password>
                     </security>
                 </datasource>
+                <!-- BU Quiz Custom datasource -->
+                <!--<datasource jndi-name="java:/Quiz" pool-name="Quiz" enabled="true">-->
+                    <!--<connection-url>jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068</connection-url>-->
+                    <!--<driver-class>com.mysql.jdbc.Driver</driver-class>-->
+                    <!--<driver>mysql</driver>-->
+                    <!--<security>-->
+                        <!--<user-name>sql285068</user-name>-->
+                        <!--<password>zA2%bW8*</password>-->
+                    <!--</security>-->
+                <!--</datasource>-->
+                <!--/BU Quiz Custom datasource-->
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.Driver</xa-datasource-class>
@@ -327,6 +341,27 @@
                 <security-domain name="jboss-ejb-policy" cache-type="default">
                     <authorization>
                         <policy-module code="Delegating" flag="required"/>
+                    </authorization>
+                </security-domain>
+                <!-- Bionic Quiz Custom Security Domain -->
+                <security-domain name="quiz" cache-type="default">
+                    <authentication>
+                        <login-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:/Quiz"/>
+                            <module-option name="principalsQuery" value="SELECT password FROM user WHERE email = ?" />
+                            <module-option name="rolesQuery" value="SELECT R.name AS role, 'Roles'
+                                FROM user U, role R
+                                WHERE R.id = U.role_id AND U.email = ?" />
+                        </login-module>
+                    </authentication>
+                    <authorization>
+                        <policy-module code="Database" flag="required">
+                            <module-option name="dsJndiName" value="java:/Quiz"/>
+                            <module-option name="principalsQuery" value="SELECT password FROM user WHERE email = ?" />
+                            <module-option name="rolesQuery" value="SELECT R.name as role, 'Roles'
+                                FROM user U, role R
+                                WHERE R.id = U.role_id AND U.email = ?" />
+                        </policy-module>
                     </authorization>
                 </security-domain>
             </security-domains>

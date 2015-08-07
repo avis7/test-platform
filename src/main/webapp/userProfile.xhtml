@@ -8,16 +8,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:pe="http://primefaces.org/ui/extensions">
 
-<head>
+<h:head>
     <title>Profile</title>
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/nav.js"></script>
-</head>
+</h:head>
 
 
-<body class="verstka">
+<h:body class="verstka">
 <ui:composition template="template.xhtml">
 
     <ui:define name="container">
@@ -39,18 +39,41 @@
                 <div class="col-xs-12">
                     <h5>Welcome, #{userProfileBean.name}</h5>
                 </div>
-                <div class="col-xs-12">
-                    <div class="zagolovok">Доступні тести:</div>
-                    <h:form>
-                        <p:dataList value="#{userProfileBean.tests}" var="test">
-                            <h:commandLink value="#{test.testName}" action="#{userProfileBean.startTest(test)}"/>
-                        </p:dataList>
-                    </h:form>
                 </div>
-                <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <div class="zagolovok">Доступні тести:</div>
+
+                    <h:form id="form">
+                        <p:accordionPanel value="#{userProfileBean.getTests()}" var="test">
+                            <p:tab title="#{test.testName}" tabindex="-1">
+                                <h:panelGrid>
+                                    <h:outputText value="Тривалість тесту: "/> <h:outputText
+                                        value="#{test.duration} хв"/>
+
+                                    <p><h:outputText value="Deadline: "/><h:outputText value="#{test.deadline}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    </h:outputText></p>
+                                    <h:commandLink value="Пройти тестування"
+                                                   action="#{userProfileBean.startTest(test)}"
+                                                   style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:accordionPanel>
+                    </h:form>
+
+                </div>
+                <div class="col-xs-12 col-sm-9">
                     <div class="zagolovok">Результати:</div>
 
-                    <p:dataTable id="dataTestsTable" value="#{userProfileBean.results}" var="result">
+                    <p:dataTable id="dataTestsTable" value="#{userProfileBean.getResults()}" var="result">
                         <p:column headerText="Назва тесту">
                             <h:outputText value="#{result.test.testName}"/>
                         </p:column>
@@ -72,5 +95,5 @@
         </div>
     </ui:define>
 </ui:composition>
-</body>
+</h:body>
 </html>

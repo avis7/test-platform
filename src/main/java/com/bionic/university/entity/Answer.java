@@ -4,6 +4,11 @@ import javax.persistence.*;
 
 
 @Entity
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getAnswersByQuestionId",
+                query = "SELECT * FROM answer a WHERE a.question_id = :question",
+                resultClass = Answer.class)
+})
 @Table(name = "answer")
 public class Answer {
     @Id

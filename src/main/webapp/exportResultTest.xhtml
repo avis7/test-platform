@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+    <title>Authorization</title>
+</h:head>
+
+
+<h:body class="verstka">
+<ui:composition template="template.xhtml">
+    <ui:define name="container">
+        <div class="content">
+            <div class="container">
+                <div class="col-xs-6"><h3>Результати тесту - #{exportResultTestBean.testName}</h3></div>
+                <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
+            </div>
+        </div><!-- РЕЄСТРАЦІЯ -->
+    </ui:define>
+
+
+    <ui:define name="body">
+        <h:form id="form">
+
+
+           <div align="center">
+            <p:dataTable id="tbl" var="result" value="#{exportResultTestBean.results}"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         paginator="true" rows="15" style="margin-bottom:20px">
+                <p:column>
+
+                    <f:facet name="header">
+                        <h:outputText value="Прізвище"/>
+                    </f:facet>
+                    <h:outputText value="#{result.user.lastName}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Імя"/>
+                    </f:facet>
+                    <h:outputText value="#{result.user.firstName}" />
+                </p:column>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Пройшов тест"/>
+                    </f:facet>
+                    <h:outputText value="#{result.submited}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Перевірений" />
+                    </f:facet>
+                    <h:outputText value="#{result.checked }" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Оцінка" />
+                    </f:facet>
+                    <h:outputText value="#{result.mark}" />
+                </p:column>
+            </p:dataTable>
+
+               <!--<h:commandLink>-->
+                   <!--<p:graphicImage name="/demo/images/excel.png" />-->
+                   <!--<p:dataExporter type="xls" target="tbl" fileName="Результат тесту" pageOnly="true"/>-->
+               <!--</h:commandLink>-->
+
+               <!--<h:commandLink>-->
+                   <!--<p:graphicImage name="/demo/images/pdf.png" />-->
+                   <!--<p:dataExporter type="pdf" target="tbl" fileName="cars" pageOnly="true" />-->
+               <!--</h:commandLink>-->
+
+               <!--<h:commandLink>-->
+                   <!--<p:graphicImage name="/demo/images/csv.png" />-->
+                   <!--<p:dataExporter type="csv" target="tbl" fileName="Результат тесту - #{result.test.testName}" pageOnly="true" />-->
+               <!--</h:commandLink>-->
+
+               <!--<h:commandLink>-->
+                   <!--<p:graphicImage name="/demo/images/xml.png" />-->
+                   <!--<p:dataExporter type="xml" target="tbl" fileName="Результат тесту - #{result.test.testName}" pageOnly="true" />-->
+               <!--</h:commandLink>-->
+
+               <p:commandButton value="Export">
+                   <p:dataExporter  type = "xls"  target = "tbl"  fileName = "Result-#{exportResultTestBean.testName}" />
+               </p:commandButton>
+    </div>
+
+      </h:form>
+
+    </ui:define>
+</ui:composition>
+</h:body>
+</html>
+
