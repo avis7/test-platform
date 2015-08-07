@@ -18,7 +18,7 @@ import javax.inject.Inject;
 import java.util.Date;
 import java.util.List;
 
-@ViewScoped   //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@ViewScoped  
 @ManagedBean
 public class TestBean {
     private List<Question> questions;
