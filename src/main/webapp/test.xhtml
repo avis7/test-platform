@@ -18,13 +18,8 @@
         <p:tabView value="#{testBean.tabs}" var="tab">
             <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
                 <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
-                    <c:if test="#{empty tab.question.picture}">
-                        <p:outputLabel value="#{tab.question.question}:"/>
-                    </c:if>
-                    <c:if test="#{not empty tab.question.picture}">
-                        <p:outputLabel value="#{tab.question.question}:"/>
-                        <p:graphicImage name="#{tab.question.picture}" />
-                    </c:if>
+                    <p:outputLabel value="#{tab.question.question}"/>
+                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
                     <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
                         <p:ajax update="oneAnswer" />
                         <f:selectItems value="#{tab.question.answers}" var="ans"
@@ -32,13 +27,13 @@
                     </p:selectOneRadio>
                 </h:panelGrid>
                 <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
-                    <p:outputLabel value="#{tab.question.question}:"/>
+                    <p:outputLabel value="#{tab.question.question}"/>
                     <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
                         <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
                     </p:selectManyCheckbox>
                 </h:panelGrid>
                 <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
-                    <p:outputLabel value="#{tab.question.question}:"/>
+                    <p:outputLabel value="#{tab.question.question}"/>
                     <p:inputTextarea rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true" />
                     <h:outputText id="display" />
                 </h:panelGrid>
