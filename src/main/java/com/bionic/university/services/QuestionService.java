@@ -36,13 +36,13 @@ public class QuestionService {
         return true;
     }
 
-    public boolean deleteQuestion(long questionId) {
+    public boolean deleteQuestion(int questionId) {
         Question question = questionDAO.find(questionId);
         questionDAO.delete(question);
         return true;
     }
 
-    public boolean updateQuestion(long questionId, String questionText, int mark, boolean isMultiChoice, boolean isOpen) {
+    public boolean updateQuestion(int questionId, String questionText, int mark, boolean isMultiChoice, boolean isOpen) {
         Question question = questionDAO.find(questionId);
         question.setQuestion(questionText);
         question.setMark(mark);
