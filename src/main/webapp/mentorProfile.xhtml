@@ -2,7 +2,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:color="http://java.sun.com/jsf/composite">
 
     <ui:define name="container">
         <div class="content">
@@ -38,37 +38,55 @@
 
                         <p:column headerText="Deadline">
                                 <p:cellEditor>
-                                    <f:facet name="output"><h:outputText value="#{testRow.test.deadline}" >
-                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                    <f:facet name="output"><h:outputText style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}" value="#{testRow.test.deadline}" >
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
                                     </h:outputText></f:facet>
-                                    <f:facet name="input"><p:inputText id="deadlineInput" value="#{testRow.test.deadline}" style="width:100%">
-                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                    </p:inputText></f:facet>
+                                    <f:facet name="input"><p:calendar id="event" value="#{testRow.test.deadline}" style="width:100%"
+                                                                       required="true"
+                                                                       requiredMessage="Поле обов`язкове для заповнення"
+                                                                       converterMessage="Введіть коректну дату"/>
+                                    </f:facet>
                                 </p:cellEditor>
                         </p:column>
                         <p:column headerText="Duration">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{testRow.test.duration}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="durationInput" value="#{testRow.test.duration}" style="width:100%"/></f:facet>
+                                <f:facet name="output"><h:outputText style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}" value="#{testRow.test.duration}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="durationInput" value="#{testRow.test.duration}" style="width:100%"
+                                                                   required="true"
+                                                                   requiredMessage="Поле обов`язкове для заповнення"
+                                                                   converterMessage="Введіть тривалість тесту у хвилинах"
+                                                                   maxlength="5">
+                                    <f:validateLength minimum="1" maximum="5"/>
+                                </p:inputText></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column headerText="Test name">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{testRow.test.testName}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"/></f:facet>
+                                <f:facet name="output"><h:outputText style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}" value="#{testRow.test.testName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="nameInput" value="#{testRow.test.testName}" style="width:100%"
+                                                                   required="true"
+                                                                   requiredMessage="Поле обов`язкове для заповнення"
+                                                                   validatorMessage="Некоректне введення">
+                                    <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                </p:inputText></f:facet>
                             </p:cellEditor>
                         </p:column>
 
                         <p:column headerText="Category name">
                             <p:cellEditor>
-                                <f:facet name="output"><h:outputText value="#{testRow.test.categoryName}" /></f:facet>
-                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"/></f:facet>
+                                <f:facet name="output"><h:outputText style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}" value="#{testRow.test.categoryName}" /></f:facet>
+                                <f:facet name="input"><p:inputText id="categoryInput" value="#{testRow.test.categoryName}" style="width:100%"
+                                                                   required="true"
+                                                                   requiredMessage="Поле обов`язкове для заповнення"
+                                                                   validatorMessage="Некоректне введення">
+                                    <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                </p:inputText></f:facet>
                             </p:cellEditor>
                         </p:column>
                         <p:column style="border:0px; background:#ffffff; width:100px;">
-                        <h:commandLink value="(Un)Archive" style="color:#E7664D;"
+                        <h:commandLink value="Archive" style="color:#E7664D;"
                                        action="#{testBean.deleteTest(testRow)}"
-                                       />
+                                />
                         </p:column>
                         <p:column style="border:0px; background:#ffffff; width:60px;">
                             <h:commandLink value="EXPORT" style="color:#52CC4C;"
@@ -84,21 +102,41 @@
                                 <tr>
                                     <td>
                                     <td><p:outputLabel rendered="#{testBean.visible}">Test deadline:</p:outputLabel></td>
-                                    <td><p:inputText size="15" value="#{testBean.deadline}" rendered="#{testBean.visible}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                    </p:inputText></td>
+                                    <td><p:calendar id="popup" value="#{testBean.deadline}" size="15" rendered="#{testBean.visible}"
+                                                    required="true"
+                                                    requiredMessage="Поле обов`язкове для заповнення"
+                                                    converterMessage="Введіть коректну дату"/>
+                                    </td>
                                     </td>
                                     <td>
                                     <td><p:outputLabel rendered="#{testBean.visible}">Test duration:</p:outputLabel></td>
-                                    <td><p:inputText size="15" value="#{testBean.duration}" rendered="#{testBean.visible}"/></td>
+                                    <td><p:inputText size="15" value="#{testBean.duration}" rendered="#{testBean.visible}"
+                                                     required="true"
+                                                     requiredMessage="Поле обов`язкове для заповнення"
+                                                     converterMessage="Введіть тривалість тесту у хвилинах"
+                                            maxlength="5">
+                                        <f:validateLength minimum="1" maximum="5"/>
+                                    </p:inputText></td>
                                 </td>
                                 <td>
                                     <td><p:outputLabel rendered="#{testBean.visible}">Test name:</p:outputLabel></td>
-                                    <td><p:inputText size="15" value="#{testBean.testName}" rendered="#{testBean.visible}"/></td>
+                                    <td><p:inputText size="15" value="#{testBean.testName}" rendered="#{testBean.visible}"
+                                                     required="true"
+                                                     requiredMessage="Поле обов`язкове для заповнення"
+                                                     validatorMessage="Некоректне введення">
+                                        <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                    </p:inputText></td>
                                 </td>
                                 <td>
                                     <td><p:outputLabel rendered="#{testBean.visible}">Test category:</p:outputLabel></td>
-                                    <td><p:inputText size="15" value="#{testBean.categoryName}" rendered="#{testBean.visible}"/></td>
+                                    <td><p:inputText size="15"
+                                                     value="#{testBean.categoryName}"
+                                                     rendered="#{testBean.visible}"
+                                                     required="true"
+                                            requiredMessage="Поле обов`язкове для заповнення"
+                                            validatorMessage="Некоректне введення">
+                                        <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                    </p:inputText></td>
                                 </td>
                                     <td>
                                         <p:commandButton value="Save test" action="#{testBean.addTest}" rendered="#{testBean.visible}" update="@form"
@@ -114,7 +152,7 @@
                                 </tr>
                             </table>
                         </h:panelGroup>
-                        <p:commandButton value="Add test" actionListener="#{testBean.setVisible}" update=":formDT:panelLayout"
+                        <p:commandButton value="Add test" rendered="#{!testBean.visible}" action="#{testBean.setVisible}" update="@form"
                                         style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
