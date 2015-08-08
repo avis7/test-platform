@@ -44,32 +44,40 @@ public class ManageUsersBean {
         return users;
     }
 
-    public void setUsers(List<User> users){
-        this.users=users;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
-    public List<Test> getTests(){
+    public List<Test> getTests() {
         return testService.getTests();
     }
 
-    public List<Test> getVisibleTests(){
+    public List<Test> getVisibleTests() {
         return testService.getVisibleTests();
     }
 
-    public String onRowEdit(RowEditEvent event) {
-            FacesMessage msg = new FacesMessage("Test Edited",
-                    ((User) event.getObject()).getFirstName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            if(resultService.onRowEdit(event, selectedTest))
-                return "successful";
-        return "unsuccessful";
+    public void onRowEdit(RowEditEvent event) {
+
+        switch (resultService.onRowEdit(event, selectedTest)) {
+            case 1:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" was added", null));
+            break;
+            case 2:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "User "+((User)event.getObject()).getFirstName()+" has this test", null));
+                break;
+            case 3:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" wasn't added", null));
+        }
 
     }
 
     public String onRowCancel(RowEditEvent event) {
-            FacesMessage msg = new FacesMessage("Edit Cancelled",
-                    ((User) event.getObject()).getFirstName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
+        FacesMessage msg = new FacesMessage("Edit Cancelled",
+                ((User) event.getObject()).getFirstName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";
-        }
     }
+}

@@ -4,11 +4,13 @@ import com.bionic.university.dao.ResultDAO;
 import com.bionic.university.dao.TestDAO;
 import com.bionic.university.dao.UserDAO;
 import com.bionic.university.entity.Result;
+import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by c266 on 28.07.2015.
@@ -31,13 +33,18 @@ public class ResultService {
         return true;
     }
 
-    public boolean onRowEdit(RowEditEvent event, int selectedTest) {
+    public int onRowEdit(RowEditEvent event, int selectedTest) {
         try {
+            Collection<Test> tests = ((User) event.getObject()).getTests();
+            for (Test test : tests) {
+                if (test.getId() == selectedTest)
+                    return 2;
+            }
             resultDAO.save(new Result((User) event.getObject(), testDAO.find(selectedTest)));
-            return true;
+            return 1;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return 3;
         }
     }
 

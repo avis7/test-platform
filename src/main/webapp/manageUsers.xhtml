@@ -46,8 +46,9 @@
                                     <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}" update=":formDT:userDT" />
                                     <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}" update=":formDT:userDT" />
 
+                                    <h:messages globalOnly="true" />
 
-                                    <p:column headerText="Прізвище" sortBy="#{users.lastName}">
+                                    <p:column headerText="Прізвище">
                                         <h:outputText value="#{users.lastName}" />
                                     </p:column>
 

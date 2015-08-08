@@ -8,6 +8,7 @@ import org.primefaces.event.RowEditEvent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.validation.ConstraintDeclarationException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,7 @@ public class TestService {
     private List<TestRow> testRows = new ArrayList<TestRow>();
     private boolean visible;
 
-    public boolean addTest(String testName, Integer duration,
+    public int addTest(String testName, Integer duration,
                            Date deadline, String categoryName) {
         try {
             testDAO.save(new Test(testName, duration,
@@ -28,9 +29,12 @@ public class TestService {
             setVisible(false);
             fillTestTable();
             testRows = getTestRows();
-            return true;
-        } catch (Exception e) {
-            return false;
+            return 1;
+        }catch (ConstraintDeclarationException e){
+            return 3;
+        }
+        catch (Exception e) {
+            return 2;
         }
     }
 

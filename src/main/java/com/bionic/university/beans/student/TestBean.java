@@ -83,12 +83,12 @@ public class TestBean {
         this.categoryName = categoryName;
     }
 
-    public String submit(){
+    public String submit() {
         boolean success = userAnswerService.save(email, testId);
-        return success ? "feedback?testId=" + testId + "&email=" +email : "error.xhtml";
+        return success ? "feedback?testId=" + testId + "&email=" + email : "error.xhtml";
     }
 
-    public void setCurrentQuestion(Question question){
+    public void setCurrentQuestion(Question question) {
         currentQuestion = question;
     }
 
@@ -114,15 +114,15 @@ public class TestBean {
         this.testId = testId;
     }
 
-    public void addUserAnswer(Answer answer){
+    public void addUserAnswer(Answer answer) {
         userAnswerService.addUserAnswer(answer);
     }
 
-    public void addUserAnswer(Answer answer, String ownAnswer){
+    public void addUserAnswer(Answer answer, String ownAnswer) {
         userAnswerService.addUserAnswer(answer, ownAnswer);
     }
 
-    public void addUserAnswer(List<Answer> answers){
+    public void addUserAnswer(List<Answer> answers) {
         userAnswerService.addUserAnswer(answers);
     }
 
@@ -131,23 +131,39 @@ public class TestBean {
     }
 
     @PostConstruct
-    public void fillTestTable(){
+    public void fillTestTable() {
         testService.fillTestTable();
     }
 
-    public String addTest(){
-        if (testService.addTest(testName, duration, deadline, categoryName))
+    public void addTest() {
+        switch (testService.addTest(testName, duration, deadline, categoryName)) {
+            case 1:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was added", null));
+
+            case 2:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was not added", null));
+            case 3:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was not added to DB. Check unique of test name", null));
+        }
+    }
+
+    public String deleteTest(TestRow testRow) {
+        if (testService.deleteTest(testRow)) {
+            if (testRow.getTest().isArchived())
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test" + testRow.getTest().getTestName() + " was archived", null));
+            else FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Test" + testRow.getTest().getTestName() + " was unarchived", null));
             return "successful";
+        }
         return "unsuccessful";
     }
 
-    public String deleteTest(TestRow testRow){
-        if(testService.deleteTest(testRow))
-            return "successful";
-        return "unsuccessful";
-    }
     public String onRowEdit(RowEditEvent event) {
-        if(testService.onRowEdit(event)){
+        if (testService.onRowEdit(event)) {
             FacesMessage msg = new FacesMessage("Test Edited",
                     ((TestRow) event.getObject()).getTest().getTestName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -160,10 +176,10 @@ public class TestBean {
         FacesMessage msg = new FacesMessage("Edit Cancelled",
                 ((TestRow) event.getObject()).getTest().getTestName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
-            return "successful";
+        return "successful";
     }
 
-    public String exportTestResults(TestRow testRow){
+    public String exportTestResults(TestRow testRow) {
         return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
     }
 
