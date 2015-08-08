@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Profile</title>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+</h:head>
+
+
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
+
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
+                        <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- РЕЄСТРАЦІЯ -->
+        </ui:define>
+
+
+        <ui:define name="body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <h5>Welcome, ADMIN</h5>
+                        <div align="center">
+
+                            <p:commandButton value="Export test to database" actionListener="#{importTestBean.importTest}"
+                                             style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
