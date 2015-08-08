@@ -5,13 +5,10 @@ import com.bionic.university.dao.RoleDAO;
 import com.bionic.university.dao.UserDAO;
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
-import com.bionic.university.entity.Role;
-import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 
 
@@ -105,21 +102,8 @@ public class UserService {
         return userDAO;
     }
 
-    public boolean editUserRole(User user, String newRoleValue) {
-        try {
-            user.setRole(roleDAO.findRoleByRoleName(newRoleValue));
+    public void editUserRole(User user, String newRoleValue) throws Exception{
+            user.setRole(roleDAO.find(Integer.valueOf(newRoleValue)));
             userDAO.update(user);
-            return true;
-        }catch (Exception e){}
-        return false;
     }
-
-//    public boolean editUserTest(User user, Test test){
-//        try {
-//
-//        }catch (Exception e){
-//
-//        }
-//    }
-
 }
