@@ -70,6 +70,7 @@ public class ManageUsersBean {
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" wasn't added", null));
+                break;
         }
 
     }
