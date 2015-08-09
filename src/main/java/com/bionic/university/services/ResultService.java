@@ -54,8 +54,12 @@ public class ResultService {
         return false;
     }
 
-    public Collection<Result> getResultByTestId(int testId) {
+    public List<Result> getResultByTestId(int testId) {
         return resultDAO.findResultByTestId(testId);
+    }
+
+    public List<Result> getAllSubmitedCheckedResults(){
+        return resultDAO.findAllSubmitedCheckedResults();
     }
 }
 

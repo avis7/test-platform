@@ -1,15 +1,27 @@
 package com.bionic.university.beans.mentor;
 
+import com.bionic.university.beans.student.UserProfileBean;
 import com.bionic.university.entity.Test;
-
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Olexandr on 8/3/2015.
  */
-public class MentorProfileBean {
+@ManagedBean
+public class MentorProfileBean implements Serializable{
     private List<Test> tests;
 
+   @Inject
+    UserProfileBean userProfileBean;
+
+
+    public String getName(){
+        return userProfileBean.getName();
+    }
     public String editTest(int testId){
         return "editTest?testId" + testId;
     }
