@@ -54,10 +54,6 @@
                                     <p><h:outputText value="Deadline: "/><h:outputText value="#{test.deadline}">
                                         <f:convertDateTime pattern="MM/dd/yyyy"/>
                                     </h:outputText></p>
-                                    <pe:timer
-                                            timeout="#{test.duration}"
-                                            format="HH:mm:ss"
-                                            ontimercomplete="return location.href = 'http://www.google.com/'" /><Br></Br>
                                     <h:commandLink value="Пройти тестування"
                                                    action="#{userProfileBean.startTest(test)}"
                                                    style="border-radius: 3px;

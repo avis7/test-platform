@@ -45,11 +45,6 @@
             <version>1.0.0.Final</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>3.0-alpha-1</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
@@ -122,7 +117,7 @@
                                 -Djava.compiler=NONE
                             </cargo.jvmargs>
                             <cargo.datasource.datasource.mysql>
-                                cargo.datasource.jndi=jdbc/Quiz|
+                                cargo.datasource.jndi=java:/Quiz|
                                 cargo.datasource.driver=com.mysql.jdbc.Driver|
                                 cargo.datasource.url=jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068|
                                 cargo.datasource.username=sql285068|
@@ -211,6 +206,7 @@
             </plugin>
         </plugins>
     </build>
+
 
     <repositories>
     <repository>
