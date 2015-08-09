@@ -12,7 +12,12 @@ import java.util.Collection;
                 resultClass = Result.class),
         @NamedNativeQuery(name = "findResultsByTestId",
                 query = "SELECT * FROM result r WHERE r.test_id = :test",
-                resultClass = Result.class)
+                resultClass = Result.class),
+        @NamedNativeQuery(
+        name = "findAllSubmitedCheckedResults",
+        query = "SELECT* FROM result r WHERE r.submited= TRUE AND r.is_checked= TRUE ",
+        resultClass = Result.class
+)
 
 })
 @Table(name = "result")
