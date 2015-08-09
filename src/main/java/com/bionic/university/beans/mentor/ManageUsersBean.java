@@ -5,6 +5,7 @@ import com.bionic.university.dao.TestDAO;
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
+import com.bionic.university.services.ResultService;
 import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
 import org.primefaces.event.RowEditEvent;
@@ -21,13 +22,12 @@ import java.util.List;
 public class ManageUsersBean {
 
     @Inject
-    UserService userService;
+    private UserService userService;
     @Inject
-    TestService testService;
+    private TestService testService;
     @Inject
-    ResultDAO resultDAO;
-    @Inject
-    TestDAO testDAO;
+    private ResultService resultService;
+
     private List<User> users;
     private int selectedTest;
 
@@ -44,37 +44,41 @@ public class ManageUsersBean {
         return users;
     }
 
-    public void setUsers(List<User> users){
-        this.users=users;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
-    public List<Test> getTests(){
+    public List<Test> getTests() {
         return testService.getTests();
     }
 
-    public boolean onRowEdit(RowEditEvent event) {
-        try {
-            FacesMessage msg = new FacesMessage("Test Edited",
-                    ((User) event.getObject()).getFirstName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            resultDAO.save(new Result((User) event.getObject(), testDAO.find(selectedTest)));
-//            вот в этом вопрос
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public List<Test> getVisibleTests() {
+        return testService.getVisibleTests();
     }
 
-    public boolean onRowCancel(RowEditEvent event) {
-        try {
-            FacesMessage msg = new FacesMessage("Edit Cancelled",
-                    ((User) event.getObject()).getFirstName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+    public void onRowEdit(RowEditEvent event) {
+
+        switch (resultService.onRowEdit(event, selectedTest)) {
+            case 1:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" was added", null));
+            break;
+            case 2:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "User "+((User)event.getObject()).getFirstName()+" has this test", null));
+                break;
+            case 3:
+                FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" wasn't added", null));
+                break;
         }
+
+    }
+
+    public String onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled",
+                ((User) event.getObject()).getFirstName());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return "successful";
     }
 }

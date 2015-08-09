@@ -60,9 +60,8 @@ public class UserService {
         try {
             return userDAO.findUserByEmail(email);
         } catch (Exception e) {
-
+            return null;
         }
-        return null;
     }
 
     public List<Test> getUserTests(String email) {
@@ -76,9 +75,8 @@ public class UserService {
             }
             return availableTests;
         } catch (Exception e) {
-
+            return null;
         }
-        return null;
     }
 
     public List<Result> getUserResults(String email){
@@ -92,9 +90,8 @@ public class UserService {
             }
             return results;
         } catch (Exception e) {
-
+            return null;
         }
-        return null;
     }
 
 
@@ -102,8 +99,16 @@ public class UserService {
         return userDAO;
     }
 
-    public void editUserRole(User user, String newRoleValue) throws Exception{
-            user.setRole(roleDAO.find(Integer.valueOf(newRoleValue)));
-            userDAO.update(user);
+    public String editUserRole(User user, int newRoleValue,String email) {
+        if ( newRoleValue == user.getRole().getId()) return "Ви обрали роль, яка вже була у користувача";
+        if (user.getRole().getId()==1 && user.getEmail().compareTo(email)==0) return "Ви не можете змінити собі роль";
+       try {
+           user.setRole(roleDAO.find(Integer.valueOf(newRoleValue)));
+           userDAO.update(user);
+           return "Роль змінена";
+       } catch (Exception e){
+           return "Помилка бази даних";
+       }
+
     }
 }

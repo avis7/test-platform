@@ -8,13 +8,12 @@ import org.primefaces.event.RowEditEvent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
+import javax.validation.ConstraintDeclarationException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by c266 on 28.07.2015.
- */
 public class TestService {
 
     @Inject
@@ -23,16 +22,25 @@ public class TestService {
     private List<TestRow> testRows = new ArrayList<TestRow>();
     private boolean visible;
 
-    public boolean addTest(String testName, Integer duration,
+    public int addTest(String testName, Integer duration,
                            Date deadline, String categoryName) {
         try {
             testDAO.save(new Test(testName, duration,
                     deadline, categoryName));
             setVisible(false);
-            return true;
-        } catch (Exception e) {
-            return false;
+            fillTestTable();
+            testRows = getTestRows();
+            return 1;
+        }catch (PersistenceException e){
+            return 3;
         }
+        catch (Exception e) {
+            return 2;
+        }
+    }
+
+    public List<Test> getVisibleTests(){
+        return testDAO.getVisibleTests();
     }
 
     public TestDAO getTestDAO() {
@@ -46,7 +54,10 @@ public class TestService {
 
     public boolean deleteTest(TestRow testRow) {
         try {
-            testDAO.delete(testRow.getTest());
+            if(testRow.getTest().isArchived())
+                testRow.getTest().setArchived(false);
+            else testRow.getTest().setArchived(true);
+            testDAO.update(testRow.getTest());
             fillTestTable();
             testRows = getTestRows();
             return true;
@@ -57,8 +68,7 @@ public class TestService {
     }
 
     public List<Test> getTests(){
-        List<Test> tests = testDAO.findAll();
-        return  tests;
+        return   testDAO.findAll();
     }
 
     public boolean fillTestTable() {
@@ -77,22 +87,7 @@ public class TestService {
 
     public boolean onRowEdit(RowEditEvent event) {
         try {
-            FacesMessage msg = new FacesMessage("Test Edited",
-                    ((TestRow) event.getObject()).getTest().getTestName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             testDAO.update((((TestRow) event.getObject()).getTest()));
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    public boolean onRowCancel(RowEditEvent event) {
-        try {
-            FacesMessage msg = new FacesMessage("Edit Cancelled",
-                    ((TestRow) event.getObject()).getTest().getTestName());
-            FacesContext.getCurrentInstance().addMessage(null, msg);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

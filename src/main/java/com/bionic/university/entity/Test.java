@@ -1,9 +1,14 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
+import java.util.Collection;
 
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getVisibleTests",
+                query = "SELECT * FROM test t WHERE t.archived = FALSE ",
+                resultClass = Test.class)})
 
 @Entity
 @Table(name = "test")
@@ -19,6 +24,8 @@ public class Test {
     private Date deadline;
     @Column(name = "category_name", nullable = false)
     private String categoryName;
+    @Column(name="archived",nullable = false)
+    private boolean archived;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
@@ -87,6 +94,14 @@ public class Test {
 
     public void setQuestions(Collection<Question> questions) {
         this.questions = questions;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     public String getCategoryName() {

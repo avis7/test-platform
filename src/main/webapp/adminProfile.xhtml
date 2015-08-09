@@ -47,11 +47,7 @@
                             <p:dataTable id="userDT" var="users" value="#{adminProfileBean.users}" editable="true" >
 
                             <p:ajax event="rowEdit" listener="#{adminProfileBean.onRowEdit}" update=":formDT:msgs" />
-
-
-
-                            <!--<p:ajax event="cellEdit" listener="#{adminProfileBean.onCellEdit}" update=":formDT:msgs"  />-->
-
+                            <p:ajax event="rowEditCancel" listener="#{adminProfileBean.onRowCancel}" update=":formDT:msgs" />
 
                             <p:column headerText="Прізвище" sortBy="#{users.lastName}">
                                 <h:outputText value="#{users.lastName}" />
