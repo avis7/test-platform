@@ -25,6 +25,8 @@ public class Question {
     private boolean isOpen;
     @Column(name = "is_multichoise", nullable = false)
     private boolean isMultichoise;
+    @Column(name = "archived", nullable = false)
+    private boolean archived;
     @ManyToOne
     @JoinColumn(name = "test_id")
     private Test test;
@@ -83,6 +85,14 @@ public class Question {
 
     public void setIsMultichoise(boolean isMultichoise) {
         this.isMultichoise = isMultichoise;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     public Test getTest() {

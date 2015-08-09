@@ -36,11 +36,6 @@ public class QuestionService {
         return true;
     }
 
-    public boolean deleteQuestion(int questionId) {
-        Question question = questionDAO.find(questionId);
-        questionDAO.delete(question);
-        return true;
-    }
 
     public boolean updateQuestion(int questionId, String questionText, int mark, boolean isMultiChoice, boolean isOpen) {
         Question question = questionDAO.find(questionId);
@@ -50,5 +45,26 @@ public class QuestionService {
         question.setIsMultichoise(isMultiChoice);
         questionDAO.update(question);
         return true;
+    }
+
+    public boolean deleteQuestion(Question question){
+        try {
+            if (question.isArchived())
+                question.setArchived(false);
+            else question.setArchived(true);
+            questionDAO.update(question);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean addQuestion(String question, int mark, boolean isOpen, boolean isMultichoise){
+        try {
+            questionDAO.save(new Question(question,mark,isOpen,isMultichoise));
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

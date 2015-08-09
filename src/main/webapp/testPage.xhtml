@@ -34,52 +34,29 @@
 
                         <h:form id="formDT">
                             <p:growl id="msgs" showDetail="true"/>
-                            <p:dataTable id="dataTable"
+                            <p:dataList id="dataQuestion"
                                          value="#{questionBean.questions}"
-                                         var="question"
-                                         rowIndexVar="indexVar"
-                                         editable="true">
-
-                                <p:ajax event="rowEdit" listener="#{testsBean.onRowEdit}" update=":formDT:msgs"/>
-                                <p:ajax event="rowEditCancel" listener="#{testsBean.onRowCancel}"
-                                        update=":formDT:msgs"/>
-
-
-                                <p:column headerText="Questions">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText
-                                                value="#{questionBean.questions}"/></f:facet>
-                                        <f:facet name="input"><p:inputText id="questionInput"
-                                                                           value="#{questionBean.questions}"
-                                                                           style="width:100%"
-                                                                           required="true"
-                                                                           requiredMessage="Поле обов`язкове для заповнення"
-                                                                           validatorMessage="Некоректне введення">
-                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
-                                        </p:inputText></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
-                                <p:column headerText="Answers">
-                                    <p:cellEditor>
-                                        <f:facet name="output"> <ui:repeat var="answer" value="#{questionBean.getAnswers(question)}">
-                                            <h:outputText value="#{answer}"/>
-                                            <br/>
-                                        </ui:repeat>
-                                        </f:facet>
-                                        <f:facet name="input"><p:inputText id="answerInput"
-                                                                           value="#{questionBean.getAnswers(question)}"
-                                                                           style="width:100%"
-                                                                           required="true"
-                                                                           requiredMessage="Поле обов`язкове для заповнення"
-                                                                           validatorMessage="Некоректне введення">
-                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
-                                        </p:inputText></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
-                                <p:column style="width:32px; border:0px; background:#ffffff;">
-                                    <p:rowEditor/>
-                                </p:column>
-                            </p:dataTable>
+                                         var="question">
+                                <h:panelGrid columns="4" cellspacing="5">
+                                <h:outputText value="#{question.question}"
+                                              style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"/>
+                                    <p:commandButton value="edit" action="#{questionBean.editQuestion(question)}"/>
+                                    <p:commandButton value="delete" action="#{questionBean.deleteQuestion(question)}" update="@form"/>
+                                    <!--<p:commandButton value="Add answer" action="#{questionBean.addAnswer(question, , true)}" update="@form"/>-->
+                                    <h:inputText value="#{questionBean.answerText}"></h:inputText>
+                                    <!--ТУТ Я ОСТАНОВИЛСЯ. ДЕЛАТЬ ДОБАВЛЕНИЕ ОТВЕТА-->
+                                </h:panelGrid>
+                                <p:dataList id="dataAnswer"
+                                        value="#{questionBean.getAnswers(question)}"
+                                        var="answer">
+                                    <h:panelGrid columns="4" cellspacing="5">
+                                        <h:outputText value="#{answer.answerText}"
+                                                      style="#{answer.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"/>
+                                        <p:commandButton value="edit" action="#{questionBean.editAnswer(answer)}"/>
+                                        <p:commandButton value="delete" action="#{questionBean.deleteAnswer(answer)}" update="@form"/>
+                                    </h:panelGrid>
+                                </p:dataList>
+                            </p:dataList>
                         </h:form>
 
                     </div>

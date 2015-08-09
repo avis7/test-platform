@@ -20,23 +20,18 @@ public class Answer {
     private boolean isCorrect;
     @Column(name = "picture")
     private String picture;
+    @Column(name = "archived", nullable = false)
+    private boolean archived;
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
-
-
-
-    public Answer(boolean isCorrect) {
-        this.isCorrect = isCorrect;
-    }
 
     public Answer(String answerText, boolean isCorrect) {
         this.answerText = answerText;
         this.isCorrect = isCorrect;
     }
 
-    public Answer() {
-    }
+    public Answer(){}
 
     public int getId() {
         return id;
@@ -64,6 +59,14 @@ public class Answer {
 
     public String getAnswerText() {
         return answerText;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     public String getPicture() {

@@ -22,11 +22,25 @@ public class AnswerService {
     }
 
     public boolean addAnswer(int questionId, String answerText, boolean isCorrect) {
-        Answer answer = new Answer(answerText, isCorrect);
-        Question question = questionService.getQuestionDAO().find(questionId);
-        //answer.linkToQuestion(question);
-        answerDAO.save(answer);
-        return true;
+        try {
+            Answer answer = new Answer(answerText, isCorrect);
+            Question question = questionService.getQuestionDAO().find(questionId);
+            answerDAO.save(answer);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean addAnswer(Question question, String answerText, boolean isCorrect) {
+        try {
+            Answer answer = new Answer(answerText, isCorrect);
+            answer.setQuestion(question);
+            answerDAO.save(answer);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     public boolean updateAnswer(int answerId, String answerText, boolean isCorrect){
@@ -37,12 +51,6 @@ public class AnswerService {
         return true;
     }
 
-    public boolean deleteAnswer(int answerId){
-        Answer answer = answerDAO.find(answerId);
-        answerDAO.delete(answer);
-        return true;
-    }
-
     public AnswerDAO getAnswerDAO() {
         return answerDAO;
     }
@@ -50,4 +58,17 @@ public class AnswerService {
     public void setAnswerDAO(AnswerDAO answerDAO) {
         this.answerDAO = answerDAO;
     }
+
+    public boolean deleteAnswer(Answer answer){
+        try {
+            if (answer.isArchived())
+                answer.setArchived(false);
+            else answer.setArchived(true);
+            answerDAO.update(answer);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 }
