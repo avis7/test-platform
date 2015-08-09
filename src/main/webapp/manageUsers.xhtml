@@ -11,7 +11,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title>Profile</title>
+    <title>Mentror's test panel</title>
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
 </h:head>
@@ -37,14 +37,15 @@
                 <div class="row">
                     <div class="col-xs-12">
 
-                        <h5>Welcome, ADMIN</h5>
+                        <h5>Welcome, Mentor</h5>
                         <div align="center">
 
                             <h:form id="formDT">
+                                <p:growl id="msgs" showDetail="true"/>
                                 <p:dataTable id="userDT" var="users" value="#{manageUsersBean.users}" editable="true" rowIndexVar="indexVar">
 
-                                    <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}" update=":formDT:userDT" />
-                                    <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}" update=":formDT:userDT" />
+                                    <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}" update=":formDT:msgs" />
+                                    <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}" update=":formDT:msgs" />
 
                                     <h:messages globalOnly="true" />
 

@@ -8,6 +8,7 @@ import org.primefaces.event.RowEditEvent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.persistence.PersistenceException;
 import javax.validation.ConstraintDeclarationException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +31,7 @@ public class TestService {
             fillTestTable();
             testRows = getTestRows();
             return 1;
-        }catch (ConstraintDeclarationException e){
+        }catch (PersistenceException e){
             return 3;
         }
         catch (Exception e) {
