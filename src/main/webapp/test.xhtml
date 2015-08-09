@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
-<head>
-    <title>Profile</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/nav.js"></script>
-</head>
+<h:head>
+    <title></title>
+</h:head>
+<h:body>
 
+    <h:form id="form">
+        <p:tabView value="#{testBean.tabs}" var="tab">
+            <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
+                <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
+                    <p:outputLabel value="#{tab.question.question}"/>
+                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                    <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
+                        <p:ajax update="oneAnswer" />
+                        <f:selectItems value="#{tab.question.answers}" var="ans"
+                                       itemLabel="#{ans.answerText}" itemValue="#{ans.id}"/>
+                    </p:selectOneRadio>
+                </h:panelGrid>
+                <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
+                    <p:outputLabel value="#{tab.question.question}"/>
+                    <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
+                        <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
+                    </p:selectManyCheckbox>
+                </h:panelGrid>
+                <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
+                    <p:outputLabel value="#{tab.question.question}"/>
+                    <p:inputTextarea rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true" />
+                    <h:outputText id="display" />
+                </h:panelGrid>
+            </p:tab>
+        </p:tabView>
+        <p:commandButton value="Submit" action="#{testBean.submit}" ajax="false"/>
+    </h:form>
 
-<body class="verstka">
-<ui:composition template="template.xhtml">
-
-    <ui:define name="container">
-        <div class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-6"><h3>Good luck !</h3></div>
-                    <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
-                </div>
-            </div>
-        </div><!-- РЕЄСТРАЦІЯ -->
-    </ui:define>
-
-
-    <ui:define name="body">
-        <p:dataList id="questions" value="#{testBean.questions}" var="question">
-            <h:outputText value="#{question.question}"/>
-            <p:dataList id="answers" value="#{question.answers}" var="answer">
-                <h:outputText value="#{answer.answerText}"/>
-            </p:dataList>
-        </p:dataList>
-    </ui:define>
-</ui:composition>
-</body>
+</h:body>
 </html>

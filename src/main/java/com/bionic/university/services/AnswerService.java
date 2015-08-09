@@ -24,7 +24,7 @@ public class AnswerService {
     public boolean addAnswer(int questionId, String answerText, boolean isCorrect) {
         Answer answer = new Answer(answerText, isCorrect);
         Question question = questionService.getQuestionDAO().find(questionId);
-        answer.linkToQuestion(question);
+        //answer.linkToQuestion(question);
         answerDAO.save(answer);
         return true;
     }

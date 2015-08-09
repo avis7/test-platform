@@ -50,9 +50,9 @@ public abstract class AbstractDAO<T> {
 ////        closeTransaction();
 ////    }
 //
-////    public void flush() {
-////        em.flush();
-////    }
+//    public void flush() {
+//        em.flush();
+//    }
 //
 ////    public void joinTransaction() {
 ////        em = emf.createEntityManager();

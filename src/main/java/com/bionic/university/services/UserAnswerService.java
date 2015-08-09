@@ -1,13 +1,8 @@
 package com.bionic.university.services;
 
-import com.bionic.university.dao.AnswerDAO;
-import com.bionic.university.dao.ResultDAO;
-import com.bionic.university.dao.UserAnswerDAO;
-import com.bionic.university.dao.UserDAO;
-import com.bionic.university.entity.Answer;
-import com.bionic.university.entity.Question;
-import com.bionic.university.entity.Result;
-import com.bionic.university.entity.UserAnswer;
+import com.bionic.university.beans.student.TestBean;
+import com.bionic.university.dao.*;
+import com.bionic.university.entity.*;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -19,9 +14,6 @@ import java.util.Map;
  * Created by Olexandr on 8/1/2015.
  */
 public class UserAnswerService {
-    private List<Answer> userAnswers = new ArrayList<Answer>();
-    private List<List<Answer>> userMultichoiseAnswers = new ArrayList<List<Answer>>();
-    private Map<Answer, String> ownUserAnswers = new HashMap<Answer, String>();
 
     @Inject
     private UserAnswerDAO userAnswerDAO;
@@ -31,96 +23,89 @@ public class UserAnswerService {
     private ResultDAO resultDAO;
     @Inject
     private UserDAO userDAO;
+    @Inject
+    private QuestionDAO questionDAO;
 
-    public void addUserAnswer(Answer answer) {
-        Question question = answer.getQuestion();
-        List<Answer> allAnswers = question.getAnswers();
-        for (Answer tempAnswer : allAnswers) {
-            if (userAnswers.contains(tempAnswer)) {//!!!!!!!!!!
-                userAnswers.remove(tempAnswer);
-            }
-        }
-        userAnswers.add(answer);
-    }
+    public boolean save(String email, String testId, List<TestBean.Tab> tabs) {
+        int mark = 0;
 
-    public void addUserAnswer(Answer answer, String ownAnswer) {
-        ownUserAnswers.put(answer, ownAnswer);
-    }
-
-    //!!!!!!!dangerous
-    public void addUserAnswer(List<Answer> answers) {
-        if (answers.isEmpty()) {
-            return;
-        }
-        Answer answer = answerDAO.find(answers.get(0).getId());
-        Question question = answer.getQuestion();
-        List<Answer> allAnswers = question.getAnswers();
-        for (List<Answer> answerList : userMultichoiseAnswers) {
-            for (Answer tempAnswer : allAnswers) {
-                if (answerList.contains(tempAnswer)) {
-                    userMultichoiseAnswers.remove(answerList);
+        try {
+            int test = Integer.valueOf(testId);
+            int user = userDAO.findUserByEmail(email).getId();
+            Result result = resultDAO.findResultByUserIdAndTestId(user, test);
+            User user1 = userDAO.find(8);
+            System.out.println(user1.getPassword());
+            for (TestBean.Tab tab : tabs) {
+                if (!tab.getQuestion().getIsMultichoise() && !tab.getQuestion().getIsOpen()) {
+                    UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
+                    userAnswer.setResult(result);
+                    userAnswerDAO.save(userAnswer);
+                    mark += calculateMarkForOneQuestion(tab);
+                }
+                if (tab.getQuestion().getIsMultichoise()) {
+                    for (String answer : tab.getAnswers()) {
+                        UserAnswer userAnswer = new UserAnswer(Integer.valueOf(answer));
+                        userAnswer.setResult(result);
+                        userAnswerDAO.save(userAnswer);
+                    }
+                    mark += calculateMarkForManyQuestion(tab);
+                }
+                if (tab.getQuestion().getIsOpen()) {
+                    UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
+                    userAnswer.setOwnAnswer(tab.getOwnAnswer());
+                    userAnswer.setResult(result);
+                    userAnswerDAO.save(userAnswer);
                 }
             }
-        }
-        userMultichoiseAnswers.add(answers);
-    }
-
-    public boolean save(String email, String testId) {
-        int test = Integer.valueOf(testId);
-        int user = userDAO.findUserByEmail(email).getId();
-        for (Answer answer : userAnswers) {
-            UserAnswer userAnswer = new UserAnswer(answer.getId());
-            Result result = resultDAO.findResultByUserIdAndTestId(user, test);
-            result.setMark(calculateMark());
-            result.setSubmited(true);
-            userAnswer.setResult(result);
+            result.setMark(mark);
             resultDAO.update(result);
-            userAnswerDAO.save(userAnswer);
-        }
-        for (Answer answer : ownUserAnswers.keySet()) {
-            UserAnswer userAnswer = new UserAnswer(answer.getId());
-            Result result = resultDAO.findResultByUserIdAndTestId(user, test);
-            result.setSubmited(true);
-            userAnswer.setResult(result);
-            userAnswer.setOwnAnswer(ownUserAnswers.get(answer));
-            resultDAO.update(result);
-            userAnswerDAO.save(userAnswer);
+        } catch (IllegalArgumentException e) {
+            return false;
+        } catch (Exception e1){
+            System.out.println();
         }
         return true;
     }
 
-    public int calculateMark() {
-        int mark = 0;
-        for (Answer answer : userAnswers) {
-            Question question = answer.getQuestion();
+    private int calculateMarkForOneQuestion(TestBean.Tab tab) {
+        try {
+            Answer answer = answerDAO.find(tab.getAnswer());
             if (answer.isCorrect()) {
-                mark += question.getMark();
+                return answer.getQuestion().getMark();
             }
+        } catch (Exception e) {
+
         }
-        for (List<Answer> answerList : userMultichoiseAnswers) {
-            Question question = null;
-            int countOfCorrectQuestions = 0;
-            boolean isCorrect = true;
-            for (Answer answer : answerList) {
-                if (!answer.isCorrect()) {
-                    isCorrect = false;
-                    break;
-                }
-                if (question == null) {
+        return 0;
+    }
+
+    private int calculateMarkForManyQuestion(TestBean.Tab tab) {
+        boolean correct = true;
+        Question question = null;
+        try {
+            for (String ans : tab.getAnswers()) {
+                Answer answer = answerDAO.find(Integer.valueOf(ans));
+                if (question == null)
                     question = answer.getQuestion();
-                    List<Answer> answers = question.getAnswers();
-                    for (Answer tempAnswer : answers) {
-                        if (tempAnswer.isCorrect()) {
-                            countOfCorrectQuestions++;
-                        }
+                if (!answer.isCorrect()) {
+                    correct = false;
+                }
+            }
+            if (correct && question != null) {
+                int correctAnswers = 0;
+                for (Answer answer : question.getAnswers()){
+                    if (answer.isCorrect()){
+                        correctAnswers++;
                     }
                 }
+                if (correctAnswers == tab.getAnswers().size()) {
+                    return question.getMark();
+                }
             }
-            if (isCorrect && countOfCorrectQuestions == answerList.size()) {
-                mark += question.getMark();
-            }
+        }catch (Exception e){
+
         }
-        return mark;
+        return 0;
     }
 
 

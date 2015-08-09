@@ -69,7 +69,7 @@ public class Question {
         this.picture = picture;
     }
 
-    public boolean isOpen() {
+    public boolean getIsOpen() {
         return isOpen;
     }
 
@@ -77,7 +77,7 @@ public class Question {
         this.isOpen = isOpen;
     }
 
-    public boolean isMultichoise() {
+    public boolean getIsMultichoise() {
         return isMultichoise;
     }
 
@@ -109,9 +109,8 @@ public class Question {
                 ", mark=" + mark +
                 ", picture='" + picture + '\'' +
                 ", isOpen=" + isOpen +
-                ", isMultichoise=" + isMultichoise +
+                ", getIsMultichoise=" + isMultichoise +
                 ", test=" + test +
-                ", answers=" + answers +
                 '}';
     }
 }

@@ -1,11 +1,8 @@
 package com.bionic.university.jsf;
 
-import com.bionic.university.Test;
 import com.bionic.university.services.TestService;
 import javax.inject.Inject;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by c2612 on 29.07.2015.

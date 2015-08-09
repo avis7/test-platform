@@ -9,6 +9,8 @@ import com.bionic.university.entity.User;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Collection;
 import java.util.List;
 
@@ -24,15 +26,6 @@ public class ResultService {
     @Inject
     private TestDAO testDAO;
 
-    public boolean saveFeedback(String email, String testId, String feedback) {
-        int test = Integer.valueOf(testId);
-        int user = userDAO.findUserByEmail(email).getId();
-        Result result = resultDAO.findResultByUserIdAndTestId(user, test);
-        result.setFeedback(feedback);
-        resultDAO.update(result);
-        return true;
-    }
-
     public int onRowEdit(RowEditEvent event, int selectedTest) {
         try {
             Collection<Test> tests = ((User) event.getObject()).getTests();
@@ -46,6 +39,19 @@ public class ResultService {
             e.printStackTrace();
             return 3;
         }
+    }
+    public boolean saveFeedback(String email, String testId, String feedback){
+        try {
+            int test = Integer.valueOf(testId);
+            int user = userDAO.findUserByEmail(email).getId();
+            Result result = resultDAO.findResultByUserIdAndTestId(user, test);
+            result.setFeedback(feedback);
+            resultDAO.update(result);
+            return true;
+        }catch (Exception e){
+
+        }
+        return false;
     }
 
     public Collection<Result> getResultByTestId(int testId) {

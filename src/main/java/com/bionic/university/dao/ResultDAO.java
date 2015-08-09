@@ -20,7 +20,7 @@ public class ResultDAO extends AbstractDAO<Result> {
     }
 
     public Collection<Result> findResultByTestId(int testId) {
-        Query query = em.createNamedQuery("findResultByTestId");
+        Query query = em.createNamedQuery("findResultsByTestId");
         query.setParameter("test", testId);
         return query.getResultList();
     }

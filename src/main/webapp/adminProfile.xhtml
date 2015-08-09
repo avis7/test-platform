@@ -42,14 +42,12 @@
                     <div align="center">
 
                         <h:form id="formDT">
-                        <p:dataTable id="userDT" var="users" value="#{adminProfileBean.users}" editable="true" editMode="cell" >
+                            <p:growl id="msgs" showDetail="true"/>
 
-                            <p:ajax event="cellEdit" listener="#{adminProfileBean.onCellEdit}" update=":formDT:userDT"  />
+                            <p:dataTable id="userDT" var="users" value="#{adminProfileBean.users}" editable="true" >
 
-
-                            <p:column headerText="Id" sortBy="#{users.id}">
-                                <h:outputText value="#{users.id}" />
-                            </p:column>
+                            <p:ajax event="rowEdit" listener="#{adminProfileBean.onRowEdit}" update=":formDT:msgs" />
+                            <p:ajax event="rowEditCancel" listener="#{adminProfileBean.onRowCancel}" update=":formDT:msgs" />
 
                             <p:column headerText="Прізвище" sortBy="#{users.lastName}">
                                 <h:outputText value="#{users.lastName}" />
@@ -67,19 +65,19 @@
                                 <h:outputText value="#{users.email}" />
                             </p:column>
 
-                            <!--<p:column headerText="День народження">-->
-                                <!--<h:outputText value="#{users.birthday}" />-->
-                            <!--</p:column>-->
-
-                            <p:column headerText="Роль">
+                            <p:column headerText="Роль" >
                                 <p:cellEditor>
                                     <f:facet name="output"><h:outputText value="#{users.role.name}" /></f:facet>
                                     <f:facet name="input">
                                         <h:selectOneMenu value="#{adminProfileBean.selectRole}" style="width:100%">
-                                            <f:selectItems value="#{adminProfileBean.roles}" var="role" itemLabel="#{role}" itemValue="#{role}" />
+                                            <f:selectItems value="#{adminProfileBean.roles}" var="role" itemLabel="#{role.name}" itemValue="#{role.id}" />
                                         </h:selectOneMenu>
                                     </f:facet>
                                 </p:cellEditor>
+                            </p:column>
+
+                            <p:column style="width:32px">
+                                <p:rowEditor />
                             </p:column>
 
                         </p:dataTable>

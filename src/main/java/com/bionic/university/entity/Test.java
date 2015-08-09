@@ -27,11 +27,11 @@ public class Test {
     @Column(name="archived",nullable = false)
     private boolean archived;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    @ManyToMany(mappedBy = "tests",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
-    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
     Collection<Result> results;
-    @OneToMany(mappedBy = "test",cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
     private Collection<Question> questions;
 
     public Test() {
@@ -41,14 +41,6 @@ public class Test {
         this.testName = testName;
         this.duration = duration;
         this.deadline = deadline;
-        this.categoryName = categoryName;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
 
@@ -110,6 +102,14 @@ public class Test {
 
     public void setArchived(boolean archived) {
         this.archived = archived;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override

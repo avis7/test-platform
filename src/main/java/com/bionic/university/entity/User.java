@@ -3,6 +3,7 @@ package com.bionic.university.entity;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -13,7 +14,6 @@ import java.util.Date;
 })
 @Table(name = "user")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -35,9 +35,9 @@ public class User {
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "result", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "test_id"))
-    private Collection<Test> tests;
+    private List<Test> tests;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Collection<Result> results;
+    private List<Result> results;
 
     public User() {
     }
@@ -111,19 +111,19 @@ public class User {
         this.role = role;
     }
 
-    public Collection<Test> getTests() {
+    public List<Test> getTests() {
         return tests;
     }
 
-    public void setTests(Collection<Test> tests) {
+    public void setTests(List<Test> tests) {
         this.tests = tests;
     }
 
-    public Collection<Result> getResults() {
+    public List<Result> getResults() {
         return results;
     }
 
-    public void setResults(Collection<Result> results) {
+    public void setResults(List<Result> results) {
         this.results = results;
     }
 
@@ -137,7 +137,6 @@ public class User {
                 ", birthday=" + birthday +
                 ", phone='" + phone + '\'' +
                 ", role=" + role +
-                ", results=" + results +
                 '}';
     }
 }
