@@ -150,4 +150,9 @@ public class TestBean {
         testName=null;
         categoryName=null;
     }
+
+    public String getQuestions(TestRow testRow){
+        return "testPage?faces-redirect=true&testId="+testRow.getTest().getId();
+    }
+
 }

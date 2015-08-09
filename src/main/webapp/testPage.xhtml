@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Test editing page</title>
+    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+</h:head>
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
+
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
+                        <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+
+        <ui:define name="body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <h:form id="formDT">
+                            <p:growl id="msgs" showDetail="true"/>
+                            <p:dataTable id="dataTable"
+                                         value="#{questionBean.questions}"
+                                         var="question"
+                                         rowIndexVar="indexVar"
+                                         editable="true">
+
+                                <p:ajax event="rowEdit" listener="#{testsBean.onRowEdit}" update=":formDT:msgs"/>
+                                <p:ajax event="rowEditCancel" listener="#{testsBean.onRowCancel}"
+                                        update=":formDT:msgs"/>
+
+
+                                <p:column headerText="Questions">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText
+                                                value="#{questionBean.questions}"/></f:facet>
+                                        <f:facet name="input"><p:inputText id="questionInput"
+                                                                           value="#{questionBean.questions}"
+                                                                           style="width:100%"
+                                                                           required="true"
+                                                                           requiredMessage="Поле обов`язкове для заповнення"
+                                                                           validatorMessage="Некоректне введення">
+                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                        </p:inputText></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Answers">
+                                    <p:cellEditor>
+                                        <f:facet name="output"> <ui:repeat var="answer" value="#{questionBean.getAnswers(question)}">
+                                            <h:outputText value="#{answer}"/>
+                                            <br/>
+                                        </ui:repeat>
+                                        </f:facet>
+                                        <f:facet name="input"><p:inputText id="answerInput"
+                                                                           value="#{questionBean.getAnswers(question)}"
+                                                                           style="width:100%"
+                                                                           required="true"
+                                                                           requiredMessage="Поле обов`язкове для заповнення"
+                                                                           validatorMessage="Некоректне введення">
+                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                        </p:inputText></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column style="width:32px; border:0px; background:#ffffff;">
+                                    <p:rowEditor/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
