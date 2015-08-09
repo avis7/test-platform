@@ -22,6 +22,7 @@ public class AdmProfileBean implements Serializable {
     private Set<Role> roles;
     private List<User> users;
     private String selectRole;
+    private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
 
     @Inject
     UserService userService;
@@ -43,29 +44,18 @@ public class AdmProfileBean implements Serializable {
     }
 
 
-    public boolean onRowEdit(RowEditEvent event) {
-        try {
-            userService.editUserRole((User) event.getObject(), getSelectRole());
-            FacesMessage msg = new FacesMessage("Role Edited",((User) event.getObject()).getRole().getName());
+    public void onRowEdit(RowEditEvent event) {
+        // Видалити email
+        email = "admin@gmail.com";
+        FacesMessage msg = new FacesMessage(userService.editUserRole((User) event.getObject(), Integer.valueOf(getSelectRole()), email)
+                ,((User) event.getObject()).getEmail());
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
-    public boolean onRowCancel(RowEditEvent event) {
-        try {
-            System.out.println(" --- !!! --- IN ONROwCancel");
-            FacesMessage msg = new FacesMessage("Edit Cancelled",
-                    ((User) event.getObject()).getFirstName());
+    public void onRowCancel(RowEditEvent event) {
+            FacesMessage msg = new FacesMessage("Відміна зміни ролі",
+                    ((User) event.getObject()).getEmail());
             FacesContext.getCurrentInstance().addMessage(null, msg);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 
 
