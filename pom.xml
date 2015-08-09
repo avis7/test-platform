@@ -216,7 +216,9 @@
         <repository>
             <id>prime-repo</id>
             <name>Prime Repo</name>
-            <url>http://repository.primefaces.org</url>
+            <url>http://repository.primefac
+
+                es.org</url>
         </repository>
 </repositories>
 

@@ -35,28 +35,65 @@
                         <h:form id="formDT">
                             <p:growl id="msgs" showDetail="true"/>
                             <p:dataList id="dataQuestion"
-                                         value="#{questionBean.questions}"
-                                         var="question">
+                                        value="#{questionBean.questions}"
+                                        var="question">
                                 <h:panelGrid columns="4" cellspacing="5">
-                                <h:outputText value="#{question.question}"
-                                              style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"/>
+                                    <h:outputText value="#{question.question}"
+                                                  style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"/>
                                     <p:commandButton value="edit" action="#{questionBean.editQuestion(question)}"/>
-                                    <p:commandButton value="delete" action="#{questionBean.deleteQuestion(question)}" update="@form"/>
-                                    <!--<p:commandButton value="Add answer" action="#{questionBean.addAnswer(question, , true)}" update="@form"/>-->
-                                    <h:inputText value="#{questionBean.answerText}"></h:inputText>
+                                    <p:commandButton value="delete" action="#{questionBean.deleteQuestion(question)}"
+                                                     update="@form"/>
+                                    <p:outputLabel rendered="#{questionBean.visibleAnswer}">Answer</p:outputLabel>
+                                    <h:inputText value="#{questionBean.answerText}"
+                                                 rendered="#{questionBean.visibleAnswer}"></h:inputText>
+                                    <p:outputLabel rendered="#{questionBean.visibleAnswer}">Correct</p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{questionBean.isCorrect}"
+                                                             rendered="#{questionBean.visibleAnswer}"/>
                                     <!--ТУТ Я ОСТАНОВИЛСЯ. ДЕЛАТЬ ДОБАВЛЕНИЕ ОТВЕТА-->
+                                    <p:commandButton value="Add answer"
+                                                     action="#{questionBean.setVisibleAnswer}"
+                                                     visible="#{!questionBean.visibleAnswer}"
+                                                     update="@form"/>
+                                    <p:commandButton value="Save answer"
+                                                     action="#{questionBean.addAnswer(question, questionBean.answerText,questionBean.isCorrect)}"
+                                                     visible="#{questionBean.visibleAnswer}"
+                                                     update="@form"/>
                                 </h:panelGrid>
                                 <p:dataList id="dataAnswer"
-                                        value="#{questionBean.getAnswers(question)}"
-                                        var="answer">
+                                            value="#{questionBean.getAnswers(question)}"
+                                            var="answer">
                                     <h:panelGrid columns="4" cellspacing="5">
                                         <h:outputText value="#{answer.answerText}"
                                                       style="#{answer.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"/>
                                         <p:commandButton value="edit" action="#{questionBean.editAnswer(answer)}"/>
-                                        <p:commandButton value="delete" action="#{questionBean.deleteAnswer(answer)}" update="@form"/>
+                                        <p:commandButton value="delete" action="#{questionBean.deleteAnswer(answer)}"
+                                                         update="@form"/>
                                     </h:panelGrid>
                                 </p:dataList>
                             </p:dataList>
+                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Question</p:outputLabel>
+                            <h:inputText value="#{questionBean.questionText}"
+                                         rendered="#{questionBean.visibleQuestion}"></h:inputText>
+
+                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Mark</p:outputLabel>
+                            <h:inputText value="#{questionBean.mark}"
+                                         rendered="#{questionBean.visibleQuestion}"></h:inputText>
+
+                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Open</p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{questionBean.isOpen}"
+                                                     rendered="#{questionBean.visibleQuestion}"/>
+                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Open</p:outputLabel>
+                            <p:selectBooleanCheckbox value="#{questionBean.isMultichoice}"
+                                                     rendered="#{questionBean.visibleQuestion}"/>
+                            <p:commandButton value="Add question"
+                                             action="#{questionBean.setVisibleQuestion}"
+                                             visible="#{!questionBean.visibleQuestion}"
+                                             update="@form"/>
+                            <p:commandButton value="Save question"
+                                             action="#{questionBean.addQuestion(questionBean.questionText,questionBean.mark,
+                                             questionBean.isOpen,questionBean.isMultichoice)}"
+                                             visible="#{questionBean.visibleQuestion}"
+                                             update="@form"/>
                         </h:form>
 
                     </div>

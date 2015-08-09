@@ -4,11 +4,9 @@ import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;
-import com.bionic.university.services.TestService;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -37,6 +35,24 @@ public class QuestionAnswerBean {
     private int mark;
     private boolean isOpen;
     private boolean isMultichoice;
+    private boolean visibleAnswer;
+    private boolean visibleQuestion;
+
+    public boolean isVisibleQuestion() {
+        return visibleQuestion;
+    }
+
+    public void setVisibleQuestion() {
+        this.visibleQuestion = true;
+    }
+
+    public boolean isVisibleAnswer() {
+        return visibleAnswer;
+    }
+
+    public void setVisibleAnswer() {
+        this.visibleAnswer = true;
+    }
 
     public String getAnswerText() {
         return AnswerText;
