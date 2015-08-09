@@ -38,11 +38,11 @@
                                  paginator="true" rows="15" style="margin-bottom:20px">
                         <f:facet name="{Exporters}">
                             <h:commandLink>
-                                <p:graphicImage name="img\excel_ico.png" width="24"/>
+                                <p:graphicImage value="img\logo\excel_Ico.png" width="24"/>
                                 <p:dataExporter type="xls" target="tbl" fileName = "Result-#{viewResultsBean.testName}" />
                             </h:commandLink>
                             <h:commandLink>
-                                <p:graphicImage name="img/pdf_ico.png" width="24"/>
+                                <p:graphicImage value="img\logo\pdf_Ico.png" width="24"/>
                                 <p:dataExporter type="pdf" target="tbl" fileName = "Result-#{viewResultsBean.testName}" />
                             </h:commandLink>
 
