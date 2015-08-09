@@ -34,7 +34,7 @@ public class UserProfileBean {
 
     public String startTest(Test test) {
         boolean success = userService.submitTest(test, email);
-        return success ? "test?faces-redirect=true&testId=" + test.getId() + "&email=" + email : "error.xhtml";
+        return success ? "/test?faces-redirect=true&testId=" + test.getId() + "&email=" + email : "error.xhtml";
     }
 
 

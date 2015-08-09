@@ -15,6 +15,6 @@ public class UserBB {
 
     public String logout(){
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "index.html?faces-redirect=true";
+        return "/index.html?faces-redirect=true";
     }
 }

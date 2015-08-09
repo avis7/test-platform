@@ -34,11 +34,11 @@ public class AuthorizationBean {
         String roleName = getCurrentUser().getRole().getName();
 
         if (roleName.equals("admin") && success) {
-            resultLink.append("adminProfile");
+            resultLink.append("admin/adminProfile");
         } else if (roleName.equals("mentor") && success) {
-            resultLink.append("mentorProfile");
+            resultLink.append("mentor/mentorProfile");
         } else if (roleName.equals("student") && success) {
-            resultLink.append("userProfile");
+            resultLink.append("student/userProfile");
         } else {
             resultLink.append("index.html");
         }

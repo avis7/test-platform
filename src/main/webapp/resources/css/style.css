@@ -1,0 +1,304 @@
+@font-face {
+    font-family: PFB; /* ??? ?????? */
+    src: url(#{resource['PFBeauSansPro-Regular_35350.ttf']}); /* ???? ? ????? ?? ??????? */
+}
+.verstka{
+    height: 100vh;
+}
+h1{
+    font-family: PFB;
+    font-size: 22px;
+    color: #40C3DA;
+    margin: 0px;
+    padding-right: 0px;
+    line-height: 1;
+}
+h3{
+    font-family: PFB;
+    font-size: 19px;
+    color: white;
+    margin: 0px;
+    padding: 11px 0px 0px 0px;
+}
+h4{
+    font-family: PFB;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+}
+h5{
+    font-family: PFB;
+    font-size: 19px;
+    color: #40C3DA;
+    margin: 0px;
+    padding: 0px 0px 0px 0px;
+    margin-top:15px;
+}
+p{
+    font-family: PFB;
+    font-size: 13px;
+}
+ul{
+    margin: 0px;
+    padding: 3px 0px 0px 3px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    text-decoration: none;
+    color: #40C3DA;
+    transition: 0.2s;
+}
+.back{
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+    margin: 0px;
+    padding: 10px 0px 0px 0px;
+}
+.back a{
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+}
+.back a:hover{
+    color: white;
+    text-decoration: underline;
+}
+/* header */
+.header{
+    margin-bottom: 5px;
+    width: 100%;
+}
+li{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
+ul.menu {
+    font-family: PFB;
+    font-size: 15px;
+    margin: 0;
+    padding-top: 30px;
+    padding-right: 5px;/* ???????? ???????? ???????? */
+}
+ul.menu li {
+    display: inline; /* ?????????? ??? ???????? ??????? */
+    padding-right: 5px; /* ???? ?????? ?????? */
+    padding-left: 5px; /* ???? ?????? ?????? */
+}
+.enter-but a{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 15px;
+    color: #40C3DA;
+    border: solid 1px #40C3DA;
+    padding: 3px 6px 3px 6px;
+    text-decoration: none;
+}
+.enter-but a:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 15px;
+    color: white;
+    background: #40C3DA;
+    padding: 3px 6px 3px 6px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+.enter-form{
+    padding-top: 30px;
+}
+@media (max-width: 767px) {
+    .header{
+        margin-bottom: 10px;
+    }
+    ul.menu {
+        padding-top: 10px;
+        text-align: left;
+        padding-left: 40px;
+        font-size: 14px;
+        padding-right: 0px;
+    }
+    .enter-but a{
+        font-size: 14px;
+    }
+    .enter-but a:hover{
+        font-size: 14px;
+    }
+    .enter-form{
+        padding-top: 10px;
+        padding-right: 5px;
+        text-align: right;
+    }
+}
+/* /header */
+
+/* content */
+.cont{
+    width: 100%;
+    height: 80vh;
+}
+.content{
+    width: 100%;
+    height: 40px;
+    background-color: #40C3DA;
+}
+ul.back li {
+    display: inline; /* ?????????? ??? ???????? ??????? */
+    padding-right: 1px; /* ???? ?????? ?????? */
+}
+.form{
+    background-color: #F5F5F5;
+    width: 100%;
+    margin-bottom: 50vh;
+}
+.avtorization{
+    margin: 0px auto;
+    margin-top: 28px;
+    margin-bottom:25px;
+}
+.ui-inputfield, .ui-inputtext{
+    border: 1px solid #c6c6c5;
+    border-radius: 3px;
+    height:25px;
+    font-family: PFB;
+    margin-top:0px;
+    margin-bottom: 0px;
+    margin-right:20px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.ui-message-error {
+    margin: 0px auto;
+    margin-top: 10px;
+    border: 1px solid #eed3d7;
+    background-color: #f2dede;
+    color: #b94a48;
+    font-family: PFB;
+    font-size: 13px;
+    width: 250px;
+}
+.ui-button{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: white;
+    border: solid 1px #40C3DA;
+    padding: 3px 8px 3px 8px;
+    text-decoration: none;
+    background-color: #40C3DA;
+}
+.ui-button:hover{
+    border-radius: 3px;
+    font-family: PFB;
+    font-size: 14px;
+    color: #40C3DA;
+    border: solid 1px #40C3DA;
+    padding: 2px 8px 2px 8px;
+    text-decoration: none;
+    background-color: white;
+    transition: 0.5s;
+}
+.ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th{
+    padding: 4px 10px;
+    overflow: hidden;
+    border: 1px solid #dadad9;
+    font-family: PFB;
+    font-size: 14px;
+    text-align:center;
+}
+.ui-datatable thead th{
+    padding: 4px 10px;
+    overflow: hidden;
+    border: 1px solid #dadad9;
+    font-family: PFB;
+    font-size: 15px;
+    text-align:center;
+    background:#F5F5F5;
+    color:black;
+}
+.ui-state-default{
+    background:none;
+}
+.ui-helper-reset{
+    font-family: PFB;
+    font-size: 14px;
+}
+.ui-accordion-header{
+    width:190px;
+    background:#F5F5F5;
+    color:black;
+}
+.ui-accordion .ui-accordion-header {
+    padding: 4px 10px;
+}
+.ui-state-active{
+    background: #40C3DA;
+    font-weight: normal;
+    color: #ffffff;
+}
+.ui-state-default .ui-icon{
+    background-image:none;
+}
+/* /content */
+
+/* content-UserProfile */
+.zagolovok{
+    margin-top:7px;
+    margin-bottom:7px;
+    font-family: PFB;
+    font-size: 16px;
+}
+.ui-widget-content {
+    background: #ffffff;
+}
+/* /content-UserProfile */
+
+/* content-MentorProfile */
+.ui-outputlabel{
+    font-family: PFB;
+    font-size: 13px;
+    font-weight:normal;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.ui-widget-content{
+    background: #ffffff;
+
+    color: black;
+    padding-right:2px;
+    border:#DADAD9;
+}
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
+    -moz-box-shadow: none;
+     -webkit-box-shadow: none;
+     box-shadow: none;
+     color: black;
+    font-family:PFB;
+    font-size: 13px;
+}
+/* /content-UserProfile */
+
+/* footer */
+.footer{
+    width: 100%;
+    background-color: #F5F5F5;
+}
+.links{
+    padding-top: 5px;
+}
+.img-refers{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+@media (max-width: 767px) {
+    .links{
+        padding-left: 5px;
+    }
+}
+/* /footer */
