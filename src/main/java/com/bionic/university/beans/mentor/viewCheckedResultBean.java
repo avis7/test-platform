@@ -19,7 +19,7 @@ import java.util.List;
  */
 @ViewScoped
 @ManagedBean
-public class viewCheckedResultBean {
+public class ViewCheckedResultBean {
     private List<UserAnswer> userAnswers;
     private List<Question> questions;
 
