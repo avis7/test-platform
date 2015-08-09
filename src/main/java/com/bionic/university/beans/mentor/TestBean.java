@@ -36,6 +36,7 @@ public class TestBean {
     }
 
     public void setVisible() {
+        clearFields();
         testService.setVisible(true);
     }
 
@@ -141,5 +142,12 @@ public class TestBean {
 
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
+    }
+
+    public void clearFields(){
+        deadline=null;
+        duration=null;
+        testName=null;
+        categoryName=null;
     }
 }
