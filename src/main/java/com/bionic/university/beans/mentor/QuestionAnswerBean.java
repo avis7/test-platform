@@ -2,7 +2,6 @@ package com.bionic.university.beans.mentor;
 
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
-import com.bionic.university.model.TestRow;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;
 import org.primefaces.event.RowEditEvent;
@@ -31,8 +30,8 @@ public class QuestionAnswerBean {
 
     private List<Question> questions;
     private List<Answer> answers;
-    private String AnswerText;
-    private String QuestionText;
+    private String answerText;
+    private String questionText;
     private boolean isCorrect;
     private int mark;
     private boolean multichoice;
@@ -44,6 +43,7 @@ public class QuestionAnswerBean {
     }
 
     public void setVisibleQuestion() {
+        clearQuestionFields();
         questionService.setVisibleQuestion(true);
     }
 
@@ -72,22 +72,22 @@ public class QuestionAnswerBean {
     }
 
     public String getAnswerText() {
-        return AnswerText;
+        return answerText;
     }
 
     public void setAnswerText(String answerText) {
-        AnswerText = answerText;
+        this.answerText = answerText;
     }
 
     public String getQuestionText() {
-        return QuestionText;
+        return questionText;
     }
 
     public void setQuestionText(String questionText) {
-        QuestionText = questionText;
+        this.questionText = questionText;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return isCorrect;
     }
 
@@ -127,14 +127,6 @@ public class QuestionAnswerBean {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
-    }
-
-    public void editQuestion(Question question){
-
-    }
-
-    public void editAnswer(Answer answer){
-
     }
 
     public String deleteQuestion(Question question){
@@ -213,5 +205,10 @@ public class QuestionAnswerBean {
                 ((Answer) event.getObject()).getAnswerText());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "unsuccessful";
+    }
+
+    public void clearQuestionFields(){
+        questionText=null;
+        mark=0;
     }
 }

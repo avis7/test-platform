@@ -35,6 +35,21 @@ public class AnswerService {
 
     public boolean addAnswer(Question question, String answerText, boolean isCorrect) {
         try {
+            int counter=0;
+            List<Answer> answers = answerDAO.getVisibleAnswersByQuestionId((int)question.getId());
+            if(answers.size()==0) {
+                question.setIsOpen(true);
+                question.setIsMultichoise(false);
+            }else {
+                question.setIsOpen(false);
+                for(Answer answer: answers){
+                    if(answer.getIsCorrect())
+                        counter++;
+                }
+                if(counter>1)
+                    question.setIsMultichoise(true);
+                else question.setIsMultichoise(false);
+            }
             Answer answer = new Answer(answerText, isCorrect);
             answer.setQuestion(question);
             answerDAO.save(answer);

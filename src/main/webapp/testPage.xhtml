@@ -40,7 +40,8 @@
                                          rowIndexVar="indexVar"
                                          editable="true">
 
-                                <p:ajax event="rowEdit" listener="#{questionBean.onRowEditQuestion}" update=":formDT:msgs"/>
+                                <p:ajax event="rowEdit" listener="#{questionBean.onRowEditQuestion}"
+                                        update=":formDT:msgs"/>
                                 <p:ajax event="rowEditCancel" listener="#{questionBean.onRowCancel}"
                                         update=":formDT:msgs"/>
 
@@ -48,6 +49,7 @@
                                 <p:column headerText="Question">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
+                                                style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
                                                 value="#{question.question}"/></f:facet>
                                         <f:facet name="input"><p:inputText id="questionInput"
                                                                            value="#{question.question}"
@@ -64,6 +66,7 @@
                                 <p:column headerText="Mark">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
+                                                style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
                                                 value="#{question.mark}"/></f:facet>
                                         <f:facet name="input"><p:inputText id="markInput"
                                                                            value="#{question.mark}"
@@ -77,70 +80,110 @@
 
 
                                 <p:column headerText="is Open">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText
-                                                value="#{question.isOpen}"/></f:facet>
-                                        <f:facet name="input"><p:selectBooleanCheckbox value="#{question.isOpen}"/></f:facet>
-                                    </p:cellEditor>
+                                    <h:outputText
+                                            style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                            value="#{question.isOpen}"/>
+                                </p:column>
+
+                                <p:column headerText="is Multichoice">
+                                    <h:outputText
+                                            style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                            value="#{question.isMultichoise}"/>
                                 </p:column>
 
                                 <p:column headerText="Answers">
-                            <p:dataTable id="answerTable"
-                                         value="#{questionBean.getAnswers(question)}"
-                                         var="answer"
-                                         rowIndexVar="index"
-                                         editable="true">
+                                    <p:dataTable id="answerTable"
+                                                 value="#{questionBean.getAnswers(question)}"
+                                                 var="answer"
+                                                 rowIndexVar="index"
+                                                 editable="true">
 
-                                <p:ajax event="rowEdit" listener="#{questionBean.onRowEditAnswer}" update=":formDT:msgs"/>
-                                <p:ajax event="rowEditCancel" listener="#{testsBean.onRowCancel}"
-                                        update=":formDT:msgs"/>
+                                        <p:ajax event="rowEdit" listener="#{questionBean.onRowEditAnswer}"
+                                                update=":formDT:msgs"/>
+                                        <p:ajax event="rowEditCancel" listener="#{testsBean.onRowCancel}"
+                                                update=":formDT:msgs"/>
 
-                                <p:column>
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                                <h:outputText value="#{answer.answerText}"/>
-                                        </f:facet>
-                                        <f:facet name="input"><p:inputText id="answerInput"
-                                                                           value="#{answer.answerText}"
-                                                                           style="width:100%"
-                                                                           required="true"
-                                                                           requiredMessage="Поле обов`язкове для заповнення"
-                                                                           validatorMessage="Некоректне введення">
-                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
-                                        </p:inputText></f:facet>
-                                </p:cellEditor>
-                                </p:column>
-
-
-                                <p:column>
-                                    <p:cellEditor>
-                                        <f:facet name="output">
-                                            <h:outputText value="#{answer.isCorrect}"/>
-                                        </f:facet>
-                                        <f:facet name="input"><p:selectBooleanCheckbox value="#{answer.isCorrect}"/></f:facet>
-                                    </p:cellEditor>
+                                        <p:column>
+                                            <p:cellEditor>
+                                                <f:facet name="output">
+                                                    <h:outputText
+                                                            style="#{answer.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                                            value="#{answer.answerText}"/>
+                                                </f:facet>
+                                                <f:facet name="input"><p:inputText id="answerInput"
+                                                                                   value="#{answer.answerText}"
+                                                                                   style="width:100%"
+                                                                                   required="true"
+                                                                                   requiredMessage="Поле обов`язкове для заповнення"
+                                                                                   validatorMessage="Некоректне введення">
+                                                    <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                                </p:inputText></f:facet>
+                                            </p:cellEditor>
+                                        </p:column>
 
 
-                                    <!---->
-                                    <p:outputLabel rendered="#{questionBean.visibleQuestion}">Answer Text</p:outputLabel>
-                                    <p:inputText value="#{questionBean.answerText}"
-                                                 rendered="#{questionBean.visibleQuestion}"/>
-                                    <!---->
+                                        <p:column>
+                                            <p:cellEditor>
+                                                <f:facet name="output">
+                                                    <h:outputText
+                                                            style="#{answer.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                                            value="#{answer.isCorrect}"/>
+                                                </f:facet>
+                                                <f:facet name="input"><p:selectBooleanCheckbox
+                                                        value="#{answer.isCorrect}"/></f:facet>
+                                            </p:cellEditor>
 
 
-                                </p:column>
+                                            <!--Untested part-->
+                                            <p:outputLabel
+                                                    rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
+                                            <p:inputText value="#{questionBean.answerText}"
+                                                         rendered="#{questionBean.visibleAnswer}"/>
 
-                                <p:column style="border:0px; background:#ffffff; width:30px;">
-                                    <h:commandLink value="AR" style="color:#E7664D;"
-                                                   action="#{questionBean.deleteAnswer(answer)}"
-                                            />
-                                </p:column>
+                                            <p:outputLabel
+                                                    rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
+                                            <p:inputText value="#{questionBean.isCorrect}"
+                                                         rendered="#{questionBean.visibleAnswer}"/>
 
-                                <p:column style="width:32px; border:0px; background:#ffffff;">
-                                    <p:rowEditor/>
-                                </p:column>
+                                            <p:commandButton value="Save answer"
+                                                             action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
+                                                             rendered="#{questionBean.visibleAnswer}" update="@form"
+                                                             style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
 
-                            </p:dataTable>
+                                            <p:commandButton value="Add answer"
+                                                             rendered="#{!questionBean.visibleAnswer}"
+                                                             action="#{questionBean.setVisibleAnswer}" update="@form"
+                                                             style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                                            <!---->
+
+
+                                        </p:column>
+
+                                        <p:column style="border:0px; background:#ffffff; width:30px;">
+                                            <h:commandLink value="AR" style="color:#E7664D;"
+                                                           action="#{questionBean.deleteAnswer(answer)}"
+                                                    />
+                                        </p:column>
+
+                                        <p:column style="width:32px; border:0px; background:#ffffff;">
+                                            <p:rowEditor/>
+                                        </p:column>
+
+                                    </p:dataTable>
                                 </p:column>
 
                                 <p:column style="border:0px; background:#ffffff; width:30px;">
@@ -164,15 +207,16 @@
                             <p:inputText value="#{questionBean.mark}"
                                          rendered="#{questionBean.visibleQuestion}"/>
 
-                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Open</p:outputLabel>
-                            <p:selectBooleanCheckbox value="#{questionBean.open}"
-                                                     rendered="#{questionBean.visibleQuestion}"/>
+                            <!--                   <p:outputLabel rendered="#{questionBean.visibleQuestion}">Open</p:outputLabel>
+                                               <p:selectBooleanCheckbox value="#{questionBean.open}"
+                                                                        rendered="#{questionBean.visibleQuestion}"/>
 
-                            <p:outputLabel rendered="#{questionBean.visibleQuestion}">Multichoice</p:outputLabel>
-                            <p:selectBooleanCheckbox value="#{questionBean.multichoice}"
-                                                     rendered="#{questionBean.visibleQuestion}"/>
+                                               <p:outputLabel rendered="#{questionBean.visibleQuestion}">Multichoice</p:outputLabel>
+                                               <p:selectBooleanCheckbox value="#{questionBean.multichoice}"
+                                                                        rendered="#{questionBean.visibleQuestion}"/>-->
 
-                            <p:commandButton value="Save test" action="#{questionBean.addQuestion(questionBean.testId,questionBean.questionText, questionBean.mark, questionBean.open, questionBean.isCorrect)}"
+                            <p:commandButton value="Save question"
+                                             action="#{questionBean.addQuestion(questionBean.testId,questionBean.questionText, questionBean.mark, true, false)}"
                                              rendered="#{questionBean.visibleQuestion}" update="@form"
                                              style="border-radius: 3px;
                                         font-family: PFB;
