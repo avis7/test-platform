@@ -16,7 +16,7 @@ public class AnswerService {
     @Inject
     private QuestionService questionService;
 
-    public List<Answer> getAnswersForQuestion(String stringQuestionId) {
+    public List<Answer> getAnswersByQuestionId(String stringQuestionId) {
         int questionId = Integer.valueOf(stringQuestionId);
         return answerDAO.getAnswersByQuestionId(questionId);
     }
@@ -43,11 +43,11 @@ public class AnswerService {
         return true;
     }
 
-    public AnswerDAO getAnswerDAO() {
-        return answerDAO;
-    }
-
-    public void setAnswerDAO(AnswerDAO answerDAO) {
-        this.answerDAO = answerDAO;
+    public String getStringAnswerById(int answerId){
+        try {
+            Answer answer = answerDAO.find(answerId);
+            return answer.getAnswerText();
+        }catch (Exception e){}
+        return null;
     }
 }

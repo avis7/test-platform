@@ -4,6 +4,11 @@ import javax.persistence.*;
 
 
 @Entity
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getUserAnswersByResultId",
+                query = "SELECT * FROM user_answer ua WHERE ua.result_id = :result",
+                resultClass = UserAnswer.class)
+})
 @Table(name = "user_answer")
 public class UserAnswer {
     @Id
@@ -13,6 +18,8 @@ public class UserAnswer {
     private int answerId;
     @Column(name = "own_answer")
     private String ownAnswer;
+    @Column(name = "mark_for_own_answer")
+    private int markForOwnAnswer;
     @ManyToOne
     @JoinColumn(name = "result_id")
     private Result result;
@@ -24,11 +31,11 @@ public class UserAnswer {
         this.answerId = answerId;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public long getAnswerId() {
+    public int getAnswerId() {
         return answerId;
     }
 
@@ -50,6 +57,14 @@ public class UserAnswer {
 
     public void setResult(Result result) {
         this.result = result;
+    }
+
+    public int getMarkForOwnAnswer() {
+        return markForOwnAnswer;
+    }
+
+    public void setMarkForOwnAnswer(int markForOwnAnswer) {
+        this.markForOwnAnswer = markForOwnAnswer;
     }
 
     @Override

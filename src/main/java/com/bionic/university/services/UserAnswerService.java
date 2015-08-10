@@ -5,10 +5,7 @@ import com.bionic.university.dao.*;
 import com.bionic.university.entity.*;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Olexandr on 8/1/2015.
@@ -25,6 +22,8 @@ public class UserAnswerService {
     private UserDAO userDAO;
     @Inject
     private QuestionDAO questionDAO;
+    @Inject
+    private AnswerService answerService;
 
     public boolean save(String email, String testId, List<TestBean.Tab> tabs) {
         int mark = 0;
@@ -33,8 +32,7 @@ public class UserAnswerService {
             int test = Integer.valueOf(testId);
             int user = userDAO.findUserByEmail(email).getId();
             Result result = resultDAO.findResultByUserIdAndTestId(user, test);
-            User user1 = userDAO.find(8);
-            System.out.println(user1.getPassword());
+
             for (TestBean.Tab tab : tabs) {
                 if (!tab.getQuestion().getIsMultichoise() && !tab.getQuestion().getIsOpen()) {
                     UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
@@ -61,8 +59,8 @@ public class UserAnswerService {
             resultDAO.update(result);
         } catch (IllegalArgumentException e) {
             return false;
-        } catch (Exception e1){
-            System.out.println();
+        } catch (Exception e1) {
+            return false;
         }
         return true;
     }
@@ -93,8 +91,8 @@ public class UserAnswerService {
             }
             if (correct && question != null) {
                 int correctAnswers = 0;
-                for (Answer answer : question.getAnswers()){
-                    if (answer.isCorrect()){
+                for (Answer answer : question.getAnswers()) {
+                    if (answer.isCorrect()) {
                         correctAnswers++;
                     }
                 }
@@ -102,11 +100,77 @@ public class UserAnswerService {
                     return question.getMark();
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return 0;
     }
 
+    public List<UserAnswer> getUserAnswersWithOwnAnswerToCheckByResultId(String resultId) {
+        try {
+            int result = Integer.valueOf(resultId);
+            List<UserAnswer> userAnswers = userAnswerDAO.getUserAnswersByResultId(result);
+            List<UserAnswer> userAnswersWithOwnAnswers = new LinkedList<UserAnswer>();
+            for (UserAnswer userAnswer : userAnswers) {
+                if (userAnswer.getOwnAnswer() != null) {
+                    userAnswersWithOwnAnswers.add(userAnswer);
+                }
+            }
+            return userAnswersWithOwnAnswers;
+        } catch (NumberFormatException e1) {
+        } catch (Exception e2) {
+        }
+        return null;
+    }
+
+    public boolean saveMarksForOwnAnswers(List<UserAnswer> userAnswers, String strResultId) {
+        try {
+            int resultId = Integer.valueOf(strResultId);
+            Result result = resultDAO.find(resultId);
+            int markForOwnAnswers = 0;
+            for (UserAnswer userAnswer : userAnswers) {
+                userAnswerDAO.update(userAnswer);
+                markForOwnAnswers += userAnswer.getMarkForOwnAnswer();
+            }
+            result.setMark(result.getMark() + markForOwnAnswers);
+            result.setIsChecked(true);
+            resultDAO.update(result);
+            return true;
+        } catch (NumberFormatException e1) {
+        } catch (Exception e2) {
+        }
+        return false;
+    }
+
+    public List<UserAnswer> getUserAnswersByResultId(String strResultId){
+        try {
+            int resultId = Integer.valueOf(strResultId);
+            Result result = resultDAO.find(resultId);
+            return result.getUserAnswers();
+        }catch (NumberFormatException e1){}
+        catch (Exception e2){}
+        return null;
+    }
+
+    public List<String> getUserAnswersByQuestionId(int questionId, List<UserAnswer> userAnswers){
+        List<Answer> answers = answerService.getAnswersByQuestionId(String.valueOf(questionId));
+        List<String> strUserAnswers = new LinkedList<String>();
+        for (Answer answer : answers){
+            if (answerIdExistInUserAnswers(answer.getId(), userAnswers)){
+                strUserAnswers.add(answer.getAnswerText());
+            }
+        }
+        return strUserAnswers;
+    }
+
+    private boolean answerIdExistInUserAnswers(int answerId, List<UserAnswer> userAnswers){
+        boolean exist = false;
+        for (UserAnswer userAnswer : userAnswers){
+            if (userAnswer.getAnswerId() == answerId){
+                exist = true;
+            }
+        }
+        return exist;
+    }
 
 }

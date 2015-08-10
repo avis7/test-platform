@@ -25,6 +25,7 @@ public class exportResultTestBean implements Serializable {
     ResultService resultService;
 
     public Collection<Result> getResults(){
+        //TODO
         int id = Integer.valueOf(testId);
         results = resultService.getResultByTestId(id);
         return results;

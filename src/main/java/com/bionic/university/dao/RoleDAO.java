@@ -10,6 +10,7 @@ public class RoleDAO extends AbstractDAO<Role> {
     }
 
     public Role findRoleByRoleName(String roleName){
+        //TODO
         long id;
         for(Role role : findAll()){
                if(roleName.compareToIgnoreCase(role.getName())==0) {

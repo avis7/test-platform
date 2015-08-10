@@ -8,6 +8,9 @@ import java.util.List;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "getQuestionsByTestId",
                 query = "SELECT * FROM question q WHERE q.test_id = :test",
+                resultClass = Question.class),
+        @NamedNativeQuery(name = "getQuestionByAnswerId",
+                query = "SELECT * FROM question q, answer a WHERE a.question_id = q.id AND a.id = :answer",
                 resultClass = Question.class)
 })
 @Table(name = "question")

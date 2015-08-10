@@ -2,11 +2,15 @@ package com.bionic.university.beans.mentor;
 
 import com.bionic.university.entity.Test;
 
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.util.List;
 
 /**
  * Created by Olexandr on 8/3/2015.
  */
+@SessionScoped
+@ManagedBean
 public class MentorProfileBean {
     private List<Test> tests;
 
