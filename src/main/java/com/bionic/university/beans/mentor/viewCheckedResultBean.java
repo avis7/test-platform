@@ -1,5 +1,6 @@
 package com.bionic.university.beans.mentor;
 
+import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.entity.UserAnswer;
 import com.bionic.university.services.AnswerService;
@@ -11,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,8 +21,9 @@ import java.util.List;
 @ViewScoped
 @ManagedBean
 public class viewCheckedResultBean {
-    private List<UserAnswer> userAnswers;
-    private List<Question> questions;
+    private List<RadioQuestion> radioQuestions;
+    private List<MultichoiseQuestion> multichoiseQuestions;
+    private List<OpenQuestion> openQuestions;
 
     @Inject
     private UserAnswerService userAnswerService;
@@ -33,45 +35,177 @@ public class viewCheckedResultBean {
     private String resultId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("resultId");
 
     @PostConstruct
-    public  void  init(){
-        userAnswers = userAnswerService.getUserAnswersByResultId(resultId);
-        questions = new LinkedList<Question>();
+    public void init() {
+        radioQuestions = new ArrayList<RadioQuestion>();
+        multichoiseQuestions = new ArrayList<MultichoiseQuestion>();
+        openQuestions = new ArrayList<OpenQuestion>();
+
+        List<UserAnswer> userAnswers = userAnswerService.getUserAnswersByResultId(resultId);
         for (UserAnswer userAnswer : userAnswers){
-            questions.add(questionService.getQuestionByAnswerId(userAnswer.getId()));
-        }
-        for (Question question : questions){
-            for (Question question1 : questions){
+            Question question = questionService.getQuestionByAnswerId(userAnswer.getAnswerId());
+            Answer answer = answerService.getAnswerById(userAnswer.getAnswerId());
+            if (!question.getIsMultichoise() && !question.getIsOpen()){
+                RadioQuestion radioQuestion = new RadioQuestion();
+                radioQuestion.setQuestion(question.getQuestion());
+                radioQuestion.setAnswer(answer.getAnswerText());
+                radioQuestion.setMark(userAnswer.getMark());
+                radioQuestions.add(radioQuestion);
+            }
+            if (question.getIsMultichoise()){
+                MultichoiseQuestion multichoiseQuestion = new MultichoiseQuestion();
+                multichoiseQuestion.setQuestion(question.getQuestion());
+                if (multichoiseQuestions.contains(multichoiseQuestion)){
+                    multichoiseQuestion = multichoiseQuestions.get(multichoiseQuestions.indexOf(multichoiseQuestion));
+                }else {
+                    multichoiseQuestions.add(multichoiseQuestion);
+                }
+                multichoiseQuestion.addAnswer(answer.getAnswerText());
+                multichoiseQuestion.setMark(userAnswer.getMark());
 
             }
+            if (question.getIsOpen()){
+                OpenQuestion openQuestion = new OpenQuestion();
+                openQuestion.setQuestion(question.getQuestion());
+                openQuestion.setAnswer(userAnswer.getOwnAnswer());
+                openQuestion.setMark(userAnswer.getMark());
+                openQuestions.add(openQuestion);
+            }
+        }
+
+    }
+
+
+    public List<RadioQuestion> getRadioQuestions() {
+        return radioQuestions;
+    }
+
+    public void setRadioQuestions(List<RadioQuestion> radioQuestions) {
+        this.radioQuestions = radioQuestions;
+    }
+
+    public List<MultichoiseQuestion> getMultichoiseQuestions() {
+        return multichoiseQuestions;
+    }
+
+    public void setMultichoiseQuestions(List<MultichoiseQuestion> multichoiseQuestions) {
+        this.multichoiseQuestions = multichoiseQuestions;
+    }
+
+    public List<OpenQuestion> getOpenQuestions() {
+        return openQuestions;
+    }
+
+    public void setOpenQuestions(List<OpenQuestion> openQuestions) {
+        this.openQuestions = openQuestions;
+    }
+
+    public class RadioQuestion{
+        private String question;
+        private String answer;
+        private int mark;
+
+        public String getQuestion() {
+            return question;
+        }
+
+        public void setQuestion(String question) {
+            this.question = question;
+        }
+
+        public String getAnswer() {
+            return answer;
+        }
+
+        public void setAnswer(String answer) {
+            this.answer = answer;
+        }
+
+        public int getMark() {
+            return mark;
+        }
+
+        public void setMark(int mark) {
+            this.mark = mark;
         }
     }
+    public class MultichoiseQuestion{
+        private String question;
+        private List<String> answers = new ArrayList<String>();
+        private int mark;
 
-    public String getAnswer(int answerId){
-        String answer = answerService.getStringAnswerById(answerId);
-        return answer != null ? answer : "couldn't found answer with such id";
+
+        public void addAnswer(String answer){
+            answers.add(answer);
+        }
+
+
+        public String getQuestion() {
+            return question;
+        }
+
+        public void setQuestion(String question) {
+            this.question = question;
+        }
+
+        public List<String> getAnswers() {
+            return answers;
+        }
+
+        public void setAnswers(List<String> answers) {
+            this.answers = answers;
+        }
+
+        public int getMark() {
+            return mark;
+        }
+
+        public void setMark(int mark) {
+            this.mark = mark;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) {
+                return true;
+            }
+            if (obj == null) {
+                return false;
+            }
+            if (this.getClass() != obj.getClass()) {
+                return false;
+            }
+            MultichoiseQuestion multichoiseQuestion = (MultichoiseQuestion) obj;
+            return this.question.equals(multichoiseQuestion.getQuestion());
+        }
     }
-
-    public List<String> getAnswers(int questionId){
-        List<String> strUserAnswers = userAnswerService.getUserAnswersByQuestionId(questionId, userAnswers);
-        if (strUserAnswers != null)
-            return strUserAnswers;
-        return null;
-    }
+    public class OpenQuestion{
+        private String question;
+        private String answer;
+        private int mark;
 
 
-    public List<UserAnswer> getUserAnswers() {
-        return userAnswers;
-    }
+        public String getQuestion() {
+            return question;
+        }
 
-    public void setUserAnswers(List<UserAnswer> userAnswers) {
-        this.userAnswers = userAnswers;
-    }
+        public void setQuestion(String question) {
+            this.question = question;
+        }
 
-    public List<Question> getQuestions() {
-        return questions;
-    }
+        public String getAnswer() {
+            return answer;
+        }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+        public void setAnswer(String answer) {
+            this.answer = answer;
+        }
+
+        public int getMark() {
+            return mark;
+        }
+
+        public void setMark(int mark) {
+            this.mark = mark;
+        }
     }
 }
