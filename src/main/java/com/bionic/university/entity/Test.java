@@ -5,6 +5,11 @@ import java.util.Collection;
 import java.util.Date;
 
 
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "getVisibleTests",
+                query = "SELECT * FROM test t WHERE t.archived = FALSE ",
+                resultClass = Test.class)})
+
 @Entity
 @Table(name = "test")
 public class Test {
@@ -19,8 +24,9 @@ public class Test {
     private Date deadline;
     @Column(name = "category_name", nullable = false)
     private String categoryName;
-    @Column(name = "archived")
+    @Column(name="archived",nullable = false)
     private boolean archived;
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
     @OneToMany(mappedBy = "test")

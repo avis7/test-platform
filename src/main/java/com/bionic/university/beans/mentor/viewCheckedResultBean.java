@@ -47,14 +47,14 @@ public class viewCheckedResultBean {
             Answer answer = answerService.getAnswerById(userAnswer.getAnswerId());
             if (!question.getIsMultichoise() && !question.getIsOpen()){
                 RadioQuestion radioQuestion = new RadioQuestion();
-                radioQuestion.setQuestion(question.getQuestion());
+                radioQuestion.setQuestion(question);
                 radioQuestion.setAnswer(answer.getAnswerText());
                 radioQuestion.setMark(userAnswer.getMark());
                 radioQuestions.add(radioQuestion);
             }
             if (question.getIsMultichoise()){
                 MultichoiseQuestion multichoiseQuestion = new MultichoiseQuestion();
-                multichoiseQuestion.setQuestion(question.getQuestion());
+                multichoiseQuestion.setQuestion(question);
                 if (multichoiseQuestions.contains(multichoiseQuestion)){
                     multichoiseQuestion = multichoiseQuestions.get(multichoiseQuestions.indexOf(multichoiseQuestion));
                 }else {
@@ -66,7 +66,7 @@ public class viewCheckedResultBean {
             }
             if (question.getIsOpen()){
                 OpenQuestion openQuestion = new OpenQuestion();
-                openQuestion.setQuestion(question.getQuestion());
+                openQuestion.setQuestion(question);
                 openQuestion.setAnswer(userAnswer.getOwnAnswer());
                 openQuestion.setMark(userAnswer.getMark());
                 openQuestions.add(openQuestion);
@@ -101,15 +101,15 @@ public class viewCheckedResultBean {
     }
 
     public class RadioQuestion{
-        private String question;
+        private Question question;
         private String answer;
         private int mark;
 
-        public String getQuestion() {
+        public Question getQuestion() {
             return question;
         }
 
-        public void setQuestion(String question) {
+        public void setQuestion(Question question) {
             this.question = question;
         }
 
@@ -130,7 +130,7 @@ public class viewCheckedResultBean {
         }
     }
     public class MultichoiseQuestion{
-        private String question;
+        private Question question;
         private List<String> answers = new ArrayList<String>();
         private int mark;
 
@@ -140,11 +140,11 @@ public class viewCheckedResultBean {
         }
 
 
-        public String getQuestion() {
+        public Question getQuestion() {
             return question;
         }
 
-        public void setQuestion(String question) {
+        public void setQuestion(Question question) {
             this.question = question;
         }
 
@@ -180,16 +180,16 @@ public class viewCheckedResultBean {
         }
     }
     public class OpenQuestion{
-        private String question;
+        private Question question;
         private String answer;
         private int mark;
 
 
-        public String getQuestion() {
+        public Question getQuestion() {
             return question;
         }
 
-        public void setQuestion(String question) {
+        public void setQuestion(Question question) {
             this.question = question;
         }
 

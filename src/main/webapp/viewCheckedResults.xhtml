@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+    <title>Results</title>
+</h:head>
+
+
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="col-xs-6"><h3>Результати тесту - #{viewResultsBean.testName}</h3></div>
+                    <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
+                </div>
+            </div><!-- РЕЄСТРАЦІЯ -->
+        </ui:define>
+
+
+        <ui:define name="body">
+            <h:form id="form">
+
+
+                <div align="center">
+                    <p:dataTable id="tbl" var="result" value="#{viewResultsBean.results}"
+                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
+                                 paginator="true" rows="15" style="margin-bottom:20px">
+                        <f:facet name="{Exporters}">
+                            <h:commandLink>
+                                <p:graphicImage value="img\logo\excel_Ico.png" width="24"/>
+                                <p:dataExporter type="xls" target="tbl" fileName = "Result-#{viewResultsBean.testName}" />
+                            </h:commandLink>
+                            <h:commandLink>
+                                <p:graphicImage value="img\logo\pdf_Ico.png" width="24"/>
+                                <p:dataExporter type="pdf" target="tbl" fileName = "Result-#{viewResultsBean.testName}" />
+                            </h:commandLink>
+
+
+                        </f:facet>
+
+                        <p:column>
+
+                            <f:facet name="header">
+                                <h:outputText value="Студент"/>
+                            </f:facet>
+                            <h:outputText value="#{result.user.getFullName()}" />
+                        </p:column>
+
+
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Час проходження" />
+                            </f:facet>
+                            <h:outputText value="" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Кількість правильних відповідей" />
+                            </f:facet>
+                            <h:outputText value="0/#{viewResultsBean.questionAmount}" />
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Оцінка" />
+                            </f:facet>
+                            <h:outputText value="#{result.mark}" />
+                        </p:column>
+
+
+
+
+                    </p:dataTable>
+
+
+                </div>
+
+            </h:form>
+
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>
+

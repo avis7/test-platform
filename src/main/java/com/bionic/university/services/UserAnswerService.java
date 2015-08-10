@@ -26,6 +26,7 @@ public class UserAnswerService {
     private AnswerService answerService;
 
     public boolean save(String email, String testId, List<TestBean.Tab> tabs) {
+        boolean isChecked = true;
         Date passTime = new Date();
         int mark = 0;
 
@@ -53,6 +54,7 @@ public class UserAnswerService {
                     mark += markToWrite;
                 }
                 if (tab.getQuestion().getIsOpen()) {
+                    isChecked = false;
                     UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
                     userAnswer.setOwnAnswer(tab.getOwnAnswer());
                     userAnswer.setResult(result);
@@ -61,6 +63,7 @@ public class UserAnswerService {
             }
             result.setMark(mark);
             result.setPassTime(passTime);
+            result.setIsChecked(isChecked);
             resultDAO.update(result);
         } catch (IllegalArgumentException e) {
             return false;
@@ -147,31 +150,32 @@ public class UserAnswerService {
         return false;
     }
 
-    public List<UserAnswer> getUserAnswersByResultId(String strResultId){
+    public List<UserAnswer> getUserAnswersByResultId(String strResultId) {
         try {
             int resultId = Integer.valueOf(strResultId);
             Result result = resultDAO.find(resultId);
             return result.getUserAnswers();
-        }catch (NumberFormatException e1){}
-        catch (Exception e2){}
+        } catch (NumberFormatException e1) {
+        } catch (Exception e2) {
+        }
         return null;
     }
 
-    public List<String> getUserAnswersByQuestionId(int questionId, List<UserAnswer> userAnswers){
+    public List<String> getUserAnswersByQuestionId(int questionId, List<UserAnswer> userAnswers) {
         List<Answer> answers = answerService.getAnswersByQuestionId(String.valueOf(questionId));
         List<String> strUserAnswers = new LinkedList<String>();
-        for (Answer answer : answers){
-            if (answerIdExistInUserAnswers(answer.getId(), userAnswers)){
+        for (Answer answer : answers) {
+            if (answerIdExistInUserAnswers(answer.getId(), userAnswers)) {
                 strUserAnswers.add(answer.getAnswerText());
             }
         }
         return strUserAnswers;
     }
 
-    private boolean answerIdExistInUserAnswers(int answerId, List<UserAnswer> userAnswers){
+    private boolean answerIdExistInUserAnswers(int answerId, List<UserAnswer> userAnswers) {
         boolean exist = false;
-        for (UserAnswer userAnswer : userAnswers){
-            if (userAnswer.getAnswerId() == answerId){
+        for (UserAnswer userAnswer : userAnswers) {
+            if (userAnswer.getAnswerId() == answerId) {
                 exist = true;
             }
         }

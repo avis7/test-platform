@@ -1,6 +1,11 @@
 package com.bionic.university.beans.mentor;
 
+import com.bionic.university.beans.student.UserProfileBean;
 import com.bionic.university.entity.Test;
+import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -14,6 +19,13 @@ import java.util.List;
 public class MentorProfileBean {
     private List<Test> tests;
 
+   @Inject
+    UserProfileBean userProfileBean;
+
+
+    public String getName(){
+        return userProfileBean.getName();
+    }
     public String editTest(int testId){
         return "editTest?testId" + testId;
     }
