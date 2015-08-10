@@ -68,14 +68,18 @@
                             <h:form method="post" action="j_security_check" id="form" class="avtorization">
                                 <h4>E-mail
                                 <p:inputText id="email" name="j_username" size="20" required="true" type="text"
-                                              requiredMessage="E-mail field must not be empty"
-                                              value="#{authorizationBean.email}" style="margin-left:7px">
+                                              requiredMessage="Введіть E-mail"
+                                              value="#{authorizationBean.email}" style="margin-left:7px"
+                                              validatorMessage="Введіть коректно E-mail">
+                                    <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                                 </p:inputText></h4>
-                                <p:message for="email"/>
+
+                                <p:message for="email" />
 
                                 <h4>Пароль
                                 <p:password id="password" name="j_password" type="password" size="20" required="true"
-                                            requiredMessage="Password field must not be empty"
+                                            requiredMessage="Введіть пароль"
                                             value="#{authorizationBean.password}"/></h4>
                                 <p:message for="password" display="text" />
 

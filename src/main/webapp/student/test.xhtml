@@ -28,12 +28,14 @@
                 </h:panelGrid>
                 <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
                     <p:outputLabel value="#{tab.question.question}"/>
+                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
                     <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
                         <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
                     </p:selectManyCheckbox>
                 </h:panelGrid>
                 <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
                     <p:outputLabel value="#{tab.question.question}"/>
+                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
                     <p:inputTextarea rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true" />
                     <h:outputText id="display" />
                 </h:panelGrid>

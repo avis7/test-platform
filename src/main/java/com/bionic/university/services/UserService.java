@@ -9,12 +9,13 @@ import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
 public class UserService {
 
-    
+
     @Inject
     private RoleDAO roleDAO;
     @Inject
@@ -26,10 +27,10 @@ public class UserService {
         try {
             User user = userDAO.findUserByEmail(email);
             return user.getPassword().equals(password);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("dfce");
 
-        }catch (Exception e0){
+        } catch (Exception e0) {
             System.out.println("frd");
         }
         return false;
@@ -37,6 +38,7 @@ public class UserService {
     }
 
     public boolean submitTest(Test test, String email) {
+        Date beginTime = new Date();
         try {
             int userId = userDAO.findUserByEmail(email).getId();
             int testId = test.getId();
@@ -45,6 +47,7 @@ public class UserService {
                 return false;
             }
             result.setSubmited(true);
+            result.setBeginTime(beginTime);
             resultDAO.update(result);
             return true;
         } catch (Exception e) {
@@ -56,6 +59,7 @@ public class UserService {
     public List<User> getAllUsers() {
         return userDAO.findAll();
     }
+
     public User findUserByEmail(String email) {
         try {
             return userDAO.findUserByEmail(email);
@@ -69,7 +73,7 @@ public class UserService {
         try {
             User user = userDAO.findUserByEmail(email);
             for (Result result : user.getResults()) {
-                if (!result.isSubmited()) {
+                if (!result.isSubmited() && !result.getTest().isArchived() && result.getTest().getDeadline().after(new Date())) {
                     availableTests.add(result.getTest());
                 }
             }
@@ -79,12 +83,12 @@ public class UserService {
         }
     }
 
-    public List<Result> getUserResults(String email){
+    public List<Result> getUserResults(String email) {
         ArrayList<Result> results = new ArrayList<Result>();
-        try{
+        try {
             User user = userDAO.findUserByEmail(email);
             for (Result result : user.getResults()) {
-                if (result.isSubmited()) {
+                if (result.isSubmited() && result.isChecked()) {
                     results.add(result);
                 }
             }
@@ -99,16 +103,17 @@ public class UserService {
         return userDAO;
     }
 
-    public String editUserRole(User user, int newRoleValue,String email) {
-        if ( newRoleValue == user.getRole().getId()) return "Ви обрали роль, яка вже була у користувача";
-        if (user.getRole().getId()==1 && user.getEmail().compareTo(email)==0) return "Ви не можете змінити собі роль";
-       try {
-           user.setRole(roleDAO.find(Integer.valueOf(newRoleValue)));
-           userDAO.update(user);
-           return "Роль змінена";
-       } catch (Exception e){
-           return "Помилка бази даних";
-       }
+    public String editUserRole(User user, int newRoleValue, String email) {
+        if (newRoleValue == user.getRole().getId()) return "Ви обрали роль, яка вже була у користувача";
+        if (user.getRole().getId() == 1 && user.getEmail().compareTo(email) == 0)
+            return "Ви не можете змінити собі роль";
+        try {
+            user.setRole(roleDAO.find(Integer.valueOf(newRoleValue)));
+            userDAO.update(user);
+            return "Роль змінена";
+        } catch (Exception e) {
+            return "Помилка бази даних";
+        }
 
     }
 }

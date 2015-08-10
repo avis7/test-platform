@@ -5,13 +5,14 @@ import com.bionic.university.services.ResultService;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 /**
  * Created by Olexandr on 8/1/2015.
  */
-@SessionScoped    //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@ViewScoped  //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
 @ManagedBean
 public class FeedbackBean {
     private String feedback;

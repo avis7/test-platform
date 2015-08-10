@@ -9,10 +9,7 @@ import com.bionic.university.entity.User;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by c266 on 28.07.2015.
@@ -56,6 +53,24 @@ public class ResultService {
 
     public List<Result> getResultByTestId(int testId) {
         return resultDAO.findResultByTestId(testId);
+    }
+
+    public List<Result> getResultsToCheckByTestId(String testId) {
+        try {
+            List<Result> results;
+            List<Result> resultsToCheck = new LinkedList<Result>();
+            int test = Integer.valueOf(testId);
+            results = (List<Result>)resultDAO.findResultByTestId(test);
+            for (Result result : results){
+                if (result.isSubmited() && !result.isChecked()){
+                    resultsToCheck.add(result);
+                }
+            }
+            return resultsToCheck;
+        }catch (NumberFormatException e1){}
+        catch (Exception e2){}
+        return null;
+
     }
 
     public List<Result> getAllSubmitedCheckedResults(){

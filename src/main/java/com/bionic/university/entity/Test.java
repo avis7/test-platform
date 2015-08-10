@@ -1,8 +1,8 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Collection;
+import java.util.Date;
 
 
 @NamedNativeQueries({
@@ -100,20 +100,20 @@ public class Test {
         this.questions = questions;
     }
 
-    public boolean isArchived() {
-        return archived;
-    }
-
-    public void setArchived(boolean archived) {
-        this.archived = archived;
-    }
-
     public String getCategoryName() {
         return categoryName;
     }
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     @Override

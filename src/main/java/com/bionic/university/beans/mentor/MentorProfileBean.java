@@ -6,13 +6,17 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.io.Serializable;
+
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.util.List;
 
 /**
  * Created by Olexandr on 8/3/2015.
  */
+@SessionScoped
 @ManagedBean
-public class MentorProfileBean implements Serializable{
+public class MentorProfileBean {
     private List<Test> tests;
 
    @Inject

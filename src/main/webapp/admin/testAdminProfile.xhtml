@@ -18,7 +18,7 @@
 
 
 <h:body class="verstka">
-    <ui:composition template="../template.xhtml">
+<ui:composition template="../template.xhtml">
 
     <ui:define name="container">
         <div class="content">
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    <h5>Welcome,  #{userProfileBean.name}</h5>
+                    <h5>Welcome, ADMIN</h5>
                     <div align="center">
 
                         <h:form id="formDT">
@@ -47,7 +47,11 @@
                             <p:dataTable id="userDT" var="users" value="#{adminProfileBean.users}" editable="true" >
 
                             <p:ajax event="rowEdit" listener="#{adminProfileBean.onRowEdit}" update=":formDT:msgs" />
-                            <p:ajax event="rowEditCancel" listener="#{adminProfileBean.onRowCancel}" update=":formDT:msgs" />
+
+
+
+                            <!--<p:ajax event="cellEdit" listener="#{adminProfileBean.onCellEdit}" update=":formDT:msgs"  />-->
+
 
                             <p:column headerText="Прізвище" sortBy="#{users.lastName}">
                                 <h:outputText value="#{users.lastName}" />

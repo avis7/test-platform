@@ -44,16 +44,16 @@ public class TestBean {
         }
     }
 
+    public String submit() {
+        boolean success = userAnswerService.save(email, testId, tabs);
+        return success ? "feedback?faces-redirect=true&testId=" + testId + "&email=" + email : "error";
+    }
+
 
     @Inject
     private QuestionService questionService;
     @Inject
     private UserAnswerService userAnswerService;
-
-    public String submit() {
-        boolean success = userAnswerService.save(email, testId, tabs);
-        return success ? "feedback?faces-redirect=true&testId=" + testId + "&email=" + email : "error";
-    }
 
     public List<Question> getQuestions() {
         return questions;

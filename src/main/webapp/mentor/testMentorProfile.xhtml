@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body>
-    <ui:composition template="../template.xhtml">
+<ui:composition template="../template.xhtml">
 
 
     <ui:define name="container">
@@ -34,7 +34,7 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    <h5>Welcome, #{userProfileBean.name}</h5>
+                    <h5>Welcome, Mentor</h5>
 
                     <div align="center">
 
@@ -119,8 +119,8 @@
                                             />
                                 </p:column>
                                 <p:column style="border:0px; background:#ffffff; width:60px;">
-                                    <h:commandLink value="Results" style="color:#52CC4C;"
-                                                   action="#{testsBean.viewCheckedResults(testRow)}"
+                                    <h:commandLink value="EXPORT" style="color:#52CC4C;"
+                                                   action="#{testsBean.exportTestResults(testRow)}"
                                             />
                                 </p:column>
                                 <p:column style="width:32px; border:0px; background:#ffffff;">

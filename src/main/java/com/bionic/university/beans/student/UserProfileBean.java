@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-@SessionScoped //!!!!!!!!!!!!!!!!!!!!!!!RequestScoped ??? !!!!!!!!!!!!!!!!!!!!
+@SessionScoped
 @ManagedBean
 public class UserProfileBean {
     private List<Test> tests;
@@ -39,8 +39,7 @@ public class UserProfileBean {
 
 
     public List<Test> getTests() {
-        if (tests == null)
-            tests = userService.getUserTests(email);
+        tests = userService.getUserTests(email);
         return tests;
     }
 
@@ -49,8 +48,7 @@ public class UserProfileBean {
     }
 
     public List<Result> getResults() {
-        if (results == null)
-            results = userService.getUserResults(email);
+        results = userService.getUserResults(email);
         return results;
     }
 
@@ -66,18 +64,5 @@ public class UserProfileBean {
         this.email = email;
     }
 
-    public void loadDataFromDB() {
-        Collection<Result> allResult;
-        allResult = userService.findUserByEmail(email).getResults();
-        results = new ArrayList<Result>();
-        tests = new ArrayList<Test>();
-        Date resultdate = new Date(System.currentTimeMillis());
-        for (Result result : allResult) {
-            if (!result.isSubmited() && result.getTest().getDeadline().after(resultdate)) {
-                tests.add(result.getTest());
-            } else if (result.isSubmited()) results.add(result);
-        }
-        allResult.clear();
-    }
 
 }

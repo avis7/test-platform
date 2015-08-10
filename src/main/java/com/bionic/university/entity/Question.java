@@ -8,6 +8,9 @@ import java.util.List;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "getQuestionsByTestId",
                 query = "SELECT * FROM question q WHERE q.test_id = :test",
+                resultClass = Question.class),
+        @NamedNativeQuery(name = "getQuestionByAnswerId",
+                query = "SELECT * FROM question q, answer a WHERE a.question_id = q.id AND a.id = :answer",
                 resultClass = Question.class)
 })
 @Table(name = "question")
@@ -112,5 +115,20 @@ public class Question {
                 ", getIsMultichoise=" + isMultichoise +
                 ", test=" + test +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
+            return false;
+        }
+        if (this.getClass() != obj.getClass()){
+            return false;
+        }
+        Question question = (Question) obj;
+        return this.question.equals(question.getQuestion());
     }
 }

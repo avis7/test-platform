@@ -51,4 +51,11 @@ public class QuestionService {
         questionDAO.update(question);
         return true;
     }
+
+    public Question getQuestionByAnswerId(int answerId){
+        try {
+            return questionDAO.getQuestionByAnswerId(answerId);
+        }catch (Exception e){}
+        return null;
+    }
 }

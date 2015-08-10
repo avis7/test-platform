@@ -33,17 +33,18 @@ public class AuthorizationBean {
 
         String roleName = getCurrentUser().getRole().getName();
 
-        if (roleName.equals("admin") && success) {
-            resultLink.append("admin/adminProfile");
-        } else if (roleName.equals("mentor") && success) {
-            resultLink.append("mentor/mentorProfile");
-        } else if (roleName.equals("student") && success) {
-            resultLink.append("student/userProfile");
+        if (roleName != null) {
+            if (roleName.equals("admin") && success) {
+                resultLink.append("admin/adminProfile");
+            } else if (roleName.equals("mentor") && success) {
+                resultLink.append("mentor/mentorProfile");
+            } else if (roleName.equals("student") && success) {
+                resultLink.append("student/userProfile");
+            }
+            resultLink.append("?faces-redirect=true&email=").append(email);
         } else {
-            resultLink.append("index.html");
+            resultLink.append("index.xhtml");
         }
-
-        resultLink.append("?faces-redirect=true&email=").append(email);
 
         return resultLink.toString();
     }

@@ -1,8 +1,9 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -41,8 +42,8 @@ public class Result {
     @ManyToOne
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
-    @OneToMany(mappedBy = "result")
-    Collection<UserAnswer> userAnswers;
+    @OneToMany(mappedBy = "result", fetch = FetchType.EAGER)
+    List<UserAnswer> userAnswers;
 
     public Result() {
     }
@@ -120,11 +121,11 @@ public class Result {
         this.test = test;
     }
 
-    public Collection<UserAnswer> getUserAnswers() {
+    public List<UserAnswer> getUserAnswers() {
         return userAnswers;
     }
 
-    public void setUserAnswers(Collection<UserAnswer> userAnswers) {
+    public void setUserAnswers(List<UserAnswer> userAnswers) {
         this.userAnswers = userAnswers;
     }
 
