@@ -26,11 +26,12 @@ public class viewCheckedResultBean {
     private List<OpenQuestion> openQuestions;
 
     @Inject
+    private AnswerService answerService;
+    @Inject
     private UserAnswerService userAnswerService;
     @Inject
     private QuestionService questionService;
-    @Inject
-    private AnswerService answerService;
+
 
     private String resultId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("resultId");
 
