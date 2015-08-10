@@ -190,7 +190,17 @@
                                     </tr>
                                 </table>
                             </h:panelGroup>
-                            <p:commandButton value="Add test" rendered="#{!testsBean.visible}"
+                            <p:commandButton value="Призначити тест" rendered="#{!testsBean.visible}"
+                                             action="#{testsBean.callManageUsers}"
+                                             style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                            <p:commandButton value="Додати тест" rendered="#{!testsBean.visible}"
                                              action="#{testsBean.setVisible}" update="@form"
                                              style="border-radius: 3px;
                                         font-family: PFB;
