@@ -26,8 +26,12 @@ public class QuestionService {
     }
     
     public List<Question> getQuestionsByTestId(String stringTestId){
-        int testId = Integer.valueOf(stringTestId);
-        return questionDAO.getQuestionsByTestId(testId);
+        try {
+            int testId = Integer.valueOf(stringTestId);
+            return questionDAO.getQuestionsByTestId(testId);
+        }catch (NumberFormatException e1){}
+        catch (Exception e2){}
+        return null;
     }
 
     public boolean addQuestion(String questionText, int mark) {

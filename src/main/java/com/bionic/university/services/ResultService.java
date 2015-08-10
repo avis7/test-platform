@@ -51,8 +51,21 @@ public class ResultService {
         return false;
     }
 
-    public List<Result> getResultByTestId(int testId) {
-        return resultDAO.findResultByTestId(testId);
+    public List<Result> getCheckedResultsByTestId(String testId) {
+        List<Result> checkedResults = new ArrayList<Result>();
+        try {
+            int test = Integer.valueOf(testId);
+            List<Result> results = resultDAO.findResultsByTestId(test);
+            for (Result result : results){
+                if (result.isChecked()){
+                    checkedResults.add(result);
+                }
+            }
+            return checkedResults;
+        }catch (NumberFormatException e1){}
+        catch (Exception e2){}
+        return null;
+
     }
 
     public List<Result> getResultsToCheckByTestId(String testId) {
@@ -60,7 +73,7 @@ public class ResultService {
             List<Result> results;
             List<Result> resultsToCheck = new LinkedList<Result>();
             int test = Integer.valueOf(testId);
-            results = (List<Result>)resultDAO.findResultByTestId(test);
+            results = (List<Result>)resultDAO.findResultsByTestId(test);
             for (Result result : results){
                 if (result.isSubmited() && !result.isChecked()){
                     resultsToCheck.add(result);
@@ -71,10 +84,6 @@ public class ResultService {
         catch (Exception e2){}
         return null;
 
-    }
-
-    public List<Result> getAllSubmitedCheckedResults(){
-        return resultDAO.findAllSubmitedCheckedResults();
     }
 }
 

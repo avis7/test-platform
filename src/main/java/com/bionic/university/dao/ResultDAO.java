@@ -20,16 +20,10 @@ public class ResultDAO extends AbstractDAO<Result> {
         return (Result) query.getSingleResult();
     }
 
-    public List<Result> findResultByTestId(int testId) {
+    public List<Result> findResultsByTestId(int testId) {
         Query query = em.createNamedQuery("findResultsByTestId");
         query.setParameter("test", testId);
         return query.getResultList();
     }
 
-    public List<Result> findAllSubmitedCheckedResults(){
-        Query query = em.createNamedQuery("findAllSubmitedCheckedResults");
-        return (List<Result>) query.getResultList();
-
-
-    }
 }

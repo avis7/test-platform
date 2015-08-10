@@ -126,6 +126,7 @@ public class User {
     public void setResults(List<Result> results) {
         this.results = results;
     }
+
     public String getFullName() {
         return firstName + " " + lastName;
     }
