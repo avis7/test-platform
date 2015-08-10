@@ -44,7 +44,7 @@ public class ImportTestBean {
             }
             FacesContext.getCurrentInstance().addMessage(null, message);
 
-            return "/import?faces-redirect=true&success" + true;
+            return "admin/importTest?faces-redirect=true&success" + true;
         }
 
         else return null;

@@ -25,7 +25,7 @@ public class FeedbackBean {
 
     public String save() {
         boolean success = resultService.saveFeedback(email, testId, feedback);
-        return success ? "userProfile?faces-redirect=true&email=" + email : "error";
+        return success ? "/student/userProfile?faces-redirect=true&email=" + email : "error";
     }
 
     public String getFeedback() {

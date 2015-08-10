@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title></title>
+</h:head>
+<h:body>
+
+    <h:form id="form">
+        <p:dataTable id="results" value="#{checkResultsBean.resultsToCheck}" var="result">
+            <p:column headerText="Ім'я, прізвище">
+                <h:outputText value="#{result.user.firstName} #{result.user.lastName}"/>
+            </p:column>
+
+            <p:column headerText="Оцінка">
+                <h:outputText value="#{result.mark}"/>
+            </p:column>
+
+            <p:column headerText="Початок">
+                <h:outputText value="#{result.beginTime}"/>
+            </p:column>
+
+            <p:column headerText="Кінець">
+                <h:outputText value="#{result.passTime}"/>
+            </p:column>
+
+            <p:column headerText="Фідбек">
+                <h:outputText value="#{result.feedback}"/>
+            </p:column>
+
+            <p:column headerText="Перевірити">
+                <p:commandLink value="перевірити" action="#{checkResultsBean.check(result.id)}"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+
+</h:body>
+</html>
