@@ -19,12 +19,7 @@ import java.util.List;
 public class ViewResultsBean implements Serializable {
     private List<Result> results;
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
-    private String testName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testName");
-    private int questionAmount;
 
-    public int getQuestionAmount() {
-        return questionService.getQuestionsByTestId(testId).size();
-    }
 
     @Inject
     ResultService resultService;
@@ -39,9 +34,6 @@ public class ViewResultsBean implements Serializable {
 
     }
 
-    public String getTestName() {
-        return testName;
-    }
 
 
 }
