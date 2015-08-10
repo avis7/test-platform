@@ -2,8 +2,10 @@ package com.bionic.university.beans.mentor;
 
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.TestRow;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;
+import org.primefaces.event.RowEditEvent;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -33,17 +35,32 @@ public class QuestionAnswerBean {
     private String QuestionText;
     private boolean isCorrect;
     private int mark;
-    private boolean isOpen;
-    private boolean isMultichoice;
+    private boolean multichoice;
     private boolean visibleAnswer;
-    private boolean visibleQuestion;
+    private boolean open;
 
     public boolean isVisibleQuestion() {
-        return visibleQuestion;
+        return questionService.isVisibleQuestion();
     }
 
     public void setVisibleQuestion() {
-        this.visibleQuestion = true;
+        questionService.setVisibleQuestion(true);
+    }
+
+    public String getTestId() {
+        return testId;
+    }
+
+    public void setTestId(String testId) {
+        this.testId = testId;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 
     public boolean isVisibleAnswer() {
@@ -86,20 +103,12 @@ public class QuestionAnswerBean {
         this.mark = mark;
     }
 
-    public boolean isOpen() {
-        return isOpen;
-    }
-
-    public void setIsOpen(boolean isOpen) {
-        this.isOpen = isOpen;
-    }
-
     public boolean isMultichoice() {
-        return isMultichoice;
+        return multichoice;
     }
 
-    public void setIsMultichoice(boolean isMultichoice) {
-        this.isMultichoice = isMultichoice;
+    public void setMultichoice(boolean multichoice) {
+        this.multichoice = multichoice;
     }
 
     public List<Answer> getAnswers(Question question) {
@@ -153,14 +162,56 @@ public class QuestionAnswerBean {
     }
 
     public String addAnswer(Question question, String answerText, boolean isCorrect){
-        if(answerService.addAnswer(question,answerText,isCorrect))
+        if(answerService.addAnswer(question, answerText, isCorrect)){
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer was added", null));
         return "successful";
+        }
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer wasn't added", null));
         return "unsuccessful";
     }
 
-    public String addQuestion(String question, int mark, boolean isOpen, boolean isMultichoise){
-        if(questionService.addQuestion(question,mark,isOpen,isMultichoise))
+    public String addQuestion(String testId, String question, int mark, boolean isOpen, boolean isMultichoise){
+        if(questionService.addQuestion(testId, question, mark, isOpen, isMultichoise)){
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Question was added", null));
+            return "successful";
+        }
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Question wasn't added", null));
+        return "unsuccessful";
+    }
+
+    public String onRowEditQuestion(RowEditEvent event) {
+        if (questionService.onRowEdit(testId, event)) {
+            FacesMessage msg = new FacesMessage("Question Edited",
+                    ((Question) event.getObject()).getQuestion());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return "successful";
+        }
+        FacesMessage msg = new FacesMessage("Question is not edited",
+                ((Question) event.getObject()).getQuestion());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return "unsuccessful";
+    }
+
+    public String onRowCancel(RowEditEvent event) {
+        FacesMessage msg = new FacesMessage("Edit Cancelled");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";
+    }
+
+    public String onRowEditAnswer(RowEditEvent event) {
+        if (answerService.onRowEdit(event)) {
+            FacesMessage msg = new FacesMessage("Answer Edited",
+                    ((Answer) event.getObject()).getAnswerText());
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return "successful";
+        }
+        FacesMessage msg = new FacesMessage("Answer is not edited",
+                ((Answer) event.getObject()).getAnswerText());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         return "unsuccessful";
     }
 }

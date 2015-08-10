@@ -2,6 +2,8 @@ package com.bionic.university.services;
 
 import com.bionic.university.dao.QuestionDAO;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.TestRow;
+import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -15,7 +17,15 @@ public class QuestionService {
     @Inject
     private TestService testService;
 
+    private boolean visibleQuestion;
 
+    public boolean isVisibleQuestion() {
+        return visibleQuestion;
+    }
+
+    public void setVisibleQuestion(boolean visibleQuestion) {
+        this.visibleQuestion = visibleQuestion;
+    }
 
     public QuestionDAO getQuestionDAO() {
         return questionDAO;
@@ -59,12 +69,27 @@ public class QuestionService {
         }
     }
 
-    public boolean addQuestion(String question, int mark, boolean isOpen, boolean isMultichoise){
+    public boolean addQuestion(String testId, String question, int mark, boolean isOpen, boolean isMultichoise){
         try {
-            questionDAO.save(new Question(question,mark,isOpen,isMultichoise));
+            Question quest=new Question(question,mark,isOpen,isMultichoise);
+            quest.setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
+            questionDAO.save(quest);
+            setVisibleQuestion(false);
             return true;
         }catch (Exception e){
             return false;
         }
     }
+
+    public boolean onRowEdit(String testId, RowEditEvent event) {
+        try {
+            ((Question) event.getObject()).setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
+            questionDAO.update((Question) event.getObject());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

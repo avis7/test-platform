@@ -3,6 +3,7 @@ package com.bionic.university.services;
 import com.bionic.university.dao.AnswerDAO;
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -67,6 +68,16 @@ public class AnswerService {
             answerDAO.update(answer);
             return true;
         }catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean onRowEdit(RowEditEvent event) {
+        try {
+            answerDAO.update((Answer) event.getObject());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }

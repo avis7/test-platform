@@ -41,7 +41,7 @@ public class Answer {
         this.answerText = answerText;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return isCorrect;
     }
 
@@ -82,7 +82,7 @@ public class Answer {
         return "Answer{" +
                 "id=" + id +
                 ", answerText='" + answerText + '\'' +
-                ", isCorrect=" + isCorrect +
+                ", getIsCorrect=" + isCorrect +
                 '}';
     }
 }
