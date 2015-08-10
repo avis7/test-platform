@@ -18,6 +18,15 @@ public class QuestionService {
     private TestService testService;
 
     private boolean visibleQuestion;
+    private List<Question> questions;
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
 
     public boolean isVisibleQuestion() {
         return visibleQuestion;
@@ -88,6 +97,16 @@ public class QuestionService {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean fillTable(String testId){
+        questions.clear();
+        try{
+            questions=getQuestionsByTestId(testId);
+            return true;
+        }catch (Exception e) {
             return false;
         }
     }

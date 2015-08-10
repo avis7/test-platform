@@ -9,7 +9,7 @@ import javax.persistence.*;
                 query = "SELECT * FROM answer a WHERE a.question_id = :question",
                 resultClass = Answer.class),
         @NamedNativeQuery(name = "getVisibleAnswersByQuestionId",
-                query = "SELECT * FROM answer a WHERE a.question_id = :question AND a.archived=:FALSE",
+                query = "SELECT * FROM answer a WHERE a.question_id = :question AND a.archived=FALSE",
                 resultClass = Answer.class)
 })
 @Table(name = "answer")

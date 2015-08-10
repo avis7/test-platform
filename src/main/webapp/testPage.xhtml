@@ -174,8 +174,9 @@
                                         </p:column>
 
                                         <p:column style="border:0px; background:#ffffff; width:30px;">
-                                            <h:commandLink value="AR" style="color:#E7664D;"
+                                            <p:commandLink value="AR" style="color:#E7664D;"
                                                            action="#{questionBean.deleteAnswer(answer)}"
+                                                           update="@form"
                                                     />
                                         </p:column>
 

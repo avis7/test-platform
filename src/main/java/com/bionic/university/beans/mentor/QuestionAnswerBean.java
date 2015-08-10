@@ -5,6 +5,7 @@ import com.bionic.university.entity.Question;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;
 import org.primefaces.event.RowEditEvent;
+import org.primefaces.context.RequestContext;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -28,8 +29,6 @@ public class QuestionAnswerBean {
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
 
-    private List<Question> questions;
-    private List<Answer> answers;
     private String answerText;
     private String questionText;
     private boolean isCorrect;
@@ -112,17 +111,22 @@ public class QuestionAnswerBean {
     }
 
     public List<Answer> getAnswers(Question question) {
-            answers=answerService.getAnswersForQuestion(String.valueOf(question.getId()));
-        return answers;
+        return answerService.getAnswers(question);
     }
 
     public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
+        answerService.setAnswers(answers);
     }
 
     public List<Question> getQuestions() {
+        if(questions==null)
             questions=questionService.getQuestionsByTestId(testId);
         return questions;
+    }
+
+    public void fillTable(){
+
+        answerService.fillTable();
     }
 
     public void setQuestions(List<Question> questions) {

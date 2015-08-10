@@ -17,6 +17,8 @@ public class AnswerService {
     @Inject
     private QuestionService questionService;
 
+    private  List<Answer> answers;
+
     public List<Answer> getAnswersForQuestion(String stringQuestionId) {
         int questionId = Integer.valueOf(stringQuestionId);
         return answerDAO.getAnswersByQuestionId(questionId);
@@ -33,10 +35,10 @@ public class AnswerService {
         }
     }
 
-    public boolean addAnswer(Question question, String answerText, boolean isCorrect) {
-        try {
+    public boolean changeQuestionType(Question question){
+        try{
             int counter=0;
-            List<Answer> answers = answerDAO.getVisibleAnswersByQuestionId((int)question.getId());
+            List<Answer> answers = answerDAO.getVisibleAnswersByQuestionId((int) question.getId());
             if(answers.size()==0) {
                 question.setIsOpen(true);
                 question.setIsMultichoise(false);
@@ -50,9 +52,20 @@ public class AnswerService {
                     question.setIsMultichoise(true);
                 else question.setIsMultichoise(false);
             }
+            questionService.getQuestionDAO().update(question);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean addAnswer(Question question, String answerText, boolean isCorrect) {
+        try {
             Answer answer = new Answer(answerText, isCorrect);
             answer.setQuestion(question);
             answerDAO.save(answer);
+            changeQuestionType(question);
             return true;
         }catch (Exception e){
             return false;
@@ -81,6 +94,7 @@ public class AnswerService {
                 answer.setArchived(false);
             else answer.setArchived(true);
             answerDAO.update(answer);
+            changeQuestionType(answer.getQuestion());
             return true;
         }catch (Exception e){
             return false;
@@ -90,6 +104,7 @@ public class AnswerService {
     public boolean onRowEdit(RowEditEvent event) {
         try {
             answerDAO.update((Answer) event.getObject());
+            changeQuestionType(((Answer) event.getObject()).getQuestion());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -97,4 +112,29 @@ public class AnswerService {
         }
     }
 
+    public List<Answer> getAnswers(Question question){
+        try{
+            if(answers==null)
+           answers=getAnswersForQuestion(String.valueOf(question.getId()));
+            return  answers;
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public boolean fillTable(Question question){
+        try {
+            answers.clear();
+            answers = getAnswersForQuestion(String.valueOf(question.getId()));
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
