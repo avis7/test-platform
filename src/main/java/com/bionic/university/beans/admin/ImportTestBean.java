@@ -40,22 +40,27 @@ public class ImportTestBean {
 //    }
 
     public String save() throws IOException {
-        filename = FilenameUtils.getName(uploadedFile.getFileName());
-        InputStream input = uploadedFile.getInputstream();
-        File testFile = new File("/resources/tests", filename);
-        OutputStream output = new FileOutputStream(new File("/resources/tests", filename));
+        if (uploadedFile!= null) {
+            filename = FilenameUtils.getName(uploadedFile.getFileName());
+            InputStream input = uploadedFile.getInputstream();
+            File testFile = new File("/resources/tests", filename);
+            OutputStream output = new FileOutputStream(new File("/resources/tests", filename));
 
-        parserService.initialize("/resources/tests" + testFile.getName());
-        parserService.parseTestFile();
+            parserService.initialize("/resources/tests" + testFile.getName());
+            parserService.parseTestFile();
 
-        try {
-            IOUtils.copy(input, output);
-        } finally {
-            IOUtils.closeQuietly(input);
-            IOUtils.closeQuietly(output);
+            try {
+                IOUtils.copy(input, output);
+            } finally {
+                IOUtils.closeQuietly(input);
+                IOUtils.closeQuietly(output);
+            }
+
+            return "/import?faces-redirect=true&success=" + true;
         }
-
-        return "/import?faces-redirect=true&success=" + true;
+        else {
+            return null;
+        }
     }
 
     public void setUploadedFile(UploadedFile uploadedFile) {

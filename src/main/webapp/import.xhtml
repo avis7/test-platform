@@ -46,7 +46,8 @@
                                 <p:fileUpload value="#{importTestBean.uploadedFile}" mode="simple" skinSimple="true"/>
 
                                 <p:commandButton value="Export test to database" actionListener="#{importTestBean.save}"
-                                                 disabled="true"
+
+                                                 ajax="false"
                                                  style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
