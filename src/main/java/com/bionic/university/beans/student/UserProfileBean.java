@@ -2,16 +2,12 @@ package com.bionic.university.beans.student;
 
 import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
-import com.bionic.university.entity.User;
 import com.bionic.university.services.UserService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @SessionScoped
@@ -33,8 +29,7 @@ public class UserProfileBean {
 
 
     public String startTest(Test test) {
-        boolean success = userService.submitTest(test, email);
-        return success ? "/test?faces-redirect=true&testId=" + test.getId() + "&email=" + email : "error.xhtml";
+        return "test?faces-redirect=true&testId=" + test.getId() + "&email=" + email;
     }
 
 

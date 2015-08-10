@@ -1,28 +1,14 @@
 package com.bionic.university.beans.student;
 
-import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.model.TestRow;
-import com.bionic.university.services.QuestionService;
-import com.bionic.university.services.TestService;
-import com.bionic.university.services.UserAnswerService;
-import org.primefaces.event.RowEditEvent;
-
-import org.hibernate.Session;
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
+import com.bionic.university.services.*;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
-import java.util.Date;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +21,20 @@ public class TestBean {
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
 
+
     @PostConstruct
     public void init() {
-        questions = questionService.getQuestionsByTestId(testId);
-        tabs = new ArrayList<Tab>();
-        for (Question question : questions){
-            tabs.add(new Tab(question));
+        try{
+            if(!resultService.getResultByUserNameAndTestId(email, Integer.valueOf(testId)).isSubmited()){
+                boolean success = userService.submitTest(testService.getTestByTestId(Integer.valueOf(testId)), email);
+                questions = questionService.getQuestionsByTestId(testId);
+                tabs = new ArrayList<Tab>();
+                for (Question question : questions){
+                    tabs.add(new Tab(question));
+                }
+            }  else FacesContext.getCurrentInstance().getExternalContext().redirect( "index.xhtml");}
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -54,6 +48,14 @@ public class TestBean {
     private QuestionService questionService;
     @Inject
     private UserAnswerService userAnswerService;
+    @Inject
+    private ResultService resultService;
+    private @Inject
+    UserService userService;
+    private @Inject
+    TestService testService;
+
+
 
     public List<Question> getQuestions() {
         return questions;

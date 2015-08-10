@@ -5,11 +5,8 @@ import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 import org.primefaces.event.RowEditEvent;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
-import javax.validation.ConstraintDeclarationException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,6 +106,10 @@ public class TestService {
 
     public void setTestRows(List<TestRow> testRows) {
         this.testRows = testRows;
+    }
+
+    public Test getTestByTestId(int testId){
+        return testDAO.find(testId);
     }
 }
 

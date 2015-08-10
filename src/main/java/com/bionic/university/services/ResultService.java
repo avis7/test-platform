@@ -46,9 +46,8 @@ public class ResultService {
             resultDAO.update(result);
             return true;
         }catch (Exception e){
-
+            return false;
         }
-        return false;
     }
 
     public List<Result> getResultByTestId(int testId) {
@@ -76,5 +75,10 @@ public class ResultService {
     public List<Result> getAllSubmitedCheckedResults(){
         return resultDAO.findAllSubmitedCheckedResults();
     }
+
+    public Result getResultByUserNameAndTestId(String email,int testId){
+        return resultDAO.findResultByUserIdAndTestId((userDAO.findUserByEmail(email)).getId(),testId);
+    }
 }
+
 
