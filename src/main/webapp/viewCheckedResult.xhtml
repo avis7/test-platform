@@ -15,24 +15,24 @@
 <h:body>
 
     <h:form id="form">
-        <p:dataList value="#{viewCheckedResultBean.questions}" var="question">
-            <h:outputText value="#{question.question}"/>
-            <h:panelGrid rendered="#{!question.isMultichoise and !question.isOpen}" columns="1" cellspacing="5">
-                <h:outputText value="#{viewCheckedResultBean.getAnswer(viewCheckedResultBean.userAnswers.get(viewCheckedResultBean.questions.indexOf(question)).id)}"/>
-            </h:panelGrid>
-            <h:panelGrid rendered="#{question.isMultichoise}" columns="1" cellspacing="5">
-                <p:dataList value="#{viewCheckedResultBean.getAnswers(question.id)}" var="answer">
-                    <h:outputText value="#{answer}"/>
-                </p:dataList>
-            </h:panelGrid>
-            <h:panelGrid rendered="#{question.isOpen}" columns="2" cellspacing="5">
-                <h:outputText value="#{}"
-            </h:panelGrid>
-
+        <p:dataList value="#{viewCheckedResultBean.radioQuestions}" var="radioQuestion">
+            <h:outputText value="#{radioQuestion.question}"/>
+            <h:outputText value="#{radioQuestion.answer}"/>
+            <h:outputText value="#{radioQuestion.mark}"/>
+        </p:dataList>
+        <p:dataList value="#{viewCheckedResultBean.multichoiseQuestions}" var="multichoiseQuestion">
+            <h:outputText value="#{multichoiseQuestion.question}"/>
+            <p:dataList value="#{multichoiseQuestion.answers}" var="answer">
+                <h:outputText value="#{answer}"/>
+            </p:dataList>
+            <h:outputText value="#{multichoiseQuestion.mark}"/>
+        </p:dataList>
+        <p:dataList value="#{viewCheckedResultBean.openQuestions}" var="openQuestion">
+            <h:outputText value="#{openQuestion.question}"/>
+            <h:outputText value="#{openQuestion.answer}"/>
+            <h:outputText value="#{openQuestion.mark}"/>
         </p:dataList>
 
-        <p:commandButton value="Зберегти" action="#{checkResultBean.save}"/>
-        <p:commandButton value="Відкласти провірку" action="#{checkResultBean.cancel}"/>
     </h:form>
 
 </h:body>

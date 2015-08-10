@@ -1,7 +1,7 @@
 package com.bionic.university.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class Result {
     @ManyToOne
     @JoinColumn(name = "test_id", nullable = false)
     private Test test;
-    @OneToMany(mappedBy = "result")
+    @OneToMany(mappedBy = "result", fetch = FetchType.EAGER)
     List<UserAnswer> userAnswers;
 
     public Result() {

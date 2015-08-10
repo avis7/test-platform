@@ -43,10 +43,10 @@ public class AnswerService {
         return true;
     }
 
-    public String getStringAnswerById(int answerId){
+    public Answer getAnswerById(int answerId){
         try {
             Answer answer = answerDAO.find(answerId);
-            return answer.getAnswerText();
+            return answer;
         }catch (Exception e){}
         return null;
     }

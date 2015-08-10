@@ -26,6 +26,7 @@ public class UserAnswerService {
     private AnswerService answerService;
 
     public boolean save(String email, String testId, List<TestBean.Tab> tabs) {
+        Date passTime = new Date();
         int mark = 0;
 
         try {
@@ -37,16 +38,19 @@ public class UserAnswerService {
                 if (!tab.getQuestion().getIsMultichoise() && !tab.getQuestion().getIsOpen()) {
                     UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
                     userAnswer.setResult(result);
+                    userAnswer.setMark(calculateMarkForOneQuestion(tab));
+                    mark += userAnswer.getMark();
                     userAnswerDAO.save(userAnswer);
-                    mark += calculateMarkForOneQuestion(tab);
                 }
                 if (tab.getQuestion().getIsMultichoise()) {
+                    int markToWrite = calculateMarkForManyQuestion(tab);
                     for (String answer : tab.getAnswers()) {
                         UserAnswer userAnswer = new UserAnswer(Integer.valueOf(answer));
                         userAnswer.setResult(result);
+                        userAnswer.setMark(markToWrite);
                         userAnswerDAO.save(userAnswer);
                     }
-                    mark += calculateMarkForManyQuestion(tab);
+                    mark += markToWrite;
                 }
                 if (tab.getQuestion().getIsOpen()) {
                     UserAnswer userAnswer = new UserAnswer(tab.getAnswer());
@@ -56,6 +60,7 @@ public class UserAnswerService {
                 }
             }
             result.setMark(mark);
+            result.setPassTime(passTime);
             resultDAO.update(result);
         } catch (IllegalArgumentException e) {
             return false;
@@ -130,7 +135,7 @@ public class UserAnswerService {
             int markForOwnAnswers = 0;
             for (UserAnswer userAnswer : userAnswers) {
                 userAnswerDAO.update(userAnswer);
-                markForOwnAnswers += userAnswer.getMarkForOwnAnswer();
+                markForOwnAnswers += userAnswer.getMark();
             }
             result.setMark(result.getMark() + markForOwnAnswers);
             result.setIsChecked(true);

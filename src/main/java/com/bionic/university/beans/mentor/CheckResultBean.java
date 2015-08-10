@@ -34,7 +34,7 @@ public class CheckResultBean {
         userAnswers = userAnswerService.getUserAnswersWithOwnAnswerToCheckByResultId(resultId);
         questions = new LinkedList<Question>();
         for (UserAnswer userAnswer : userAnswers){
-            questions.add(questionService.getQuestionByAnswerId(userAnswer.getId()));
+            questions.add(questionService.getQuestionByAnswerId(userAnswer.getAnswerId()));
         }
     }
 

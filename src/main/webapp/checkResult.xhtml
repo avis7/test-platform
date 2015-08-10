@@ -19,7 +19,7 @@
             <h:outputText value="#{question.question}"/>
             <h:panelGrid columns="2" cellspacing="5">
                 <h:outputText value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).ownAnswer}"  />
-                <p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).markForOwnAnswer}" min="0" max="#{question.mark}" />
+                <p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).mark}" min="0" max="#{question.mark}" />
 
             </h:panelGrid>
         </p:dataList>

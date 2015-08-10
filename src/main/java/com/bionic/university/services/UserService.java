@@ -11,6 +11,7 @@ import com.bionic.university.entity.User;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class UserService {
     }
 
     public boolean submitTest(Test test, String email) {
+        Date beginTime = new Date();
         try {
             int userId = userDAO.findUserByEmail(email).getId();
             int testId = test.getId();
@@ -48,6 +50,7 @@ public class UserService {
                 return false;
             }
             result.setSubmited(true);
+            result.setBeginTime(beginTime);
             resultDAO.update(result);
             return true;
         } catch (Exception e) {
@@ -73,7 +76,7 @@ public class UserService {
         try {
             User user = userDAO.findUserByEmail(email);
             for (Result result : user.getResults()) {
-                if (!result.isSubmited()) {
+                if (!result.isSubmited() && !result.getTest().isArchived() && result.getTest().getDeadline().before(new Date())) {
                     availableTests.add(result.getTest());
                 }
             }
@@ -89,7 +92,7 @@ public class UserService {
         try{
             User user = userDAO.findUserByEmail(email);
             for (Result result : user.getResults()) {
-                if (result.isSubmited()) {
+                if (result.isSubmited() && result.isChecked()) {
                     results.add(result);
                 }
             }

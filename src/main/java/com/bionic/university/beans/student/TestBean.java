@@ -45,6 +45,11 @@ public class TestBean {
         testService.fillTestTable();
     }
 
+    public String submit() {
+        boolean success = userAnswerService.save(email, testId, tabs);
+        return success ? "feedback?faces-redirect=true&testId=" + testId + "&email=" + email : "error";
+    }
+
 
     @Inject
     private QuestionService questionService;
@@ -98,11 +103,8 @@ public class TestBean {
         this.categoryName = categoryName;
     }
 
-   
-    public String submit() {
-        boolean success = userAnswerService.save(email, testId, tabs);
-        return success ? "feedback?faces-redirect=true&testId=" + testId + "&email=" + email : "error";
-    }
+
+
 
     public List<Question> getQuestions() {
         return questions;

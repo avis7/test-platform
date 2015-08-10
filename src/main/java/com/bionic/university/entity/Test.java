@@ -19,7 +19,8 @@ public class Test {
     private Date deadline;
     @Column(name = "category_name", nullable = false)
     private String categoryName;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    @Column(name = "archived")
+    private boolean archived;
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
     private Collection<User> users;
     @OneToMany(mappedBy = "test")
@@ -95,6 +96,14 @@ public class Test {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     @Override

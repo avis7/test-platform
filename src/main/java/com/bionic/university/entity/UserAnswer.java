@@ -18,8 +18,8 @@ public class UserAnswer {
     private int answerId;
     @Column(name = "own_answer")
     private String ownAnswer;
-    @Column(name = "mark_for_own_answer")
-    private int markForOwnAnswer;
+    @Column(name = "mark")
+    private int mark;
     @ManyToOne
     @JoinColumn(name = "result_id")
     private Result result;
@@ -59,12 +59,12 @@ public class UserAnswer {
         this.result = result;
     }
 
-    public int getMarkForOwnAnswer() {
-        return markForOwnAnswer;
+    public int getMark() {
+        return mark;
     }
 
-    public void setMarkForOwnAnswer(int markForOwnAnswer) {
-        this.markForOwnAnswer = markForOwnAnswer;
+    public void setMark(int mark) {
+        this.mark = mark;
     }
 
     @Override
