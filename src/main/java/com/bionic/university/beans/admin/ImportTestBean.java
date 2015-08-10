@@ -1,23 +1,19 @@
 package com.bionic.university.beans.admin;
 
 import com.bionic.university.services.TestParserService;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
-import org.primefaces.event.FileUploadEvent;
 
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.Part;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 @ManagedBean(name = "importTestBean")
 @RequestScoped
@@ -29,33 +25,29 @@ public class ImportTestBean {
 
     String filename;
 
-//    private String getFilename(Part part) {
-//        for (String cd : part.getHeader("content-disposition").split(";")) {
-//            if (cd.trim().startsWith("filename")) {
-//                String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
-//                return filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
-//            }
-//        }
-//        return null;
-//    }
-
     public String save() throws IOException {
-        filename = FilenameUtils.getName(uploadedFile.getFileName());
-        InputStream input = uploadedFile.getInputstream();
-        File testFile = new File("/resources/tests", filename);
-        OutputStream output = new FileOutputStream(new File("/resources/tests", filename));
+        if (uploadedFile != null) {
+            filename = FilenameUtils.getName(uploadedFile.getFileName());
+            InputStream input = uploadedFile.getInputstream();
+            String testDocument = IOUtils.toString(input, "UTF-8");
 
-        parserService.initialize("/resources/tests" + testFile.getName());
-        parserService.parseTestFile();
+            parserService.initialize(testDocument);
+            parserService.parseTestFile();
 
-        try {
-            IOUtils.copy(input, output);
-        } finally {
-            IOUtils.closeQuietly(input);
-            IOUtils.closeQuietly(output);
+            FacesMessage message;
+
+            if (parserService.containsNecessaryTagsAndAttributes()) {
+                message = new FacesMessage("Файл тесту завантажено успішно");
+            } else {
+                message = new FacesMessage("Файл тесту не може бути завантажено. " +
+                        "Неправильна структура XML, чи тест із такою назвою вже існує.");
+            }
+            FacesContext.getCurrentInstance().addMessage(null, message);
+
+            return "/import?faces-redirect=true&success" + true;
         }
 
-        return "/import?faces-redirect=true&success=" + true;
+        else return null;
     }
 
     public void setUploadedFile(UploadedFile uploadedFile) {

@@ -8,7 +8,11 @@ import java.util.Collection;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "getVisibleTests",
                 query = "SELECT * FROM test t WHERE t.archived = FALSE ",
-                resultClass = Test.class)})
+                resultClass = Test.class),
+        @NamedNativeQuery(name = "getTestByName",
+                query = "SELECT * FROM test t WHERE t.test_name = :testName",
+                resultClass = Test.class)}
+)
 
 @Entity
 @Table(name = "test")

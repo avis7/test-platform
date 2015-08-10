@@ -7,6 +7,7 @@ import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.entity.Test;
 import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 
 import javax.inject.Inject;
 import javax.xml.parsers.*;
@@ -28,7 +29,8 @@ public class TestParserService {
     private static final String ATTR_QUESTION_TYPE = "type";
     private static final String ATTR_ANSWER_MARK = "fraction";
 
-    private String filename;
+    private String xmlTestFile;
+    private String parsedTestName;
     private List<Question> questions;
 
     @Inject
@@ -40,17 +42,20 @@ public class TestParserService {
     @Inject
     TestDAO testDAO;
 
-    public void initialize(String filename) {
-        this.filename = filename;
+    public void initialize(String xmlTestFile) {
+        this.xmlTestFile = xmlTestFile;
         questions = new ArrayList<Question>();
     }
 
     public void parseTestFile() {
         try {
-            File testFile = new File(filename);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(testFile);
+
+            InputSource source = new InputSource();
+            source.setCharacterStream(new StringReader(xmlTestFile));
+
+            Document doc = dBuilder.parse(source);
             doc.getDocumentElement().normalize();
 
             NodeList questionNodes = doc.getElementsByTagName(TAG_QUESTION);
@@ -58,6 +63,8 @@ public class TestParserService {
             String testDeadline = doc.getDocumentElement().getAttribute(QUESTION_DEADLINE);
             String testDuration = doc.getDocumentElement().getAttribute(QUESTION_DURATION);
             String testCategory = doc.getDocumentElement().getAttribute(QEUSTION_CATEGORY);
+
+            parsedTestName = testName;
 
             SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy");
 
@@ -117,5 +124,17 @@ public class TestParserService {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
+    }
+
+    public boolean containsNecessaryTagsAndAttributes() {
+        return xmlTestFile.contains(TAG_QUESTION)
+                && xmlTestFile.contains(TAG_QUESTIONTEXT)
+                && xmlTestFile.contains(TAG_ANSWER)
+                && xmlTestFile.contains(ATTR_ANSWER_MARK)
+                && xmlTestFile.contains(ATTR_QUESTION_TYPE)
+                && xmlTestFile.contains(QEUSTION_CATEGORY)
+                && xmlTestFile.contains(QUESTION_DEADLINE)
+                && xmlTestFile.contains(QUESTION_DURATION)
+                && xmlTestFile.contains(QUESTION_NAME);
     }
 }

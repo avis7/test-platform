@@ -45,8 +45,6 @@ public class AdmProfileBean implements Serializable {
 
 
     public void onRowEdit(RowEditEvent event) {
-        // Видалити email
-        email = "admin@gmail.com";
         FacesMessage msg = new FacesMessage(userService.editUserRole((User) event.getObject(), Integer.valueOf(getSelectRole()), email)
                 ,((User) event.getObject()).getEmail());
             FacesContext.getCurrentInstance().addMessage(null, msg);
