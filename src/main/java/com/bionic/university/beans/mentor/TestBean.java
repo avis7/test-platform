@@ -127,7 +127,7 @@ public class TestBean {
     }
 
     public String viewCheckedResults(TestRow testRow) {
-        return "viewCheckedResults?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
+        return "viewCheckedResults?faces-redirect=true&testId=" + testRow.getTest().getId();
     }
 
     public void onDateSelect(SelectEvent event) {

@@ -3,6 +3,7 @@ package com.bionic.university.entity;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 
 @NamedNativeQueries({
@@ -28,11 +29,11 @@ public class Test {
     private boolean archived;
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     @ManyToMany(mappedBy = "tests", fetch = FetchType.EAGER)
-    private Collection<User> users;
+    private List<User> users;
     @OneToMany(mappedBy = "test")
-    Collection<Result> results;
-    @OneToMany(mappedBy = "test")
-    private Collection<Question> questions;
+    private List<Result> results;
+    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+    private List<Question> questions;
 
     public Test() {
     }
@@ -72,27 +73,27 @@ public class Test {
         this.deadline = deadline;
     }
 
-    public Collection<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Collection<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
-    public Collection<Result> getResults() {
+    public List<Result> getResults() {
         return results;
     }
 
-    public void setResults(Collection<Result> results) {
+    public void setResults(List<Result> results) {
         this.results = results;
     }
 
-    public Collection<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Collection<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 

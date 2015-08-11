@@ -31,9 +31,9 @@
         <ui:define name="body">
             <h:form id="form">
 
-
                 <div align="center">
-                    <p:dataTable id="tbl" var="result" value="#{viewCheckedResultsBean.results}"
+                    <h:outputText value="#{viewCheckedResultsBean.testName}"/>
+                    <p:dataTable id="tbl" value="#{viewCheckedResultsBean.results}"  var="result"
                                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
                                  paginator="true" rows="15" style="margin-bottom:20px">
                         <f:facet name="{Exporters}">
@@ -45,8 +45,6 @@
                                 <p:graphicImage value="img\logo\pdf_Ico.png" width="24"/>
                                 <p:dataExporter type="pdf" target="tbl" fileName = "Result-#{viewCheckedResultsBean.testName}" />
                             </h:commandLink>
-
-
                         </f:facet>
 
                         <p:column>
@@ -59,28 +57,14 @@
 
 
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Час проходження" />
-                            </f:facet>
-                            <h:outputText value="#{(result.passTime - result.beginTime)*6000} хв" />
-                        </p:column>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Кількість правильних відповідей" />
-                            </f:facet>
-                            <h:outputText value="0/#{viewCheckedResultsBean.questionAmount}" />
-                        </p:column>
 
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="Оцінка" />
                             </f:facet>
-                            <h:outputText value="#{result.mark}" />
+                            <h:outputText value="#{result.mark}/#{viewCheckedResultsBean.getMaxMark(result)}" />
                         </p:column>
-
-
 
 
                     </p:dataTable>

@@ -24,23 +24,28 @@ public class ViewCheckedResultsBean implements Serializable {
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
 
+    @Inject
+    private ResultService resultService;
+    @Inject
+    private QuestionService questionService;
+
 
     @PostConstruct
     public void init() {
-        List<com.bionic.university.entity.Result> results;
         results = resultService.getCheckedResultsByTestId(testId);
         if (results != null) {
             testName = results.get(0).getTest().getTestName();
-
         }
-
     }
 
+    public int getMaxMark(Result result){
+        int mark = 0;
+        for (Question question : result.getTest().getQuestions()){
+            mark += question.getMark();
+        }
+        return mark;
+    }
 
-    @Inject
-    ResultService resultService;
-    @Inject
-    QuestionService questionService;
 
     public List<Result> getResults() {
         return results;
@@ -58,25 +63,4 @@ public class ViewCheckedResultsBean implements Serializable {
         this.testName = testName;
     }
 
-    public class Result {
-        private int userMark = 0;
-        private int fullMArk = 0;
-
-
-        public int getUserMark() {
-            return userMark;
-        }
-
-        public void setUserMark(int userMark) {
-            this.userMark = userMark;
-        }
-
-        public int getFullMArk() {
-            return fullMArk;
-        }
-
-        public void setFullMArk(int fullMArk) {
-            this.fullMArk = fullMArk;
-        }
-    }
 }
