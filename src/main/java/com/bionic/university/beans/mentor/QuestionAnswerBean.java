@@ -34,9 +34,7 @@ public class QuestionAnswerBean {
     private String questionText;
     private boolean isCorrect;
     private int mark;
-    private boolean multichoice;
     private boolean visibleAnswer;
-    private boolean open;
 
     public boolean isVisibleQuestion() {
         return questionService.isVisibleQuestion();
@@ -53,14 +51,6 @@ public class QuestionAnswerBean {
 
     public void setTestId(String testId) {
         this.testId = testId;
-    }
-
-    public boolean isOpen() {
-        return open;
-    }
-
-    public void setOpen(boolean open) {
-        this.open = open;
     }
 
     public boolean isVisibleAnswer() {
@@ -103,14 +93,6 @@ public class QuestionAnswerBean {
         this.mark = mark;
     }
 
-    public boolean isMultichoice() {
-        return multichoice;
-    }
-
-    public void setMultichoice(boolean multichoice) {
-        this.multichoice = multichoice;
-    }
-
     public List<Answer> getAnswers(Question question) {
         return answerService.getAnswers(question);
     }
@@ -147,7 +129,8 @@ public class QuestionAnswerBean {
     }
 
     public String deleteAnswer(Answer answer) {
-        if (answerService.deleteAnswer(answer)){
+        if (answerService.deleteAnswer(testId,answer)){
+            getQuestions();
             if (answer.isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer" +answer.getAnswerText()+ " was archived", null));
@@ -159,7 +142,8 @@ public class QuestionAnswerBean {
     }
 
     public String addAnswer(Question question, String answerText, boolean isCorrect){
-        if(answerService.addAnswer(question, answerText, isCorrect)){
+        if(answerService.addAnswer(testId,question, answerText, isCorrect)){
+            getQuestions();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer was added", null));
         return "successful";
@@ -200,7 +184,8 @@ public class QuestionAnswerBean {
     }
 
     public String onRowEditAnswer(RowEditEvent event) {
-        if (answerService.onRowEdit(event)) {
+        if (answerService.onRowEdit(testId,event)) {
+            getQuestions();
             FacesMessage msg = new FacesMessage("Answer Edited",
                     ((Answer) event.getObject()).getAnswerText());
             FacesContext.getCurrentInstance().addMessage(null, msg);

@@ -18,6 +18,7 @@ public class QuestionService {
     private TestService testService;
 
     private boolean visibleQuestion;
+
     private List<Question> questions = new ArrayList<Question>();
 
     public List<Question> getQuestions() {
@@ -101,14 +102,16 @@ public class QuestionService {
         }
     }
 
-    public boolean fillQuestionTable(String testId) {
+    public List<Question> fillQuestionTable(String testId) {
         try {
+            if(questions.size()!=0)
+                return questions;
             questions.clear();
             questions = getQuestionsByTestId(testId);
-            return true;
+            return questions;
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
+            return null;
         }
     }
 }

@@ -18,7 +18,7 @@ public class AnswerService {
     @Inject
     private QuestionService questionService;
 
-    private  List<Answer> answers = new ArrayList<Answer>();
+    private  List<Answer> answers;
 
     public List<Answer> getAnswersForQuestion(String stringQuestionId) {
         int questionId = Integer.valueOf(stringQuestionId);
@@ -61,12 +61,13 @@ public class AnswerService {
         }
     }
 
-    public boolean addAnswer(Question question, String answerText, boolean isCorrect) {
+    public boolean addAnswer(String testId,Question question, String answerText, boolean isCorrect) {
         try {
             Answer answer = new Answer(answerText, isCorrect);
             answer.setQuestion(question);
             answerDAO.save(answer);
             changeQuestionType(question);
+            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         }catch (Exception e){
             return false;
@@ -89,23 +90,26 @@ public class AnswerService {
         this.answerDAO = answerDAO;
     }
 
-    public boolean deleteAnswer(Answer answer){
+    public boolean deleteAnswer(String testId,Answer answer){
         try {
             if (answer.isArchived())
                 answer.setArchived(false);
             else answer.setArchived(true);
             answerDAO.update(answer);
             changeQuestionType(answer.getQuestion());
+            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         }catch (Exception e){
             return false;
         }
     }
 
-    public boolean onRowEdit(RowEditEvent event) {
+    public boolean onRowEdit(String testId, RowEditEvent event) {
         try {
             answerDAO.update((Answer) event.getObject());
             changeQuestionType(((Answer) event.getObject()).getQuestion());
+            questionService.getQuestions();
+            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         } catch (Exception e) {
             e.printStackTrace();
