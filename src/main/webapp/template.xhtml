@@ -9,9 +9,10 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title>Registrarion Demo</title>
-    <h:outputStylesheet name="css/bootstrap.min.css" />
-    <h:outputStylesheet name="css/style.css" />
+    <title>BU-SummerCamp</title>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="resources/css/style.css" rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="/project/faces/javax.faces.resource/theme.css?ln=primefaces-bootstrap" />
 </h:head>
 
 
@@ -23,7 +24,7 @@
                 <div class="col-xs-12 col-sm-4 logo">
                     <table>
                         <tr>
-                            <td><h:graphicImage name="img/logo.png" alt="logo" width="53" height="55"/></td>
+                            <td><h:graphicImage value="resources/img/logo.png" alt="logo" width="53" height="55"/></td>
                             <td>
                                 <ul>
                                     <li><h1>bionic</h1></li>
@@ -52,7 +53,6 @@
     <!-- /header -->
 
     <!-- content -->
-    <div id="ajax-wrap">
         <div class="cont">
             <div class="content">
                 <ui:insert name="container">
@@ -70,51 +70,45 @@
             </ui:insert>
 
         </div>
-    </div>
     <!-- /content -->
 
-    <!-- footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 links">
-                    <p>
-                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/f.jpg" alt="facebook" width="25" height="25"
-                                                                  onmouseout="this.src='img/f.jpg'" onmouseover="this.src='img/f_a.jpg'"/></a>
-                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/t.jpg" alt="twitter" width="25" height="25"
-                                                                  onmouseout="this.src='img/t.jpg'" onmouseover="this.src='img/t_a.jpg'"/></a>
-                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/v.jpg" alt="vk" width="25" height="25"
-                                                                  onmouseout="this.src='img/v.jpg'" onmouseover="this.src='img/v_a.jpg'"/></a>
-                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/g.jpg" alt="g+" width="25" height="25"
-                                                                  onmouseout="this.src='img/g.jpg'" onmouseover="this.src='img/g_a.jpg'"
-                                                                  style="margin-right: 10px" /></a>
-                        Ініціатор:
-                        <h:graphicImage name="img/logo/bionic-hill.png" alt="" width="100" height="30" class="img-refers"/>
-                    </p>
-                </div>
-                <div class="col-xs-12 text-center links">
-                    <p>
-                        Наші партнери:
-                        <h:graphicImage name="img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
-                        <h:graphicImage name="img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
-                        <h:graphicImage name="img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
-                        <h:graphicImage name="img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
-                        <h:graphicImage name="img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
-                        <h:graphicImage name="img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
-                        <h:graphicImage name="img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
-                        <h:graphicImage name="img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
-                        <h:graphicImage name="img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
-                        <h:graphicImage name="img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
-                        <h:graphicImage name="img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
-                    </p>
-                </div>
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 links">
+                <a href="https://www.google.com.ua/"><img src="resources/img/f.jpg" alt="facebook" width="25" height="25"
+                                                          onmouseout="this.src='resources/img/f.jpg'" onmouseover="this.src='resources/img/f_a.jpg'"></img></a>
+                <a href="https://www.google.com.ua/"><img src="resources/img/t.jpg" alt="twitter" width="25" height="25"
+                                                          onmouseout="this.src='resources/img/t.jpg'" onmouseover="this.src='resources/img/t_a.jpg'"></img></a>
+                <a href="https://www.google.com.ua/"><img src="resources/img/v.jpg" alt="vk" width="25" height="25"
+                                                          onmouseout="this.src='resources/img/v.jpg'" onmouseover="this.src='resources/img/v_a.jpg'"></img></a>
+                <a href="https://www.google.com.ua/"><img src="resources/img/g.jpg" alt="g+" width="25" height="25"
+                                                          onmouseout="this.src='resources/img/g.jpg'" onmouseover="this.src='resources/img/g_a.jpg'" style="margin-right: 10px"></img></a>
             </div>
-            <div class="row">
-                <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
+            <div class="col-xs-12 text-center links">
+                <p>
+                    Наші партнери:
+                    <img src="resources/img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
+                    <img src="resources/img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
+                    <img src="resources/img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
+                    <img src="resources/img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
+                    <img src="resources/img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
+                    <img src="resources/img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
+                    <img src="resources/img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
+                    <img src="resources/img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
+                    <img src="resources/img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
+                    <img src="resources/img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
+                    <img src="resources/img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
+                </p>
             </div>
         </div>
+        <div class="row">
+            <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
+        </div>
     </div>
-    <!-- /footer -->
+</div>
+<!-- /footer -->
 
 </h:body>
 </html>

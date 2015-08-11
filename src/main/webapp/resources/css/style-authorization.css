@@ -1,9 +1,15 @@
 @font-face {
     font-family: PFB; /* ??? ?????? */
-    src: url(#{resource['PFBeauSansPro-Regular_35350.ttf']}); /* ???? ? ????? ?? ??????? */
+    src: url(PFBeauSansPro-Regular_35350.ttf); /* ???? ? ????? ?? ??????? */
 }
 .verstka{
     height: 100vh;
+}
+.ui-icon{
+    display: inline;
+}
+.ui-datatable .ui-row-editor .ui-icon-check, .ui-datatable .ui-row-editor .ui-icon-close {
+    display: inline;
 }
 h1{
     font-family: PFB;
@@ -139,7 +145,6 @@ ul.menu li {
 /* content */
 .cont{
     width: 100%;
-    height: 80vh;
 }
 .content{
     width: 100%;
@@ -153,7 +158,7 @@ ul.back li {
 .form{
     background-color: #F5F5F5;
     width: 100%;
-    margin-bottom: 50vh;
+    /*margin-bottom: 50vh;*/
 }
 .avtorization{
     margin: 0px auto;
@@ -172,7 +177,8 @@ ul.back li {
 }
 .ui-message-error {
     margin: 0px auto;
-    margin-top: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
     border: 1px solid #eed3d7;
     background-color: #f2dede;
     color: #b94a48;
@@ -227,7 +233,7 @@ ul.back li {
     background-color: #F5F5F5;
 }
 .links{
-    padding-top: 5px;
+    padding-top: 10px;
 }
 .img-refers{
     margin-right: 5px;
