@@ -25,24 +25,33 @@ public class ImportTestBean {
 
     String filename;
 
-    public String save() throws IOException {
+    public String save() {
         if (uploadedFile != null) {
             filename = FilenameUtils.getName(uploadedFile.getFileName());
-            InputStream input = uploadedFile.getInputstream();
-            String testDocument = IOUtils.toString(input, "UTF-8");
+            String testDocument;
 
-            parserService.initialize(testDocument);
-            parserService.parseTestFile();
+            InputStream input = null;
 
-            FacesMessage message;
+            try {
+                input = uploadedFile.getInputstream();
+                testDocument = IOUtils.toString(input, "UTF-8");
 
-            if (parserService.containsNecessaryTagsAndAttributes()) {
-                message = new FacesMessage("Файл тесту завантажено успішно");
-            } else {
-                message = new FacesMessage("Файл тесту не може бути завантажено. " +
-                        "Неправильна структура XML, чи тест із такою назвою вже існує.");
+                parserService.initialize(testDocument);
+                parserService.parseTestFile();
+
+                FacesMessage message;
+
+                if (parserService.containsNecessaryTagsAndAttributes()) {
+                    message = new FacesMessage("Файл тесту завантажено успішно");
+                } else {
+                    message = new FacesMessage("Файл тесту не може бути завантажено. " +
+                            "Неправильна структура XML, чи тест із такою назвою вже існує.");
+                }
+                FacesContext.getCurrentInstance().addMessage(null, message);
+                input.close();
+            } catch (IOException exc) {
+                System.out.println("Terrible I/O exception occured!");
             }
-            FacesContext.getCurrentInstance().addMessage(null, message);
 
             return "admin/importTest?faces-redirect=true&success" + true;
         }
