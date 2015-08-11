@@ -57,7 +57,7 @@
                                                                            required="true"
                                                                            requiredMessage="Поле обов`язкове для заповнення"
                                                                            validatorMessage="Некоректне введення">
-                                            <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                            <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z])(?=.*[а-я])(?=.*[А-Я]).{2,500})"/>
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
@@ -116,7 +116,7 @@
                                                                                    required="true"
                                                                                    requiredMessage="Поле обов`язкове для заповнення"
                                                                                    validatorMessage="Некоректне введення">
-                                                    <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z])(?=.*[а-я])(?=.*[А-Я]).{2,500})"/>
                                                 </p:inputText></f:facet>
                                             </p:cellEditor>
                                         </p:column>
@@ -135,39 +135,8 @@
 
 
                                             <!--Untested part-->
-                                            <p:outputLabel
-                                                    rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
-                                            <p:inputText value="#{questionBean.answerText}"
-                                                         rendered="#{questionBean.visibleAnswer}"/>
 
-                                            <p:outputLabel
-                                                    rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
-                                            <p:inputText value="#{questionBean.isCorrect}"
-                                                         rendered="#{questionBean.visibleAnswer}"/>
 
-                                            <p:commandButton value="Save answer"
-                                                             action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
-                                                             rendered="#{questionBean.visibleAnswer}" update="@form"
-                                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
-
-                                            <p:commandButton value="Add answer"
-                                                             rendered="#{!questionBean.visibleAnswer}"
-                                                             action="#{questionBean.setVisibleAnswer}" update="@form"
-                                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
                                             <!---->
 
 
@@ -185,6 +154,44 @@
                                         </p:column>
 
                                     </p:dataTable>
+                                </p:column>
+
+                                <p:column>
+
+                                    <p:outputLabel
+                                            rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
+                                    <p:inputText value="#{questionBean.answerText}"
+                                                 rendered="#{questionBean.visibleAnswer}"/>
+
+                                    <p:outputLabel
+                                            rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
+                                    <p:inputText value="#{questionBean.isCorrect}"
+                                                 rendered="#{questionBean.visibleAnswer}"/>
+
+                                    <p:commandButton value="Save answer"
+                                                     action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
+                                                     rendered="#{questionBean.visibleAnswer}" update="@form"
+                                                     style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+
+                                    <p:commandButton value="Add answer"
+                                                     rendered="#{!questionBean.visibleAnswer}"
+                                                     action="#{questionBean.setVisibleAnswer}" update="@form"
+                                                     style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+
                                 </p:column>
 
                                 <p:column style="border:0px; background:#ffffff; width:30px;">
@@ -207,8 +214,13 @@
 
                             <p:outputLabel rendered="#{questionBean.visibleQuestion}">Mark</p:outputLabel>
                             <p:inputText value="#{questionBean.mark}"
-                                         rendered="#{questionBean.visibleQuestion}"/>
-
+                                         required="true"
+                                         requiredMessage="Поле обов`язкове для заповнення"
+                                         converterMessage="Введіть оцiнку у хвилинах"
+                                         maxlength="2"
+                                         rendered="#{questionBean.visibleQuestion}">
+                                <f:validateLength minimum="1" maximum="2"/>
+                            </p:inputText>
                             <p:commandButton value="Save question"
                                              action="#{questionBean.addQuestion(questionBean.testId,questionBean.questionText, questionBean.mark, true, false)}"
                                              rendered="#{questionBean.visibleQuestion}" update="@form"

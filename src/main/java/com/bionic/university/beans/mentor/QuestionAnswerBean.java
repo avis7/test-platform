@@ -127,7 +127,7 @@ public class QuestionAnswerBean {
 
     public String deleteAnswer(Answer answer) {
         if (answerService.deleteAnswer(testId,answer)){
-            getQuestions();
+            fillTable();
             if (answer.isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer" +answer.getAnswerText()+ " was archived", null));
@@ -152,6 +152,7 @@ public class QuestionAnswerBean {
 
     public String addQuestion(String testId, String question, int mark, boolean isOpen, boolean isMultichoise){
         if(questionService.addQuestion(testId, question, mark, isOpen, isMultichoise)){
+            fillTable();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Question was added", null));
             return "successful";

@@ -67,7 +67,6 @@ public class AnswerService {
             answer.setQuestion(question);
             answerDAO.save(answer);
             changeQuestionType(question);
-            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         }catch (Exception e){
             return false;
@@ -97,7 +96,6 @@ public class AnswerService {
             else answer.setArchived(true);
             answerDAO.update(answer);
             changeQuestionType(answer.getQuestion());
-            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         }catch (Exception e){
             return false;
@@ -108,8 +106,6 @@ public class AnswerService {
         try {
             answerDAO.update((Answer) event.getObject());
             changeQuestionType(((Answer) event.getObject()).getQuestion());
-            questionService.getQuestions();
-            questionService.setQuestions(questionService.fillQuestionTable(testId));
             return true;
         } catch (Exception e) {
             e.printStackTrace();
