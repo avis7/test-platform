@@ -57,7 +57,6 @@
                                                                            required="true"
                                                                            requiredMessage="Поле обов`язкове для заповнення"
                                                                            validatorMessage="Некоректне введення">
-                                            <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z])(?=.*[а-я])(?=.*[А-Я]).{2,500})"/>
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
@@ -73,7 +72,10 @@
                                                                            style="width:100%"
                                                                            required="true"
                                                                            requiredMessage="Поле обов`язкове для заповнення"
-                                                                           validatorMessage="Некоректне введення">
+                                                                           validatorMessage="Введіть коректну оцiнку"
+                                                                           converterMessage="Введіть коректну оцiнку"
+                                                                           maxlength="2">
+                                            <f:validateLongRange minimum="1" maximum="100"/>
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
@@ -116,7 +118,6 @@
                                                                                    required="true"
                                                                                    requiredMessage="Поле обов`язкове для заповнення"
                                                                                    validatorMessage="Некоректне введення">
-                                                    <f:validateRegex pattern="((?=.*[a-z])(?=.*[A-Z])(?=.*[а-я])(?=.*[А-Я]).{2,500})"/>
                                                 </p:inputText></f:facet>
                                             </p:cellEditor>
                                         </p:column>
@@ -132,14 +133,6 @@
                                                 <f:facet name="input"><p:selectBooleanCheckbox
                                                         value="#{answer.isCorrect}"/></f:facet>
                                             </p:cellEditor>
-
-
-                                            <!--Untested part-->
-
-
-                                            <!---->
-
-
                                         </p:column>
 
                                         <p:column style="border:0px; background:#ffffff; width:30px;">
@@ -161,16 +154,20 @@
                                     <p:outputLabel
                                             rendered="#{questionBean.getVisibleAnswer(question)}">Answer Text</p:outputLabel>
                                     <p:inputText value="#{questionBean.answerText}"
-                                                 rendered="#{questionBean.getVisibleAnswer(question)}"/>
-
+                                                 rendered="#{questionBean.getVisibleAnswer(question)}"
+                                                 required="true"
+                                                 requiredMessage="Поле обов`язкове для заповнення"
+                                                 validatorMessage="Некоректне введення">
+                                    </p:inputText>
                                     <p:outputLabel
                                             rendered="#{questionBean.getVisibleAnswer(question)}">Correct</p:outputLabel>
                                     <p:selectBooleanCheckbox value="#{questionBean.isCorrect}"
-                                                 rendered="#{questionBean.getVisibleAnswer(question)}"/>
+                                                             rendered="#{questionBean.getVisibleAnswer(question)}"/>
 
                                     <p:commandButton value="Save answer"
                                                      action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
-                                                     rendered="#{questionBean.getVisibleAnswer(question)}" update="@form"
+                                                     rendered="#{questionBean.getVisibleAnswer(question)}"
+                                                     update="@form"
                                                      style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
@@ -210,16 +207,21 @@
 
                             <p:outputLabel rendered="#{questionBean.visibleQuestion}">Question</p:outputLabel>
                             <p:inputText value="#{questionBean.questionText}"
-                                         rendered="#{questionBean.visibleQuestion}"/>
-
+                                         rendered="#{questionBean.visibleQuestion}"
+                                         required="true"
+                                         requiredMessage="Поле обов`язкове для заповнення"
+                                         validatorMessage="Введіть коректнтй текст питання"
+                                    >
+                            </p:inputText>
                             <p:outputLabel rendered="#{questionBean.visibleQuestion}">Mark</p:outputLabel>
                             <p:inputText value="#{questionBean.mark}"
                                          required="true"
                                          requiredMessage="Поле обов`язкове для заповнення"
-                                         converterMessage="Введіть оцiнку у хвилинах"
+                                         validatorMessage="Введіть коректну оцiнку"
+                                         converterMessage="Введіть коректну оцiнку"
                                          maxlength="2"
                                          rendered="#{questionBean.visibleQuestion}">
-                                <f:validateLength minimum="1" maximum="2"/>
+                                <f:validateLongRange minimum="1" maximum="100"/>
                             </p:inputText>
                             <p:commandButton value="Save question"
                                              action="#{questionBean.addQuestion(questionBean.testId,questionBean.questionText, questionBean.mark, true, false)}"
