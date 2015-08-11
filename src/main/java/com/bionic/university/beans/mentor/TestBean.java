@@ -38,6 +38,7 @@ public class TestBean {
     }
 
     public void setVisible() {
+        clearFields();
         testService.setVisible(true);
     }
 
@@ -159,4 +160,16 @@ public class TestBean {
     public String callManageUsers(){
            return "manageUsers";
     }
+
+    public void clearFields(){
+        deadline=null;
+        duration=null;
+        testName=null;
+        categoryName=null;
+    }
+
+    public String getQuestions(TestRow testRow){
+        return "testPage?faces-redirect=true&testId="+testRow.getTest().getId();
+    }
+
 }

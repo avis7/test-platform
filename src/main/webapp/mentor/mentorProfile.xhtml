@@ -113,11 +113,23 @@
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
-                                <p:column style="border:0px; background:#ffffff; width:100px;">
-                                    <h:commandLink value="Archive" style="color:#E7664D;"
+                                <p:column style="border:0px; background:#ffffff; width:80px;">
+                                    <h:commandLink value="ARCHIVE" style="color:#E7664D;"
                                                    action="#{testsBean.deleteTest(testRow)}"
                                             />
+
+
+
                                 </p:column>
+                                <p:column style="border:0px; background:#ffffff; width:50px;">
+                                    <h:commandLink value="VIEW" style="color:#E7664D;"
+                                                   action="#{testsBean.getQuestions(testRow)}"
+                                            />
+                                </p:column>
+
+
+
+
                                 <p:column style="border:0px; background:#ffffff; width:60px;">
                                     <h:commandLink value="Results" style="color:#52CC4C;"
                                                    action="#{testsBean.viewCheckedResults(testRow)}"

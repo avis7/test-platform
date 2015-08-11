@@ -20,4 +20,10 @@ public class AnswerDAO extends AbstractDAO<Answer> {
         query.setParameter("question", questionId);
         return query.getResultList();
     }
+
+    public List<Answer> getVisibleAnswersByQuestionId(int questionId) {
+        Query query = em.createNamedQuery("getVisibleAnswersByQuestionId");
+        query.setParameter("question", questionId);
+        return query.getResultList();
+    }
 }

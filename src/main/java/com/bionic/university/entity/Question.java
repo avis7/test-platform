@@ -11,6 +11,9 @@ import java.util.List;
                 resultClass = Question.class),
         @NamedNativeQuery(name = "getQuestionByAnswerId",
                 query = "SELECT * FROM question q, answer a WHERE a.question_id = q.id AND a.id = :answer",
+                resultClass = Question.class),
+        @NamedNativeQuery(name = "getVisibleQuestionsByTestId",
+                query = "SELECT * FROM question q WHERE q.test_id = :test AND q.archived=FALSE ",
                 resultClass = Question.class)
 })
 @Table(name = "question")
@@ -28,6 +31,8 @@ public class Question {
     private boolean isOpen;
     @Column(name = "is_multichoise", nullable = false)
     private boolean isMultichoise;
+    @Column(name = "archived", nullable = false)
+    private boolean archived;
     @ManyToOne
     @JoinColumn(name = "test_id")
     private Test test;
@@ -44,7 +49,7 @@ public class Question {
         this.isMultichoise = isMultichoise;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -86,6 +91,14 @@ public class Question {
 
     public void setIsMultichoise(boolean isMultichoise) {
         this.isMultichoise = isMultichoise;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
     }
 
     public Test getTest() {
