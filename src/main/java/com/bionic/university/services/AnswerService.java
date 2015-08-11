@@ -6,7 +6,7 @@ import com.bionic.university.entity.Question;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ public class AnswerService {
     @Inject
     private QuestionService questionService;
 
-    private  List<Answer> answers;
+    private HashMap<Question,List<Answer>> answers = new HashMap<Question, List<Answer>>();
 
     public List<Answer> getAnswersForQuestion(String stringQuestionId) {
         int questionId = Integer.valueOf(stringQuestionId);
@@ -117,18 +117,21 @@ public class AnswerService {
         }
     }
 
-    public List<Answer> getAnswers(Question question){
-        try{
-            if(answers==null)
-           answers=getAnswersForQuestion(String.valueOf(question.getId()));
-            return  answers;
-        } catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
+
+    public HashMap<Question, List<Answer>> getAnswers() {
+        return answers;
     }
 
-    public void setAnswers(List<Answer> answers) {
+    public void setAnswers(HashMap<Question, List<Answer>> answers) {
         this.answers = answers;
     }
+
+    public void fillAnswerTable(Question question){
+    try{
+        List<Answer> answer=getAnswersForQuestion(String.valueOf(question.getId()));
+        answers.put(question, answer);
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+}
 }

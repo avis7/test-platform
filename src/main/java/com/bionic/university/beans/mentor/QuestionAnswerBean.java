@@ -94,11 +94,7 @@ public class QuestionAnswerBean {
     }
 
     public List<Answer> getAnswers(Question question) {
-        return answerService.getAnswers(question);
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        answerService.setAnswers(answers);
+        return answerService.getAnswers().get(question);
     }
 
     public List<Question> getQuestions() {
@@ -109,7 +105,8 @@ public class QuestionAnswerBean {
 
     @PostConstruct
     public void fillTable(){
-        questionService.fillQuestionTable(testId);
+                for(Question question: questionService.fillQuestionTable(testId))
+                    answerService.fillAnswerTable(question);
     }
 
     public void setQuestions(List<Question> questions) {

@@ -104,8 +104,6 @@ public class QuestionService {
 
     public List<Question> fillQuestionTable(String testId) {
         try {
-            if(questions.size()!=0)
-                return questions;
             questions.clear();
             questions = getQuestionsByTestId(testId);
             return questions;
