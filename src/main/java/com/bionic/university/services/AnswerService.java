@@ -6,6 +6,7 @@ import com.bionic.university.entity.Question;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ public class AnswerService {
     @Inject
     private QuestionService questionService;
 
-    private  List<Answer> answers;
+    private  List<Answer> answers = new ArrayList<Answer>();
 
     public List<Answer> getAnswersForQuestion(String stringQuestionId) {
         int questionId = Integer.valueOf(stringQuestionId);

@@ -2,10 +2,10 @@ package com.bionic.university.services;
 
 import com.bionic.university.dao.QuestionDAO;
 import com.bionic.university.entity.Question;
-import com.bionic.university.model.TestRow;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +18,15 @@ public class QuestionService {
     private TestService testService;
 
     private boolean visibleQuestion;
+    private List<Question> questions = new ArrayList<Question>();
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
 
     public boolean isVisibleQuestion() {
         return visibleQuestion;
@@ -34,8 +43,8 @@ public class QuestionService {
     public void setQuestionDAO(QuestionDAO questionDAO) {
         this.questionDAO = questionDAO;
     }
-    
-    public List<Question> getQuestionsByTestId(String stringTestId){
+
+    public List<Question> getQuestionsByTestId(String stringTestId) {
         int testId = Integer.valueOf(stringTestId);
         return questionDAO.getQuestionsByTestId(testId);
     }
@@ -57,26 +66,26 @@ public class QuestionService {
         return true;
     }
 
-    public boolean deleteQuestion(Question question){
+    public boolean deleteQuestion(Question question) {
         try {
             if (question.isArchived())
                 question.setArchived(false);
             else question.setArchived(true);
             questionDAO.update(question);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
 
-    public boolean addQuestion(String testId, String question, int mark, boolean isOpen, boolean isMultichoise){
+    public boolean addQuestion(String testId, String question, int mark, boolean isOpen, boolean isMultichoise) {
         try {
-            Question quest=new Question(question,mark,isOpen,isMultichoise);
+            Question quest = new Question(question, mark, isOpen, isMultichoise);
             quest.setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
             questionDAO.save(quest);
             setVisibleQuestion(false);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -85,6 +94,17 @@ public class QuestionService {
         try {
             ((Question) event.getObject()).setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
             questionDAO.update((Question) event.getObject());
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean fillQuestionTable(String testId) {
+        try {
+            questions.clear();
+            questions = getQuestionsByTestId(testId);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

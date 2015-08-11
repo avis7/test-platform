@@ -7,6 +7,7 @@ import com.bionic.university.services.QuestionService;
 import org.primefaces.event.RowEditEvent;
 import org.primefaces.context.RequestContext;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -36,7 +37,6 @@ public class QuestionAnswerBean {
     private boolean multichoice;
     private boolean visibleAnswer;
     private boolean open;
-    private List<Question> questions;
 
     public boolean isVisibleQuestion() {
         return questionService.isVisibleQuestion();
@@ -120,16 +120,18 @@ public class QuestionAnswerBean {
     }
 
     public List<Question> getQuestions() {
-        if(questions==null)
-            questions=questionService.getQuestionsByTestId(testId);
-        return questions;
+        /*if(questions==null)
+            questions=questionService.getQuestionsByTestId(testId);*/
+        return questionService.getQuestions();
     }
 
+    @PostConstruct
     public void fillTable(){
+        questionService.fillQuestionTable(testId);
     }
 
     public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+        questionService.setQuestions(questions);
     }
 
     public String deleteQuestion(Question question){
