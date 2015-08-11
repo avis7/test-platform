@@ -38,11 +38,6 @@
             <version>5.2</version>
         </dependency>
         <dependency>
-            <groupId>org.primefaces.themes</groupId>
-            <artifactId>start</artifactId>
-            <version>1.0.10</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.6.Final</version>
@@ -77,6 +72,11 @@
             <groupId>org.primefaces.extensions</groupId>
             <artifactId>primefaces-extensions</artifactId>
             <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>bootstrap</artifactId>
+            <version>1.0.10</version>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>
@@ -129,7 +129,7 @@
                     </container>
                     <configuration>
                         <properties>
-                            <cargo.servlet.port>8085</cargo.servlet.port>
+                            <cargo.servlet.port>8080</cargo.servlet.port>
                             <cargo.jboss.configuration>standalone-engine</cargo.jboss.configuration>
                             <cargo.servlet.users>admin:admin:AplicationRealm,admin</cargo.servlet.users>
                             <cargo.jvmargs>
@@ -141,9 +141,9 @@
                             <cargo.datasource.datasource.mysql>
                                 cargo.datasource.jndi=java:/Quiz|
                                 cargo.datasource.driver=com.mysql.jdbc.Driver|
-                                cargo.datasource.url=jdbc:mysql://sql2.freemysqlhosting.net:3306/sql285068|
-                                cargo.datasource.username=sql285068|
-                                cargo.datasource.password=zA2%bW8*
+                                cargo.datasource.url=jdbc:mysql://localhost:3306/test|
+                                cargo.datasource.username=root|
+                                cargo.datasource.password=1
                             </cargo.datasource.datasource.mysql>
                         </properties>
                     </configuration>
