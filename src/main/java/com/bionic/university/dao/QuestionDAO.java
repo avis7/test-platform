@@ -21,6 +21,12 @@ public class QuestionDAO extends AbstractDAO<Question> {
         return query.getResultList();
     }
 
+    public Question getQuestionByText(String questionText) {
+        Query query = em.createNamedQuery("getQuestionByText");
+        query.setParameter("questionText", questionText);
+        return (Question) query.getSingleResult();
+    }
+
     public Question getQuestionByAnswerId(int answerId){
         Query query = em.createNamedQuery("getQuestionByAnswerId");
         query.setParameter("answer", answerId);

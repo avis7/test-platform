@@ -85,5 +85,10 @@ public class ResultService {
         return null;
 
     }
+
+    public Result getResultByUserNameAndTestId(String email,int testId){
+        return resultDAO.findResultByUserIdAndTestId((userDAO.findUserByEmail(email)).getId(),testId);
+    }
 }
+
 

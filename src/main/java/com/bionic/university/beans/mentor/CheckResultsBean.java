@@ -34,7 +34,7 @@ public class CheckResultsBean {
     }
 
     public String check(int resultId){
-        return "checkResult?faces-redirect=true&resultId=" + resultId;
+        return "mentor/checkResult?faces-redirect=true&resultId=" + resultId;
     }
 
     public List<Result> getResultsToCheck() {

@@ -1,36 +1,121 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+<?xml version="1.0" encoding="UTF-8"?>
 
-<h:head>
+<!DOCTYPE html
+		PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-</h:head>
-<h:body>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-	<h1>PrimeFaces email validator example</h1>
+<head>
+	<title>Index</title>
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="resources/css/style-index.css" rel="stylesheet"/>
+</head>
 
-	<div style="width: 500px">
-		<h:form>
 
-			<p:inputText id="email" required="true" label="email" size="40"
-				requiredMessage="Please enter your email address."
-				validatorMessage="Invalid email format">
-
-				<f:validateRegex
-					pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-
-			</p:inputText>
-			<p:watermark for="email" value="Email Address *" />
-			<p:message for="email" />
-
-			<p:commandButton value="test" style="margin:20px"
-				action="#{userBean.register}" ajax="false" />
-
-		</h:form>
+<body>
+	<!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-5 logo">
+					<table>
+						<tr>
+							<td><img src="resources/img/logo.png" alt="logo" width="53" height="55"/></td>
+							<td>
+								<ul>
+									<li><h1>bionic</h1></li>
+									<li><h1>UNIVERSITY~QUIZZES</h1></li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div><!-- лого -->
+				<div class="col-xs-12 col-sm-7 text-right">
+					<ul class="menu">
+						<li><a href="http://bionic-university.com/uk/about_bionic_university/" target="_blank">ПРО НАС</a></li>
+						<li><a href="http://bionic-university.com/uk/contacts/" target="_blank">КОНТАКТИ</a></li>
+						<li><a href="authorization.xhtml" class="ui-button">УВІЙТИ</a></li>
+					</ul>
+				</div><!-- меню -->
+			</div>
+		</div><!-- шапка -->
 	</div>
+	<!-- /header -->
 
-</h:body>
+	<!-- content1 -->
+	<div class="contant1">
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <img src="resources/img/content-1.png" class="img1" height="210" width="885" alt=""/>
+            </div>
+        </div>
+    </div>
+	</div>
+	<!-- /content1 -->
+
+	<!-- content2 -->
+    <div class="contant2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <img src="resources/img/content-2.png" class="img1" height="210" width="885" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- /content2 -->
+
+	<!-- content3 -->
+    <div class="contant1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <img src="resources/img/content-3.png" class="img1" height="210" width="885" alt=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- /content3 -->
+
+	<!-- footer -->
+	<div class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 links">
+						<a href="https://www.google.com.ua/"><img src="resources/img/f.jpg" alt="facebook" width="25" height="25"
+																  onmouseout="this.src='resources/img/f.jpg'" onmouseover="this.src='resources/img/f_a.jpg'"></img></a>
+						<a href="https://www.google.com.ua/"><img src="resources/img/t.jpg" alt="twitter" width="25" height="25"
+																  onmouseout="this.src='resources/img/t.jpg'" onmouseover="this.src='resources/img/t_a.jpg'"></img></a>
+						<a href="https://www.google.com.ua/"><img src="resources/img/v.jpg" alt="vk" width="25" height="25"
+																  onmouseout="this.src='resources/img/v.jpg'" onmouseover="this.src='resources/img/v_a.jpg'"></img></a>
+						<a href="https://www.google.com.ua/"><img src="resources/img/g.jpg" alt="g+" width="25" height="25"
+																  onmouseout="this.src='resources/img/g.jpg'" onmouseover="this.src='resources/img/g_a.jpg'" style="margin-right: 10px"></img></a>
+					</div>
+					<div class="col-xs-12 text-center links">
+						<p>
+							Наші партнери:
+							<img src="resources/img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
+							<img src="resources/img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
+							<img src="resources/img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
+							<img src="resources/img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
+							<img src="resources/img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
+							<img src="resources/img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
+							<img src="resources/img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
+							<img src="resources/img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
+							<img src="resources/img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
+							<img src="resources/img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
+							<img src="resources/img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
+				</div>
+			</div>
+	</div>
+	<!-- /footer -->
+</body>
 </html>
+

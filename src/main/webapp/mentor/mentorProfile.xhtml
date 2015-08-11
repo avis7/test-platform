@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body>
-<ui:composition template="template.xhtml">
+    <ui:composition template="../template.xhtml">
 
 
     <ui:define name="container">
@@ -22,7 +22,7 @@
             <div class="container">
                 <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
                 <div class="col-xs-6 text-right back">
-                    <a href="index.xhtml" class="back">Назад</a>
+                    <a href="../index.xhtml" class="back">Назад</a>
                 </div>
             </div>
         </div>
@@ -190,7 +190,17 @@
                                     </tr>
                                 </table>
                             </h:panelGroup>
-                            <p:commandButton value="Add test" rendered="#{!testsBean.visible}"
+                            <p:commandButton value="Призначити тест" rendered="#{!testsBean.visible}"
+                                             action="#{testsBean.callManageUsers}"
+                                             style="border-radius: 3px;
+                                        font-family: PFB;
+                                        font-size: 14px;
+                                        color: white;
+                                        border: solid 1px #40C3DA;
+                                        padding: 4px 10px 4px 10px;
+                                        text-decoration: none;
+                                        background-color: #40C3DA;"/>
+                            <p:commandButton value="Додати тест" rendered="#{!testsBean.visible}"
                                              action="#{testsBean.setVisible}" update="@form"
                                              style="border-radius: 3px;
                                         font-family: PFB;

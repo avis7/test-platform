@@ -10,11 +10,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<head>
+<h:head>
     <title>Authorization</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="css/style2.css" rel="stylesheet"></link>
-</head>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="resources/css/style-authorization.css" rel="stylesheet"/>
+</h:head>
 
 
 <h:body class="verstka">
@@ -25,7 +25,7 @@
             <div class="col-xs-12 col-sm-4 logo">
                 <table>
                     <tr>
-                        <td><img src="img/logo.png" alt="logo" width="53" height="55"/></td>
+                        <td><h:graphicImage value="resources/img/logo.png" alt="logo" width="53" height="55"/></td>
                         <td>
                             <ul>
                                 <li><h1>bionic</h1></li>
@@ -48,8 +48,6 @@
 
 
 
-
-
 <!-- content -->
 <div class="cont">
     <div class="content">
@@ -68,15 +66,19 @@
                             <h:form method="post" action="j_security_check" id="form" class="avtorization">
                                 <h4>E-mail
                                 <p:inputText id="email" name="j_username" size="20" required="true" type="text"
-                                              requiredMessage="E-mail field must not be empty"
-                                              value="#{authorizationBean.email}" style="margin-left:7px">
+                                              requiredMessage="Введіть E-mail"
+                                              value="#{authorizationBean.email}" style="margin-left:7px"
+                                              validatorMessage="Введіть коректно E-mail">
+                                    <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                                 </p:inputText></h4>
-                                <p:message for="email"/>
+
+                                <p:message for="email" />
 
                                 <h4>Пароль
-                                <p:password id="password" name="j_password" type="password" size="20" required="true"
-                                            requiredMessage="Password field must not be empty"
-                                            value="#{authorizationBean.password}"/></h4>
+                                    <p:password id="password" name="j_password" type="password" size="20" required="true"
+                                                requiredMessage="Password field must not be empty"
+                                                value="#{authorizationBean.password}"/></h4>
                                 <p:message for="password" display="text" />
 
                                 <p:commandButton type="submit" action="#{authorizationBean.authorization}"
@@ -89,42 +91,40 @@
         </div>
     </div>
     <!-- footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 links">
-                    <p>
-                        <a href="https://www.google.com.ua/"><img src="img/f.jpg" alt="facebook" width="25" height="25"
-                                                                  onmouseout="this.src='img/f.jpg'" onmouseover="this.src='img/f_a.jpg'"></img></a>
-                        <a href="https://www.google.com.ua/"><img src="img/t.jpg" alt="twitter" width="25" height="25"
-                                                                  onmouseout="this.src='img/t.jpg'" onmouseover="this.src='img/t_a.jpg'"></img></a>
-                        <a href="https://www.google.com.ua/"><img src="img/v.jpg" alt="vk" width="25" height="25"
-                                                                  onmouseout="this.src='img/v.jpg'" onmouseover="this.src='img/v_a.jpg'"></img></a>
-                        <a href="https://www.google.com.ua/"><img src="img/g.jpg" alt="g+" width="25" height="25"
-                                                                  onmouseout="this.src='img/g.jpg'" onmouseover="this.src='img/g_a.jpg'" style="margin-right: 10px"></img></a>
-                        Ініціатор:
-                        <img src="img/logo/bionic-hill.png" alt="" width="100" height="30" class="img-refers"/>
-                    </p>
+    <div class="navbar-fixed-bottom row-fluid footer">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 links">
+                        <a href="https://www.google.com.ua/"><img src="resources/img/f.jpg" alt="facebook" width="25" height="25"
+                                                                  onmouseout="this.src='resources/img/f.jpg'" onmouseover="this.src='resources/img/f_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="resources/img/t.jpg" alt="twitter" width="25" height="25"
+                                                                  onmouseout="this.src='resources/img/t.jpg'" onmouseover="this.src='resources/img/t_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="resources/img/v.jpg" alt="vk" width="25" height="25"
+                                                                  onmouseout="this.src='resources/img/v.jpg'" onmouseover="this.src='resources/img/v_a.jpg'"></img></a>
+                        <a href="https://www.google.com.ua/"><img src="resources/img/g.jpg" alt="g+" width="25" height="25"
+                                                                  onmouseout="this.src='resources/img/g.jpg'" onmouseover="this.src='resources/img/g_a.jpg'" style="margin-right: 10px"></img></a>
+                    </div>
+                    <div class="col-xs-12 text-center links">
+                        <p>
+                            Наші партнери:
+                            <img src="resources/img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
+                            <img src="resources/img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
+                            <img src="resources/img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
+                            <img src="resources/img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
+                            <img src="resources/img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
+                            <img src="resources/img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
+                            <img src="resources/img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
+                            <img src="resources/img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
+                            <img src="resources/img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
+                            <img src="resources/img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
+                            <img src="resources/img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
+                        </p>
+                    </div>
                 </div>
-                <div class="col-xs-12 text-center links">
-                    <p>
-                        Наші партнери:
-                        <img src="img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
-                        <img src="img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
-                        <img src="img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
-                        <img src="img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
-                        <img src="img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
-                        <img src="img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
-                        <img src="img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
-                        <img src="img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
-                        <img src="img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
-                        <img src="img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
-                        <img src="img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
-                    </p>
+                <div class="row">
+                    <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
                 </div>
-            </div>
-            <div class="row">
-                <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
             </div>
         </div>
     </div>

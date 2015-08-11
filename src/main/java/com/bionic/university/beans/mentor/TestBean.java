@@ -142,4 +142,8 @@ public class TestBean {
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }
+
+    public String callManageUsers(){
+           return "manageUsers";
+    }
 }

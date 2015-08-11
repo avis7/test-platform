@@ -40,11 +40,11 @@ public class CheckResultBean {
 
     public String save(){
         boolean success = userAnswerService.saveMarksForOwnAnswers(userAnswers, resultId);
-        return success ? "mentorProfile?faces-redirect=true": "error";
+        return success ? "mentor/mentorProfile?faces-redirect=true": "error";
     }
 
     public String cancel(){
-        return "mentorProfile?faces-redirect=true";
+        return "mentor/mentorProfile?faces-redirect=true";
     }
 
     public List<Question> getQuestions() {
