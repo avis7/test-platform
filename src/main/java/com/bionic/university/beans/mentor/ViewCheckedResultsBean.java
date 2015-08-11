@@ -40,10 +40,22 @@ public class ViewCheckedResultsBean implements Serializable {
 
     public int getMaxMark(Result result){
         int mark = 0;
-        for (Question question : result.getTest().getQuestions()){
+        List<Question> questions = questionService.getQuestionsByTestId(String.valueOf(result.getTest().getId()));
+        for (Question question : questions){
             mark += question.getMark();
         }
         return mark;
+    }
+
+    public double getTime(Result result){
+        long beginTime = result.getBeginTime().getTime();
+        long passTime = result.getPassTime().getTime();
+        double time = (double)(passTime - beginTime)/6000;
+        return Math.rint(100.0 * time) / 100.0;
+    }
+
+    public String viewResult(int resultId){
+        return "viewCheckedResult?faces-redirect=true&resultId=" + resultId;
     }
 
 

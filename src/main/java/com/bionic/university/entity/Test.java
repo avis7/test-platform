@@ -32,7 +32,7 @@ public class Test {
     private List<User> users;
     @OneToMany(mappedBy = "test")
     private List<Result> results;
-    @OneToMany(mappedBy = "test", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "test")
     private List<Question> questions;
 
     public Test() {
