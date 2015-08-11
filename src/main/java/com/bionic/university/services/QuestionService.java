@@ -7,6 +7,8 @@ import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -103,7 +105,7 @@ public class QuestionService {
         }
     }
 
-    public List<QuestionRow> fillQuestionTable(String testId) {
+    public List<QuestionRow> fillQuestionTable(String testId){
         try {
            questionRows.clear();
             List<Question> questions = getQuestionsByTestId(testId);
@@ -115,5 +117,11 @@ public class QuestionService {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<QuestionRow> sortArchived(String testId){
+        fillQuestionTable(testId);
+        Collections.sort(questionRows);
+        return questionRows;
     }
 }

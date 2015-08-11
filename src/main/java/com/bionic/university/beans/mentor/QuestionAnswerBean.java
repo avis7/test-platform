@@ -101,10 +101,16 @@ public class QuestionAnswerBean {
         return questionService.getQuestionRows();
     }
 
-    @PostConstruct
+
     public void fillTable(){
                 for(QuestionRow questionRow: questionService.fillQuestionTable(testId))
                     answerService.fillAnswerTable(questionRow.getQuestion());
+    }
+
+    @PostConstruct
+    public void sortTable(){
+        for(QuestionRow questionRow: questionService.sortArchived(testId))
+            answerService.sortArchived(questionRow.getQuestion());
     }
 
     public void setQuestions(List<QuestionRow> questions) {
@@ -113,6 +119,7 @@ public class QuestionAnswerBean {
 
     public String deleteQuestion(QuestionRow questionRow){
         if (questionService.deleteQuestion(questionRow)) {
+            sortTable();
             if (questionRow.getQuestion().isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Question" + questionRow.getQuestion().getQuestion() + " was archived", null));
@@ -125,7 +132,7 @@ public class QuestionAnswerBean {
 
     public String deleteAnswer(Answer answer) {
         if (answerService.deleteAnswer(answer)){
-            fillTable();
+            sortTable();
             if (answer.isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer" +answer.getAnswerText()+ " was archived", null));

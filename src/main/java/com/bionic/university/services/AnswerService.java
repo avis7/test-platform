@@ -7,6 +7,8 @@ import com.bionic.university.model.QuestionRow;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -131,4 +133,13 @@ public class AnswerService {
         e.printStackTrace();
     }
 }
+
+    public void sortArchived(Question question){
+        fillAnswerTable(question);
+        Collections.sort(answers.get(question), new Comparator<Answer>() {
+            public int compare(Answer o1, Answer o2) {
+                return (Boolean.valueOf(o1.isArchived())).compareTo(Boolean.valueOf(o2.isArchived()));
+            }
+        });
+    }
 }

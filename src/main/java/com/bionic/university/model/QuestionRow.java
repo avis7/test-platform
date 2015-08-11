@@ -2,7 +2,7 @@ package com.bionic.university.model;
 
 import com.bionic.university.entity.Question;
 
-public class QuestionRow {
+public class QuestionRow implements Comparable {
 
     private Question question;
     private boolean answerVisible;
@@ -26,5 +26,14 @@ public class QuestionRow {
 
     public void setAnswerVisible(boolean answerVisible) {
         this.answerVisible = answerVisible;
+    }
+
+    public int compareTo(Object obj) {
+        QuestionRow tmp = (QuestionRow)obj;
+        if(this.getQuestion().isArchived() && tmp.getQuestion().isArchived())
+        return 0;
+        if(this.getQuestion().isArchived())
+            return 1;
+        return -1;
     }
 }
