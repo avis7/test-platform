@@ -1,8 +1,5 @@
 package com.bionic.university.beans.mentor;
 
-import com.bionic.university.dao.ResultDAO;
-import com.bionic.university.dao.TestDAO;
-import com.bionic.university.entity.Result;
 import com.bionic.university.entity.Test;
 import com.bionic.university.entity.User;
 import com.bionic.university.services.ResultService;
@@ -61,22 +58,22 @@ public class ManageUsersBean {
         switch (resultService.onRowEdit(event, selectedTest)) {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" was added", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача "+((User)event.getObject()).getFirstName()+" добавлений", null));
             break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "User "+((User)event.getObject()).getFirstName()+" has this test", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Користувач "+((User)event.getObject()).getFirstName()+" має цей тест", null));
                 break;
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test for user "+((User)event.getObject()).getFirstName()+" wasn't added", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача "+((User)event.getObject()).getFirstName()+" не добавлений", null));
                 break;
         }
 
     }
 
     public String onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled",
+        FacesMessage msg = new FacesMessage("Відміна",
                 ((User) event.getObject()).getFirstName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";

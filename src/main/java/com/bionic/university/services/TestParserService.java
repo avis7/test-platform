@@ -80,7 +80,7 @@ public class TestParserService {
                 String questionName = element.getElementsByTagName(TAG_QUESTIONTEXT)
                         .item(0)
                         .getTextContent();
-                boolean questionIsOpen = (element.getAttribute(ATTR_QUESTION_TYPE).equals("shortAnswer"));
+                boolean questionIsOpen = (element.getAttribute(ATTR_QUESTION_TYPE).equals("shortanswer"));
                 int questionMark = 0;
 
                 questions.add(new Question(questionName, questionMark, questionIsOpen, false));
@@ -89,7 +89,7 @@ public class TestParserService {
 
                 List<Answer> answersToCurrentQuestion = new ArrayList<Answer>();
 
-                for (int answerIndex = 0; answerIndex < element.getElementsByTagName("answer").getLength(); answerIndex++) {
+                for (int answerIndex = 0; answerIndex < element.getElementsByTagName(TAG_ANSWER).getLength(); answerIndex++) {
 
                     String answerText = element.getElementsByTagName(TAG_ANSWER).item(answerIndex).getTextContent();
                     boolean isCorrect =
