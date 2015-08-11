@@ -2,6 +2,7 @@ package com.bionic.university.beans.mentor;
 
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.QuestionRow;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;
 import org.primefaces.event.RowEditEvent;
@@ -34,7 +35,6 @@ public class QuestionAnswerBean {
     private String questionText;
     private boolean isCorrect;
     private int mark;
-    private boolean visibleAnswer;
 
     public boolean isVisibleQuestion() {
         return questionService.isVisibleQuestion();
@@ -53,12 +53,12 @@ public class QuestionAnswerBean {
         this.testId = testId;
     }
 
-    public boolean isVisibleAnswer() {
-        return visibleAnswer;
+    public boolean getVisibleAnswer(QuestionRow questionRow) {
+        return questionRow.isAnswerVisible();
     }
 
-    public void setVisibleAnswer() {
-        this.visibleAnswer = true;
+    public void setVisibleAnswer(QuestionRow questionRow) {
+        questionRow.setAnswerVisible(true);
     }
 
     public String getAnswerText() {
@@ -93,40 +93,38 @@ public class QuestionAnswerBean {
         this.mark = mark;
     }
 
-    public List<Answer> getAnswers(Question question) {
-        return answerService.getAnswers().get(question);
+    public List<Answer> getAnswers(QuestionRow questionRow) {
+        return answerService.getAnswers().get(questionRow.getQuestion());
     }
 
-    public List<Question> getQuestions() {
-        /*if(questions==null)
-            questions=questionService.getQuestionsByTestId(testId);*/
-        return questionService.getQuestions();
+    public List<QuestionRow> getQuestions() {
+        return questionService.getQuestionRows();
     }
 
     @PostConstruct
     public void fillTable(){
-                for(Question question: questionService.fillQuestionTable(testId))
-                    answerService.fillAnswerTable(question);
+                for(QuestionRow questionRow: questionService.fillQuestionTable(testId))
+                    answerService.fillAnswerTable(questionRow.getQuestion());
     }
 
-    public void setQuestions(List<Question> questions) {
-        questionService.setQuestions(questions);
+    public void setQuestions(List<QuestionRow> questions) {
+        questionService.setQuestionRows(questions);
     }
 
-    public String deleteQuestion(Question question){
-        if (questionService.deleteQuestion(question)) {
-            if (question.isArchived())
+    public String deleteQuestion(QuestionRow questionRow){
+        if (questionService.deleteQuestion(questionRow)) {
+            if (questionRow.getQuestion().isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Question" + question.getQuestion() + " was archived", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Question" + questionRow.getQuestion().getQuestion() + " was archived", null));
             else FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Question" + question.getQuestion()+ " was unarchived", null));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Question" + questionRow.getQuestion().getQuestion()+ " was unarchived", null));
             return "successful";
         }
         return "unsuccessful";
     }
 
     public String deleteAnswer(Answer answer) {
-        if (answerService.deleteAnswer(testId,answer)){
+        if (answerService.deleteAnswer(answer)){
             fillTable();
             if (answer.isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
@@ -138,8 +136,8 @@ public class QuestionAnswerBean {
         return "unsuccessful";
     }
 
-    public String addAnswer(Question question, String answerText, boolean isCorrect){
-        if(answerService.addAnswer(testId,question, answerText, isCorrect)){
+    public String addAnswer(QuestionRow questionRow, String answerText, boolean isCorrect){
+        if(answerService.addAnswer(questionRow, answerText, isCorrect)){
             getQuestions();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer was added", null));
@@ -165,12 +163,12 @@ public class QuestionAnswerBean {
     public String onRowEditQuestion(RowEditEvent event) {
         if (questionService.onRowEdit(testId, event)) {
             FacesMessage msg = new FacesMessage("Question Edited",
-                    ((Question) event.getObject()).getQuestion());
+                    ((QuestionRow) event.getObject()).getQuestion().getQuestion());
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return "successful";
         }
         FacesMessage msg = new FacesMessage("Question is not edited",
-                ((Question) event.getObject()).getQuestion());
+                ((QuestionRow) event.getObject()).getQuestion().getQuestion());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "unsuccessful";
     }
@@ -182,7 +180,7 @@ public class QuestionAnswerBean {
     }
 
     public String onRowEditAnswer(RowEditEvent event) {
-        if (answerService.onRowEdit(testId,event)) {
+        if (answerService.onRowEdit(event)) {
             getQuestions();
             FacesMessage msg = new FacesMessage("Answer Edited",
                     ((Answer) event.getObject()).getAnswerText());

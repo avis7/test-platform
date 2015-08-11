@@ -3,6 +3,7 @@ package com.bionic.university.services;
 import com.bionic.university.dao.AnswerDAO;
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.QuestionRow;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
@@ -61,12 +62,12 @@ public class AnswerService {
         }
     }
 
-    public boolean addAnswer(String testId,Question question, String answerText, boolean isCorrect) {
+    public boolean addAnswer(QuestionRow questionRow, String answerText, boolean isCorrect) {
         try {
             Answer answer = new Answer(answerText, isCorrect);
-            answer.setQuestion(question);
+            answer.setQuestion(questionRow.getQuestion());
             answerDAO.save(answer);
-            changeQuestionType(question);
+            changeQuestionType(questionRow.getQuestion());
             return true;
         }catch (Exception e){
             return false;
@@ -89,7 +90,7 @@ public class AnswerService {
         this.answerDAO = answerDAO;
     }
 
-    public boolean deleteAnswer(String testId,Answer answer){
+    public boolean deleteAnswer(Answer answer){
         try {
             if (answer.isArchived())
                 answer.setArchived(false);
@@ -102,7 +103,7 @@ public class AnswerService {
         }
     }
 
-    public boolean onRowEdit(String testId, RowEditEvent event) {
+    public boolean onRowEdit(RowEditEvent event) {
         try {
             answerDAO.update((Answer) event.getObject());
             changeQuestionType(((Answer) event.getObject()).getQuestion());

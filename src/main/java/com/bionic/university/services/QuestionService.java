@@ -2,6 +2,7 @@ package com.bionic.university.services;
 
 import com.bionic.university.dao.QuestionDAO;
 import com.bionic.university.entity.Question;
+import com.bionic.university.model.QuestionRow;
 import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
@@ -18,15 +19,14 @@ public class QuestionService {
     private TestService testService;
 
     private boolean visibleQuestion;
+    private List<QuestionRow> questionRows=new ArrayList<QuestionRow>();
 
-    private List<Question> questions = new ArrayList<Question>();
-
-    public List<Question> getQuestions() {
-        return questions;
+    public List<QuestionRow> getQuestionRows() {
+        return questionRows;
     }
 
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+    public void setQuestionRows(List<QuestionRow> questionRows) {
+        this.questionRows = questionRows;
     }
 
     public boolean isVisibleQuestion() {
@@ -67,8 +67,9 @@ public class QuestionService {
         return true;
     }
 
-    public boolean deleteQuestion(Question question) {
+    public boolean deleteQuestion(QuestionRow questionRow) {
         try {
+            Question question = questionRow.getQuestion();
             if (question.isArchived())
                 question.setArchived(false);
             else question.setArchived(true);
@@ -93,7 +94,7 @@ public class QuestionService {
 
     public boolean onRowEdit(String testId, RowEditEvent event) {
         try {
-            ((Question) event.getObject()).setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
+            ((QuestionRow) event.getObject()).getQuestion().setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
             questionDAO.update((Question) event.getObject());
             return true;
         } catch (Exception e) {
@@ -102,11 +103,14 @@ public class QuestionService {
         }
     }
 
-    public List<Question> fillQuestionTable(String testId) {
+    public List<QuestionRow> fillQuestionTable(String testId) {
         try {
-            questions.clear();
-            questions = getQuestionsByTestId(testId);
-            return questions;
+           questionRows.clear();
+            List<Question> questions = getQuestionsByTestId(testId);
+            for(int i =0; i<questions.size();i++){
+                questionRows.add(i, new QuestionRow(questions.get(i), false));
+            }
+            return questionRows;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

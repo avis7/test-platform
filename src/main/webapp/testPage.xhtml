@@ -49,10 +49,10 @@
                                 <p:column headerText="Question">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
-                                                style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
-                                                value="#{question.question}"/></f:facet>
+                                                style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                                value="#{question.question.question}"/></f:facet>
                                         <f:facet name="input"><p:inputText id="questionInput"
-                                                                           value="#{question.question}"
+                                                                           value="#{question.question.question}"
                                                                            style="width:100%"
                                                                            required="true"
                                                                            requiredMessage="Поле обов`язкове для заповнення"
@@ -66,10 +66,10 @@
                                 <p:column headerText="Mark">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
-                                                style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
-                                                value="#{question.mark}"/></f:facet>
+                                                style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                                value="#{question.question.mark}"/></f:facet>
                                         <f:facet name="input"><p:inputText id="markInput"
-                                                                           value="#{question.mark}"
+                                                                           value="#{question.question.mark}"
                                                                            style="width:100%"
                                                                            required="true"
                                                                            requiredMessage="Поле обов`язкове для заповнення"
@@ -81,14 +81,14 @@
 
                                 <p:column headerText="is Open">
                                     <h:outputText
-                                            style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
-                                            value="#{question.isOpen}"/>
+                                            style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                            value="#{question.question.isOpen}"/>
                                 </p:column>
 
                                 <p:column headerText="is Multichoice">
                                     <h:outputText
-                                            style="#{question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
-                                            value="#{question.isMultichoise}"/>
+                                            style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
+                                            value="#{question.question.isMultichoise}"/>
                                 </p:column>
 
                                 <p:column headerText="Answers">
@@ -159,18 +159,18 @@
                                 <p:column>
 
                                     <p:outputLabel
-                                            rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
+                                            rendered="#{questionBean.getVisibleAnswer(question)}">Answer Text</p:outputLabel>
                                     <p:inputText value="#{questionBean.answerText}"
-                                                 rendered="#{questionBean.visibleAnswer}"/>
+                                                 rendered="#{questionBean.getVisibleAnswer(question)}"/>
 
                                     <p:outputLabel
-                                            rendered="#{questionBean.visibleAnswer}">Answer Text</p:outputLabel>
-                                    <p:inputText value="#{questionBean.isCorrect}"
-                                                 rendered="#{questionBean.visibleAnswer}"/>
+                                            rendered="#{questionBean.getVisibleAnswer(question)}">Correct</p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{questionBean.isCorrect}"
+                                                 rendered="#{questionBean.getVisibleAnswer(question)}"/>
 
                                     <p:commandButton value="Save answer"
                                                      action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
-                                                     rendered="#{questionBean.visibleAnswer}" update="@form"
+                                                     rendered="#{questionBean.getVisibleAnswer(question)}" update="@form"
                                                      style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
@@ -181,8 +181,8 @@
                                         background-color: #40C3DA;"/>
 
                                     <p:commandButton value="Add answer"
-                                                     rendered="#{!questionBean.visibleAnswer}"
-                                                     action="#{questionBean.setVisibleAnswer}" update="@form"
+                                                     rendered="#{!questionBean.getVisibleAnswer(question)}"
+                                                     action="#{questionBean.setVisibleAnswer(question)}" update="@form"
                                                      style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;
