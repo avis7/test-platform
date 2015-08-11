@@ -7,42 +7,84 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title></title>
+    <title>Тестування</title>
 </h:head>
-<h:body>
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="col-xs-12"><h3>Good luck!</h3></div>
+                </div>
+            </div>
+            <!-- РЕЄСТРАЦІЯ -->
+        </ui:define>
 
-    <h:form id="form">
-        <p:tabView value="#{testBean.tabs}" var="tab">
-            <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
-                <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
-                    <p:outputLabel value="#{tab.question.question}"/>
-                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
-                    <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
-                        <p:ajax update="oneAnswer" />
-                        <f:selectItems value="#{tab.question.answers}" var="ans"
-                                       itemLabel="#{ans.answerText}" itemValue="#{ans.id}"/>
-                    </p:selectOneRadio>
-                </h:panelGrid>
-                <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
-                    <p:outputLabel value="#{tab.question.question}"/>
-                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
-                    <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
-                        <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
-                    </p:selectManyCheckbox>
-                </h:panelGrid>
-                <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
-                    <p:outputLabel value="#{tab.question.question}"/>
-                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
-                    <p:inputTextarea rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true" />
-                    <h:outputText id="display" />
-                </h:panelGrid>
-            </p:tab>
-        </p:tabView>
-        <p:commandButton value="Submit" action="#{testBean.submit}" ajax="false"/>
-    </h:form>
 
+        <ui:define name="body">
+            <div class="container">
+                <div class="col-xs-12">
+                    <h:form>
+                        <div class="zagolovok">Назва тесту: <h:outputText value="#{testBean.testName}"/></div>
+                        <p:growl autoUpdate="true"/>
+                        <p style="margin-bottom: 8px; margin-top: 8px;"><pe:timer
+                                timeout="#{testBean.duration*60}"
+                                format="HH:mm:ss"
+                                listener="#{testBean.submit}"
+                                style="border: 1px solid #4FBFDB; border-radius:3px; background: white; color: #4FBFDB; font-weight: normal;
+                font-family: PFB; font-size: 15px;"/></p>
+                    </h:form>
+
+                    <h:form id="form">
+                        <p:tabView value="#{testBean.tabs}" var="tab" style="background: white; color: black; font-weight: normal;">
+                            <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
+                                <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
+                                    <p:outputLabel value="#{tab.question.question}"/>
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
+                                        <p:ajax update="oneAnswer" />
+                                        <f:selectItems value="#{tab.question.answers}" var="ans"
+                                                       itemLabel="#{ans.answerText}" itemValue="#{ans.id}"/>
+                                    </p:selectOneRadio>
+                                </h:panelGrid>
+                                <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
+                                    <p:outputLabel value="#{tab.question.question}"/>
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
+                                        <p:ajax update="manyAnswers" />
+                                        <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
+                                    </p:selectManyCheckbox>
+                                </h:panelGrid>
+                                <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
+                                    <p:outputLabel value="#{tab.question.question}"/>
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <p:inputTextarea id="own" rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true">
+                                        <p:ajax update="own"/>
+                                    </p:inputTextarea>
+                                    <h:outputText id="display" />
+                                </h:panelGrid>
+                            </p:tab>
+                        </p:tabView>
+                        <p:growl id="message" showDetail="true" />
+
+                        <p:commandButton value="Зберегти" action="#{testBean.submit}" update="message">
+                            <p:confirm header="Підтвердження" message="Після збереження тесту змінити результат буде не можливо. Зберегти?"/>
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                            <p:commandButton value="Так" action="#{testBean.submit}" type="button" styleClass="ui-confirmdialog-yes" />
+                            <p:commandButton value="Ні" type="button" styleClass="ui-confirmdialog-no"/>
+                        </p:confirmDialog>
+
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
