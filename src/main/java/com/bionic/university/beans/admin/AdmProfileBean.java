@@ -51,7 +51,7 @@ public class AdmProfileBean implements Serializable {
     }
 
     public void onRowCancel(RowEditEvent event) {
-            FacesMessage msg = new FacesMessage("Відміна зміни ролі",
+            FacesMessage msg = new FacesMessage("ВіпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ",
                     ((User) event.getObject()).getEmail());
             FacesContext.getCurrentInstance().addMessage(null, msg);
     }
@@ -67,5 +67,9 @@ public class AdmProfileBean implements Serializable {
 
     public void setSelectRole(String selectRole) {
         this.selectRole = selectRole;
+    }
+
+    public String callMentorPage(){
+        return "mentor/mentorProfile?faces-redirect=true&email=" + email;
     }
 }
