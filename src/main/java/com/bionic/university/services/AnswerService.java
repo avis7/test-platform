@@ -126,15 +126,4 @@ public class AnswerService {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
-
-    public boolean fillTable(Question question){
-        try {
-            answers.clear();
-            answers = getAnswersForQuestion(String.valueOf(question.getId()));
-            return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
-    }
 }

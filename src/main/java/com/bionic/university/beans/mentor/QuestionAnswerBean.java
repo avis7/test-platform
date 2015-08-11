@@ -36,6 +36,7 @@ public class QuestionAnswerBean {
     private boolean multichoice;
     private boolean visibleAnswer;
     private boolean open;
+    private List<Question> questions;
 
     public boolean isVisibleQuestion() {
         return questionService.isVisibleQuestion();
@@ -125,8 +126,6 @@ public class QuestionAnswerBean {
     }
 
     public void fillTable(){
-
-        answerService.fillTable();
     }
 
     public void setQuestions(List<Question> questions) {
