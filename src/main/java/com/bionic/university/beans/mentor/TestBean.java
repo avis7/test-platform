@@ -84,15 +84,15 @@ public class TestBean {
         switch (testService.addTest(testName, duration, deadline, categoryName)) {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was added", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " доданий", null));
                         break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was not added", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " не доданий", null));
                 break;
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test " + testName + " was not added to DB. Check unique of test name", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " не доданий до БД. Змініть ім'я тесту", null));
                 break;
         }
     }
@@ -101,9 +101,9 @@ public class TestBean {
         if (testService.deleteTest(testRow)) {
             if (testRow.getTest().isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Test" + testRow.getTest().getTestName() + " was archived", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест" + testRow.getTest().getTestName() + "  архівований", null));
             else FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Test" + testRow.getTest().getTestName() + " was unarchived", null));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест" + testRow.getTest().getTestName() + " розархівований", null));
             return "successful";
         }
         return "unsuccessful";
@@ -111,7 +111,7 @@ public class TestBean {
 
     public String onRowEdit(RowEditEvent event) {
         if (testService.onRowEdit(event)) {
-            FacesMessage msg = new FacesMessage("Test Edited",
+            FacesMessage msg = new FacesMessage("Тест змінено",
                     ((TestRow) event.getObject()).getTest().getTestName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return "successful";
@@ -120,7 +120,7 @@ public class TestBean {
     }
 
     public String onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edit Cancelled",
+        FacesMessage msg = new FacesMessage("Тест не змінено",
                 ((TestRow) event.getObject()).getTest().getTestName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";
@@ -133,7 +133,7 @@ public class TestBean {
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Date Selected", format.format(event.getObject())));
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Дата виділена", format.format(event.getObject())));
     }
 
     public void click() {
