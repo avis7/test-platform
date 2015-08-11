@@ -57,22 +57,6 @@ a:hover{
     color: #40C3DA;
     transition: 0.2s;
 }
-.back{
-    font-family: PFB;
-    font-size: 15px;
-    color: white;
-    margin: 0px;
-    padding: 10px 0px 0px 0px;
-}
-.back a{
-    font-family: PFB;
-    font-size: 15px;
-    color: white;
-}
-.back a:hover{
-    color: white;
-    text-decoration: underline;
-}
 /* header */
 .header{
     margin-bottom: 5px;
@@ -95,25 +79,6 @@ ul.menu li {
     padding-right: 5px; /* ???? ?????? ?????? */
     padding-left: 5px; /* ???? ?????? ?????? */
 }
-.enter-but a{
-    border-radius: 3px;
-    font-family: PFB;
-    font-size: 15px;
-    color: #40C3DA;
-    border: solid 1px #40C3DA;
-    padding: 3px 6px 3px 6px;
-    text-decoration: none;
-}
-.enter-but a:hover{
-    border-radius: 3px;
-    font-family: PFB;
-    font-size: 15px;
-    color: white;
-    background: #40C3DA;
-    padding: 3px 6px 3px 6px;
-    text-decoration: none;
-    transition: 0.5s;
-}
 .enter-form{
     padding-top: 30px;
 }
@@ -127,12 +92,6 @@ ul.menu li {
         padding-left: 40px;
         font-size: 14px;
         padding-right: 0px;
-    }
-    .enter-but a{
-        font-size: 14px;
-    }
-    .enter-but a:hover{
-        font-size: 14px;
     }
     .enter-form{
         padding-top: 10px;
@@ -192,19 +151,9 @@ ul.back li {
     font-size: 14px;
     color: #40C3DA;
     border: solid 1px #40C3DA;
-    padding: 3px 12px 3px 12px;
+    padding: 3px 8px 3px 8px;
     text-decoration: none;
-    background-color: white;
-}
-.ui-button{
-    border-radius: 3px;
-    font-family: PFB;
-    font-size: 14px;
-    color: #40C3DA;
-    border: solid 1px #40C3DA;
-    padding: 2px 8px 2px 8px;
-    text-decoration: none;
-    background-color: white;
+    background: white;
 }
 .ui-button:hover{
     border-radius: 3px;
@@ -212,9 +161,9 @@ ul.back li {
     font-size: 14px;
     color: white;
     border: solid 1px #40C3DA;
-    padding: 2px 8px 2px 8px;
+    padding: 3px 8px 3px 8px;
     text-decoration: none;
-    background-color: #40C3DA;
+    background: #40C3DA;
     transition: 0.5s;
 }
 /* /content */
