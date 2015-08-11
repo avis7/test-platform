@@ -120,7 +120,7 @@ public class TestBean {
     }
 
     public String onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Тест не змінено",
+        FacesMessage msg = new FacesMessage("Відміна",
                 ((TestRow) event.getObject()).getTest().getTestName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";
