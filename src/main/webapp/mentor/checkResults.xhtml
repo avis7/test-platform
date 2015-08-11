@@ -25,10 +25,12 @@
             </p:column>
 
             <p:column headerText="Початок">
-                <h:outputText value="#{result.beginTime}"/>
+                <h:outputText value="#{result.beginTime}">
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </h:outputText>
             </p:column>
 
-            <p:column headerText="Кінець">
+            <p:column headerText="Час проходження">
                 <h:outputText value="#{result.passTime}"/>
             </p:column>
 

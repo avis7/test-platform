@@ -1,6 +1,8 @@
 package com.bionic.university.beans.mentor;
 
 
+import com.bionic.university.entity.Result;
+import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 import com.bionic.university.services.TestService;
 import org.primefaces.context.RequestContext;
@@ -95,6 +97,17 @@ public class TestBean {
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " не доданий до БД. Змініть ім'я тесту", null));
                 break;
         }
+    }
+
+    public boolean checkable(Test test){
+        boolean checkable = false;
+        for (Result result : test.getResults()){
+            if (result.isSubmited() && !result.isChecked()){
+                checkable = true;
+                break;
+            }
+        }
+        return checkable;
     }
 
     public String deleteTest(TestRow testRow) {

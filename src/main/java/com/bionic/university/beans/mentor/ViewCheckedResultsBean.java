@@ -33,9 +33,9 @@ public class ViewCheckedResultsBean implements Serializable {
     @PostConstruct
     public void init() {
         results = resultService.getCheckedResultsByTestId(testId);
-        if (results != null) {
+        if (results != null && results.size() != 0) {
             testName = results.get(0).getTest().getTestName();
-        }
+        }else testName = "";
     }
 
     public int getMaxMark(Result result){
@@ -50,7 +50,7 @@ public class ViewCheckedResultsBean implements Serializable {
     public double getTime(Result result){
         long beginTime = result.getBeginTime().getTime();
         long passTime = result.getPassTime().getTime();
-        double time = (double)(passTime - beginTime)/6000;
+        double time = (double)(passTime - beginTime)/60000;
         return Math.rint(100.0 * time) / 100.0;
     }
 
@@ -74,5 +74,4 @@ public class ViewCheckedResultsBean implements Serializable {
     public void setTestName(String testName) {
         this.testName = testName;
     }
-
 }

@@ -40,7 +40,7 @@ public class CheckResultBean {
 
     public String save(){
         boolean success = userAnswerService.saveMarksForOwnAnswers(userAnswers, resultId);
-        return success ? "mentor/mentorProfile?faces-redirect=true": "error";
+        return success ? "mentorProfile?faces-redirect=true": "error";
     }
 
     public String cancel(){

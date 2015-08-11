@@ -1,6 +1,7 @@
 package com.bionic.university.beans.student;
 
 import com.bionic.university.entity.Question;
+import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
 import com.bionic.university.services.*;
 
@@ -17,6 +18,8 @@ import java.util.List;
 public class TestBean {
     private List<Tab> tabs;
     private List<Question> questions;
+    private String testName;
+    private int duration;
 
     private String testId = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("testId");
     private String email = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("email");
@@ -32,6 +35,9 @@ public class TestBean {
                 for (Question question : questions){
                     tabs.add(new Tab(question));
                 }
+                Test test = testService.getTestByTestId(Integer.valueOf(testId));
+                testName = test.getTestName();
+                duration = test.getDuration();
             }  else FacesContext.getCurrentInstance().getExternalContext().redirect( "index.xhtml");}
         catch (Exception e){
             e.printStackTrace();
@@ -129,4 +135,19 @@ public class TestBean {
         return "exportResultTest?faces-redirect=true&testId=" + String.valueOf(testRow.getTest().getId()) + "&testName=" + testRow.getTest().getTestName();
     }
 
+    public String getTestName() {
+        return testName;
+    }
+
+    public void setTestName(String testName) {
+        this.testName = testName;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }

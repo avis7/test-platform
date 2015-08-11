@@ -2,6 +2,7 @@ package com.bionic.university.beans.mentor;
 
 import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
+import com.bionic.university.entity.Result;
 import com.bionic.university.entity.UserAnswer;
 import com.bionic.university.services.AnswerService;
 import com.bionic.university.services.QuestionService;

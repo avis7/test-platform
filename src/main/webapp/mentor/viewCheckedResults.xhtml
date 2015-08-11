@@ -59,7 +59,9 @@
                         </p:column>
 
                         <p:column headerText="Початок тесту">
-                            <h:outputText value="#{result.beginTime}"/>
+                            <h:outputText value="#{result.beginTime}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
                         </p:column>
 
                         <p:column headerText="Час проходження">
