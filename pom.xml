@@ -143,7 +143,7 @@
                                 cargo.datasource.driver=com.mysql.jdbc.Driver|
                                 cargo.datasource.url=jdbc:mysql://localhost:3306/test|
                                 cargo.datasource.username=root|
-                                cargo.datasource.password=root
+                                cargo.datasource.password=1
                             </cargo.datasource.datasource.mysql>
                         </properties>
                     </configuration>

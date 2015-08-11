@@ -6,21 +6,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title></title>
+    <title>Feedback</title>
 </h:head>
-<h:body>
-    <h:form>
-        <h:panelGrid columns="1">
-            <p:outputLabel value="Please, give us feedback :"/>
-            <p:inputTextarea rows="5" cols="50" value="#{feedbackBean.feedback}" counter="display" maxlength="1000"
-                             counterTemplate="{0} characters remaining." autoResize="true"/>
-            <h:outputText id="display"/>
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="col-xs-12"><h3>КОМЕНТАР</h3></div>
+                </div>
+            </div>
+            <!-- РЕЄСТРАЦІЯ -->
+        </ui:define>
 
-            <p:commandButton value="Submit" action="#{feedbackBean.save}" ajax="false"/>
-        </h:panelGrid>
-    </h:form>
+
+        <ui:define name="body">
+            <div class="container">
+                <div class="col-xs-12">
+                    <div class="confirm">Результати збережено</div>
+                </div>
+                <div class="col-xs-12">
+                    <h:form>
+                        <h:panelGrid columns="1">
+                            <p:outputLabel value="Коментар:" style="font-size: 15px;"/>
+                            <p:inputTextarea rows="5" cols="50" value="#{feedbackBean.feedback}" counter="display" maxlength="1000"
+                                             counterTemplate="{0} characters remaining." autoResize="true"/>
+                            <h:outputText id="display"/>
+
+                            <p:commandButton value="Ок" action="#{feedbackBean.save}" ajax="false"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
