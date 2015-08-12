@@ -70,6 +70,6 @@ public class AdmProfileBean implements Serializable {
     }
 
     public String callMentorPage(){
-        return "mentor/mentorProfile?faces-redirect=true&email=" + email;
+        return "/mentor/mentorProfile?faces-redirect=true&email=" + email;
     }
 }
