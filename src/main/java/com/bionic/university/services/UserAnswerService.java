@@ -5,6 +5,7 @@ import com.bionic.university.dao.*;
 import com.bionic.university.entity.*;
 
 import javax.inject.Inject;
+import javax.xml.registry.infomodel.*;
 import java.util.*;
 import java.util.List;
 
@@ -154,8 +155,8 @@ public class UserAnswerService {
     public List<UserAnswer> getUserAnswersByResultId(String strResultId) {
         try {
             int resultId = Integer.valueOf(strResultId);
-            Result result = resultDAO.find(resultId);
-            return result.getUserAnswers();
+            List<UserAnswer> userAnswers = userAnswerDAO.getUserAnswersByResultId(resultId);
+            return userAnswers;
         } catch (NumberFormatException e1) {
         } catch (Exception e2) {
         }

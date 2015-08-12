@@ -44,7 +44,7 @@ public class CheckResultBean {
     }
 
     public String cancel(){
-        return "mentor/mentorProfile?faces-redirect=true";
+        return "mentorProfile?faces-redirect=true";
     }
 
     public List<Question> getQuestions() {

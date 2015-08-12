@@ -42,7 +42,7 @@
 
                     <h:form id="form">
                         <p:tabView value="#{testBean.tabs}" var="tab" style="background: white; color: black; font-weight: normal;">
-                            <p:tab title="gvrdf">
+                            <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
                                 <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
                                     <p:outputLabel value="#{tab.question.question}"/>
                                     <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />

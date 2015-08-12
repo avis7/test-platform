@@ -125,7 +125,7 @@ public class TestBean {
         }
 
         public void setOwnAnswer(String ownAnswer) {
-            this.answer = question.getAnswers().get(0).getId();
+            this.answer = answerService.getAnswersByQuestionId(String.valueOf(question.getId())).get(0).getId();
             this.ownAnswer = ownAnswer;
         }
 

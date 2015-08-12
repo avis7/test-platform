@@ -35,7 +35,7 @@
                 <div align="center">
                     <h:outputText value="#{viewCheckedResultsBean.testName}"/>
                     <p:dataTable id="tbl" value="#{viewCheckedResultsBean.results}" var="result"
-                                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
                                  paginator="true" rows="15" style="margin-bottom:20px">
                         <f:facet name="{Exporters}">
                             <h:commandLink>
