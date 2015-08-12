@@ -89,9 +89,10 @@ public class AnswerService {
 
     public Answer getAnswerById(int answerId) {
         try {
-            Answer answer = answerDAO.find(answerId);
+            Answer answer = answerDAO.getAnswerById(answerId);
             return answer;
         } catch (Exception e) {
+            System.out.println();
         }
         return null;
     }

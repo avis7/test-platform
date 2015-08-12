@@ -4,90 +4,87 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:color="http://java.sun.com/jsf/composite">
 
 <h:head>
-    <title>Results</title>
+    <title>Mentror's page</title>
 </h:head>
+<h:body>
+    <ui:composition template="template.xhtml">
 
 
-<h:body class="verstka">
-    <ui:composition template="../template.xhtml">
         <ui:define name="container">
             <div class="content">
                 <div class="container">
                     <div class="col-xs-6"><h3>Результати тесту - #{viewCheckedResultsBean.testName}</h3></div>
-                    <div class="col-xs-6 text-right back"><a href="index.xhtml" class="back">Назад</a></div>
                 </div>
             </div>
-            <!-- РЕЄСТРАЦІЯ -->
         </ui:define>
 
 
         <ui:define name="body">
-            <h:form id="form">
+            <div class="container">
+                <div class="col-xs-12">
+                    <h:form id="form">
 
-                <div align="center">
-                    <h:outputText value="#{viewCheckedResultsBean.testName}"/>
-                    <p:dataTable id="tbl" value="#{viewCheckedResultsBean.results}" var="result"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
-                                 paginator="true" rows="15" style="margin-bottom:20px">
-                        <f:facet name="{Exporters}">
-                            <h:commandLink>
-                                <p:graphicImage value="img\logo\excel_Ico.png" width="24"/>
-                                <p:dataExporter type="xls" target="tbl"
-                                                fileName="Result-#{viewCheckedResultsBean.testName}"/>
-                            </h:commandLink>
-                            <h:commandLink>
-                                <p:graphicImage value="img\logo\pdf_Ico.png" width="24"/>
-                                <p:dataExporter type="pdf" target="tbl"
-                                                fileName="Result-#{viewCheckedResultsBean.testName}"/>
-                            </h:commandLink>
-                        </f:facet>
+                        <div align="center">
+                            <p:dataTable id="tbl" value="#{viewCheckedResultsBean.results}" var="result"
+                                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters} "
+                                         paginator="true" rows="15" style="margin-bottom:20px">
+                                <f:facet name="{Exporters}">
+                                    <h:commandLink>
+                                        <img src="../resources/img/xsl.png" alt="xls"/>
+                                        <p:dataExporter type="xls" target="tbl"
+                                                        fileName="Result-#{viewCheckedResultsBean.testName}"/>
+                                    </h:commandLink>
+                                    <h:commandLink>
+                                        <img src="../resources/img/pdf.png" alt="pdf"/>
+                                        <p:dataExporter type="pdf" target="tbl"
+                                                        fileName="Result-#{viewCheckedResultsBean.testName}"/>
+                                    </h:commandLink>
+                                </f:facet>
 
-                        <p:column>
+                                <p:column>
 
-                            <f:facet name="header">
-                                <h:outputText value="Студент"/>
-                            </f:facet>
-                            <h:outputText value="#{result.user.getFullName()}"/>
-                        </p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Студент"/>
+                                    </f:facet>
+                                    <h:outputText value="#{result.user.getFullName()}"/>
+                                </p:column>
 
-                        <p:column headerText="Початок тесту">
-                            <h:outputText value="#{result.beginTime}">
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:outputText>
-                        </p:column>
+                                <p:column headerText="Початок тесту">
+                                    <h:outputText value="#{result.beginTime}">
+                                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                    </h:outputText>
+                                </p:column>
 
-                        <p:column headerText="Час проходження">
-                            <h:outputText value="#{viewCheckedResultsBean.getTime(result)} хв"/>
-                        </p:column>
-
-
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Оцінка"/>
-                            </f:facet>
-                            <h:outputText value="#{result.mark}/#{viewCheckedResultsBean.getMaxMark(result)}"/>
-                        </p:column>
-
-                        <p:column headerText="Подивитись відповіді">
-                            <p:commandLink value="відповіді" action="#{viewCheckedResultsBean.viewResult(result.id)}"/>
-                        </p:column>
+                                <p:column headerText="Час проходження">
+                                    <h:outputText value="#{viewCheckedResultsBean.getTime(result)} хв"/>
+                                </p:column>
 
 
-                    </p:dataTable>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Оцінка"/>
+                                    </f:facet>
+                                    <h:outputText value="#{result.mark}/#{viewCheckedResultsBean.getMaxMark(result)}"/>
+                                </p:column>
+
+                                <p:column headerText="Подивитись відповіді">
+                                    <p:commandLink value="відповіді" action="#{viewCheckedResultsBean.viewResult(result.id)}"/>
+                                </p:column>
 
 
+                            </p:dataTable>
+
+
+                        </div>
+                    </h:form>
                 </div>
-
-            </h:form>
-
+            </div>
         </ui:define>
     </ui:composition>
 </h:body>

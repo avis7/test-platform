@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quiz name="Java Junior Test" duration="45" deadline="22/08/2015" category="Java">
+    <question type="multichoice">
+        <questiontext format="html">Из какой структуры данных "сборщик мусора" удалит все
+            элементы у которых исчезла последняя ссылка на их ключ в этой структуре?</questiontext>
+        <answer fraction="0">HashMap</answer>
+        <answer fraction="0">LinkedHashMap</answer>
+        <answer fraction="2">WeakHashMap</answer>
+        <answer fraction="0">IdentityHashMap</answer>
+        <single>true</single>
+    </question>
+
+    <question type="multichoice">
+        <questiontext format="html">Каким образом можно запретить наследование класса (речь идет
+            о top-level классах) ?</questiontext>
+        <answer fraction="0">Добавить модификатор abstract</answer>
+        <answer fraction="1">Добавить модификатор final</answer>
+        <answer fraction="0">Добавить модификатор private</answer>
+        <answer fraction="0">Не определять конструктор</answer>
+        <answer fraction="1">Объявить все конструкторы класса private</answer>
+        <answer fraction="0">Запретить наследование нельзя</answer>
+        <single>false</single>
+    </question>
+
+    <question type="multichoice">
+        <questiontext format="html">Что выведет на экран следующая программа?</questiontext>
+        <answer fraction="0">true</answer>
+        <answer fraction="1">false</answer>
+        <answer fraction="0">4/2=true</answer>
+        <answer fraction="0">4/2=false</answer>
+        <single>true</single>
+    </question>
+
+    <question type="multichoice">
+        <questiontext format="html">Выберите правильные высказывания относительно концепции
+            взаимосвязи методов hashCode() и equals(Object o)</questiontext>
+        <answer fraction="1">Если при сравнении двух объектов метод equals возращает значение
+            true, то значения, возвращаемые методами hashCode() этих объектов, должны совпадать.</answer>
+        <answer fraction="0">Если при сравнении двух объектов метод equals возращает значение
+            true, то значения, возвращаемые методами hashCode() этих объектов, могут не совпадать.</answer>
+        <answer fraction="0">Если при сравнении двух объектов метод equals возращает значение
+            false, то значения, возвращаемые методами hashCode() этих объектов, должны быть
+            различными</answer>
+        <answer fraction="1">Если при сравнении двух объектов метод equals возращает значение
+            false, то значения, возвращаемые методом hashCode() этих объектов, могут совпадать.</answer>
+        <answer fraction="0">Ни одно из вышеперечисленных высказываний</answer>
+        <single>false</single>
+    </question>
+
+    <question type="multichoice">
+        <questiontext format="html">Выберите варианты комментариев (в некотором исходном файле
+            Java), которые не приведут к ошибке.</questiontext>
+        <answer fraction="1">// This is a valid comment in java</answer>
+        <answer fraction="0">/* This is a valid comment in java. **/</answer>
+        <answer fraction="1">/* This is a valid comment in java. */</answer>
+        <answer fraction="1">/** This is a valid comment in java. */</answer>
+        <answer fraction="0">/* /* This is a valid comment in java. */ */</answer>
+        <single>false</single>
+    </question>
+
+    <question type="shortanswer">
+        <questiontext format="html">Какие модификаторы YT позволяют обращаться к полю/методу
+            публичного класса верхнего уровня из других классов верхнего уровня, находящихся в том же
+            пакете?</questiontext>
+    </question>
+</quiz>

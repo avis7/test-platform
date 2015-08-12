@@ -10,6 +10,9 @@ import java.util.List;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "getUserByEmail",
                 query = "SELECT * FROM user u WHERE u.email = :login",
+                resultClass = User.class),
+        @NamedNativeQuery(name = "getUserRole",
+                query = "SELECT * FROM user u WHERE u.role_id = 3",
                 resultClass = User.class)
 })
 @Table(name = "user")

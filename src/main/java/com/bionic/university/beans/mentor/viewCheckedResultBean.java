@@ -45,6 +45,9 @@ public class viewCheckedResultBean {
         List<UserAnswer> userAnswers = userAnswerService.getUserAnswersByResultId(resultId);
         for (UserAnswer userAnswer : userAnswers){
             Question question = questionService.getQuestionByAnswerId(userAnswer.getAnswerId());
+            if (userAnswer.getAnswerId() == 0){
+                continue;
+            }
             Answer answer = answerService.getAnswerById(userAnswer.getAnswerId());
             if (!question.getIsMultichoise() && !question.getIsOpen()){
                 RadioQuestion radioQuestion = new RadioQuestion();

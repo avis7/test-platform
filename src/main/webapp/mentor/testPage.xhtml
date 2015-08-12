@@ -11,7 +11,6 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
     <title>Test editing page</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body class="verstka">
     <ui:composition template="template.xhtml">
@@ -20,8 +19,7 @@
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
-                        <div class="col-xs-6 text-right back"><a href="../index.xhtml" class="back">Назад</a></div>
+                        <div class="col-xs-12"><h3>ПИТАННЯ</h3></div>
                     </div>
                 </div>
             </div>
@@ -51,18 +49,20 @@
                                         <f:facet name="output"><h:outputText
                                                 style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
                                                 value="#{question.question.question}"/></f:facet>
-                                        <f:facet name="input"><p:inputText id="questionInput"
-                                                                           value="#{question.question.question}"
-                                                                           style="width:100%"
-                                                                           required="true"
-                                                                           requiredMessage="Поле обов`язкове для заповнення"
-                                                                           validatorMessage="Некоректне введення">
-                                        </p:inputText></f:facet>
+                                        <f:facet name="input"><p:inputTextarea id="questionInput"
+                                                                               value="#{question.question.question}"
+                                                                               style="width:100%"
+                                                                               required="true"
+                                                                               requiredMessage="Поле обов`язкове для заповнення"
+                                                                               validatorMessage="Некоректне введення"
+                                                                               maxlength="1000"
+                                                                               autoResize="true">
+                                        </p:inputTextarea></f:facet>
                                     </p:cellEditor>
                                 </p:column>
 
 
-                                <p:column headerText="Mark">
+                                <p:column headerText="Mark" style="width:50px;">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
                                                 style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
@@ -81,13 +81,13 @@
                                 </p:column>
 
 
-                                <p:column headerText="is Open">
+                                <p:column headerText="is Open" style="width:50px;">
                                     <h:outputText
                                             style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
-                                            value="#{question.question.isOpen}"/>
+                                            value="#{question.question.isOpen}" />
                                 </p:column>
 
-                                <p:column headerText="is Multichoice">
+                                <p:column headerText="is Multichoice" style="width:100px;">
                                     <h:outputText
                                             style="#{question.question.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
                                             value="#{question.question.isMultichoise}"/>
@@ -112,13 +112,15 @@
                                                             style="#{answer.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
                                                             value="#{answer.answerText}"/>
                                                 </f:facet>
-                                                <f:facet name="input"><p:inputText id="answerInput"
-                                                                                   value="#{answer.answerText}"
-                                                                                   style="width:100%"
-                                                                                   required="true"
-                                                                                   requiredMessage="Поле обов`язкове для заповнення"
-                                                                                   validatorMessage="Некоректне введення">
-                                                </p:inputText></f:facet>
+                                                <f:facet name="input"><p:inputTextarea id="answerInput"
+                                                                                       value="#{answer.answerText}"
+                                                                                       style="width:100%"
+                                                                                       required="true"
+                                                                                       requiredMessage="Поле обов`язкове для заповнення"
+                                                                                       validatorMessage="Некоректне введення"
+                                                                                       maxlength="1000"
+                                                                                       autoResize="true">
+                                                </p:inputTextarea></f:facet>
                                             </p:cellEditor>
                                         </p:column>
 
@@ -135,30 +137,31 @@
                                             </p:cellEditor>
                                         </p:column>
 
-                                        <p:column style="border:0px; background:#ffffff; width:30px;">
+                                        <p:column style="width:40px;">
                                             <p:commandLink value="AR" style="color:#E7664D;"
                                                            action="#{questionBean.deleteAnswer(answer)}"
                                                            update="@form"
                                                     />
                                         </p:column>
 
-                                        <p:column style="width:32px; border:0px; background:#ffffff;">
+                                        <p:column style="width:32px;">
                                             <p:rowEditor/>
                                         </p:column>
 
                                     </p:dataTable>
                                 </p:column>
 
-                                <p:column>
+                                <p:column style="width: 180px;">
 
                                     <p:outputLabel
                                             rendered="#{questionBean.getVisibleAnswer(question)}">Answer Text</p:outputLabel>
-                                    <p:inputText value="#{questionBean.answerText}"
-                                                 rendered="#{questionBean.getVisibleAnswer(question)}"
-                                                 required="true"
-                                                 requiredMessage="Поле обов`язкове для заповнення"
-                                                 validatorMessage="Некоректне введення">
-                                    </p:inputText>
+                                    <p:inputTextarea value="#{questionBean.answerText}"
+                                                     rendered="#{questionBean.getVisibleAnswer(question)}"
+                                                     required="true"
+                                                     requiredMessage="Поле обов`язкове для заповнення"
+                                                     validatorMessage="Некоректне введення"
+                                                     autoResize="true">
+                                    </p:inputTextarea>
                                     <p:outputLabel
                                             rendered="#{questionBean.getVisibleAnswer(question)}">Correct</p:outputLabel>
                                     <p:selectBooleanCheckbox value="#{questionBean.isCorrect}"
@@ -167,32 +170,16 @@
                                     <p:commandButton value="Save answer"
                                                      action="#{questionBean.addAnswer(question, questionBean.answerText, questionBean.isCorrect)}"
                                                      rendered="#{questionBean.getVisibleAnswer(question)}"
-                                                     update="@form"
-                                                     style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+                                                     update="@form"/>
 
                                     <p:commandButton value="Add answer"
                                                      rendered="#{!questionBean.getVisibleAnswer(question)}"
                                                      action="#{questionBean.setVisibleAnswer(question)}"
-                                                     update="@form"
-                                                     style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+                                                     update="@form"/>
 
                                 </p:column>
 
-                                <p:column style="border:0px; background:#ffffff; width:30px;">
+                                <p:column style="width:40px;">
                                     <p:commandLink value="AR" style="color:#E7664D;"
                                                    action="#{questionBean.deleteQuestion(question)}"
                                                    update="@form"
@@ -200,7 +187,7 @@
                                 </p:column>
 
 
-                                <p:column style="width:32px; border:0px; background:#ffffff;">
+                                <p:column style="width:32px;">
                                     <p:rowEditor/>
                                 </p:column>
 
@@ -211,8 +198,7 @@
                                          rendered="#{questionBean.visibleQuestion}"
                                          required="true"
                                          requiredMessage="Поле обов`язкове для заповнення"
-                                         validatorMessage="Введіть коректнтй текст питання"
-                                    >
+                                         validatorMessage="Введіть коректнтй текст питання">
                             </p:inputText>
                             <p:outputLabel rendered="#{questionBean.visibleQuestion}">Mark</p:outputLabel>
                             <p:inputText value="#{questionBean.mark}"
@@ -226,26 +212,10 @@
                             </p:inputText>
                             <p:commandButton value="Save question"
                                              action="#{questionBean.addQuestion(questionBean.testId,questionBean.questionText, questionBean.mark, true, false)}"
-                                             rendered="#{questionBean.visibleQuestion}" update="@form"
-                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+                                             rendered="#{questionBean.visibleQuestion}" update="@form" style="margin-top: 10px;"/>
 
                             <p:commandButton value="Add question" rendered="#{!questionBean.visibleQuestion}"
-                                             action="#{questionBean.setVisibleQuestion}" update="@form"
-                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+                                             action="#{questionBean.setVisibleQuestion}" update="@form" style="margin-top: 10px;"/>
                         </h:form>
 
                     </div>

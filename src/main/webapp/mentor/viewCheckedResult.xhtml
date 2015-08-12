@@ -15,31 +15,61 @@
 <h:body>
 
     <h:form id="form">
-        <p:dataList value="#{viewCheckedResultBean.radioQuestions}" var="radioQuestion">
-            <h:outputText value="#{radioQuestion.question.question}"/>
-            <h:graphicImage rendered="#{radioQuestion.question.picture != null}"  value="resources/images/#{radioQuestion.question.picture}" />
-            <h:panelGrid columns="2" cellspacing="5">
-                <h:outputText value="#{radioQuestion.answer}"/>
-                <h:outputText value="#{radioQuestion.mark}"/>
-            </h:panelGrid>
+        <p:dataList value="#{viewCheckedResultBean.radioQuestions}" var="radioQuestion" >
+            <f:facet name="header">
+                Питання з одним варіантом відповіді
+            </f:facet>
+            <table>
+                <tr>
+                    <td><h:outputText value="Питання:"/></td>
+                    <td><h:outputText value="#{radioQuestion.question.question}"/></td>
+                    <td><h:graphicImage rendered="#{radioQuestion.question.picture != null}"  value="../resources/images/#{radioQuestion.question.picture}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Відповідь:"/></td>
+                    <td><h:outputText value="#{radioQuestion.answer}"/></td>
+                    <td><h:outputText value="Оцінка:"/></td>
+                    <td><h:outputText value="#{radioQuestion.mark}"/></td>
+                </tr>
+            </table>
         </p:dataList>
         <p:dataList value="#{viewCheckedResultBean.multichoiseQuestions}" var="multichoiseQuestion">
-            <h:outputText value="#{multichoiseQuestion.question.question}"/>
-            <h:graphicImage rendered="#{multichoiseQuestion.question.picture != null}"  value="resources/images/#{multichoiseQuestion.question.picture}" />
-            <h:panelGrid columns="2" cellspacing="5">
-                <p:dataList value="#{multichoiseQuestion.answers}" var="answer">
-                    <h:outputText value="#{answer}"/>
-                </p:dataList>
-                <h:outputText value="#{multichoiseQuestion.mark}"/>
-            </h:panelGrid>
+            <f:facet name="header">
+                Питання з декількома варіантами відповіді
+            </f:facet>
+            <table>
+                <tr>
+                    <td><h:outputText value="Питання:"/></td>
+                    <td><h:outputText value="#{multichoiseQuestion.question.question}"/></td>
+                    <td><h:graphicImage rendered="#{multichoiseQuestion.question.picture != null}"  value="../resources/images/#{multichoiseQuestion.question.picture}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Відповідь:"/></td>
+                    <td><p:dataList value="#{multichoiseQuestion.answers}" var="answer">
+                        <h:outputText value="#{answer}"/>
+                    </p:dataList></td>
+                    <td><h:outputText value="Оцінка:"/></td>
+                    <td><h:outputText value="#{multichoiseQuestion.mark}"/></td>
+                </tr>
+            </table>
         </p:dataList>
         <p:dataList value="#{viewCheckedResultBean.openQuestions}" var="openQuestion">
-            <h:outputText value="#{openQuestion.question.question}"/>
-            <h:graphicImage rendered="#{openQuestion.question.picture != null}"  value="resources/images/#{openQuestion.question.picture}" />
-            <h:panelGrid columns="2" cellspacing="5">
-                <h:outputText value="#{openQuestion.answer}"/>
-                <h:outputText value="#{openQuestion.mark}"/>
-            </h:panelGrid>
+            <f:facet name="header">
+                Питання з відкритими відповідями
+            </f:facet>
+            <table>
+                <tr>
+                    <td><h:outputText value="Питання:"/></td>
+                    <td><h:outputText value="#{openQuestion.question.question}"/></td>
+                    <td><h:graphicImage rendered="#{openQuestion.question.picture != null}"  value="../resources/images/#{openQuestion.question.picture}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputText value="Відповідь:"/></td>
+                    <td><h:outputText value="#{openQuestion.answer}"/></td>
+                    <td><h:outputText value="Оцінка:"/></td>
+                    <td><h:outputText value="#{openQuestion.mark}"/></td>
+                </tr>
+            </table>
         </p:dataList>
 
     </h:form>

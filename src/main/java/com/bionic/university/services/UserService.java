@@ -57,7 +57,12 @@ public class UserService {
     }
 
     public List<User> getAllUsers() {
-        return userDAO.findAll();
+        try {
+            return userDAO.findStudents();
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public User findUserByEmail(String email) {
@@ -121,8 +126,8 @@ public class UserService {
             List<User> userList = new ArrayList<User>();
             List<User> users = getAllUsers();
             for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).getLastName().contains(userSurname))
-                userList.add(userList.size(), users.get(i));
+                if (users.get(i).getLastName().toLowerCase().contains(userSurname.toLowerCase()))
+                    userList.add(userList.size(), users.get(i));
             }
             return userList;
         }catch (Exception e){

@@ -141,7 +141,7 @@
                             <cargo.datasource.datasource.mysql>
                                 cargo.datasource.jndi=java:/Quiz|
                                 cargo.datasource.driver=com.mysql.jdbc.Driver|
-                                cargo.datasource.url=jdbc:mysql://localhost:3306/mydb?characterEncoding=utf8|
+                                cargo.datasource.url=jdbc:mysql://localhost:3306/test?characterEncoding=utf8|
                                 cargo.datasource.username=root|
                                 cargo.datasource.password=1
                             </cargo.datasource.datasource.mysql>

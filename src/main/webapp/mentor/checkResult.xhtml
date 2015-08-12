@@ -1,32 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-    <title></title>
+    <title>Profile</title>
 </h:head>
-<h:body>
 
-    <h:form id="form">
-        <p:dataList value="#{checkResultBean.questions}" var="question">
-            <h:outputText value="#{question.question}"/>
-            <h:panelGrid columns="2" cellspacing="5">
-                <h:outputText value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).ownAnswer}"  />
-                <p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).mark}" min="0" max="#{question.mark}" />
 
-            </h:panelGrid>
-        </p:dataList>
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
 
-        <p:commandButton value="Зберегти" action="#{checkResultBean.save}"/>
-        <p:commandButton value="Відкласти провірку" action="#{checkResultBean.cancel}"/>
-    </h:form>
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12"><h3>ВІДКРИТІ ВІДПОВІДІ СТУДЕНТА</h3></div>
+                    </div>
+                </div>
+            </div>
+            <!-- РЕЄСТРАЦІЯ -->
+        </ui:define>
 
+
+        <ui:define name="body">
+            <div class="container">
+                <div class="col-xs-12">
+
+                    <h:form id="form" style="margin-bottom: 15px;">
+                        <p:dataList value="#{checkResultBean.questions}" var="question">
+                            <table style="margin-bottom: 7px;">
+                                <tr>
+                                    <td><h:outputText value="Питання: " style="color: #4fbfdb;"/></td>
+                                    <td><h:outputText value="#{question.question}" style="margin-bottom: 10px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Відповідь: " style="color: #4fbfdb;"/></td>
+                                    <td><h:outputText value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).ownAnswer}" style="margin-bottom: 10px;"/></td>
+                                </tr>
+                                <tr>
+                                    <td><h:outputText value="Кількість балів: " style="color: #4fbfdb;"/></td>
+                                    <td><p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).mark}" min="0" max="#{question.mark}" /></td>
+                                </tr>
+
+                            </table>
+                        </p:dataList>
+                        <p:commandButton value="Зберегти" action="#{checkResultBean.save}"/>
+                        <p:commandButton value="Відкласти перевірку" action="#{checkResultBean.cancel}"/>
+                    </h:form>
+
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
+
