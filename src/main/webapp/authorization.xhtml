@@ -37,8 +37,8 @@
                 </div><!-- лого -->
                 <div class="col-xs-12 col-sm-8 text-right">
                     <ul class="menu">
-                        <li><a href="index.xhtml">ПРО НАС</a></li>
-                        <li><a href="index.xhtml">КОНТАКТИ</a></li>
+                        <li><a href="http://bionic-university.com/uk/about_bionic_university/" target="_blank">ПРО НАС</a></li>
+                        <li><a href="http://bionic-university.com/uk/contacts/" target="_blank">КОНТАКТИ</a></li>
                     </ul>
                 </div><!-- меню -->
             </div>
@@ -84,7 +84,7 @@
                             <p:message for="password" display="text" />
 
                             <p:commandButton type="submit" action="#{authorizationBean.authorization}"
-                                             value="УВІЙТИ"/>
+                                             id="submit" ajax="false" value="УВІЙТИ"/>
                         </h:form>
                     </div>
                 </div>

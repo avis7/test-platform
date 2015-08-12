@@ -13,6 +13,20 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
 
+    <welcome-file-list>
+        <welcome-file>/index.xhtml</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.xhtml</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/forbidden.xhtml</location>
+    </error-page>
+
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/admin/*.xhtml</url-pattern>
@@ -27,10 +41,6 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/student/*.xhtml</url-pattern>
     </servlet-mapping>
-
-    <welcome-file-list>
-        <welcome-file>authorization.xhtml</welcome-file>
-    </welcome-file-list>
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
@@ -111,5 +121,6 @@
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
+
 
 </web-app>
