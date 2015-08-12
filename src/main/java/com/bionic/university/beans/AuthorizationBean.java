@@ -3,6 +3,7 @@ package com.bionic.university.beans;
 import com.bionic.university.entity.User;
 import com.bionic.university.services.UserService;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -21,19 +22,22 @@ public class AuthorizationBean {
     private UserService userService;
 
     public String authorization() {
-        try {
-            ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).
-                    login(getCurrentUser().getEmail(), getCurrentUser().getPassword());
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
-
-        boolean success = userService.authorization(email, password);
+        User currentUser = getCurrentUser();
         StringBuilder resultLink = new StringBuilder();
 
-        String roleName = getCurrentUser().getRole().getName();
+        if (currentUser != null) {
 
-        if (roleName != null) {
+            try {
+                ((HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest()).
+                        login(currentUser.getEmail(), currentUser.getPassword());
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+
+            boolean success = userService.authorization(email, password);
+
+            String roleName = currentUser.getRole().getName();
+
             if (roleName.equals("admin") && success) {
                 resultLink.append("admin/adminProfile");
             } else if (roleName.equals("mentor") && success) {
@@ -43,7 +47,10 @@ public class AuthorizationBean {
             }
             resultLink.append("?faces-redirect=true&email=").append(email);
         } else {
-            resultLink.append("index.xhtml");
+            FacesMessage message = new FacesMessage("Такого користувача не існує в нашій системі. " +
+                    "Перевірте введені дані.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+            resultLink.append("authorization?faces-redirect=true&success" + false);
         }
 
         return resultLink.toString();
