@@ -145,7 +145,8 @@ public class QuestionAnswerBean {
 
     public String addAnswer(QuestionRow questionRow, String answerText, boolean isCorrect){
         if(answerService.addAnswer(questionRow, answerText, isCorrect)){
-            getQuestions();
+            questionService.setVisibleQuestion(false);
+            fillTable();
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage(FacesMessage.SEVERITY_INFO, "Answer was added", null));
         return "successful";
@@ -188,7 +189,7 @@ public class QuestionAnswerBean {
 
     public String onRowEditAnswer(RowEditEvent event) {
         if (answerService.onRowEdit(event)) {
-            getQuestions();
+            fillTable();
             FacesMessage msg = new FacesMessage("Answer Edited",
                     ((Answer) event.getObject()).getAnswerText());
             FacesContext.getCurrentInstance().addMessage(null, msg);

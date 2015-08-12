@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body class="verstka">
-    <ui:composition template="../template.xhtml">
+    <ui:composition template="template.xhtml">
 
         <ui:define name="container">
             <div class="content">
@@ -179,7 +179,8 @@
 
                                     <p:commandButton value="Add answer"
                                                      rendered="#{!questionBean.getVisibleAnswer(question)}"
-                                                     action="#{questionBean.setVisibleAnswer(question)}" update="@form"
+                                                     action="#{questionBean.setVisibleAnswer(question)}"
+                                                     update="@form"
                                                      style="border-radius: 3px;
                                         font-family: PFB;
                                         font-size: 14px;

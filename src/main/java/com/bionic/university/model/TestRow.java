@@ -2,7 +2,7 @@ package com.bionic.university.model;
 
 import com.bionic.university.entity.Test;
 
-public class TestRow {
+public class TestRow implements Comparable {
 
     private Test test;
     private boolean editable;
@@ -26,5 +26,14 @@ public class TestRow {
 
     public void setEditable(boolean editable) {
         this.editable = editable;
+    }
+
+    public int compareTo(Object obj) {
+        TestRow tmp = (TestRow)obj;
+        if(this.getTest().isArchived() && tmp.getTest().isArchived())
+            return 0;
+        if(this.getTest().isArchived())
+            return 1;
+        return -1;
     }
 }

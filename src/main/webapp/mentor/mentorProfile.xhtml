@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body>
-    <ui:composition template="../template.xhtml">
+    <ui:composition template="template.xhtml">
 
 
     <ui:define name="container">
@@ -114,7 +114,8 @@
                                     </p:cellEditor>
                                 </p:column>
                                 <p:column style="border:0px; background:#ffffff; width:80px;">
-                                    <h:commandLink value="ARCHIVE" style="color:#E7664D;"
+                                    <p:commandLink value="ARCHIVE" style="color:#E7664D;"
+                                                   update="@form"
                                                    action="#{testsBean.deleteTest(testRow)}"
                                             />
 
@@ -202,7 +203,7 @@
                                     </tr>
                                 </table>
                             </h:panelGroup>
-                            <p:commandButton value="Призначити тест" rendered="#{!testsBean.visible}"
+                            <p:commandButton value="Призначити тест"
                                              action="#{testsBean.callManageUsers}"
                                              style="border-radius: 3px;
                                         font-family: PFB;

@@ -108,7 +108,7 @@ public class QuestionService {
     public boolean onRowEdit(String testId, RowEditEvent event) {
         try {
             ((QuestionRow) event.getObject()).getQuestion().setTest(testService.getTestDAO().find(Integer.valueOf(testId)));
-            questionDAO.update((Question) event.getObject());
+            questionDAO.update(((QuestionRow) event.getObject()).getQuestion());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
