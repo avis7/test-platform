@@ -1,26 +1,136 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<h:head>
+<head>
+    <title>Authorization</title>
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="resources/css/style-authorization.css" rel="stylesheet"/>
+</head>
 
-</h:head>
-<h:body>
-    <h:form id="login" onsubmit="action='j_security_check';" prependId="false">
-        <p:outputLabel for="j_username" ><h2>
-            #{msg.securityTitle}
-        </h2></p:outputLabel>
-        <h:panelGrid columns="2">
 
-            <p:outputLabel for="j_username" value="Username" />
-            <p:inputText styleClass="input" id="j_username" name="j_username" />
-            <p:outputLabel for="j_password" value="Password" />
-            <p:password id="j_password" name="j_password"/>
-            <p:commandButton styleClass="input" id="submit" value="Login" ajax="false"/>
-        </h:panelGrid>
-    </h:form>
+<h:body class="verstka">
+    <!-- header -->
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 logo">
+                    <table>
+                        <tr>
+                            <td><h:graphicImage name="img/logo.png" alt="logo" width="53" height="55"/></td>
+                            <td>
+                                <ul>
+                                    <li><h1>bionic</h1></li>
+                                    <li><h1>UNIVERSITY~QUIZZES</h1></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-sm-8 text-right">
+                    <ul class="menu">
+                        <li><a href="http://bionic-university.com/uk/about_bionic_university/" target="_blank">ПРО НАС</a></li>
+                        <li><a href="http://bionic-university.com/uk/contacts/" target="_blank">КОНТАКТИ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /header -->
+
+
+
+
+
+    <!-- content -->
+    <div class="cont">
+        <div class="content">
+            <ui:insert name="container">
+                <div class="container">
+                    <div class="col-xs-12"><h3>АВТОРИЗАЦІЯ</h3></div>
+                </div>
+            </ui:insert>
+        </div>
+
+
+        <div class="form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <h:form method="post" action="j_security_check" id="form" class="avtorization">
+                            <h4>E-mail
+                                <p:inputText id="email" name="j_username" size="20" required="true" type="text"
+                                             requiredMessage="Введіть E-mail"
+                                             value="#{authorizationBean.email}"
+                                             style="margin-left:7px"
+                                             validatorMessage="Введіть коректно E-mail">
+                                    <f:validateRegex
+                                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                                </p:inputText></h4>
+                            <p:message for="email"/>
+
+                            <h4>Пароль
+                                <p:password id="password" name="j_password" type="password" size="20" required="true"
+                                            requiredMessage="Введіть пароль"
+                                            value="#{authorizationBean.password}"/></h4>
+                            <p:message for="password" display="text" />
+
+                            <p:commandButton type="submit" action="#{authorizationBean.authorization}"
+                                             id="submit" ajax="false" value="УВІЙТИ"/>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="navbar-fixed-bottom row-fluid footer">
+        <div class="navbar-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 links">
+                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/f.jpg" alt="facebook" width="25" height="25"
+                                                                             onmouseout="this.src='resources/img/f.jpg'" onmouseover="this.src='resources/img/f_a.jpg'" /></a>
+                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/t.jpg" alt="twitter" width="25" height="25"
+                                                                             onmouseout="this.src='resources/img/t.jpg'" onmouseover="this.src='resources/img/t_a.jpg'" /></a>
+                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/v.jpg" alt="vk" width="25" height="25"
+                                                                             onmouseout="this.src='resources/img/v.jpg'" onmouseover="this.src='resources/img/v_a.jpg'" /></a>
+                        <a href="https://www.google.com.ua/"><h:graphicImage name="img/g.jpg" alt="g+" width="25" height="25"
+                                                                             onmouseout="this.src='resources/img/g.jpg'" onmouseover="this.src='resources/img/g_a.jpg'"
+                                                                             style="margin-right: 10px" /></a>
+                    </div>
+                    <div class="col-xs-12 text-center links">
+                        <p>
+                            Наші партнери:
+                            <h:graphicImage name="img/logo/infopulse.png" alt="" width="64" height="20" class="img-refers"/>
+                            <h:graphicImage name="img/logo/cisco.png" alt="" width="64" height="35" class="img-refers"/>
+                            <h:graphicImage name="img/logo/bms.png" alt="" width="150" height="45" class="img-refers"/>
+                            <h:graphicImage name="img/logo/luxsoft.png" alt="" width="55" height="30" class="img-refers"/>
+                            <h:graphicImage name="img/logo/mac.png" alt="" width="105" height="30" class="img-refers"/>
+                            <h:graphicImage name="img/logo/paymentwall.png" alt="" width="150" height="25" class="img-refers"/>
+                            <h:graphicImage name="img/logo/jansen.png" alt="" width="100" height="25" class="img-refers"/>
+                            <h:graphicImage name="img/logo/ciklum.png" alt="" width="100" height="25" class="img-refers"/>
+                            <h:graphicImage name="img/logo/hp.png" alt="" width="25" height="25" class="img-refers"/>
+                            <h:graphicImage name="img/logo/amsoft.png" alt="" width="60" height="27" class="img-refers"/>
+                            <h:graphicImage name="img/logo/kma.jpg" alt="" width="50" height="45" class="img-refers"/>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <p style="font-size: 10px; margin-left: 5px">Copyright © 2015, «Bionic Unversity». тел.: + 38 044 361 34 50 university@bionic-hill.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /footer -->
 </h:body>
 </html>
+
