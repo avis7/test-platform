@@ -114,6 +114,20 @@ public class UserService {
         } catch (Exception e) {
             return "Помилка бази даних";
         }
+    }
 
+    public List<User> getSearchedUsers(String userSurname){
+        try {
+            List<User> userList = new ArrayList<User>();
+            List<User> users = getAllUsers();
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getLastName().contains(userSurname))
+                userList.add(userList.size(), users.get(i));
+            }
+            return userList;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

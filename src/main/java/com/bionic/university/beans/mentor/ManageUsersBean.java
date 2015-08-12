@@ -7,11 +7,13 @@ import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
 import org.primefaces.event.RowEditEvent;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "manageUsersBean")
@@ -27,6 +29,24 @@ public class ManageUsersBean {
 
     private List<User> users;
     private int selectedTest;
+    private String userSurname;
+    private boolean visible;
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+
+    public String getUserSurname() {
+        return userSurname;
+    }
+
+    public void setUserSurname(String userSurname) {
+        this.userSurname = userSurname;
+    }
 
     public int getSelectedTest() {
         return selectedTest;
@@ -39,6 +59,10 @@ public class ManageUsersBean {
     public List<User> getUsers() {
         users = userService.getAllUsers();
         return users;
+    }
+
+    public List<User> getSearchedUsers() {
+        return userService.getSearchedUsers(userSurname);
     }
 
     public void setUsers(List<User> users) {
@@ -58,15 +82,15 @@ public class ManageUsersBean {
         switch (resultService.onRowEdit(event, selectedTest)) {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача "+((User)event.getObject()).getFirstName()+" добавлений", null));
-            break;
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача " + ((User) event.getObject()).getFirstName() + " добавлений", null));
+                break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Користувач "+((User)event.getObject()).getFirstName()+" має цей тест", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Користувач " + ((User) event.getObject()).getFirstName() + " має цей тест", null));
                 break;
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача "+((User)event.getObject()).getFirstName()+" не добавлений", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача " + ((User) event.getObject()).getFirstName() + " не добавлений", null));
                 break;
         }
 
