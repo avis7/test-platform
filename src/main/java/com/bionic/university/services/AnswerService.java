@@ -29,17 +29,6 @@ public class AnswerService {
         return answerDAO.getAnswersByQuestionId(questionId);
     }
 
-    public boolean addAnswer(int questionId, String answerText, boolean isCorrect) {
-        try {
-            Answer answer = new Answer(answerText, isCorrect);
-            Question question = questionService.getQuestionDAO().find(questionId);
-            answerDAO.save(answer);
-            return true;
-        }catch (Exception e){
-            return false;
-        }
-    }
-
     public boolean changeQuestionType(Question question){
         try{
             int counter=0;

@@ -59,7 +59,7 @@ public class UserService {
     public List<User> getAllUsers() {
         try {
             return userDAO.findStudents();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -121,16 +121,10 @@ public class UserService {
         }
     }
 
-    public List<User> getSearchedUsers(String userSurname){
+    public List<User> getSearchedUsers(String userSurname) {
         try {
-            List<User> userList = new ArrayList<User>();
-            List<User> users = getAllUsers();
-            for (int i = 0; i < users.size(); i++) {
-                if (users.get(i).getLastName().toLowerCase().contains(userSurname.toLowerCase()))
-                    userList.add(userList.size(), users.get(i));
-            }
-            return userList;
-        }catch (Exception e){
+            return userDAO.findByLastName(userSurname.toLowerCase());
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

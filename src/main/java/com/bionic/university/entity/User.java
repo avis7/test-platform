@@ -13,6 +13,9 @@ import java.util.List;
                 resultClass = User.class),
         @NamedNativeQuery(name = "getUserRole",
                 query = "SELECT * FROM user u WHERE u.role_id = 3",
+                resultClass = User.class),
+        @NamedNativeQuery(name = "userSearch",
+                query = "SELECT * FROM user u WHERE LOWER(u.last_name) LIKE :lastName AND u.role_id = 3",
                 resultClass = User.class)
 })
 @Table(name = "user")

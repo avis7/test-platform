@@ -7,13 +7,11 @@ import com.bionic.university.services.TestService;
 import com.bionic.university.services.UserService;
 import org.primefaces.event.RowEditEvent;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean(name = "manageUsersBean")
@@ -82,22 +80,22 @@ public class ManageUsersBean {
         switch (resultService.onRowEdit(event, selectedTest)) {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача " + ((User) event.getObject()).getFirstName() + " добавлений", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + ((User) event.getObject()).getFirstName() + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", null));
                 break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Користувач " + ((User) event.getObject()).getFirstName() + " має цей тест", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + ((User) event.getObject()).getFirstName() + " пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ", null));
                 break;
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест для користувача " + ((User) event.getObject()).getFirstName() + " не добавлений", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ " + ((User) event.getObject()).getFirstName() + " пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", null));
                 break;
         }
 
     }
 
     public String onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Відміна",
+        FacesMessage msg = new FacesMessage("ВіпїЅпїЅпїЅпїЅ",
                 ((User) event.getObject()).getFirstName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";

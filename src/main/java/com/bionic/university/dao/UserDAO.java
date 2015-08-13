@@ -29,4 +29,10 @@ public class UserDAO extends AbstractDAO<User> {
         return  query.getResultList();
     }
 
+    public List<User> findByLastName(String lastName){
+        Query query = em.createNamedQuery("userSearch");
+        query.setParameter("lastName", "%"+lastName+"%");
+        return query.getResultList();
+    }
+
 }

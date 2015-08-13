@@ -87,7 +87,7 @@ public class TestBean {
         switch (testService.addTest(testName, duration, deadline, categoryName)) {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " доданий", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "пїЅпїЅпїЅпїЅ " + testName + " пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", null));
                 break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
