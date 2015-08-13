@@ -45,24 +45,24 @@
                             <p:tab title="#{testBean.tabs.indexOf(tab) + 1}">
                                 <h:panelGrid rendered="#{!tab.question.isMultichoise and !tab.question.isOpen}" columns="1" cellpadding="5">
                                     <p:outputLabel value="#{tab.question.question}"/>
-                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="../resources/images/#{tab.question.picture}" />
                                     <p:selectOneRadio id="oneAnswer" value="#{tab.answer}" layout="grid" columns="1">
                                         <p:ajax update="oneAnswer" />
-                                        <f:selectItems value="#{tab.question.answers}" var="ans"
+                                        <f:selectItems value="#{tab.getAns(tab.question.id)}" var="ans"
                                                        itemLabel="#{ans.answerText}" itemValue="#{ans.id}"/>
                                     </p:selectOneRadio>
                                 </h:panelGrid>
                                 <h:panelGrid rendered="#{tab.question.isMultichoise}" columns="1" cellspacing="5">
                                     <p:outputLabel value="#{tab.question.question}"/>
-                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="../resources/images/#{tab.question.picture}" />
                                     <p:selectManyCheckbox id="manyAnswers" value="#{tab.answers}" layout="grid" columns="1">
                                         <p:ajax update="manyAnswers" />
-                                        <f:selectItems value="#{tab.question.answers}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
+                                        <f:selectItems value="#{tab.getAns(tab.question.id)}" var="ans" itemLabel="#{ans.answerText}" itemValue="#{ans.id}" />
                                     </p:selectManyCheckbox>
                                 </h:panelGrid>
                                 <h:panelGrid rendered="#{tab.question.isOpen}" columns="1" cellspacing="5">
                                     <p:outputLabel value="#{tab.question.question}"/>
-                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="resources/images/#{tab.question.picture}" />
+                                    <h:graphicImage rendered="#{tab.question.picture != null}"  value="../resources/images/#{tab.question.picture}" />
                                     <p:inputTextarea id="own" rows="5" cols="50" value="#{tab.ownAnswer}" counter="display" maxlength="1000" counterTemplate="{0} characters remaining." autoResize="true">
                                         <p:ajax update="own"/>
                                     </p:inputTextarea>

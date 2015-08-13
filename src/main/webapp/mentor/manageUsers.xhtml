@@ -12,20 +12,17 @@
 
 <h:head>
     <title>Mentror's test panel</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/nav.js"></script>
 </h:head>
 
 
 <h:body class="verstka">
-    <ui:composition template="../template.xhtml">
+    <ui:composition template="template.xhtml">
 
         <ui:define name="container">
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
-                        <div class="col-xs-6 text-right back"><a href="../index.xhtml" class="back">Назад</a></div>
+                        <div class="col-xs-12"><h3>СТВОРЕННЯ ТЕСТІВ</h3></div>
                     </div>
                 </div>
             </div>
@@ -34,60 +31,119 @@
 
         <ui:define name="body">
             <div class="container">
-                <div class="row">
                     <div class="col-xs-12">
 
-                        <h5></h5>
                         <div align="center">
 
                             <h:form id="formDT">
                                 <p:growl id="msgs" showDetail="true"/>
-                                <p:dataTable id="userDT" var="users" value="#{manageUsersBean.users}" editable="true" rowIndexVar="indexVar">
+                                <p:dataTable id="userDT" var="users" value="#{manageUsersBean.users}" editable="true"
+                                             rowIndexVar="indexVar">
 
-                                    <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}" update=":formDT:msgs" />
-                                    <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}" update=":formDT:msgs" />
-
-                                    <h:messages globalOnly="true" />
+                                    <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}"
+                                            update=":formDT:msgs"/>
+                                    <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}"
+                                            update=":formDT:msgs"/>
 
                                     <p:column headerText="Прізвище">
-                                        <h:outputText value="#{users.lastName}" />
+                                        <h:outputText value="#{users.lastName}"/>
                                     </p:column>
 
                                     <p:column headerText="Ім'я">
-                                        <h:outputText value="#{users.firstName}" />
+                                        <h:outputText value="#{users.firstName}"/>
                                     </p:column>
 
                                     <p:column headerText="Телефон">
-                                        <h:outputText value="#{users.phone}" />
+                                        <h:outputText value="#{users.phone}"/>
                                     </p:column>
 
                                     <p:column headerText="Email">
-                                        <h:outputText value="#{users.email}" />
+                                        <h:outputText value="#{users.email}"/>
                                     </p:column>
                                     <p:column headerText="Тести">
                                         <p:cellEditor>
                                             <f:facet name="output">
-                                                <ui:repeat var="test" value="#{users.tests}" >
-                                                <h:outputText value="#{test.testName}"/>
+                                                <ui:repeat var="test" value="#{users.tests}">
+                                                    <h:outputText value="#{test.testName}"/>
                                                     <br/>
-                                            </ui:repeat>
+                                                </ui:repeat>
                                             </f:facet>
                                             <f:facet name="input">
-                                                <h:selectOneMenu value="#{manageUsersBean.selectedTest}" style="width:100%">
-                                                    <f:selectItems value="#{manageUsersBean.visibleTests}" var="test" itemLabel="#{test.testName}" itemValue="#{test.id}" />
+                                                <h:selectOneMenu value="#{manageUsersBean.selectedTest}"
+                                                                 style="width:100%">
+                                                    <f:selectItems value="#{manageUsersBean.visibleTests}" var="test"
+                                                                   itemLabel="#{test.testName}" itemValue="#{test.id}"/>
                                                 </h:selectOneMenu>
                                             </f:facet>
                                         </p:cellEditor>
                                     </p:column>
                                     <p:column style="width:32px">
-                                        <p:rowEditor />
+                                        <p:rowEditor/>
                                     </p:column>
                                 </p:dataTable>
+
+
+                                    <h:outputLabel for="surname" value="Прiзвище користувача: "/>
+                                    <p:inputText id="surname" value="#{manageUsersBean.userSurname}" required="true"
+                                                 label="name">
+                                        <f:validateLength minimum="1" maximum="50"/>
+                                    </p:inputText>
+                                    <p:commandButton value="Пошук" action="#{manageUsersBean.setVisible(true)}" update="@form"/>
+                                    <p:message for="surname"/>
+                                <h:panelGroup id="tablePanelId">
+                                    <p:dataTable id="surnameDT" var="users"
+                                                 value="#{manageUsersBean.searchedUsers}" editable="true"
+                                                 rendered="#{manageUsersBean.visible}"
+                                                 rowIndexVar="indexVar">
+
+                                        <p:ajax event="rowEdit" listener="#{manageUsersBean.onRowEdit}"
+                                                update=":formDT:msgs"/>
+                                        <p:ajax event="rowEditCancel" listener="#{manageUsersBean.onRowCancel}"
+                                                update=":formDT:msgs"/>
+
+                                        <p:column headerText="Прізвище">
+                                            <h:outputText value="#{users.lastName}"
+                                                          rendered="#{manageUsersBean.visible}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Ім'я">
+                                            <h:outputText value="#{users.firstName}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Телефон">
+                                            <h:outputText value="#{users.phone}"/>
+                                        </p:column>
+
+                                        <p:column headerText="Email">
+                                            <h:outputText value="#{users.email}"/>
+                                        </p:column>
+                                        <p:column headerText="Тести">
+                                            <p:cellEditor>
+                                                <f:facet name="output">
+                                                    <ui:repeat var="test" value="#{users.tests}">
+                                                        <h:outputText value="#{test.testName}"/>
+                                                        <br/>
+                                                    </ui:repeat>
+                                                </f:facet>
+                                                <f:facet name="input">
+                                                    <h:selectOneMenu value="#{manageUsersBean.selectedTest}"
+                                                                     style="width:100%">
+                                                        <f:selectItems value="#{manageUsersBean.visibleTests}"
+                                                                       var="test" itemLabel="#{test.testName}"
+                                                                       itemValue="#{test.id}"/>
+                                                    </h:selectOneMenu>
+                                                </f:facet>
+                                            </p:cellEditor>
+                                        </p:column>
+                                        <p:column style="width:32px">
+                                            <p:rowEditor/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </h:panelGroup>
                             </h:form>
                         </div>
                     </div>
                 </div>
-            </div>
         </ui:define>
     </ui:composition>
 </h:body>

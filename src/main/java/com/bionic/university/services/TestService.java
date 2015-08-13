@@ -7,9 +7,7 @@ import org.primefaces.event.RowEditEvent;
 
 import javax.inject.Inject;
 import javax.persistence.PersistenceException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class TestService {
 
@@ -75,11 +73,20 @@ public class TestService {
             for (int i = 0; i < tests.size(); i++) {
                 testRows.add(i, new TestRow(tests.get(i), false));
             }
+            setArchived();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void setArchived(){
+        try {
+            Collections.sort(testRows);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public boolean onRowEdit(RowEditEvent event) {

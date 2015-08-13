@@ -38,6 +38,7 @@ public class TestBean {
     }
 
     public void setVisible() {
+        clearFields();
         testService.setVisible(true);
     }
 
@@ -87,22 +88,22 @@ public class TestBean {
             case 1:
                 FacesContext.getCurrentInstance().addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " доданий", null));
-                        break;
+                break;
             case 2:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " не доданий", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "???? " + testName + " ?? ???????", null));
                 break;
             case 3:
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест " + testName + " не доданий до БД. Змініть ім'я тесту", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "???? " + testName + " ?? ??????? ?? ??. ????? ??'? ?????", null));
                 break;
         }
     }
 
-    public boolean checkable(Test test){
+    public boolean checkable(Test test) {
         boolean checkable = false;
-        for (Result result : test.getResults()){
-            if (result.isSubmited() && !result.isChecked()){
+        for (Result result : test.getResults()) {
+            if (result.isSubmited() && !result.isChecked()) {
                 checkable = true;
                 break;
             }
@@ -114,9 +115,9 @@ public class TestBean {
         if (testService.deleteTest(testRow)) {
             if (testRow.getTest().isArchived())
                 FacesContext.getCurrentInstance().addMessage(null,
-                        new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест" + testRow.getTest().getTestName() + "  архівований", null));
+                        new FacesMessage(FacesMessage.SEVERITY_INFO, "????" + testRow.getTest().getTestName() + "  ???????????", null));
             else FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Тест" + testRow.getTest().getTestName() + " розархівований", null));
+                    new FacesMessage(FacesMessage.SEVERITY_INFO, "????" + testRow.getTest().getTestName() + " ??????????????", null));
             return "successful";
         }
         return "unsuccessful";
@@ -124,7 +125,7 @@ public class TestBean {
 
     public String onRowEdit(RowEditEvent event) {
         if (testService.onRowEdit(event)) {
-            FacesMessage msg = new FacesMessage("Тест змінено",
+            FacesMessage msg = new FacesMessage("???? ??????",
                     ((TestRow) event.getObject()).getTest().getTestName());
             FacesContext.getCurrentInstance().addMessage(null, msg);
             return "successful";
@@ -133,7 +134,7 @@ public class TestBean {
     }
 
     public String onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Відміна",
+        FacesMessage msg = new FacesMessage("?????",
                 ((TestRow) event.getObject()).getTest().getTestName());
         FacesContext.getCurrentInstance().addMessage(null, msg);
         return "successful";
@@ -146,7 +147,7 @@ public class TestBean {
     public void onDateSelect(SelectEvent event) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Дата виділена", format.format(event.getObject())));
+        facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "???? ???????", format.format(event.getObject())));
     }
 
     public void click() {
@@ -156,7 +157,27 @@ public class TestBean {
         requestContext.execute("PF('dlg').show()");
     }
 
-    public String callManageUsers(){
-           return "manageUsers";
+    public String callManageUsers() {
+        return "manageUsers?faces-redirect=true";
     }
+
+    public String check(int testId) {
+        return "checkResults?faces-redirect=true&testId=" + testId;
+    }
+
+    public String importTest() {
+        return "importTest.xhtml?faces-redirect=true";
+    }
+
+    public void clearFields() {
+        deadline = null;
+        duration = null;
+        testName = null;
+        categoryName = null;
+    }
+
+    public String getQuestions(TestRow testRow) {
+        return "testPage?faces-redirect=true&testId=" + testRow.getTest().getId();
+    }
+
 }

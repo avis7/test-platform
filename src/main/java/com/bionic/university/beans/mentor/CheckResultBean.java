@@ -32,6 +32,14 @@ public class CheckResultBean {
     @PostConstruct
     public  void  init(){
         userAnswers = userAnswerService.getUserAnswersWithOwnAnswerToCheckByResultId(resultId);
+        if (userAnswers == null){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect( "mentorProfile.xhtml");
+            }catch (Exception e){
+
+            }
+
+        }
         questions = new LinkedList<Question>();
         for (UserAnswer userAnswer : userAnswers){
             questions.add(questionService.getQuestionByAnswerId(userAnswer.getAnswerId()));
@@ -44,7 +52,7 @@ public class CheckResultBean {
     }
 
     public String cancel(){
-        return "mentor/mentorProfile?faces-redirect=true";
+        return "mentorProfile?faces-redirect=true";
     }
 
     public List<Question> getQuestions() {

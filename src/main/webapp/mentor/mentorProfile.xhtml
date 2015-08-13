@@ -11,34 +11,88 @@
 
 <h:head>
     <title>Mentror's page</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 </h:head>
 <h:body>
-    <ui:composition template="../template.xhtml">
+    <ui:composition template="template.xhtml">
 
 
-    <ui:define name="container">
-        <div class="content">
-            <div class="container">
-                <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
-                <div class="col-xs-6 text-right back">
-                    <a href="../index.xhtml" class="back">Назад</a>
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="col-xs-12"><h3>ПРОФІЛЬ</h3></div>
                 </div>
             </div>
-        </div>
-    </ui:define>
+        </ui:define>
 
 
-    <ui:define name="body">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
+        <ui:define name="body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
 
-                    <h5>Welcome, #{userProfileBean.name}</h5>
-
-                    <div align="center">
-
+                        <h5>Welcome, Mentor</h5>
                         <h:form id="formDT">
+                            <p:commandButton value="Створити тест" rendered="#{!testsBean.visible}"
+                                             action="#{testsBean.setVisible}" update="@form"/>
+                            <p:commandButton value="Призначити тест" action="#{testsBean.callManageUsers}" />
+                            <p:commandButton value="Імпортувати тест" action="#{testsBean.importTest}"/>
+
+                            <h:panelGroup layout="block" id="panelLayout">
+                                <table style="margin-bottom:10px; margin-top:15px; text-align:center; vertical-align:middle;">
+                                    <tr>
+                                        <td>
+                                            <td><p:outputLabel
+                                                    rendered="#{testsBean.visible}">Кінцева дата:</p:outputLabel></td>
+                                            <td><p:calendar id="popup" value="#{testsBean.deadline}" size="15"
+                                                            rendered="#{testsBean.visible}"
+                                                            required="true"
+                                                            requiredMessage="Поле обов`язкове для заповнення"
+                                                            converterMessage="Введіть коректну дату"/>
+                                            </td>
+                                        </td>
+                                        <td>
+                                            <td><p:outputLabel
+                                                    rendered="#{testsBean.visible}">Тривалість тесту:</p:outputLabel></td>
+                                            <td><p:inputText size="15" value="#{testsBean.duration}"
+                                                             rendered="#{testsBean.visible}"
+                                                             required="true"
+                                                             requiredMessage="Поле обов`язкове для заповнення"
+                                                             converterMessage="Введіть тривалість тесту у хвилинах"
+                                                             maxlength="5">
+                                                <f:validateLength minimum="1" maximum="5"/>
+                                            </p:inputText></td>
+                                        </td>
+                                        <td>
+                                            <td><p:outputLabel
+                                                    rendered="#{testsBean.visible}">Назва тесту:</p:outputLabel></td>
+                                            <td><p:inputText size="15" value="#{testsBean.testName}"
+                                                             rendered="#{testsBean.visible}"
+                                                             required="true"
+                                                             requiredMessage="Поле обов`язкове для заповнення"
+                                                             validatorMessage="Некоректне введення">
+                                                <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                            </p:inputText></td>
+                                        </td>
+                                        <td>
+                                            <td><p:outputLabel
+                                                    rendered="#{testsBean.visible}">Категорія тесту:</p:outputLabel></td>
+                                            <td><p:inputText size="15"
+                                                             value="#{testsBean.categoryName}"
+                                                             rendered="#{testsBean.visible}"
+                                                             required="true"
+                                                             requiredMessage="Поле обов`язкове для заповнення"
+                                                             validatorMessage="Некоректне введення">
+                                                <f:validateRegex pattern="((?=.*\w).{2,30})"/>
+                                            </p:inputText></td>
+                                        </td>
+                                        <td>
+                                            <p:commandButton value="Зберегти тест" action="#{testsBean.addTest}"
+                                                             rendered="#{testsBean.visible}" update="@form"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </h:panelGroup>
+
                             <p:growl id="msgs" showDetail="true"/>
                             <p:dataTable id="dataTable"
                                          value="#{testsBean.testRows}"
@@ -51,7 +105,7 @@
                                         update=":formDT:msgs"/>
 
 
-                                <p:column headerText="Deadline">
+                                <p:column headerText="Кінцева дата">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
                                                 style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
@@ -66,7 +120,7 @@
                                         </f:facet>
                                     </p:cellEditor>
                                 </p:column>
-                                <p:column headerText="Duration">
+                                <p:column headerText="Тривалість тесту">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
                                                 style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
@@ -82,7 +136,7 @@
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
-                                <p:column headerText="Test name">
+                                <p:column headerText="Назва тесту">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
                                                 style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
@@ -98,7 +152,7 @@
                                     </p:cellEditor>
                                 </p:column>
 
-                                <p:column headerText="Category name">
+                                <p:column headerText="Категорія тесту">
                                     <p:cellEditor>
                                         <f:facet name="output"><h:outputText
                                                 style="#{testRow.test.archived eq true ? 'color:#A2B5CD;':'color:#000000;'}"
@@ -113,110 +167,31 @@
                                         </p:inputText></f:facet>
                                     </p:cellEditor>
                                 </p:column>
-                                <p:column style="border:0px; background:#ffffff; width:100px;">
-                                    <h:commandLink value="Archive" style="color:#E7664D;"
-                                                   action="#{testsBean.deleteTest(testRow)}"
-                                            />
+                                <p:column style="width:32px;">
+                                    <h:commandLink class="ui-icon ui-icon-search" action="#{testsBean.check(testRow.test.id)}" title="Перевірити відповіді"/>
                                 </p:column>
-                                <p:column style="border:0px; background:#ffffff; width:60px;">
-                                    <h:commandLink value="Results" style="color:#52CC4C;"
-                                                   action="#{testsBean.viewCheckedResults(testRow)}"
-                                            />
+                                <p:column style="width:32px;">
+                                    <h:commandLink class="ui-icon ui-icon-check" action="#{testsBean.viewCheckedResults(testRow)}" title="Переглянути відповіді"/>
                                 </p:column>
-                                <p:column style="width:32px; border:0px; background:#ffffff;">
+                                <p:column style="width:32px;">
+                                    <h:commandLink class="ui-icon ui-icon-help" action="#{testsBean.getQuestions(testRow)}" title="Питання/Відповіді" />
+                                </p:column>
+                                <p:column style="width:32px;">
                                     <p:rowEditor/>
                                 </p:column>
+                                <p:column style="width:32px;">
+                                    <h:commandLink class="ui-icon ui-icon-close" action="#{testsBean.deleteTest(testRow)}" title="Додати до архіву"/>
+                                </p:column>
                             </p:dataTable>
-                            <h:panelGroup layout="block" id="panelLayout">
-                                <table style="margin-bottom:10px; margin-top:15px; text-align:center; vertical-align:middle;">
-                                    <tr>
-                                        <td>
-                                            <td><p:outputLabel
-                                                    rendered="#{testsBean.visible}">Test deadline:</p:outputLabel></td>
-                                            <td><p:calendar id="popup" value="#{testsBean.deadline}" size="15"
-                                                            rendered="#{testsBean.visible}"
-                                                            required="true"
-                                                            requiredMessage="Поле обов`язкове для заповнення"
-                                                            converterMessage="Введіть коректну дату"/>
-                                            </td>
-                                        </td>
-                                        <td>
-                                            <td><p:outputLabel
-                                                    rendered="#{testsBean.visible}">Test duration:</p:outputLabel></td>
-                                            <td><p:inputText size="15" value="#{testsBean.duration}"
-                                                             rendered="#{testsBean.visible}"
-                                                             required="true"
-                                                             requiredMessage="Поле обов`язкове для заповнення"
-                                                             converterMessage="Введіть тривалість тесту у хвилинах"
-                                                             maxlength="5">
-                                                <f:validateLength minimum="1" maximum="5"/>
-                                            </p:inputText></td>
-                                        </td>
-                                        <td>
-                                            <td><p:outputLabel
-                                                    rendered="#{testsBean.visible}">Test name:</p:outputLabel></td>
-                                            <td><p:inputText size="15" value="#{testsBean.testName}"
-                                                             rendered="#{testsBean.visible}"
-                                                             required="true"
-                                                             requiredMessage="Поле обов`язкове для заповнення"
-                                                             validatorMessage="Некоректне введення">
-                                                <f:validateRegex pattern="((?=.*\w).{2,30})"/>
-                                            </p:inputText></td>
-                                        </td>
-                                        <td>
-                                            <td><p:outputLabel
-                                                    rendered="#{testsBean.visible}">Test category:</p:outputLabel></td>
-                                            <td><p:inputText size="15"
-                                                             value="#{testsBean.categoryName}"
-                                                             rendered="#{testsBean.visible}"
-                                                             required="true"
-                                                             requiredMessage="Поле обов`язкове для заповнення"
-                                                             validatorMessage="Некоректне введення">
-                                                <f:validateRegex pattern="((?=.*\w).{2,30})"/>
-                                            </p:inputText></td>
-                                        </td>
-                                        <td>
-                                            <p:commandButton value="Save test" action="#{testsBean.addTest}"
-                                                             rendered="#{testsBean.visible}" update="@form"
-                                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </h:panelGroup>
-                            <p:commandButton value="Призначити тест" rendered="#{!testsBean.visible}"
-                                             action="#{testsBean.callManageUsers}"
-                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
-                            <p:commandButton value="Додати тест" rendered="#{!testsBean.visible}"
-                                             action="#{testsBean.setVisible}" update="@form"
-                                             style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+
+
+
                         </h:form>
                     </div>
                 </div>
             </div>
-        </div>
-    </ui:define>
-</ui:composition>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
 

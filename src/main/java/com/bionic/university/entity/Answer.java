@@ -7,6 +7,12 @@ import javax.persistence.*;
 @NamedNativeQueries({
         @NamedNativeQuery(name = "getAnswersByQuestionId",
                 query = "SELECT * FROM answer a WHERE a.question_id = :question",
+                resultClass = Answer.class),
+        @NamedNativeQuery(name = "getVisibleAnswersByQuestionId",
+                query = "SELECT * FROM answer a WHERE a.question_id = :question AND a.archived=FALSE",
+                resultClass = Answer.class),
+        @NamedNativeQuery(name = "getAnswerById",
+                query = "SELECT * FROM answer a WHERE a.id = :answerId",
                 resultClass = Answer.class)
 })
 @Table(name = "answer")
@@ -20,23 +26,18 @@ public class Answer {
     private boolean isCorrect;
     @Column(name = "picture")
     private String picture;
+    @Column(name = "archived", nullable = false)
+    private boolean archived;
     @ManyToOne
     @JoinColumn(name = "question_id")
     private Question question;
-
-
-
-    public Answer(boolean isCorrect) {
-        this.isCorrect = isCorrect;
-    }
 
     public Answer(String answerText, boolean isCorrect) {
         this.answerText = answerText;
         this.isCorrect = isCorrect;
     }
 
-    public Answer() {
-    }
+    public Answer(){}
 
     public int getId() {
         return id;
@@ -46,7 +47,7 @@ public class Answer {
         this.answerText = answerText;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return isCorrect;
     }
 
@@ -66,6 +67,14 @@ public class Answer {
         return answerText;
     }
 
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
     public String getPicture() {
         return picture;
     }
@@ -79,7 +88,7 @@ public class Answer {
         return "Answer{" +
                 "id=" + id +
                 ", answerText='" + answerText + '\'' +
-                ", isCorrect=" + isCorrect +
+                ", getIsCorrect=" + isCorrect +
                 '}';
     }
 }

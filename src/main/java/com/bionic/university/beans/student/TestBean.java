@@ -1,5 +1,6 @@
 package com.bionic.university.beans.student;
 
+import com.bionic.university.entity.Answer;
 import com.bionic.university.entity.Question;
 import com.bionic.university.entity.Test;
 import com.bionic.university.model.TestRow;
@@ -60,6 +61,8 @@ public class TestBean {
     UserService userService;
     private @Inject
     TestService testService;
+    private @Inject
+    AnswerService answerService;
 
 
 
@@ -93,6 +96,10 @@ public class TestBean {
         private String ownAnswer;
         private List<String> answers;
 
+        public List<Answer> getAns(int qId){
+            return answerService.getAnswersByQuestionId(String.valueOf(qId));
+        }
+
         public Tab(Question question) {
             this.question = question;
         }
@@ -118,7 +125,7 @@ public class TestBean {
         }
 
         public void setOwnAnswer(String ownAnswer) {
-            this.answer = question.getAnswers().get(0).getId();
+            this.answer = answerService.getAnswersByQuestionId(String.valueOf(question.getId())).get(0).getId();
             this.ownAnswer = ownAnswer;
         }
 

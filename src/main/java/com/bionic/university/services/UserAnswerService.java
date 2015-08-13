@@ -5,7 +5,9 @@ import com.bionic.university.dao.*;
 import com.bionic.university.entity.*;
 
 import javax.inject.Inject;
+import javax.xml.registry.infomodel.*;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Olexandr on 8/1/2015.
@@ -76,7 +78,7 @@ public class UserAnswerService {
     private int calculateMarkForOneQuestion(TestBean.Tab tab) {
         try {
             Answer answer = answerDAO.find(tab.getAnswer());
-            if (answer.isCorrect()) {
+            if (answer.getIsCorrect()) {
                 return answer.getQuestion().getMark();
             }
         } catch (Exception e) {
@@ -93,14 +95,14 @@ public class UserAnswerService {
                 Answer answer = answerDAO.find(Integer.valueOf(ans));
                 if (question == null)
                     question = answer.getQuestion();
-                if (!answer.isCorrect()) {
+                if (!answer.getIsCorrect()) {
                     correct = false;
                 }
             }
             if (correct && question != null) {
                 int correctAnswers = 0;
-                for (Answer answer : question.getAnswers()) {
-                    if (answer.isCorrect()) {
+                for (Answer answer : question.getAnswers()){
+                    if (answer.getIsCorrect()){
                         correctAnswers++;
                     }
                 }
@@ -153,8 +155,8 @@ public class UserAnswerService {
     public List<UserAnswer> getUserAnswersByResultId(String strResultId) {
         try {
             int resultId = Integer.valueOf(strResultId);
-            Result result = resultDAO.find(resultId);
-            return result.getUserAnswers();
+            List<UserAnswer> userAnswers = userAnswerDAO.getUserAnswersByResultId(resultId);
+            return userAnswers;
         } catch (NumberFormatException e1) {
         } catch (Exception e2) {
         }

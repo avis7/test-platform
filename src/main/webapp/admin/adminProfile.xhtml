@@ -12,8 +12,6 @@
 
 <h:head>
     <title>Profile</title>
-    <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="js/nav.js"></script>
 </h:head>
 
 
@@ -24,8 +22,7 @@
         <div class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-6"><h3>ПРОФІЛЬ</h3></div>
-                    <div class="col-xs-6 text-right back"><a href="../index.xhtml" class="back">Назад</a></div>
+                    <div class="col-xs-12"><h3>ПРОФІЛЬ</h3></div>
                 </div>
             </div>
         </div>
@@ -40,15 +37,7 @@
 
                     <h5>Welcome,  #{userProfileBean.name}</h5>
                     <p:commandButton value="Тести"
-                                     action="#{adminProfileBean.callMentorPage}"
-                                     style="border-radius: 3px;
-                                        font-family: PFB;
-                                        font-size: 14px;
-                                        color: white;
-                                        border: solid 1px #40C3DA;
-                                        padding: 4px 10px 4px 10px;
-                                        text-decoration: none;
-                                        background-color: #40C3DA;"/>
+                                     action="#{adminProfileBean.callMentorPage}" style="margin-bottom:7px; "/>
                     <div align="center">
 
                         <h:form id="formDT">
