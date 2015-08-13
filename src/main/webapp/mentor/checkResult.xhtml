@@ -46,8 +46,8 @@
                                     <td><h:outputText value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).ownAnswer}" style="margin-bottom: 10px;"/></td>
                                 </tr>
                                 <tr>
-                                    <td><h:outputText value="Кількість балів: " style="color: #4fbfdb;"/></td>
-                                    <td><p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).mark}" min="0" max="#{question.mark}" /></td>
+                                    <td><h:outputText value="Кількість балів: " style="color: #4fbfdb; margin-right: 5px;"/></td>
+                                    <td><p:spinner value="#{checkResultBean.userAnswers.get(checkResultBean.questions.indexOf(question)).mark}" min="0" max="#{question.mark}"/></td>
                                 </tr>
 
                             </table>

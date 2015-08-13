@@ -55,8 +55,8 @@
                                                                                required="true"
                                                                                requiredMessage="Поле обов`язкове для заповнення"
                                                                                validatorMessage="Некоректне введення"
-                                                                               maxlength="1000"
-                                                                               autoResize="true">
+                                                                               autoResize="true"
+                                                                               maxlength="100">
                                         </p:inputTextarea></f:facet>
                                     </p:cellEditor>
                                 </p:column>
@@ -118,7 +118,7 @@
                                                                                        required="true"
                                                                                        requiredMessage="Поле обов`язкове для заповнення"
                                                                                        validatorMessage="Некоректне введення"
-                                                                                       maxlength="1000"
+                                                                                       maxlength="100"
                                                                                        autoResize="true">
                                                 </p:inputTextarea></f:facet>
                                             </p:cellEditor>
@@ -138,7 +138,7 @@
                                         </p:column>
 
                                         <p:column style="width:40px;">
-                                            <p:commandLink value="AR" style="color:#E7664D;"
+                                            <p:commandLink class="ui-icon ui-icon-close"
                                                            action="#{questionBean.deleteAnswer(answer)}"
                                                            update="@form"
                                                     />
@@ -160,11 +160,12 @@
                                                      required="true"
                                                      requiredMessage="Поле обов`язкове для заповнення"
                                                      validatorMessage="Некоректне введення"
-                                                     autoResize="true">
+                                                     autoResize="true"
+                                                     maxlength="100">
                                     </p:inputTextarea>
-                                    <p:outputLabel
-                                            rendered="#{questionBean.getVisibleAnswer(question)}">Correct</p:outputLabel>
-                                    <p:selectBooleanCheckbox value="#{questionBean.isCorrect}"
+                                    <p:outputLabel style="margin-right: 3px;"
+                                                   rendered="#{questionBean.getVisibleAnswer(question)}">Correct</p:outputLabel>
+                                    <p:selectBooleanCheckbox value="#{questionBean.isCorrect}" style="margin-bottom: 3px;"
                                                              rendered="#{questionBean.getVisibleAnswer(question)}"/>
 
                                     <p:commandButton value="Save answer"
@@ -180,7 +181,7 @@
                                 </p:column>
 
                                 <p:column style="width:40px;">
-                                    <p:commandLink value="AR" style="color:#E7664D;"
+                                    <p:commandLink class="ui-icon ui-icon-close"
                                                    action="#{questionBean.deleteQuestion(question)}"
                                                    update="@form"
                                             />

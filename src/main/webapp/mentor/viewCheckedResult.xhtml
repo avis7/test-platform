@@ -1,78 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!DOCTYPE html
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
-
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-    <title></title>
+    <title>ВІДПОВІДІ СТУДЕНТА</title>
 </h:head>
-<h:body>
+<h:body class="verstka">
+    <ui:composition template="template.xhtml">
 
-    <h:form id="form">
-        <p:dataList value="#{viewCheckedResultBean.radioQuestions}" var="radioQuestion" >
-            <f:facet name="header">
-                Питання з одним варіантом відповіді
-            </f:facet>
-            <table>
-                <tr>
-                    <td><h:outputText value="Питання:"/></td>
-                    <td><h:outputText value="#{radioQuestion.question.question}"/></td>
-                    <td><h:graphicImage rendered="#{radioQuestion.question.picture != null}"  value="../resources/images/#{radioQuestion.question.picture}" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Відповідь:"/></td>
-                    <td><h:outputText value="#{radioQuestion.answer}"/></td>
-                    <td><h:outputText value="Оцінка:"/></td>
-                    <td><h:outputText value="#{radioQuestion.mark}"/></td>
-                </tr>
-            </table>
-        </p:dataList>
-        <p:dataList value="#{viewCheckedResultBean.multichoiseQuestions}" var="multichoiseQuestion">
-            <f:facet name="header">
-                Питання з декількома варіантами відповіді
-            </f:facet>
-            <table>
-                <tr>
-                    <td><h:outputText value="Питання:"/></td>
-                    <td><h:outputText value="#{multichoiseQuestion.question.question}"/></td>
-                    <td><h:graphicImage rendered="#{multichoiseQuestion.question.picture != null}"  value="../resources/images/#{multichoiseQuestion.question.picture}" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Відповідь:"/></td>
-                    <td><p:dataList value="#{multichoiseQuestion.answers}" var="answer">
-                        <h:outputText value="#{answer}"/>
-                    </p:dataList></td>
-                    <td><h:outputText value="Оцінка:"/></td>
-                    <td><h:outputText value="#{multichoiseQuestion.mark}"/></td>
-                </tr>
-            </table>
-        </p:dataList>
-        <p:dataList value="#{viewCheckedResultBean.openQuestions}" var="openQuestion">
-            <f:facet name="header">
-                Питання з відкритими відповідями
-            </f:facet>
-            <table>
-                <tr>
-                    <td><h:outputText value="Питання:"/></td>
-                    <td><h:outputText value="#{openQuestion.question.question}"/></td>
-                    <td><h:graphicImage rendered="#{openQuestion.question.picture != null}"  value="../resources/images/#{openQuestion.question.picture}" /></td>
-                </tr>
-                <tr>
-                    <td><h:outputText value="Відповідь:"/></td>
-                    <td><h:outputText value="#{openQuestion.answer}"/></td>
-                    <td><h:outputText value="Оцінка:"/></td>
-                    <td><h:outputText value="#{openQuestion.mark}"/></td>
-                </tr>
-            </table>
-        </p:dataList>
+        <ui:define name="container">
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12"><h3>ВІДПОВІДІ СТУДЕНТА</h3></div>
+                    </div>
+                </div>
+            </div>
+        </ui:define>
 
-    </h:form>
+        <ui:define name="body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
 
+                        <h:form id="form">
+                            <p:dataList value="#{viewCheckedResultBean.radioQuestions}" var="radioQuestion" >
+                                <f:facet name="header">
+                                    Питання з одним варіантом відповіді
+                                </f:facet>
+                                <table style="margin-bottom: 7px; border-bottom: 1px solid silver;">
+                                    <tr>
+                                        <td><h:outputText value="Питання:" style="color: #4fbfdb; margin-top: 5px; margin-bottom: 5px;"/></td>
+                                        <td><h:outputText value="#{radioQuestion.question.question}"/></td>
+                                        <td><h:graphicImage rendered="#{radioQuestion.question.picture != null}"  value="../resources/images/#{radioQuestion.question.picture}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Відповідь:" style="color: #4fbfdb;"/></td>
+                                        <td><h:outputText value="#{radioQuestion.answer}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Оцінка:" style="color: #4fbfdb;" /></td>
+                                        <td><h:outputText value="#{radioQuestion.mark}"/></td>
+                                    </tr>
+                                </table>
+                            </p:dataList>
+                            <p:dataList value="#{viewCheckedResultBean.multichoiseQuestions}" var="multichoiseQuestion">
+                                <f:facet name="header">
+                                    Питання з декількома варіантами відповіді
+                                </f:facet>
+                                <table style="margin-bottom: 7px; border-bottom: 1px solid silver;">
+                                    <tr>
+                                        <td><h:outputText value="Питання:" style="color: #4fbfdb; margin-top: 5px; margin-bottom: 5px;"/></td>
+                                        <td><h:outputText value="#{multichoiseQuestion.question.question}"/></td>
+                                        <td><h:graphicImage rendered="#{multichoiseQuestion.question.picture != null}"  value="../resources/images/#{multichoiseQuestion.question.picture}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Відповідь:" style="color: #4fbfdb;"/></td>
+                                        <td><p:dataList value="#{multichoiseQuestion.answers}" var="answer">
+                                            <h:outputText value="#{answer}"/>
+                                        </p:dataList></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Оцінка:" style="color: #4fbfdb;"/></td>
+                                        <td><h:outputText value="#{multichoiseQuestion.mark}"/></td>
+                                    </tr>
+                                </table>
+                            </p:dataList>
+                            <p:dataList value="#{viewCheckedResultBean.openQuestions}" var="openQuestion">
+                                <f:facet name="header">
+                                    Питання з відкритими відповідями
+                                </f:facet>
+                                <table style="margin-bottom: 7px; border-bottom: 1px solid silver;">
+                                    <tr>
+                                        <td><h:outputText value="Питання:" style="color: #4fbfdb; margin-top: 5px; margin-bottom: 5px;"/></td>
+                                        <td><h:outputText value="#{openQuestion.question.question}"/></td>
+                                        <td><h:graphicImage rendered="#{openQuestion.question.picture != null}"  value="../resources/images/#{openQuestion.question.picture}" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Відповідь:" style="color: #4fbfdb;"/></td>
+                                        <td><h:outputText value="#{openQuestion.answer}"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h:outputText value="Оцінка:" style="color: #4fbfdb;"/></td>
+                                        <td><h:outputText value="#{openQuestion.mark}"/></td>
+                                    </tr>
+                                </table>
+                            </p:dataList>
+
+                        </h:form>
+
+                    </div>
+                </div>
+            </div>
+        </ui:define>
+    </ui:composition>
 </h:body>
 </html>
